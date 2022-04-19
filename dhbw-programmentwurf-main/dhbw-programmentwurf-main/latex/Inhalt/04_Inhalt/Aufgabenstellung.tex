@@ -1,0 +1,166 @@
+\chapter{Aufgabenstellung}
+\section{Einleitung}
+Für unser sehr erfolgreiches Startup-Unternehmen im Bereich Event-Management benötigen wir ein neues Planungssystem, um alle Event-Daten noch besser und effizienter erfassen und verwalten zu können.
+
+Dabei planen und veranstalten wir Events mit Teilnehmerzahlen bis ca. 1000 Personen (Kongresse, Hochzeiten, Empfänge, Vernissagen, Sportveranstaltungen, Wettbewerbe, Konzerte usw.). Die meisten Events führen wir für 50 - 100 Teilnehmer durch.
+
+Bisher vor kurzem war es möglich, mit Hilfe von Excel die Planung und Verwaltung unserer Events durchzuführen, was durch die stark steigende Anzahl an Events nun nicht mehr auf Dauer realisierbar ist.
+
+\section{Lastenheft}
+\subsection{Zielsetzung}
+Ziel des Entwicklungsauftrags ist eine Software für die Planung und Durchführung von Veranstaltungs-Events. Alle Daten sollen zentral gespeichert werden, da mehrere Benutzer gleichzeitig auf die Daten und Termine zugreifen werden.
+
+Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backups und zum Datenaustausch möglich sein.
+
+Eine intuitive, leicht bedienbare Benutzeroberfläche setzen wir als selbstverständlich voraus. Es sollen keine besonderen Computerkenntnisse zur Bedienung der Software erforderlich sein. 
+\subsection{Anwendungsbereiche}
+Die Software soll ausschließlich für die Planung und Verwaltung von Events, Kunden, Ausrüstung, Locations und Angestellten und den damit direkt verbundenen Elementen verwendet werden. Sie soll im Alltag auf Laptops eingesetzt werden.
+\subsection{Zielgruppen, Benutzerrollen und Verantwortlichkeiten}
+Es soll verschiedene Benutzerrollen geben:
+\begin{itemize}
+    \item Organisatorinnen und Organisatoren pflegen die jeweiligen Event-Daten
+    \item Beschaffungspersonal (besorgen und verwalten benötigte Utensilien, die mehrfach verwendet werden können). Es hat lesenden Zugriff auf von Organisatorinnen und Organisatoren freigegebene Teilevents. Sie können in Gruppen organisiert sein (d.h. es gibt eine/n Gruppenleiterin bzw. einen Gruppenleiter) für Aktionen, die nicht oder nur schwer allein zu realisieren sind. 
+    \item Personalmitarbeiter pflegen Mitarbeiterdaten im System 
+    \item Montageleiterinnen und Montageleiter (Leitung von Mitarbeitern für den Auf- und Abbau der benötigten Geräte, Bauten und Einrichtungen). Die Rolle soll lesenden Zugriff auf alle Daten haben, die in ihren Arbeitsbereich fallen.
+    \item Eine hauptverantwortliche Person (Administrator) hat Vollzugriff auf sämtliche Daten, vor allem für deren Import und Export sowie deren Backup. 
+\end{itemize}
+\subsection{Zusammenspiel mit anderen Systemen}
+Die Daten über die Angestellten (Gehälter bzw. Löhne, Steuern, Kranken- und Rentenversicherung usw.) werden separat durch ein vorhandenes Personalbuchhaltungsprogramm verwaltet und müssen hier nicht berücksichtigt werden. Die finanztechnischen Daten werden über unser vorhandenes Finanzsystem erfasst und müssen hier ebenfalls nicht berücksichtigt werden.
+
+Eine Web-Seite über unser Unternehmen existiert bereits, Anfragen für die Durchführung von Events werden per E-Mail gestellt und ist von der neuen Software unabhängig.
+
+In einer zweiten Ausbaustufe soll es möglich sein, dass das Beschaffungspersonal und die Montageleiter über das Internet (Handy, Tablet) erledigte Aufgaben „abhaken“ können. Diese Funktionalität wird jedoch in der ersten Ausbaustufe noch nicht benötigt, die Erledigung einzelner Teilaufgaben wird dann noch per Mail oder Telefonanruf mit den Organisatorinnen und Organisatoren erledigt.
+
+Allerdings benötigen wir ein klares Konzept, wie diese Erweiterung realisiert werden soll. 
+
+Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
+\subsection{Produktfunktionen}
+\paragraph{/LF10/}
+Der jeweilige Benutzer muss die Möglichkeit haben, über eine grafische Benutzeroberfläche alle für ihn relevanten Daten einfach und übersichtlich zu verwalten.
+\paragraph{/LF20/}
+Verwaltet werden sollen Events, die geplant und durchgeführt werden. Sie bestehen aus einzelnen Teilschritten (Teilevents), die parallel oder nacheinander ausgeführt werden können.
+
+Jedes (Teil-)Event hat einen Start- und einen Ende-Termin, eine Bezeichnung (Name), Kontaktdaten (für Ansprechpersonen, z.B. Verwalter einer Location), eine Liste von benötigten Hilfsmitteln, eine Beschreibung, einen Status (erstellt, geplant, in Arbeit, fertig, usw.), die Möglichkeit, Kosten abzubilden sowie weitere Attribute.
+\paragraph{/LF30/}
+Hilfsmittel sind Tische, Stühle, Deko-Elemente (viele Varianten!), Gastronomie-Grills, u.v.m. Bei der Eintragung der Hilfsmittel soll jeweils die benötigte Anzahl angegeben werden können. Allen Hilfsmitteln müssen mehrere Termine zugeordnet werden können. Terminüberschneidungen müssen vermieden werden, um die Verfügbarkeit sicherzustellen.
+\paragraph{/LF40/}
+So genannte Event-Elemente sind:
+\begin{itemize}
+    \item Catering
+    \item Musik (Bands, Musikerinnen und Musiker, DJs usw.)
+    \item Multimedia (Beschallung, Anlagen (Verstärker, Boxen, Mikrofone, ...)) 
+    \item Personen (z.B. Entertainer, Pastor für Trauungen, Redner, Clowns, Comedians, Musiker (Bands) etc.)
+    \item Location (Veranstaltungsort, d.h. Lage, Adresse, Größe, u.v.m.)
+\end{itemize}
+
+Alle Event-Elemente können wiederum aufgeteilt werden (Teil-Event oder Teil-Element mit Start- und Ende-Termin sowie einen möglichen Verweis auf eine Firma incl. Ansprechpartner und evtl. Angebot, Vertragsdetails usw.)
+\paragraph{/LF50/}
+Für die Organisatorinnen und Organisatoren soll es möglich sein, Mails an Personen und Mitarbeiter mit Informationen über den Teilevent aus dem System heraus zu versenden. Dazu sollen die Kontaktdaten verwendet werden, die bei den Events eingetragen sind.
+\paragraph{/LF60/}
+Alle Angestellten müssen verwaltet werden. Jedem Teil-Event können die gewünschten Angestellten zugeordnet werden
+\paragraph{/LF70/}
+Zur einfacheren Eingabe der Daten soll es Auswahllisten für deren Eigenschaften geben, wo immer es möglich ist. Die Auswahllisten sollen auf einfache Weise erweiterbar sein.
+\paragraph{/LF80/}
+Sämtlichen Elementen sollen mehrere Bilder mit Titel zugeordnet werden können, die zentral auf einem Verzeichnis liegen sollen
+\paragraph{/LF90/}
+Bei der Zuordnung von eingetragenen Hilfsmitteln zu Teil-Events muss darauf geachtet werden, ob die Hilfsmittel im gewünschten Zeitraum verfügbar sind.
+\paragraph{/LF100/}
+Es muss möglich sein, alle Teil-Events für ausgewählte Angestellte in einer Auflistung anzeigen zu lassen.
+\subsection{Produktdaten}
+\paragraph{/LD10/}
+Die Daten sollen in einer zentralen Datenbasis (lesbare Dateien) abgespeichert werden.
+\subsection{Produktleistungen}
+\paragraph{/LL10/}
+Die Anzahl der zu verwaltenden Elemente wird auf ca. 50.000 geschätzt.
+\paragraph{/LL20/}
+Um bei HW- und SW-Anschaffungen und -neuerungen flexibel zu bleiben, ist auf Plattformunabhängigkeit besonders zu achten.
+\subsection{Qualitätsanforderungen}
+\begin{tabular}{| l | c | c | c | c |}
+    \hline
+    Produktqualität & sehr gut & gut & normal & nicht relevant \\
+    \hline
+    Funktionalität & x & & & \\
+    \hline
+    Zuverlässigkeit & & x & & \\
+    \hline
+    Effizienz & & x & & \\
+    \hline
+    Benutzbarkeit & x & & & \\
+    \hline
+    Wartbarkeit & & & x & \\
+    \hline
+    Übertragbarkeit & & & x & \\
+    \hline
+\end{tabular}
+\section{Aufgaben}
+Einzelne Lastenheftpunkte sind bewusst offengehalten. Denken Sie darüber nach, welche Informationen zusätzlich sinnvoll oder auch notwendig sind. Recherchieren Sie evtl. nach einzelnen Zusammenhängen im Internet.
+\subsection{Analyse}
+Für die Analyse sind zu erstellen:
+\begin{itemize}
+    \item Analyse des Lastenhefts (Fragen und Antworten). 
+    \item Ein Use-Case-Diagramm der gesamten Anwendung incl. Beschreibung.
+    \item Eine Verfeinerung des Use-Case-Diagramms incl. Beschreibung. (nach Absprache)
+    \item Ein Analyse-Klassendiagramm incl. Beschreibung (Untersuchen Sie dabei den Einsatz geeigneter Analysemuster)
+    \item Einfache GUI-Skizzen (Mockups) von mindestens zwei wesentlichen GUI-Komponenten (Hauptseite, Tabs, etc.). Die Skizzen können mit einem einfachen Grafikprogramm erstellt werden. Auch sorgfältige Handzeichnungen sind erlaubt. Keine Login-GUI skizzieren!    
+\end{itemize}
+\subsection{Sequenzdiagramm und Aktivitätsdiagramm}
+Erstellen Sie ein Sequenzdiagramm und ein Aktivitätsdiagramm (incl. Beschreibung) für folgende Szenarios (ein AD für das eine Szenario, ein SD für das andere Szenario):
+\begin{itemize}
+    \item Die Aktion „Event anlegen“ durchführen. Ausgehend von einem neuen Event und leerer Datenbasis werden dessen gesamte Daten erfasst und in das System eingetragen. (dies wird als Gebrauchsanweisung für die Evaluation Ihrer Implementierung dienen)
+    \item Die Aktionen „Event durchführen“ anhand eines praktischen Beispiels (Kongress, Abschlussfeier, Konzert o.ä.) 
+\end{itemize}
+Die Bewertung Ihrer Diagramme erfolgt auf der Basis der Nutzung der UML-Elemente, auf Ihrer Kreativität sowie dem Detaillierungsgrad des jeweiligen Diagramms.
+
+Fassen Sie bei beiden Diagrammen die Eingabe aller primitiven Attribute eines Elements (Float, String, Integer, …) in einer einzigen Aktion zusammen (z.B. „Attribute eintragen“).
+
+Für das Sequenzdiagramm ist das gewählte Szenario ausführlich zu entwickeln (idealerweise mit Pseudocode). Es sind sämtliche referenzierten Elemente zu berücksichtigen, die zugeordnet werden können. 
+
+In allen Fällen wird eine (noch) leere Datenbasis angenommen. Denken Sie an geeignete Diagrammverfeinerungen. 
+
+\subsection{Entwurf}
+Abzuliefern sind hier (alle Diagramme und GUIs jeweils mit Beschreibung):
+\begin{itemize}
+    \item Entwurfsklassendiagramm (Untersuchen Sie dabei den Einsatz geeigneter Entwurfsmuster)
+\item GUI-Modellierung:
+
+Es ist das Kommunikationsschema eines Teils der während der Analyse skizzierten GUI mit UML zu modellieren. Die Anwendung selbst soll dabei nach dem einfachen Model-View-Control-Muster aufgebaut sein. Dazu sind mindestens ein Controller, die erforderlichen Modellklassen sowie eine unabhängige GUI (View) erforderlich.
+
+Die meisten GUI-Elemente werden über eine einfache kleine Java-Bibliothek zur Verfügung gestellt (swe-utils.jar), deren GUI-Komponenten in das Klassendiagramm zu integrieren sind, wenn sie verwendet werden.
+
+Die GUI-Modellierung kann in einem separaten Diagramm mit den relevanten (gewählten bzw. benötigten) Modellklassen erfolgen, falls das Entwurfsklassendiagramm sonst zu komplex werden würde. 
+\end{itemize}
+\subsection{Implementierung}
+Es ist eine einfache Java-Applikation zu implementieren, die es ermöglicht, Museumsdaten anzulegen, zu ändern und zu löschen. 
+
+Zur Realisierung wird die oben bei der Entwurfsaufgabe erwähnte Java-Bibliothek zur Verfügung gestellt (swe-utils.jar), die neben mehreren GUI-Komponenten einen CSVReader, einen CSVWriter sowie mehrere Interfaces bereitstellt (in den Packages event und model).
+
+Daneben ist eine Mini-Test-Applikation gegeben, die die Funktionsfähigkeit der GUI-Komponenten demonstriert (Start mit java -jar swe-utils.jar). Details sind der Java-Dokumentation der Bibliothek zu entnehmen.
+
+Zur leichteren und zukunftssicheren Evaluation Ihres Programmentwurfs soll die Java-Applikation als eine Desktop-Applikation mit CSV-Dateien (alternativ XML oder JSON) als zentrale Datenbasis realisiert werden, die von beliebigen Rechnern aus gestartet wird. Dabei sind mehrere Dateien analog zu Datenbanktabellen zu erzeugen.
+\subsubsection*{Einzelne Aufgaben}
+\begin{itemize}
+    \item Hauptaufgabe ist die Realisierung einer MVC-Applikation mithilfe des Observer-Patterns entsprechend des vorgegebenen GUI-Entwurfs und der gegebenen Java-Bibliothek.
+    \item Die Erzeugung der Instanzen soll in einer Entity-Factory erfolgen und zur Verwaltung der Instanzen ist ein Entity-Manager zu realisieren (beides siehe Vorlesung).
+    \item Beim Anlegen eines Events muss für die Zuordnung von Hilfsmitteln sichergestellt sein, dass es keine zeitlichen Überschneidungen gibt (LF90).
+    \item Es muss eine ausführbare JAR-Datei abgegeben werden, die mit 
+    
+    \code{java -jar SWE-PE-2021\_Eventplaner\_<name1>\_<name2>.jar OPTIONEN} gestartet werden kann. Hierfür ist ein BASH-Skript namens startApp zu erstellen.
+    \item Geprüft wird das Anlegen eines Events mit der Zuordnung aller zugehörigen Elemente. Nach dem Anlegen wird die Applikation erneut gestartet und geprüft, ob alle Daten korrekt abgespeichert und beim Laden wieder zugeordnet werden. 
+\end{itemize}
+\subsubsection*{Verwendung von CSV-Dateien:}
+\begin{itemize}
+    \item Die Daten sollen in CSV-Dateien vorliegen und können mittels den gegebenen Bibliotheksklassen CSVReader und CSVWriter gelesen bzw. beschrieben werden. Zur Vereinfachung können die Daten jeweils komplett geschrieben werden. 
+    \item Abgegeben werden soll ein ZIP-File (oder TAR-File) mit allen Java- und CSV-Dateien (letztere gesammelt in einem eigenen Verzeichnis): 
+    
+    \enquote{SWE-PE-2021\_Eventplaner\_<n1>\_<n2>.zip} (tar oder tar.z) 
+    \item Als OPTIONEN in der Startanweisung soll der Pfad zu den CSV-Dateien sowie zu einer Properties-Datei angegeben werden können: 
+    
+    \code{java -jar SWE-PE-2021\_Eventplaner\_<n1>\_<n2>.jar –d <csvpath> –p <propfile>}
+\end{itemize}
+\section{Vereinfachungen für den Programmentwurf}
+\begin{enumerate}
+    \item Es muss nicht dafür gesorgt werden, dass auf dieselben Daten bzw. CSV-Dateien nicht gleichzeitig zugegriffen werden kann, d.h. es ist kein Locking-Mechanismus erforderlich. 
+    \item Eine Protokollierfunktion und ein Login-Vorgang sind für die Anwendung nicht erforderlich (in der Realität natürlich schon!).
+    \item Zeitliche Überschneidungen sind natürlich bei allen Elementen mit mehreren Terminangaben möglich und müssten sowohl beim Anlegen als auch bei Änderungen von Terminen berücksichtigt werden. Im Programmentwurf sollte dies in der Modellierung berücksichtigt werden, bei der Implementierung ist jedoch nur eine Überprüfung beim Zuordnen eines Hilfsmittels zu einem Event erforderlich.
+    \item In einem vollständigen Modell finden wir natürlich bei fast allen Elementen, die einem Event zugeordnet werden, eine N:M-Beziehung vor. Bei der Implementierung müssen jedoch nur die N:M-Beziehungen zwischen Event und zugeordneten Mitarbeitern (s. Benutzerrollen) realisiert werden, alle anderen Elemente dürfen mit einer einseitigen Zuordnung implementiert werden (s. LF100)
+\end{enumerate}

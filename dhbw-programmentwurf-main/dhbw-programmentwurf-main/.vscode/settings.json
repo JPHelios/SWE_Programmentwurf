@@ -1,0 +1,19 @@
+{
+    "editor.wordWrap": "on",
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.bcf": true,
+        "**/*.blg": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.lof": true,
+        "**/*.log": true,
+        "**/*.lol": true,
+        "**/*.lot": true,
+        "**/*.out": true,
+        "**/*.synctex.gz": true,
+        "**/*.toc": true
+    },
+    "cSpell.language": "en,de-DE"
+}

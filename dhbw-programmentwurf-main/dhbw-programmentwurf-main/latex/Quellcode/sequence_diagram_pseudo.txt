@@ -1,0 +1,274 @@
+"Event anlegen"
+
+BEGINN EVENT-ANLEGEN
+ Zeige mögliche Eventelemente als Vorlage an
+ WENN Organisator kein Eventelement auswählt
+  Leeres Event-Objekt wird angelegt
+  Organisator trägt primitive Attribute ein
+ SONST
+  Event-Objekt wird durch das gewählte Eventelement generiert
+  Organisator wählt Namen des Events
+ ENDE WENN
+
+ Organisator wählt Start- und Endetermin des Events
+ SOLANGE gewählter Endetermin vor dem Starttermin liegt
+  Zeige Fehlermeldung "Starttermin muss vor Endetermin liegen"
+  Organisator wählt Start- und Endetermin des Events
+ ENDE SOLANGE
+
+ SOLANGE Organisator Bild hinzufügen möchte
+  FUEHRE AUS BILD-ANLEGEN
+  Füge Bild zu diesem Event hinzu
+ ENDE SOLANGE
+
+ SOLANGE Organisator Verweis hinzufügen möchte
+  FUEHRE AUS VERWEIS-ANLEGEN
+  Füge Verweis zu diesem Event hinzu
+ ENDE SOLANGE
+
+ SOLANGE Organisator Teileinheit hinzufügen möchte
+  FUEHRE AUS TEILEINHEIT-ANLEGEN
+  Füge Teileinheit zu diesem Event hinzu
+ ENDE SOLANGE
+
+ FUEHRE AUS VERANTWORTLICHEN-FINDEN
+ Füge gefundenen Verantwortlichen zu diesem Event als Verantwortlichen hinzu
+
+ SOLANGE Organisator Änderungen an primitiven Attributen vornehmen will
+  Organisator nimmt Änderungen an primitiven Attributen vor
+ ENDE SOLANGE
+
+ Organisator klickt auf Event sichern
+ Event wird in der Datenbasis gesichert
+ENDE EVENT-ANLEGEN
+
+BEGINN TEILEINHEIT-ANLEGEN
+ Zeige mögliche Teilelemente als Vorlage an
+ WENN Organisator kein Teilelement auswählt
+  Leeres Teileinheit-Objekt wird angelegt
+  Organisator trägt primitive Attribute ein
+ SONST
+  Teileinheit-Objekt wird durch das gewählte Teilelement generiert
+ ENDE WENN
+ Organisator wählt Start- und Endetermin der Teileinheit
+ SOLANGE gewählter Endetermin vor dem Starttermin liegt
+  Zeige Fehlermeldung "Starttermin muss vor Endetermin liegen"
+  Organisator wählt Start- und Endetermin der Teileinheit
+ ENDE SOLANGE
+
+ SOLANGE Organisator Bild hinzufügen möchte
+  FUEHRE AUS BILD-ANLEGEN
+  Füge Bild zu dieser Teileinheit hinzu
+ ENDE SOLANGE
+
+ SOLANGE Organisator Verweis hinzufügen möchte
+  FUEHRE AUS VERWEIS-ANLEGEN
+  Füge Verweis zu diesem Event hinzu
+ ENDE SOLANGE
+
+ WENN Organisator Hilfsmittel hinzufügen möchte
+  SOLANGE Organisator Hilfsmittel hinzufügen möchte
+   FUEHRE AUS VERWENDUNG-ANLEGEN mit Start- und Endetermin
+   Füge gewählte Verwendung zu dieser Teileinheit hinzu
+  ENDE SOLANGE
+  Organisator setzt Kostenschätzung der Teileinheit
+ SONST Falls Organisator Teileinheit hinzufügen möchte
+  SOLANGE Organisator Teileinheit hinzufügen möchte
+   FUEHRE AUS TEILEINHEIT-ANLEGEN
+   Füge Teileinheit zu dieser Teileinheit hinzu
+  ENDE SOLANGE
+ ENDE WENN
+
+ SOLANGE Organisator Teileinheiten als Voraussetzung hinzufügen möchte
+  Zeige Teileinheiten an
+  Organisator wählt Teileinheit aus
+  Gewählte Teileinheit wird als Voraussetzung zu dieser Teileinheit hinzugefügt
+ ENDE SOLANGE
+
+ FUEHRE AUS VERANTWORTLICHEN-FINDEN mit Start- und Endetermin
+ Füge gefundenen Verantwortlichen zu dieser Teileinheit als Verantwortlichen hinzu
+
+ SOLANGE Organisator Änderungen an primitiven Attributen vornehmen will
+  Organisator nimmt Änderungen an primitiven Attributen vor
+ ENDE SOLANGE
+
+ Organisator klickt auf sichern
+ Teileinheit wird in Datenbasis gesichert
+ GIB Teileinheit zurück
+ENDE TEILEINHEIT-ANLEGEN
+
+BEGINN VERANTWORTLICHEN-FINDEN
+ Zeige dem Organisator die Möglichkeit zwischen Einzelperson und Gruppe zu wählen an
+ WENN Organisator Einzelperson wählt
+  FUEHRE AUS MITARBEITER-FINDEN mit Start- und Endetermin
+  GIB Mitarbeiter zurück
+ SONST
+  Lege ein leeres Gruppe-Objekt an
+  Fordere Organisator auf Gruppenleiter auszuwählen
+  FUEHRE AUS MITARBEITER-FINDEN mit Start- und Endetermin
+  Setze Mitarbeiter als Gruppenleiter
+  Füge Mitarbeiter zu Teilnehmer hinzu
+  SOLANGE Organisator Teilnehmer hinzufügen will
+   FUEHRE AUS MITARBEITER-FINDEN mit Start- und Endetermin
+   Füge Mitarbeiter als Teilnehmer hinzu
+  ENDE SOLANGE
+  SOLANGE Organisator Helfer hinzufügen will
+   Organisator gibt Name ein
+   Lege Helfer-Objekt mit Name an
+   Füge Helfer zu Helfern hinzu
+  ENDE SOLANGE
+  GIB Gruppe zurück
+ ENDE WENN
+ENDE VERANTWORTLICHEN-FINDEN
+
+BEGINN MITARBEITER-FINDEN
+ Zeige zwischen Start- und Endetermin verfügbare Mitarbeiter an
+ SOLANGE Organisator in Suchleiste Suchkriterien ändert
+  Zeige aktualisierte Liste an
+ ENDE SOLANGE
+ WENN Organisator neuen Mitarbeiter anlegen möchte
+  FUEHRE AUS MITARBEITER-ANLEGEN
+ SONST
+  Organisator wählt Mitarbeiter aus der Liste
+ ENDE WENN
+ GIB Mitarbeiter zurück
+ENDE MITARBEITER-FINDEN
+
+BEGINN VERWEIS-ANLEGEN
+ Lege leeres Verweis-Objekt
+ WENN Organisator Firma angeben will
+  Organisator gibt Firma an
+ ENDE WENN
+ 
+ SOLANGE Organisator Bild hinzufügen möchte
+  FUEHRE AUS BILD-ANLEGEN
+  Füge Bild zu diesem Verweis hinzu
+ ENDE SOLANGE
+
+ SOLANGE Organisator Ansprechperson hinzufügen möchte
+  FUEHRE AUS ANSPRECHPERSON-ANLEGEN
+  Füge Ansprechperson zu diesem Verweis hinzu
+ ENDE SOLANGE
+ 
+ SOLANGE Organisator Dokument hinzufügen möchte
+  Organisator wählt Datei zum hochladen aus
+  SOLANGE Datei mit gleichem Namen im zentralen Verzeichnis vorhanden ist
+   Ändere zukünftigen Dateinamen
+  ENDE SOLANGE
+  Speichere gewählte Datei mit zukünftigem Dateinamen im zentralen Verzeichnis
+  Erzeuge Dokument-Objekt mit gewähltem Dateinamen
+  Füge Dokument zu diesem Verweis hinzu
+ ENDE SOLANGE
+ENDE VERWEIS-ANLEGEN
+
+BEGINN BILD-ANLEGEN
+ Organisator wählt Datei zum hochladen aus
+ SOLANGE Datei mit gleichem Namen im zentralen Verzeichnis vorhanden ist
+  Ändere zukünftigen Dateinamen
+ ENDE SOLANGE
+ Speichere gewählte Datei mit zukünftigem Dateinamen im zentralen Verzeichnis
+ Erzeuge Bild-Objekt mit gewähltem Dateinamen
+ GIB Bild zurück
+ENDE BILD-ANLEGEN
+
+BEGINN ANSPRECHPERSON-ANLEGEN
+ Organisator gibt primitive Attribute an
+ Lege Ansprechperson-Objekt mit primitiven Daten an
+
+ Organisator gibt Telefonnummer an
+ WENN Organisator E-Mail-Adresse angeben will
+  Organisator gibt E-Mail-Adresse an
+ ENDE WENN
+ WENN Organisator Anschrift angeben will
+  Organisator gibt Anschrift an
+ ENDE WENN
+ Lege Kontaktdaten-Objekt mit gegebenen Kontaktdaten an
+ GIB Kontaktdaten-Objekt zurück
+ Füge Kontaktdaten zu Ansprechperson hinzu
+ GIB Ansprechperson zurück
+ENDE ANSPRECHPERSON-ANLEGEN
+
+BEGINN VERWENDUNG-ANLEGEN
+ Zeige im Zeitraum verfügbare Hilfsmittel an
+ SOLANGE Organisator in Suchleiste Suchkriterien ändert
+  Zeige aktualisierte Liste an
+ ENDE SOLANGE
+ WENN Organisator neues Hilfsmittel anlegen möchte
+  FUEHRE AUS HILFSMITTEL-ANLEGEN
+ SONST
+  Organisator wählt Hilfsmittel aus
+ ENDE WENN
+ Organisator wählt Menge
+ SOLANGE Menge größer verfügbarer Menge des Hilfsmittels
+  Zeige Fehlermeldung "Die geforderte Menge ist nicht verfügbar"
+  Organisator wählt Menge
+ ENDE SOLANGE
+ Organisator wählt Start- und Endetermin
+ SOLANGE Start- oder Endetermin invalide
+  Zeige Fehlermeldung "Invalider Start- oder Endetermin"
+  Organisator wählt Start- und Endetermin
+ ENDE SOLANGE
+ Lege Verwendung-Objekt mit Daten an
+ Füge Verwendung zu Hilfsmittel hinzu
+ GIB Verwendung zurück
+ENDE VERWENDUNG-ANLEGEN
+
+BEGINN HILFSMITTEL-ANLEGEN
+ Organisator trägt primitive Attribute ein
+ WENN Organisator das Hilfsmittel als Gebrauchsgut anlegen will
+  Organisator wählt Gebrauchsgut
+  Organisator trägt Gesamtzahl ein
+  Lege Gebrauchsgut-Objekt mit Daten an
+  Setze Gebrauchsgut-Objekt als Hilfsmittel
+ SONST
+  ; Sonst ist es ein Verbrauchsgut
+  Organisator wählt Verbauchsgut
+  Organisator trägt aktuell verfügbare Menge ein
+  Lege Verbauchsgut-Objekt mit Daten an
+  FUEHRE AUS VERWEIS-ANLEGEN
+  Füge Verweis zu Verbauchsgut-Objekt als Lieferant hinzu
+  Setze Verbauchsgut-Objekt als Hilfsmittel
+ ENDE WENN
+
+ SOLANGE Organisator Bild hinzufügen möchte
+  FUEHRE AUS BILD-ANLEGEN
+  Füge Bild zu diesem Hilfsmittel hinzu
+ ENDE SOLANGE
+ Hilfsmittel-Objekt in Datenbasis sichern
+ GIB Hilfsmittel-Objekt zurück
+ENDE HILFSMITTEL-ANLEGEN
+
+BEGINN MITARBEITER-ANLEGEN
+ Organisator trägt primitve Attribute ein
+ Lege Mitarbeiter-Objekt mit Daten an
+
+ Organisator gibt Telefonnummer an
+ WENN Organisator E-Mail-Adresse angeben will
+  Organisator gibt E-Mail-Adresse an
+ ENDE WENN
+ WENN Organisator Anschrift angeben will
+  Organisator gibt Anschrift an
+ ENDE WENN
+ Lege Kontaktdaten-Objekt mit gegebenen Kontaktdaten an
+ GIB Kontaktdaten-Objekt zurück
+ Füge Kontaktdaten-Objekt zu Mitarbeiter hinzu
+
+ SOLANGE Organisator Rolle hinzufügen möchte UND Mitarbeiter nicht alle Rollen hat
+  Zeige Organisator alle bisher nicht zugewiesenen Rollen
+  Organisator wählt Rolle aus
+  Füge gewählte Rolle zu Mitarbeiter-Objekt hinzu
+ ENDE SOLANGE
+ 
+ SOLANGE Organisator Beschäftigungszeitraum hinzufügen möchte
+  Organisator trägt Starttermin und Endetermin ein
+  SOLANGE gewählter Endetermin vor dem Starttermin liegt
+   Zeige Fehlermeldung "Starttermin muss vor Endetermin liegen"
+   Organisator wählt Start- und Endetermin des Beschäftigungszeitraums
+  ENDE SOLANGE
+  Lege Beschäftigungszeitraum-Objekt mit Daten an
+  Füge Beschäftigungszeitraum-Objekt zu Mitarbeiter hinzu
+ ENDE SOLANGE
+
+ Mitarbeiter-Objekt in Datenbasis sichern
+ GIB Mitarbeiter-Objekt zurück
+ENDE MITARBEITER-ANLEGEN

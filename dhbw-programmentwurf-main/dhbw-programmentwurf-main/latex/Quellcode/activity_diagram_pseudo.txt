@@ -1,0 +1,392 @@
+; Pseudo-Code für die Durchführung des Events "Erster Tag Dualer Studenten"
+BEGINN EVENT-DURCHFUEHREN
+ Organisator schreibt Einladungs-Mail mit allen nötigen Infos
+ Organisator erstellt leeren Mailverteiler
+ Organisator öffnet Verweis des Events mit Teilnehmern
+ FUER alle Ansprechpersonen des Verweises
+  WENN Funktion der Ansprechperson Teilnehmer ist
+   Organisator öffnet Kontaktdaten der Ansprechperson
+   WENN Kontaktdaten haben E-Mail-Adresse
+    Organisator fügt E-Mail-Adresse zu Mailverteiler hinzu
+   SONST
+    Organisator ruft Ansprechperson unter Telefonnummer an
+    WENN Ansprechperson Telefongespräch annimmt
+     Organisator fragt Ansprechperson nach E-Mail-Adresse
+     WENN Ansprechperson E-Mail-Adresse angibt
+      Organisator fügt E-Mail-Adresse zu Kontaktdaten hinzu
+      Organisator fügt E-Mail-Adresse zu Mailverteiler hinzu
+     SONST
+      Organisator warnt Ansprechperson, dass in Zukunft Informationen nicht ankommen könnten
+      Organisator gibt Informationen zum Event an Ansprechperson weiter
+     ENDE WENN
+    SONST
+     Organisator fügt Telefonnummer zu Liste der nicht erreichten Teilnehmer hinzu
+    ENDE WENN
+   ENDE WENN
+  ENDE WENN
+ ENDE FUER
+ SOLANGE NICHT Liste der nicht erreichten Teilnehmer leer ist
+  FUER alle nicht erreichten Teilnehmer
+   Organisator ruft Teilnehmer an
+   WENN Teilnehmer Telefongespräch annimmt
+    Organisator entfernt Teilnehmer von Liste nicht erreichter Teilnehmer
+    Organisator fragt Teilnehmer nach E-Mail-Adresse
+    WENN Teilnehmer E-Mail-Adresse angibt
+     Organisator fügt E-Mail-Adresse zu Kontaktdaten hinzu
+     Organisator fügt E-Mail-Adresse zu Mailverteiler hinzu
+    SONST
+     Organisator warnt Teilnehmer, dass in Zukunft Informationen nicht ankommen könnten
+     Organisator gibt Informationen zum Event an Teilnehmer weiter
+    ENDE WENN
+   ENDE WENN
+  ENDE FUER
+ ENDE SOLANGE
+
+ SOLANGE Event noch nicht begonnen
+  WENN Teilnehmer absagt
+   Organisator entfernt Teilnehmer von Event
+  ENDE WENN
+  WENN Event verboten wird
+   ; Grund: Corona-Maßnahmen oder ähnliches
+   Organisator setzt Status des Events auf Abgesagt
+   FUER alle Ansprechpersonen
+    Organisator öffnet Kontaktdaten der Ansprechperson
+    WENN E-Mail-Adresse vorhanden ist
+     Organisator schickt Mail mit Absage der Vor-Ort-Aktivitäten und Ankündigung folgender Infos zu alternativen Plänen
+    SONST
+     Organisator ruft Ansprechperson an
+     WENN Ansprechperson Telefongespräch annimmt
+      Organisator informiert Ansprechperson über Absage und folgende Infos
+     SONST
+      Organisator fügt Ansprechperson zu der Liste der nicht erreichten Ansprechpersonen hinzu
+     ENDE WENN
+    ENDE WENN
+   ENDE FUER
+   SOLANGE es nicht erreichte Ansprechpersonen gibt
+    FUER alle nicht erreichten Ansprechpersonen
+     Organisator ruft Ansprechperson an
+     WENN Ansprechperson Telefongespräch annimmt
+      Organisator informiert Ansprechperson über Absage und folgende Infos
+      Organisator entfernt Ansprechperson von Liste
+     ENDE WENN
+    ENDE FUER
+   ENDE SOLANGE
+   Organisator informiert Auftraggeber über Notwendigkeit für Alternative
+   Kein weiterer Ablauf dieses Planes
+  ENDE WENN
+ ENDE SOLANGE
+ Organisator setzt Status der Teileinheit Vorabkommunikation auf Fertig
+ 
+ Organisator bucht Audimax für Reden
+ Organisator bucht Wiese für Jahrgangsfoto
+ Organisator bucht Fotografen
+ Organisator bucht Kursräume
+ Organisator setzt Status der Teileinheit Ressourcen buchen auf Fertig
+
+ Organisator druckt Teilnehmerlisten
+ Organisator holt Mitarbeiterausweise
+ Organisator verteilt Teilnehmerlisten an Check-In-Beauftragte
+ Organisator gibt Mitarbeiterausweise an Check-In-Beauftragte weiter
+ FUER alle eingetragenen Verantwortlichen der Teileinheit Check-In
+  WENN NICHT Verantwortlicher anwesend
+   Organisator ruft Verantwortlichen an
+   WENN Verantwortlicher Telefongespräch annimmt
+    Organisator erinnert Verantwortlichen an Verantwortlichkeit
+    WENN Verantwortlicher sagt, dass dieser abwesend bleibt
+     Organisator entfernt Verantwortlichen von den Verantwortlichen
+    ENDE WENN
+   SONST
+    Organisator schreibt Verantwortlichen auf die Liste der nicht erreichten Verantwortlichen
+   ENDE WENN
+  ENDE WENN
+ ENDE FUER
+
+ Organisator weist Verantwortliche in den Check-In ein
+ SOLANGE NICHT alle Teilnehmer eingecheckt sind
+  WENN Teilnehmer Personalausweis vergessen hat
+   Organisator fragt Teilnehmer nach aktuellem Wohnort
+   Organisator fragt Teilnehmer nach Transportmöglichkeiten
+   WENN Teilnehmer Möglichkeit hat, den Mangel bis zu den Reden zu beheben
+    Organisator trägt Teilnehmer auf, seinen Personalausweis zu holen
+   SONST WENN Teilnehmer Möglichkeit hat, den Mangel mit geringer Verspätung zu beheben
+    Organisator trägt Teilnehmer auf, seinen Personalausweis zu holen
+    Organisator informiert Verantwortliche des Check-Ins über voraussichtlich verspätetes Eintreffen des Teilnehmers
+   SONST
+    Organisator wählt einen Verantwortlichen des Check-Ins
+    Organisator trägt diesem auf, die Identität des Teilnehmers anders zu bestätigen
+   ENDE WENN
+  ENDE WENN
+  WENN 10 Minuten vor Reden im Audimax
+   FUER alle Teilnehmer, die noch nicht eingecheckt sind
+    Organisator öffnet Kontaktdaten des Teilnehmers
+    Organisator ruft Teilnehmer an
+    WENN Teilnehmer Telefongespräch annimmt
+     Organisator fragt Teilnehmer über aktuellen Standort
+     WENN Teilnehmer an korrektem Standort
+      Organisator bittet Teilnehmer um Check-In
+     SONST WENN Teilnehmer auf dem Weg zu korrektem Standort
+      Organisator bittet Teilnehmer um Eile
+      Organisator informiert Verantwortliche des Check-Ins über voraussichtlich verspätetes Eintreffen des Teilnehmers
+     SONST
+      Organisator erinnert Teilnehmer an ersten Arbeitstag im dualen Studium
+      WENN Teilnehmer sich auf den Weg begibt
+       Organisator informiert Verantwortliche des Check-Ins über voraussichtlich verspätetes Eintreffen des Teilnehmers
+      SONST WENN Teilnehmer absagt
+       Organisator informiert Kursleiter des Teilnehmers über Absage
+       Organisator entfernt Teilnehmer aus den Ansprechpersonen des Events
+      ENDE WENN
+     ENDE WENN
+    SONST
+     Organisator schreibt Teilnehmer auf Liste nicht eingecheckter Teilnehmer
+    ENDE WENN
+   ENDE FUER
+   Organisator gibt Liste nicht eingecheckter Teilnehmer an Auftraggeber weiter
+  ENDE WENN
+ ENDE SOLANGE
+
+ WENN Audimax belegt
+  Organisator trägt auf den Raum zu verlassen
+  WENN sich geweigert wird
+   Organisator informiert Störenfriede über kommendes Event
+   WENN sich weiter geweigert wird
+    Organisator öffnet Verweis für Verantwortlichen des Audimax
+    Organisator öffnet Kontaktdaten des Verantwortlichen
+    Organisator ruft Verantwortlichen an
+    WENN Verantwortlicher Telefongespräch annimmt
+     Organisator informiert Verantwortlichen über Störung
+     Organisator bittet um Beseitigung der Störung
+    SONST
+     Organisator wählt einen Verantwortlichen des Check-Ins
+     Organisator beauftragt diesen mit der Beseitigung der Störung
+    ENDE WENN
+   ENDE WENN
+  ENDE WENN
+ ENDE WENN
+ SOLANGE Beamer nicht anwesend ist
+  SOBALD Beschaffer meldet, dass Beamer beschafft wurde
+   Organisator prüft Anwesenheit des Beamers
+   WENN Beamer anwesend
+    Organisator ändert Status der Teileinheit Beamer beschaffen zu Fertig
+   SONST
+    WENN Beschaffer drittes Mal fälschlicherweise gemeldet hat
+     Organisator fügt Beschaffer zu der Liste unzuverlässiger Beschaffer hinzu
+     Organisator trägt anderen Beschaffer für die Teileinheit ein
+     Organisator unterrichtet neuen Beschaffer über Aufgabe
+    SONST
+     Organisator weist Beschaffer darauf hin, dass der Beamer nicht auffindbar ist
+     Organisator unterrichtet Beschaffer über gewünschten Ort des Beamers
+    ENDE WENN
+   ENDE WENN
+  ENDE SOBALD
+ ENDE SOLANGE
+ SOLANGE Beamer nicht angeschlossen ist
+  SOBALD Monteur meldet, dass Beamer angeschlossen ist
+   Organisator prüft Funktion des Beamers
+   WENN Beamer funktioniert
+    Organisator ändert Status der Teileinheit Beamer anschließen zu Fertig
+   SONST
+    WENN Monteur drittes Mal mangelhaft installiert hat
+     Organisator fügt Monteur zur Liste unzuverlässiger Monteure hinzu
+     Organisator trägt anderen Monteur für die Teileinheit ein
+     Organisator unterrichtet neuen Monteur über Aufgabe
+    SONST
+     Organisator unterrichtet Monteur über Mängel
+    ENDE WENN
+   ENDE WENN
+  ENDE SOBALD
+ ENDE SOLANGE
+ SOLANGE Mikrofone nicht anwesend sind
+  SOBALD Beschaffer meldet, dass Mikrofone beschafft wurden
+   Organisator prüft Anwesenheit der Mikrofone
+   WENN Mikofone anwesend
+    Organisator ändert Status der Teileinheit Mikrofone beschaffen zu Fertig
+   SONST
+    WENN Beschaffer drittes Mal gelogen hat
+     Organisator fügt Beschaffer zur Liste unzuverlässiger Beschaffer hinzu
+     Organisator trägt anderen Beschaffer für die Teileinheit ein
+     Organisator unterrichtet neuen Beschaffer über Aufgabe
+    SONST
+     Organisator weist Beschaffer darauf hin, dass die Mikrofone nicht auffindbar sind
+     Organisator unterrichtet Beschaffer über gewünschten Ort der Mikofone
+    ENDE WENN
+   ENDE WENN
+  ENDE SOBALD
+ ENDE SOLANGE
+ SOLANGE Mikofone nicht angeschlossen sind
+  SOBALD Monteur meldet, dass Mikrofone angeschlossen sind
+   Organisator prüft Funktion der Mikrofone
+   WENN Mikrofone funktionieren
+    Organisator ändert Status der Teileinheit Mikrofone anschließen zu Fertig
+   SONST
+    WENN Monteur drittes Mal mangelhaft installiert hat
+     Organisator fügt Monteur zur Liste unzuverlässiger Monteure hinzu
+     Organisator trägt anderen Monteur für die Teileinheit ein
+     Organisator unterrichtet neuen Monteur über Aufgabe
+    SONST
+     Organisator unterrichtet Monteur über Mängel
+    ENDE WENN
+   ENDE WENN
+  ENDE SOBALD
+ ENDE SOLANGE
+ SOLANGE Präsentationslaptop nicht anwesend ist
+  SOBALD Beschaffer meldet, dass Präsentationslaptop beschafft wurde
+   Organisator prüft Anwesenheit des Präsentationslaptops
+   WENN Präsentationslaptop anwesend
+    Organisator ändert Status der Teileinheit Präsentationslaptop beschaffen zu Fertig
+   SONST
+    WENN Beschaffer drittes Mal gelogen hat
+     Organisator fügt Beschaffer zur Liste unzuverlässiger Beschaffer hinzu
+     Organisator trägt anderen Beschaffer für die Teileinheit ein
+     Organisator unterrichtet neuen Beschaffer über Aufgabe
+    SONST
+     Organisator weist Beschaffer darauf hin, dass der Präsentationslaptop nicht auffindbar ist
+     Organisator unterrichtet Beschaffer über gewünschten Ort des Präsentationslaptops
+    ENDE WENN
+   ENDE WENN
+  ENDE SOBALD
+ ENDE SOLANGE
+ SOLANGE Präsentationslaptop nicht angeschlossen ist
+  SOBALD Monteur meldet, dass Präsentationslaptop angeschlossen ist
+   Organisator prüft Funktion des Präsentationslaptops
+   WENN Präsentationslaptop funktioniert
+    Organisator ändert Status der Teileinheit Präsentationslaptop anschließen zu Fertig
+   SONST
+    WENN Monteur drittes Mal mangelhaft installiert hat
+     Organisator fügt Monteur zur Liste unzuverlässiger Monteure hinzu
+     Organisator trägt anderen Monteur für die Teileinheit ein
+     Organisator unterrichtet neuen Monteur über Aufgabe
+    SONST
+     Organisator unterrichtet Monteur über Mängel
+    ENDE WENN
+   ENDE WENN
+  ENDE SOBALD
+ ENDE SOLANGE
+ Organisator setzt Status der Teileinheit Audimax vorbereiten auf Fertig
+
+ SOBALD 10 Minuten vor Reden im Audimax
+  Organisator bittet Teilnehmer dazu, sich ins Audimax zu begeben
+  Organisator prüft Anwesenheit der Sprecher
+  SOLANGE NICHT alle Sprecher anwesend
+   FUER alle nicht anwesenden Sprecher
+    Organisator ruft Sprecher an
+    WENN Sprecher Telefongespräch annimmt
+     Organisator erinnert Sprecher an Termin
+     WENN NICHT Sprecher rechtzeitig kommen kann
+      Organisator wählt einen Verantwortlichen des Check-Ins
+      Organisator trägt diesem auf, einen Verantwortlichen des Auftraggebers zu finden
+      SOBALD Verantwortlicher des Auftraggebers gefunden
+       Organisator informiert Verantwortlichen über die Lage
+       Organisator fragt Verantwortlichen nach anderer Beschäftigung für den Redeblock
+       WENN Verantwortlicher andere Beschäftigung für den Redeblock hat
+        Organisator bedankt sich bei dem Verantwortlichen
+       SONST
+        Organisator trägt Verantwortlichem auf, selbst in dem Redeblock zu sprechen
+       ENDE WENN
+       Organisator setzt die zugehörige Teileinheit des Redeblocks auf Abgesagt
+       Organisator erstellt neue Teileinheit in dem Zeitfenster
+        ohne Hilfsmittel
+        ohne Teilelement
+        ohne Unterteileinheiten
+        ohne Bilder
+        mit Verweis auf den Verantwortlichen des Auftraggebers
+        mit Beschreibung der Alternativtätigkeit
+        mit gleicher Verantwortlichkeit zur alten Teileinheit
+        mit gleichen Voraussetzungen
+      ENDE SOBALD
+     ENDE WENN
+    SONST
+     Organisator wählt einen Verantwortlichen des Check-Ins
+     Organisator trägt diesem auf, einen Verantwortlichen des Auftraggebers zu finden
+     SOABLD Verantwortlicher des Auftraggebers gefunden
+      Organisator informiert Verantwortlichen über die Lage
+      Organisator fragt Verantwortlichen nach anderer Beschäftigung für den Redeblock
+      WENN Verantwortlicher andere Beschäftigung für den Redeblock hat
+       Organisator bedankt sich bei dem Verantwortlichen
+      SONST
+       Organisator trägt Verantwortlichem auf, selbst in dem Redeblock zu sprechen
+      ENDE WENN
+      Organisator setzt die zugehörige Teileinheit des Redeblocks auf Abgesagt
+      Organisator erstellt neue Teileinheit in dem Zeitfenster
+       ohne Hilfsmittel
+       ohne Teilelement
+       ohne Unterteileinheiten
+       ohne Bilder
+       mit Verweis auf den Verantwortlichen des Auftraggebers
+       mit Beschreibung der Alternativtätigkeit
+       mit gleicher Verantwortlichkeit zur alten Teileinheit
+       mit gleichen Voraussetzungen
+     ENDE SOBALD
+    ENDE WENN
+   ENDE FUER
+  ENDE SOLANGE
+ ENDE SOBALD
+ SOBALD 2 Minuten vor Reden im Audimax
+  SOLANGE Teilnehmer in Vorraum des Audimax sind
+   Organisator erinnert Teilnehmer daran, sich ins Audimax zu begeben
+  ENDE WENN
+ ENDE SOBALD
+ SOBALD Check-In beendet
+  Organisator setzt Status der Teileinheit Check-In auf Status Fertig
+ ENDE SOBALD
+
+ WENN Reden nur noch 10 Minuten dauern
+  WENN NICHT Fotograf eingetroffen
+   Organisator öffnet Verweis auf den Fotografen
+   Organisator öffnet Kontaktdaten des Fotografen
+   Organisator ruft Fotografen an
+   WENN Fotograf Telefongespräch annimmt
+    Organisator fragt Fotografen nach Aufenthaltsort
+    WENN Fotograf auf dem Weg ist
+     Organisator bittet Fotografen um Eile
+    SONST WENN Fotograf verhindert bleibt
+     Organisator wählt einen Verantwortlichen des Check-Ins
+     Organisator trägt Verantwortlichen auf, Alternative zum Fotografen ausfindig zu machen
+    SONST
+     Organisator bittet Fotografen rechtzeitig anzukommen
+    ENDE
+   SONST
+    Organisator wählt einen Verantwortlichen des Check-Ins
+    Organisator trägt Verantwortlichem auf, Alternative zum Fotografen ausfindig zu machen
+   ENDE WENN
+  ENDE WENN
+ ENDE WENN
+ 
+ SOBALD Fotograf eintrifft
+  Organisator zeigt Fotografen die Wiese und erklärt Anforderungen
+ ENDE SOBALD
+ SOBALD Reden beendet sind
+  Organisator setzt Teileinheit Reden auf Status Fertig
+  Organisator unterrichtet Teilnehmer darüber, dass ein Jahrgangsfoto geplant ist
+  Organisator unterrichtet Teilnehmer darüber, dass es freiwillig ist und ein Datenschutzhinweis unterschrieben werden muss
+  Organisator weist Teilnehmer, die daran teilnehmen wollen, an, sich auf die Wiese zu begeben
+  SOLANGE Foto-Teilnehmer im Audimax sind
+   Organisator erinnert Foto-Teilnehmer, sich auf die Wiese zu begeben
+  ENDE SOLANGE
+  Organisator fordert eine Unterschrift jedes Foto-Teilnehmers auf einem Datenschutzhinweis
+ ENDE SOBALD
+ 
+ SOBALD Jahrgangsfoto gemacht wurde
+  Organisator setzt Teileinheit Jahrgangsfoto auf Status Fertig
+  Organisator verabschiedet Fotografen
+  Organisator bittet Foto-Teilnehmer ins Audimax
+  SOLANGE Foto-Teilnehmer auf der Wiese sind
+   Organisator erinnert Foto-Teilnehmer, sich ins Audimax zu begeben
+  ENDE SOLANGE
+  FUER jeden vorhandenen Kurse
+   Organisator liest alle Teilnehmer des Kurses vor
+   Organisator weist Kursteilnehmer an, sich in den Kursraum zum Kursleiter zu begeben
+  ENDE FUER
+  SOLANGE Teilnehmer im Audimax sind
+   Organisator fragt Teilnehmer, welchem Kurs dieser angehört
+   WENN Teilnehmer Kurs nennt
+    Organisator nennt Teilnehmer seinen Kursraum
+   SONST
+    Organisator fragt Teilnehmer nach Namen
+    Organisator nennt Teilnehmer seinen Kurs und Kursraum
+   ENDE WENN
+   Organisator wählt einen Verantwortlichen des Check-Ins
+   Organisator trägt Verantwortlichen auf, den Teilnehmer zum Kursraum zu begleiten
+  ENDE SOLANGE
+  Organisator setzt Event auf Status Fertig
+ ENDE SOBALD
+ENDE EVENT-DURCHFUEHREN
