@@ -243,42 +243,71 @@ Es soll verschiedene Benutzerrollen geben:
 
 \textcolor{NavyBlue}{Für die Verwendung der Desktop-Anwendung ist es nicht nötig, dass es einen extra Kundenzugriff gibt, doch in Berücksichtigung einer möglichen Webanwendung, wo auch die Mitglieder individuell ihre Buchungen tätigen können, sollten die Mitglieder dann einfach die Rolle 'Kunde' erhalten.}
 
-
 \subsection{Zusammenspiel mit anderen Systemen}
 
 Die Daten über die Angestellten (Gehälter bzw. Löhne, Steuern, Kranken- und Rentenversicherung usw.) werden separat durch ein vorhandenes Personalbuchhaltungsprogramm verwaltet und müssen hier nicht berücksichtigt werden. Die finanztechnischen Daten werden über unser vorhandenes Finanzsystem erfasst und müssen hier ebenfalls nicht berücksichtigt werden. 
 
-\textcolor{YellowGreen}{Welche Personaldaten werden dann verwaltet? (siehe 5.2.3 PErsonalmitarbeiter)}
+\textcolor{YellowGreen}{Welche Personaldaten werden dann verwaltet?}
 
-\textcolor{YellowGreen}{Welche Kunden-/Buchungsdaten werden verwaltet?}
+\textcolor{NavyBlue}{Die benannten Personaldaten beziehen sich auf die Daten der Mitglieder, also alle Menschen, die unsere Dienstleistung des Car-Sharings nutzen.}
+
+\textcolor{YellowGreen}{Welche Kundendaten werden verwaltet?}
+
+\textcolor{NavyBlue}{
+    \begin{itemize}
+        \item Vor- und Nachname
+        \item Adresse
+        \item Kontaktdaten
+        \item Vertragsdaten (als pdf)
+        \item Führerscheinkopie (als pdf)
+        \item bisherige Buchungen
+        \item Zahlungsdaten
+    \end{itemize}
+}
 
 Die Software soll aus zwei Teilen bestehen:  
 
 \begin{itemize}
     \item Für die Mitarbeiter im Büro soll eine Desktop-Anwendung erstellt werden, mit denen die Datenbestände verwaltet werden können. Es sollen auch Buchungen erstellt werden können für Kunden, die keine Online-Buchungen machen wollen und persönlich in der Carsharing-Filiale erscheinen. 
-    
-    \textcolor{YellowGreen}{Gibt es Beschränkungen bei Schreibzugriffen?}
 
     \textcolor{YellowGreen}{Wie soll bei Kunden abgerechnet werden?}
 
+    \textcolor{NavyBlue}{Die Abrechnung soll erst nach Abschluss der Fahrt vollständig erstellt werden, es wird also auf eine Voranzahlung verzichtet. Die Kosten bestehen aus einer festgelegten Entsperrgebühr, die für jedes Fahrzeug gleich ist. Diese Entsperrgebühr ist immer fällig sofern der Termin nicht vorher storniert wurde. Auf diese Gebühr wird nach Abschluss der Fahrt ein Betrag für Dauer und gefahrene Kilometer addiert.}
+
     \textcolor{YellowGreen}{Gibt es Online-Banking, Kartenzahlung, etc.?}
+
+    \textcolor{NavyBlue}{Für Online-Buchungen soll natürlich die Möglichkeit bestehen einfach per Kreditkarte oder PayPal zu bezahlen.}
 
     \textcolor{YellowGreen}{Soll für Kunden, die in der Filiale buchen, auch eine Buchung auf Rechnung möglich sein?}
 
-    \textcolor{YellowGreen}{Wie soll zwischen verschiedenen Rollen unterschieden werden? Über Login, RSA Token, Zweifaktor-Authentifizierung, etc.?}
+    \textcolor{NavyBlue}{ In der Filiale ist es nur möglich auf Rechnung zu Zahlen, da die Kosten ja erst nach der Fahrt errechnet werden. }
+
+    \textcolor{YellowGreen}{Gibt es noch weitere Zahlungmethoden, die verwendet werden können?}
+
+    \textcolor{NavyBlue}{Für Onlinebuchungen oder in der Filiale soll die Möglichkeit existieren per SEPA-Lastschrift automatisch die Kosten einzubeziehen. Dazu muss offiziell ein Mandat vom Mitglied aus erteilt werden, wie es auch bei anderen Produkten Gang und Gebe ist.}
 
     \item Eine neue Web-Seite soll unseren Online-Kunden ermöglichen, nach einer Authentifizierung alle Standorte anzeigen zu lassen sowie natürlich die dort befindlichen Fahrzeuge, welche für einen anzugebenden Zeitbereich online gebucht werden können. 
     
     \textcolor{YellowGreen}{Soll die Buchung (visuell) identisch zu der Desktop-App stattfinden oder für Webanwendungen angepasst sein?}
 
+    \textcolor{NavyBlue}{Da heutzutage eine Webseite modern und 'cool' aussehen muss, ist es denkbar, dass das Design und die Darstellung in der Webanwendung stark von der Desktopanwendung abweichen kann. Die Darstellung der Karte mit den verfügbaren Fahrzeugen soll jedoch gleich sein.}
+
     \textcolor{YellowGreen}{Soll vorher der Zeitbereich angegeben und nur verfügbare Fahrzeuge angezeigt werden oder soll erst ein Fahrzeug und dann der verfügbare Zeitraum gezeigt werden?}
+
+    \textcolor{NavyBlue}{Wir denken, dass erst die Auswahl des Zeitraums und dann die Angabe der verfügbaren Fahrzeuge die bessere Wahl ist. Diese Reihenfolge der Darstellung ermöglicht einen einfacheren Überblick über die Daten. Natürlich soll es daneben aber auch möglich sein dass man in der detaillierten Übersicht der einzelnen Fahrzeuge zu einem Buchungsüberblick gelangt, sollten Kunden ein spezielles Fahrzeug benötigen.}
 \end{itemize}
 
 Die Web-Seite soll mit dem ersten Teilauftrag noch nicht programmiert werden, allerdings benötigen wir ein klares Konzept, wie diese Web-Seite realisiert werden soll (Schnittstellen usw.).  
 
 \textcolor{YellowGreen}{Wie detailliert sollen die Mock-Ups erstellt werden?}
 
+\textcolor{NavyBlue}{Da aktuell die Desktopanwendung im Hauptfokus liegt, ist ein vollständig ausgebauter Prototyp nicht nötig. Es muss verständlich sein wie die Webanwendung aufgebaut sein soll, wie die Struktur ist und welche Architektur und Struktur darunter angedacht ist, doch die Ausarbeitung irgednwelcher Farbschema oder Button-Designs ist hierfür irrelevant.}
+
 Möglichst alle Daten sollen vom alten in das neue System übertragen werden. 
+
+\textcolor{YellowGreen}{Wie sollen die Daten übertragen werden, wenn ein ordentlicher Datenexport im alten System nicht unterstützt wird?}
+
+\textcolor{NavyBlue}{Es scheint so, als müssen diese Daten manuell übertragen werden, was durch unsere Administratoren erledigt werden kann. }
 \newpage
 
 \subsection{Produktfunktionen}
