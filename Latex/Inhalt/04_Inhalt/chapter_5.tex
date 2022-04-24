@@ -1,4 +1,3 @@
-
 \chapter{Analyse}
 
 Anmerkung: Einige Fragen wurden bewusst "schwammig" beantwortet. Dahingehend müsste sich in einem wirklichen Gespräch mit dem Auftraggeber ein Dialog ergeben, in dem man schrittweise sich der genauen Beantwortung der Frage nähert. 
@@ -152,7 +151,6 @@ Es sollen keine besonderen Computerkenntnisse zur Bedienung der Software erforde
 
 \textcolor{NavyBlue}{Auf Anbitte unserer IT-Abteilung wäre es gut, wenn die Anwendung auch so ein "Dark Theme" besitzt}
 
-
 \subsection{Anwendungsbereiche}
 
 Die Software soll ausschließlich für die Verwaltung von Fahrzeugen, Kunden, Ausrüstung, Fahrzeugstandorte und Angestellten und den damit direkt verbundenen Elementen verwendet werden. 
@@ -160,14 +158,21 @@ Sie soll im Alltag auf Desktop-Rechnern und Laptops eingesetzt werden.
 
 \textcolor{YellowGreen}{Welches Betriebssystem wird erwünscht oder gefordert?}
 
+\textcolor{NavyBlue}{Da Windows XP doch bereits seit Jahren veraltet ist, wäre es gut, Windows 10 zu verwenden.}
+
 \textcolor{YellowGreen}{Es ist wirklich keine mobile Nutzung erwünscht, um spontan von unterwegs Autos buchen zu können?}
+
+\textcolor{NavyBlue}{Ob eine mobile Anwendung benötigt wird, wird von unserer Marktforschungs-Abteilung momentan evaluiert und kann für dieses Projekt vernachlässigt werden.}
 
 \textcolor{YellowGreen}{Gibt es echtzeikritische Aspekte in der Anwendung, die besonders hervorgehoben werden müssen?}
 
+\textcolor{NavyBlue}{Das System sollte schon an einem schnellen Ablauf orientiert sein. Es ist nötig, dass die Terminbuchungen und Rechnungsbelege nahezu sofort umgesetzt werden, damit es keine Problem bei der Terminverarbeitung geben kann. Zusätzlich soll das Buchen von einem Fahrzeug mithilfe eines Reservations-Zeitfensters nur von einer Person auf einmal zugelassen werden (Ähnlich wie zum Beispiel bei Ticketmaster oder Eventim). Das Fenster soll 15 Minuten lang sein, dann soll die Reservierung freigegeben werden, falls sie nicht beendet wurde. }
+
 \textcolor{YellowGreen}{Soll das Programm im Browser aufgerufen werden oder eine Anwendung sein?}
 
+\textcolor{NavyBlue}{Bevor wir uns neben der Desktop-Anwendung für eine umfangreiche Digitalisierung mit Webanwendung und mobiler Handy-App entscheiden, wollen wir zuerst diese Anwendung im Unternehmensalltag integrieren. Im weiteren Verlauf ist jedoch eine Webanwendung gewünscht. Es wäre also erforderlich, dass einige Vorschläge und Konzepte bzgl. einer Einbindung einer Webanwendung bereits erstellt werden.}
 
-\subsection{Zielgruppen, Benutzerrollen und verantworklichkeiten}
+\subsection{Zielgruppen, Benutzerrollen und Verantworklichkeiten}
 
 Es soll verschiedene Benutzerrollen geben: 
 
@@ -176,40 +181,68 @@ Es soll verschiedene Benutzerrollen geben:
     
     \textcolor{YellowGreen}{Wer ist Organisator?}
 
-    \textcolor{YellowGreen}{Was ist eine zuständige Abteilung?}
+    \textcolor{NavyBlue}{Als Organisator*in gelten alle Mitarbeiter der zuständigen Abteilung, also nicht die Personalmitarbeiter. Dazu gehören die Mitarbeiter*innen, die in den Filialen mit Kundenkontakt arbeiten, da diese die Buchungsdaten eingeben müssen.}
 
     \textcolor{YellowGreen}{Kann jeder Organisator alles?}
 
+    \textcolor{NavyBlue}{Organisatoren haben vollen Zugriff auf Buchungs- und Fahrzeugdaten, Lesezugriff auf Rechnungsdaten und keinen Zugriff auf etwaige Personaldaten.}
+
     \textcolor{YellowGreen}{Woraus bestehen die Buchungsdaten?}
 
-    \textcolor{YellowGreen}{Was gibt es für Zusatzleistungen?}
+    \textcolor{NavyBlue}{
+        \begin{itemize}
+            \item Referenz auf das jeweilige Kundenkonto
+            \item Zeitraum der Buchung
+            \item das gebuchte Fahrzeug
+            \item der Standort
+            \item Verweis auf die zum Kundenkonto gehörenden Rechnungsdaten 
+        \end{itemize}
+    }
 
     \textcolor{YellowGreen}{Wie sollen die Daten gespeichert werden?}
+
+    \textcolor{NavyBlue}{Die Daten sollen als zusammengehörender Datensatz wie auch alle anderen Daten gespeichert werden. (siehe oben)}
 
     \item Personalmitarbeiter pflegen Mitarbeiterdaten im System  
     
     \textcolor{YellowGreen}{Pflegen die Personalmitarbeiter auch ihre eigenen Daten?}
 
+    \textcolor{NavyBlue}{Da wir vollstes Vertrauen in unsere Mitarbeiter haben, ist die Bearbeitung der eigenen Mitarbeiterdaten möglich.}
+
     \textcolor{YellowGreen}{Gibt es Einschränkungen, ob bestimmte Daten nicht bearbeitet werden dürfen?}
 
-    \textcolor{YellowGreen}{Dürfen Personalmitarbeiter auh andere Daten einsehen, z.B. Buchungsdaten?}
+    \textcolor{NavyBlue}{Wichtig ist, dass vergebene IDs, Rechnungsnummern, Buchungsnummern, etc. nach Erstellung und Eintragung nicht mehr geändert werden dürfen und eindeutig sind. }
+
+    \textcolor{YellowGreen}{Dürfen Personalmitarbeiter auch andere Daten einsehen, z.B. Buchungsdaten?}
+
+    \textcolor{NavyBlue}{Wir arbeiten nach Vorbild aus anderen Firmen nach dem 'Need-To-Know'-Prinzip. Somit ist es nicht nötig, dass die Personalmitarbeiter auf andere Datensätze als die Personalstammdaten editierend zugreifen können.}
 
     \item Eine hauptverantwortliche Person (Administrator) hat Vollzugriff auf sämtliche Daten, vor allem für deren Import und Export sowie deren Backup. 
     
     \textcolor{YellowGreen}{Vergibt der Admin die Rechte für die Anderen? Wenn nein: Wer verteilt sonst die Rechte?}
 
+    \textcolor{NavyBlue}{Die Aufgabe der Administratorrolle ist die umfassende Verwaltung der Software. Dazu gehört die Rollenzuweisung und somit ist ein Administrator auch für die Verteilung der Zugriffsrechte zuständig.}
+
     \textcolor{YellowGreen}{Heißt Vollzugriff auch unbeschränktes ändern?}
+
+    \textcolor{NavyBlue}{Vollzugriff bedeutet unbeschränkter Umgang mit allen Daten. Davon ausgeschlossen sind jedoch die bereits erwähnten Daten zur Identifizierung verschiedener Objekte wie Buchungen oder Rechnungen.}
 
     \textcolor{YellowGreen}{Welche Sicherheitsvorkehrungen sollen getroffen werden, sodass kein Datenmissbrauch möglich ist?}
 
+    \textcolor{NavyBlue}{Es muss mindestens zwei Administratoren geben und bei Zuweisung oder Änderung von Rechten und Rollen muss ein anderer Administrator dieser Änderung zustimmen, bevor sie umgesetzt wird.}
+
     \item Es gibt keine Gruppen oder Abteilungen, die verwaltet werden müssen.
     
-    \textcolor{YellowGreen}{Was soll genau aussagen? Wie unterscheiden Sie "Rollen" von "Gruppen"?}
+    \textcolor{YellowGreen}{Wenn es keine Unterschiedlichen Abteilungen gibt, woran wird die Rollenvergabe festgemacht?}
 
-    \textcolor{YellowGreen}{Wie soll dann die Mitgliederverwaltung aussehen?}
+    \textcolor{NavyBlue}{Wir möchten, dass die Rollenvergabe händisch erfolgt. Der Administrator soll einzelnen Personen oder einer Mehrfachauswahl die Rollen anpassen können. Wichtig dabei ist, dass es zu Beginn die benötigten Systembenutzer gibt, mit denen man die initiale Rollenvergabe durchführen kann.}
 
-    \textcolor{YellowGreen}{Welche "Rolle" soll Kunden zugewiesen werden?}
 \end{itemize}
+
+\textcolor{YellowGreen}{Welche 'Rolle' soll Kunden zugewiesen werden?}
+
+\textcolor{NavyBlue}{Für die Verwendung der Desktop-Anwendung ist es nicht nötig, dass es einen extra Kundenzugriff gibt, doch in Berücksichtigung einer möglichen Webanwendung, wo auch die Mitglieder individuell ihre Buchungen tätigen können, sollten die Mitglieder dann einfach die Rolle 'Kunde' erhalten.}
+
 
 \subsection{Zusammenspiel mit anderen Systemen}
 
