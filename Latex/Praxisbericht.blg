@@ -1,9 +1,0 @@
-[0] Config.pm:311> INFO - This is Biber 2.16
-[0] Config.pm:314> INFO - Logfile is 'Praxisbericht.blg'
-[106] biber-MSWIN64:340> INFO - === 
-[139] Biber.pm:415> INFO - Reading 'Praxisbericht.bcf'
-[245] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[251] Utils.pm:395> WARN - The file 'Praxisbericht.bcf' does not contain any citations!
-[260] bbl.pm:654> INFO - Writing 'Praxisbericht.bbl' with encoding 'UTF-8'
-[260] bbl.pm:757> INFO - Output to Praxisbericht.bbl
-[260] Biber.pm:128> INFO - WARNINGS: 1
