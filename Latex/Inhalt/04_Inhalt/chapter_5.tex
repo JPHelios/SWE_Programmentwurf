@@ -484,6 +484,10 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
     \textcolor{NavyBlue}{Die Dienstleistungen sollen nach Datum geordnet angezeigt werden. Die aktuellste Dienstleistung soll dabei zuerst angezeigt werden.}
     \\
     \hline
+\end{tabular}
+
+\begin{tabular}[ht] {l | p{13cm}}
+    \hline
     /LF60/ & Einem Standort können ein oder mehrere Fahrzeuge zugeordnet sein. Ein Fahrzeug ist immer nur einem Standort zugeordnet. 
     
     \textcolor{YellowGreen}{Welche Standorte gibt es?}
@@ -514,12 +518,17 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
     \textcolor{YellowGreen}{Was ist die Zeitraumdefinition für 'sofort'?}
 
     \textcolor{NavyBlue}{Wenn der Kunde die Fahrt beendet soll automatisert eine Rechnung erstellt werden, welche direkt an den Kunden geschickt wird. Die Rechnung sollte maximal 10 Minuten nach dem Ende der Fahrt beim Kunden ankommen.}
+    \\
+    \hline
+\end{tabular}
 
-    Die Bezahlung der Rechnungen erfolgt über Bankeinzug, was durch das Finanzbuchhaltungssystem (FBH) erledigt wird und hier nicht betrachtet werden muss. Allerdings muss über die vorhandene Schnittstelle des FBH der Stand der Rechnungsbegleichung abgefragt werden, damit über das neue System erkennbar ist, ob und wann eine Rechnung bezahlt wurde. 
+\begin{tabular}[ht] {l | p{13cm}}
+    \hline
+    /LF70/ & Die Bezahlung der Rechnungen erfolgt über Bankeinzug, was durch das Finanzbuchhaltungssystem (FBH) erledigt wird und hier nicht betrachtet werden muss. Allerdings muss über die vorhandene Schnittstelle des FBH der Stand der Rechnungsbegleichung abgefragt werden, damit über das neue System erkennbar ist, ob und wann eine Rechnung bezahlt wurde. 
     
 
 
-    \textcolor{YellowGreen}{Wie regelmäßig soll die Abfrage stattfinden? 1x pro Tag, mehrmals täglich?}
+    \textcolor{YellowGreen}{Wie regelmäßig soll die Abfrage stattfinden? Ein mal pro Tag, mehrmals täglich?}
 
     \textcolor{NavyBlue}{Es soll einen Aktualisierungsknopf für geben, welcher eine Anfrage an die Schnittstelle sendet und die Daten aktualisiert. Zusätzlich sollen alle 30 Minuten die Daten automatisch abgefragt werden.}
 
@@ -543,19 +552,23 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
     \textcolor{NavyBlue}{Ja. Da die Buchung von unseren Mitarbeitern freigeschalten werden muss ist auch hierfür eine Grenze von 10h einzubauen.}
     \\
     \hline
+\end{tabular}
+
+\begin{tabular}[ht] {l | p{13cm}}
+    \hline
     /LF90/ & Zur einfacheren Eingabe der Daten soll es Auswahllisten für deren Eigenschaften geben, wo immer es möglich ist. Die Auswahllisten sollen auf einfache Weise erweiterbar sein. 
+    
     %------------------------------------------------------
     \textcolor{YellowGreen}{Welche Eingabefelder gibt es?}
 
     \textcolor{NavyBlue}{}
-
     \textcolor{YellowGreen}{Welche dieser Eingaben sollen mithilfe von Auswahllisten umgesetzt werden?}
 
     \textcolor{NavyBlue}{}
     %-----------------------------------------------------
-    \textcolor{YellowGreen}{Wie soll die Listenerweiterung vorgenommen werden? Reicht ein einfacher "Edit"-Knopf?}
+    \textcolor{YellowGreen}{Wie soll die Listenerweiterung vorgenommen werden? Reicht ein einfacher \grqq{}Edit\grqq{}-Knopf?}
 
-    \textcolor{NavyBlue}{Es soll eine Bearbeitungsansicht für das komplette Formular geben, welche über einen "Edit"-Knopf erreichbar sein soll. In dieser Ansicht soll für jede Auswahlliste ein Textinput mit einem Knopf zum Hinzufügen bereitgestellt werden.}
+    \textcolor{NavyBlue}{Es soll eine Bearbeitungsansicht für das komplette Formular geben, welche über einen \grqq{}Edit\grqq{}-Knopf erreichbar sein soll. In dieser Ansicht soll für jede Auswahlliste ein Textinput mit einem Knopf zum Hinzufügen bereitgestellt werden.}
 
     \textcolor{YellowGreen}{Wer hat die Berechtigungen, diese Liste zu erweitern?}
 
