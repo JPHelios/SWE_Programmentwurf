@@ -1,6 +1,8 @@
 
 \chapter{Analyse}
 
+Anmerkung: Einige Fragen wurden bewusst "schwammig" beantwortet. Dahingehend müsste sich in einem wirklichen Gespräch mit dem Auftraggeber ein Dialog ergeben, in dem man schrittweise sich der genauen Beantwortung der Frage nähert. 
+
 \textcolor{YellowGreen}{Text in grün steht für die Fragen der Analyse.}
 
 \textcolor{NavyBlue}{Text in blau steht für die Antworten der Analyse.}
@@ -53,42 +55,81 @@ Alle Daten sollen zentral gespeichert werden, da mehrere Benutzer gleichzeitig a
 
 \textcolor{YellowGreen}{Welche Hardware liegt für diese zentrale Speicherung vor (Server, Speicher, Betriebssystem)?}
 
+\textcolor{NavyBlue}{Im Zusammenhang mit unserem alten System haben wir einen eigenen Server in unserer Firmenzentrale stehen. Laut Angaben unserer IT-Abteilung besitzt der Server 32 GB RAM und 10 TB Speicher. Das laufende Betriebssystem ist Windows XP.
+Sollten im Rahmen der Entwicklung Hardware-Anschaffungen nötig sein, haben wir in unserem Budget einen Puffer eingeplant. Es wäre jedoch gut, wenn wir die bereits vorhandene Hardware auch integrieren könnten.}
+
 \textcolor{YellowGreen}{In welcher Form, in welchem Format sollen die Daten zentral gespeichert werden?}
+
+\textcolor{NavyBlue}{Dahingehend haben wir keine speziellen Anforderungen. Wir würden die Methode bevorzugen, die effizient und zugleich auch kostengünstig ist. Eine Datenbank währe denkbar.}
 
 \textcolor{YellowGreen}{Wie viele Benutzer verwenden die Daten gleichzeitig?}
 
+\textcolor{NavyBlue}{Das kann man so pauschal leider nicht sagen. Die Zugriffszahlen hängen von der Tageszeit, Jahreszeit und dem aktuellen Geschehen ab. Auch wenn wir wachsende Kundenzahlen verbuchen ist es bis jetzt jedoch eher unüblich, dass z.B. mehrere Kunden gleichzeitig bei uns in den Filialen sind. }
+
 \textcolor{YellowGreen}{Wie soll mit Kollisionen, gleichzeitigen und gegensätzlichen Zugriffen auf Daten und Terminen umgegangen werden?}
 
-\textcolor{YellowGreen}{Weche Form soll die Software haben? Soll es zum Beispiel eine Webapp oder eine Desktopanwendung sein?}
+\textcolor{NavyBlue}{Sollte es nicht möglich sein solche Situationen zu umgehen? Ansonsten sollen diese Probleme halt vom System gelöst werden, damit unsere Mitarbeiter normal mit der Anwendung arbeiten können.}
+
+\textcolor{YellowGreen}{Welche Form soll die Software haben? Soll es zum Beispiel eine Webapp oder eine Desktopanwendung sein?}
+
+\textcolor{NavyBlue}{siehe 'Zusammenspiel mit anderen Systemen'}
 
 Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backups und zum Datenaustausch möglich sein. 
 
-\textcolor{YellowGreen}{Was verstehen Sie unter selektiven Import?}
+\textcolor{YellowGreen}{Was soll denn ein selektiver Import sein?}
+
+\textcolor{NavyBlue}{Zugegeben ist in diesem Satz die Formulierung unter Umständen unglücklich gewählt. Es soll möglich sein Datensätze z.B. aus bereits bestehenden Backups wieder in die Anwendung einzuspielen. Dabei sollen die gesamten betroffenen Datensätze ausgetauscht werden, aber nicht zwingend die gesamte Datenbasis.}
+
+\textcolor{YellowGreen}{Was verstehen Sie unter selektiven Export?}
+
+\textcolor{NavyBlue}{Es soll möglich sein Datensätze auszuwählen. Z.B. einzelne Mitglieder oder eine Gruppe an Mitgliedern, die gewisse Kriterien erfüllen.}
 
 \textcolor{YellowGreen}{Was wollen Sie selektieren können, was nicht?}
 
+\textcolor{NavyBlue}{An sich sollen alle Datensätze selektiert werden können, die Mitgliederdaten, Termin- und Buchungsdaten, sowie Rechnungsdaten enthalten. Kurz gesagt alle Daten, die auch für eine sinnvolle Erstellung von Backups benötigt werden. }
+
 \textcolor{YellowGreen}{Sollen die Backups wirklich händisch selektiert werden oder automatisiert laufen?}
+
+\textcolor{NavyBlue}{Das selektieren soll auf alle Fälle auch händisch möglich sein, da wir den Datenexport auch in anderen Fällen nutzen. Die Erstellung von Sicherheitskopien soll hauptsächlich automatisch laufen, doch auch manuell durchgeführt werden, sollte außerplanmäßig eine Erstellung nötig sein.}
 
 \textcolor{YellowGreen}{Wo und wie werden die Backups gespeichert?}
 
+\textcolor{NavyBlue}{Wir haben einige externe Festplatten, die wir für die Überspielung der Backups an den Server anschließen. Die Aufbewahrung erfolgt im Firmentresor im Büro der Geschäftsführung. }
+
 \textcolor{YellowGreen}{Gibt es redundante Notfallsysteme?}
+
+\textcolor{NavyBlue}{Nein, es gibt keine zusätzlichen Systeme zum \textbf{einzigen} Server im Keller.}
 
 \textcolor{YellowGreen}{In welche Form wollen Sie die Daten für den Datenaustausch exportieren?}
 
-\textcolor{YellowGreen}{Zu welchen Zwekcen betreiben Sie Datenaustaushc?}
+\textcolor{NavyBlue}{Wir kennen uns mit den technischen Aspekten nicht so tief auf, da dies in unserem alten System nicht in diesem Umfang möglich war. Es sollte aber ein Format sein, dass auch für die Mitarbeiter lesbar sein sollte.}
+
+\textcolor{YellowGreen}{Zu welchen Zwecken betreiben Sie Datenaustausch?}
+
+\textcolor{NavyBlue}{Neben dem Export zur Erzeugung von Sicherungskopien haben wir noch eine andere wichtige Verwendung. Wir wollen verschiedene Analyseanwendungen verwenden, die uns die aktuelle Geschäftssituation darstellen und analysieren kann. Dazu brauchen wir die Möglichkeit die Daten in einer von beiden Seiten unterstützten Form von einem Programm ins andere zu transferieren.}
 
 \textcolor{YellowGreen}{Mit welchen Sicherheitsrichtlinien sollen die Backup-/Datenaustauschdateien versehen werden?}
+
+\textcolor{NavyBlue}{Da die Backups und der Datenaustausch keinerlei Kundenkontakt aufweißt, sind bis jetzt keinerlei Sicherheitsvorkehrungen ergriffen worden. Es wäre jedoch gut, wenn nur die Mitarbeiter in der Lage sind, diese Datein und Daten zu betrachten.}
 
 Eine intuitive, leicht bedienbare Benutzeroberfläche setzen wir als selbstverständlich voraus. 
 Es sollen keine besonderen Computerkenntnisse zur Bedienung der Software erforderlich sein.  
 
 \textcolor{YellowGreen}{Was ist Ihre Definition von 'keine besonderen Computerkenntnisse'?}
 
+\textcolor{NavyBlue}{Mit einem Firmendurchschnittalter von 47 Jahren beschäftigen wird statistische betrachtet überschnittlich viele digitale Quereinsteiger, die noch in einer Zeit ohne Handy und Computer aufgewachsen sind und daher nicht intuitiv mit der Technologie umgehen können. }
+
 \textcolor{YellowGreen}{Was verstehen Sie unter leicht bedienbar, wollen Sie Icons oder Labeltexte?}
+
+\textcolor{NavyBlue}{Die Bedeutung von Icons hat in unserem alten System einerseits zu Verwirrung gesorgt, aber mittlerweile sind unsere Mitarbeiter daran gewöhnt. Eine ausgewogene und verständliche Kombination aus beiden Teilen wäre hier gefordert. Es wäre gut, dass sie gleiche oder ähnliche Symbole wie im SAP System verwenden.}
 
 \textcolor{YellowGreen}{Muss die Benutzeroberfläche auch barrierefrei sein?}
 
+\textcolor{NavyBlue}{Aktuell beschäftigen wir keine Menschen mit Sehbeeinträchtigung, doch soll dieser Fall nicht ausgeschlossen sein, ist aber aktuell nicht zu fokussieren.}
+
 \textcolor{YellowGreen}{Muss es besondere Farb-Modi für z.B. Farbenblindheit, etc. geben?}
+
+\textcolor{NavyBlue}{Auf Anbitte unserer IT-Abteilung wäre es gut, wenn die Anwendung auch so ein "Dark Theme" besitzt}
 
 
 \subsection{Anwendungsbereiche}
