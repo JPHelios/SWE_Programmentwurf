@@ -39,7 +39,7 @@ Zwar können Buchungen online erfolgen, aber wir würden gerne zusätzliche Info
 
 \textcolor{YellowGreen}{Welches Budget steht für das Projekt zur Verfügung?}
 
-\textcolor{NavyBlue}{In anbetracht des Projektumfangs gedenken wir ein Budget von 8.697.370 MUR Rs (umgerechnet 187 000 €) bereitzustellen.}
+\textcolor{NavyBlue}{In anbetracht des Projektumfangs gedenken wir ein Budget von 8.697.370 Mauritius-Rupien (umgerechnet 187 000 €) bereitzustellen.}
 
 \textcolor{YellowGreen}{Was für zusätzliche Funktionen und Informationen konnte das alte Programm speziell nicht erfüllen?}
 
@@ -426,96 +426,107 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Wie sollen die Daten konfigurierbar bleiben? Sollen Preisänderungen über die Datenbankebene oder mittels GUI erfolgen?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Preisänderung soll auf Datenbankebene mithilfe einer Konfigurationsdatei geschehen.}
 
     \textcolor{YellowGreen}{Gibt es Events wie Angebotswochen?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Dies ist in Zukunft auf jeden Fall geplant, jedoch Bedarf dies auch nur einer Änderung der Preise in der Konfigurationsdatei.}
 
     \textcolor{YellowGreen}{Können Mitglieder Prämien sammeln, die zu Vergünstigungen oder ähnliches führen?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Unsere Kunden können für eine Fahrt im Wert von mindestens 10€ Payback-Punkte sammeln. Dies ist jedoch unabhängig von der zu implementierenden Anwendung.}
 
-    \textcolor{YellowGreen}{Ist diese Stunden-Mietpauschale nur für die Fahrzeugart trefend oder unterscheidet sie sich auch innerhalb dieser Kategorien je nach Auto?}
+    \textcolor{YellowGreen}{Ist diese Stunden-Mietpauschale nur für die Fahrzeugart treffend oder unterscheidet sie sich auch innerhalb dieser Kategorien je nach Auto?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Pauschale ist für alle Fahrzeuge innerhalb einer Kategorie gleich.}
 
     Alle Fahrzeuge werden regelmäßig von Fremdfirmen gewartet. Die entsprechenden Dienstleistungen sollen den Fahrzeugen chronologisch zugeordnet werden. 
     
-    \textcolor{YellowGreen}{Rechnungsverwaltung? Werden die Rechnungsdaten im gleichen System gespeichert oder müssen diese separat verwaltet werden?}
+    \textcolor{YellowGreen}{Soll es eine Rechnungsverwaltung geben? Werden die Rechnungsdaten im gleichen System gespeichert oder müssen diese separat verwaltet werden?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Rechnungsdaten werden separat verarbeitet. Es soll lediglich vermerkt werden, welcher Service wann durchgeführt wurde.}
 
     \textcolor{YellowGreen}{Was ist mit chronologischer Zuordnung gemeint?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Dienstleistungen sollen nach Datum geordnet angezeigt werden. Die aktuellste Dienstleistung soll dabei zuerst angezeigt werden.}
     \\
     \hline
     /LF60/ & Einem Standort können ein oder mehrere Fahrzeuge zugeordnet sein. Ein Fahrzeug ist immer nur einem Standort zugeordnet. 
     
     \textcolor{YellowGreen}{Welche Standorte gibt es?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Da wir planen großflächig nach Fidji zu expandieren muss das Anlegen neuer Standorte in der Anwendung möglich sein. Die bereits bestehenden Standorte werden dann bei der Inbetriebnahme von unseren Praktikanten angelegt und müssen demzufolge nicht betrachtet werden.}
 
+    \textcolor{Red}{Das is ja nichtmal ein Satz hier. Macht für mich keinen Sinn bzw Zusammenhang fehlt.}
     \textcolor{YellowGreen}{Kennzeichnungen für Standorte und Fahrzeuge?}
 
     \textcolor{NavyBlue}{}
     
     \textcolor{YellowGreen}{Gibt es ein (Live-) Fahrzeugtracking?}
     
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Da dies ein Eingriff in die Privatsphäre unserer Kunden wäre möchten wir auf diese Funktion verzichten.}
     \\
     \hline
     /LF70/ & Nach jeder Fahrt werden sofort die Rechnungen erstellt und dem Kunden per  
     E-Mail zugesandt. 
-    
+
+    \textcolor{YellowGreen}{Könnten bei der Sendung von Rechnungsdaten per Email als Klartext eventuell DSGVO-Probleme auftreten?}
+
+    \textcolor{NavyBlue}{Ja, aber da unser Firmensitz in Dubai liegt ist uns das egal. Wir machen das einfach so wie Telegram.}
+
     \textcolor{YellowGreen}{Sollten die Rechnungsdaten nicht erst an den Webserver gesendet und dann dort verarbeitet werden?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Für einen Webserver reicht unser Budget leider nicht aus. Deshalb muss es auch ohne diese Technologie funktionieren.}
 
     \textcolor{YellowGreen}{Was ist die Zeitraumdefinition für 'sofort'?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Wenn der Kunde die Fahrt beendet soll automatisert eine Rechnung erstellt werden, welche direkt an den Kunden geschickt wird. Die Rechnung sollte maximal 10 Minuten nach dem Ende der Fahrt beim Kunden ankommen.}
 
     Die Bezahlung der Rechnungen erfolgt über Bankeinzug, was durch das Finanzbuchhaltungssystem (FBH) erledigt wird und hier nicht betrachtet werden muss. Allerdings muss über die vorhandene Schnittstelle des FBH der Stand der Rechnungsbegleichung abgefragt werden, damit über das neue System erkennbar ist, ob und wann eine Rechnung bezahlt wurde. 
     
-    \textcolor{YellowGreen}{Könnten bei der Sendung von Rechnungsdaten per Email al Klartext evtl. DSGVO-Probleme auftreten?}
 
-    \textcolor{NavyBlue}{}
 
-    \textcolor{YellowGreen}{}Wie regelmäßig soll die Abfrage stattfinden? 1x pro Tag, mehrmals täglich?
+    \textcolor{YellowGreen}{Wie regelmäßig soll die Abfrage stattfinden? 1x pro Tag, mehrmals täglich?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Es soll einen Aktualisierungsknopf für geben, welcher eine Anfrage an die Schnittstelle sendet und die Daten aktualisiert. Zusätzlich sollen alle 30 Minuten die Daten automatisch abgefragt werden.}
 
-    \textcolor{YellowGreen}{Gibt es für die Rechnungen bereits Rechnungsnummern, oder müssen die erst erstellt werden? Welches System wird für die Nummernvergabe verwendet?}
+    \textcolor{YellowGreen}{Gibt es für die Rechnungen bereits Rechnungsnummern, oder müssen diese erst erstellt werden? Welches System wird für die Nummernvergabe verwendet?}
     
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Vergabe der Rechnungsnummern geschieht automatisch durch das FBH und muss daher nicht betrachtet werden.}
     \\
     \hline
     /LF80/ & Buchungen können bis 10 Stunden vor Antritt der Fahrt storniert werden. 
     
-    \textcolor{YellowGreen}{In welcher Art soll die Meldung des Systems aussehen, wenn die 10h-Marke unterschritten wird?}
+    \textcolor{YellowGreen}{Wie soll die Meldung des Systems aussehen, wenn die 10h-Marke unterschritten wird?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Es soll ein Popup-Fenster geöffnet werden, welches den Nutzer darüber informiert.}
 
-    \textcolor{YellowGreen}{Soll die Funktion "Stornieren" nicht mehr angezeigt werden, falls <10h?}
+    \textcolor{YellowGreen}{Soll die Funktion "Stornieren" nicht mehr angezeigt werden, falls die 10h-Marke unterschritten wird?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Der Knopf zum stornieren soll weiterhin angezeigt werden, jedoch soll er entweder deaktiviert sein oder beim Betätigen soll eine Fehlermeldung per Popup angezeigt werden.}
 
-    \textcolor{YellowGreen}{Bedeutet es, dass Buchungen unter der 10h-Grenze nicht mehr möglich sind oder einfach nur nicht storniert werden können?}
+    \textcolor{YellowGreen}{Impliziert diese Einschränkung auch, dass Buchungen unter der 10h-Grenze nicht mehr möglich sind oder einfach nur nicht storniert werden können?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Ja. Da die Buchung von unseren Mitarbeitern freigeschalten werden muss ist auch hierfür eine Grenze von 10h einzubauen.}
     \\
     \hline
     /LF90/ & Zur einfacheren Eingabe der Daten soll es Auswahllisten für deren Eigenschaften geben, wo immer es möglich ist. Die Auswahllisten sollen auf einfache Weise erweiterbar sein. 
-    
-    \textcolor{YellowGreen}{Wie soll die Listenerweiterung vorgenommen werden? Reicht ein einfacher "Edit"-Button?}
+    %------------------------------------------------------
+    \textcolor{YellowGreen}{Welche Eingabefelder gibt es?}
 
     \textcolor{NavyBlue}{}
+
+    \textcolor{YellowGreen}{Welche dieser Eingaben sollen mithilfe von Auswahllisten umgesetzt werden?}
+
+    \textcolor{NavyBlue}{}
+    %-----------------------------------------------------
+    \textcolor{YellowGreen}{Wie soll die Listenerweiterung vorgenommen werden? Reicht ein einfacher "Edit"-Knopf?}
+
+    \textcolor{NavyBlue}{Es soll eine Bearbeitungsansicht für das komplette Formular geben, welche über einen "Edit"-Knopf erreichbar sein soll. In dieser Ansicht soll für jede Auswahlliste ein Textinput mit einem Knopf zum Hinzufügen bereitgestellt werden.}
 
     \textcolor{YellowGreen}{Wer hat die Berechtigungen, diese Liste zu erweitern?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Berechtigungen für die Erweiterung der Auswahllisten sind auf die Administratoren beschränkt.}
 
     \textcolor{YellowGreen}{Kann die Liste im vollen Umfang verändert werden oder soll es noch Rahmenbedingungen geben?}
 
@@ -523,7 +534,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Ist eine Mehrfachauswahl oder Mehrfachbearbeitung möglich?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Nein. Auf }
     \\
     \hline
     /LF100/ & Sämtlichen Elementen sollen mehrere Bilder mit Titel zugeordnet werden können, die zentral auf einem Verzeichnis liegen sollen 
@@ -552,7 +563,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Gibt es eine maximale Dateigröße für die Bilder, um Ladezeiten und Speicher einzugrenzen?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Dateigröße ist auf 10 MB pro Bild beschränkt.}
     \\
     \hline
 \end{tabular}
