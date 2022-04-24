@@ -88,6 +88,7 @@ Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backu
 
 \textcolor{NavyBlue}{An sich sollen alle Datensätze selektiert werden können, die Mitgliederdaten, Termin- und Buchungsdaten, sowie Rechnungsdaten enthalten. Kurz gesagt alle Daten, die auch für eine sinnvolle Erstellung von Backups benötigt werden. }
 
+\textcolor{Red}{Die Frage würd ich rausnehmen da die Formulierung mal wieder 0 Sinn macht und das von den Fragen die ich hinzugefügt hab auch erläutert wird.}
 \textcolor{YellowGreen}{Sollen die Backups wirklich händisch selektiert werden oder automatisiert laufen?}
 
 \textcolor{NavyBlue}{Das selektieren soll auf alle Fälle auch händisch möglich sein, da wir den Datenexport auch in anderen Fällen nutzen. Die Erstellung von Sicherheitskopien soll hauptsächlich automatisch laufen, doch auch manuell durchgeführt werden, sollte außerplanmäßig eine Erstellung nötig sein.}
@@ -96,9 +97,29 @@ Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backu
 
 \textcolor{NavyBlue}{Wir haben einige externe Festplatten, die wir für die Überspielung der Backups an den Server anschließen. Die Aufbewahrung erfolgt im Firmentresor im Büro der Geschäftsführung. }
 
+\textcolor{YellowGreen}{Wie oft werden Backups durchgeführt?}
+
+\textcolor{NavyBlue}{Ein mal wöchentlich soll ein neues Backup erstellt werden.}
+
+\textcolor{YellowGreen}{Sollen die Backups automatisch oder manuell durchgeführt werden?}
+
+\textcolor{NavyBlue}{Die Backups sollen automatisch von der Anwendung ausgeführt werden. Der Zeitpunkt des Backups soll von einem Administrator einstellbar sein. Außerdem soll ein Administrator auch jederzeit manuell ein Backup erstellen können.}
+
+\textcolor{YellowGreen}{Sollen im Backup immer nur die Änderungen zum vorherigen Stand gespeichert werden oder soll immer ein vollständiges Backup erstellt werden?}
+
+\textcolor{NavyBlue}{Es sollen immer vollständige Backups erstellt werden.}
+
+\textcolor{YellowGreen}{Wie lange soll ein Backup aufbewart werden?}
+
+\textcolor{NavyBlue}{Die Backups sollen jeweils für ein Jahr gespeichert werden.}
+
+%\textcolor{YellowGreen}{Sollen die Backups verschlüsselt werden?}
+
+%\textcolor{NavyBlue}{Unsere Systeme sind bereits so gut abgesichert, dass kein Zugriff von außerhalb auf den Speicherort der Backups möglich ist. Deshalb müssen die Backups nicht verschlüsselt werden.}
+
 \textcolor{YellowGreen}{Gibt es redundante Notfallsysteme?}
 
-\textcolor{NavyBlue}{Nein, es gibt keine zusätzlichen Systeme zum \textbf{einzigen} Server im Keller.}
+\textcolor{NavyBlue}{Nein, es gibt keine zusätzlichen Systeme zum einzigen Server im Keller.}
 
 \textcolor{YellowGreen}{In welche Form wollen Sie die Daten für den Datenaustausch exportieren?}
 
@@ -117,7 +138,7 @@ Es sollen keine besonderen Computerkenntnisse zur Bedienung der Software erforde
 
 \textcolor{YellowGreen}{Was ist Ihre Definition von 'keine besonderen Computerkenntnisse'?}
 
-\textcolor{NavyBlue}{Mit einem Firmendurchschnittalter von 47 Jahren beschäftigen wird statistische betrachtet überschnittlich viele digitale Quereinsteiger, die noch in einer Zeit ohne Handy und Computer aufgewachsen sind und daher nicht intuitiv mit der Technologie umgehen können. }
+\textcolor{NavyBlue}{Mit einem Firmendurchschnittsalter von 47 Jahren beschäftigen wir statistisch betrachtet überdurchschnittlich viele digitale Quereinsteiger, die noch in einer Zeit ohne Handy und Computer aufgewachsen sind und daher nicht intuitiv mit der Technologie umgehen können. }
 
 \textcolor{YellowGreen}{Was verstehen Sie unter leicht bedienbar, wollen Sie Icons oder Labeltexte?}
 
@@ -414,24 +435,47 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
         /LD10/ & Die Daten sollen zunächst in einer zentralen Datenbasis (lesbare Dateien) abgespeichert und später in eine Datenbank überführt werden. 
         
         \textcolor{YellowGreen}{Wo ist diese Datenbasis, wie sieht diese Datenbasis aus?}
+        
+        \textcolor{NavyBlue}{Die Datenbasis besteht aus CSV-Dateien, welche vorerst lokal bereitgestellt werden.}
+
 
         \textcolor{YellowGreen}{Welches Dateiformat wird benötigt?}
 
+        \textcolor{NavyBlue}{Als Dateiformat wird CSV benötigt.}
+
+        \textcolor{Red}{->}
         \textcolor{YellowGreen}{Was bedeutet lesbar? Für Menschen, für Computer, welche Sprache (Englisch oder Deutsch)?}
 
-        \textcolor{YellowGreen}{Wer soll die Dateien lesen können?}
+        \textcolor{NavyBlue}{Lesbar bedeutet in diesem Zusammenhang, dass die Leserechte für diese Dateien nicht eingeschränkt beziehungsweise für die Anwendung freigegeben sind.}
 
-        \textcolor{YellowGreen}{Um was für Daten handelt es sich?}
+        \textcolor{Red}{->}
+        \textcolor{YellowGreen}{Wer soll die Dateien lesen können?}
+        
+        \textcolor{NavyBlue}{Die in den Dateien enthaltenen Daten sollen von der Anwendung eingelesen und anschaulich dargestellt werden.}
+
+
+        \textcolor{YellowGreen}{Um welche Daten handelt es sich?}
+
+        \textcolor{NavyBlue}{Bei den Daten handelt es sich um die Daten der Mitglieder sowie deren Buchungen.}
+
 
         \textcolor{YellowGreen}{In was für eine Datenbank sollen die Daten überführt werden?}
 
+        \textcolor{NavyBlue}{Die Daten sollen in Zukunft in einer SQL-Datenbank gespeichert werden. Jedoch ist dies noch nicht in naher Zukunft geplant und kann deshalb vorerst vernachlässigt werden.}
+
         \textcolor{YellowGreen}{Wann ist später, sollen Vorbereitungen für die Überführung getroffen werden?}
 
-        \textcolor{YellowGreen}{Wei sieht die Backupstrategie für Datenbasis und Datenbank aus?}
+        \textcolor{NavyBlue}{Die Überführung soll kurz vor der Inbetriebnahme der Anwendung geschehen, jedoch sehen wir keine Notwendigkeit dafür Vorbereitungen zu treffen, da unsere IT-Abteilung kompetent genug ist dies eigenständig umzusetzen.}
 
+        \textcolor{YellowGreen}{Wie sieht die Backupstrategie für Datenbasis und Datenbank aus?}
+
+        \textcolor{NavyBlue}{Um die Datenbank kümmert sich wie bereits erwähnt unsere IT-Abteilung. Da die Datenbasis sowieso abgelöst werden soll, müssen hier keine Backups erstellt werden.}
+
+        \textcolor{Red}{Bitte was? Wo steht denn separat? Das eine löst das andere doch ab oder bin ich jz lost?}
         \textcolor{YellowGreen}{Warum "Datenbasis" und Datenbank separat? Welche Vorteile soll das haben?}
 
-        \textcolor{YellowGreen}{Gibt es einen Multiuser Kontext für die "Datenbasis"? Wie sollen gleichzeitige Zugriffe geregelt sein?}
+        \textcolor{YellowGreen}{Gibt es einen Multiuser-Kontext für die "Datenbasis"? Wie sollen gleichzeitige Zugriffe geregelt sein?}
+        \textcolor{NavyBlue}{Nein. Da die Datenbasis nur lokal implementiert wird, muss vorerst kein Multiuser-Kontext beachtet werden.}
         \\
         \hline
         
@@ -447,9 +491,16 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
         
         \textcolor{YellowGreen}{Kann mit der Elementzahl in den lesbaren Dateien der zentralen Datenbasis sinnvoll umgegangen werden?}
 
-        \textcolor{YellowGreen}{Ist das eine Schätzung für dne "aktuellen" Satz? Wird das zukünftige Wachstum beachtet? Werden es signifikant mehr?}
+        \textcolor{NavyBlue}{Die zentrale Datenbasis ist für eine sehr große Anzahl von Elementen ausgelegt, damit auch im Falle eines großen Wachstums der Datenmenge weiterhin ein leichter Umgang mit den Daten möglich ist.}
 
-        \textcolor{YellowGreen}{Könnte das ständige Synchronisieren von einer großen Anzahl an Elementen ncit fehleranfällig und zeitaufwändig sein?}
+        \textcolor{YellowGreen}{Ist das eine Schätzung für den "aktuellen" Satz? Wird das zukünftige Wachstum beachtet? Werden es signifikant mehr?}
+        
+        \textcolor{NavyBlue}{Ja. Die 100.000 Elemente sind nur eine Schätzung. Bei der letzten Erhebung, welche vor einem Monat stattgefunden hat, waren es 96.690 Elemente. Unser Unternehmen rechnet mit einem massiven Wachstum, sobald die neue Anwendung in Betrieb genommen wurde.}
+
+        %\textcolor{YellowGreen}{Könnte das ständige Synchronisieren von einer großen Anzahl an Elementen nicht fehleranfällig und zeitaufwändig sein?}
+
+        %\textcolor{NavyBlue}{}
+
         \\
         \hline
         /LL20/ & Um bei HW- und SW-Anschaffungen und -neuerungen flexibel zu bleiben, ist auf Plattformunabhängigkeit besonders zu achten. 
