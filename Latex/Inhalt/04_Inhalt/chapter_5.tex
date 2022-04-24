@@ -36,3 +36,418 @@ Zwar können Buchungen online erfolgen, aber wir würden gerne zusätzliche Info
 \section{Lastenheft}
 
 \subsection{Zielsetzung}
+
+Ziel des Entwicklungsauftrags ist eine Software für die Verwaltung aller Daten, die für die Verwaltung der Fahrzeuge, Kunden sowie Buchungen unserer Carsharing-Organisation anfallen und benötigt werden. 
+
+Alle Daten sollen zentral gespeichert werden, da mehrere Benutzer gleichzeitig auf die Daten und Termine zugreifen werden. 
+
+\textcolor{YellowGreen}{Welche Hardware liegt für diese zentrale Speicherung vor (Server, Speicher, Betriebssystem)?}
+
+\textcolor{YellowGreen}{In welcher Form, in welchem Format sollen die Daten zentral gespeichert werden?}
+
+\textcolor{YellowGreen}{Wie viele Benutzer verwenden die Daten gleichzeitig?}
+
+\textcolor{YellowGreen}{Wie soll mit Kollisionen, gleichzeitigen und gegensätzlichen Zugriffen auf Daten und Terminen umgegangen werden?}
+
+\textcolor{YellowGreen}{Weche Form soll die Software haben? Soll es zum Beispiel eine Webapp oder eine Desktopanwendung sein?}
+
+Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backups und zum Datenaustausch möglich sein. 
+
+\textcolor{YellowGreen}{Was verstehen Sie unter selektiven Import?}
+
+\textcolor{YellowGreen}{Was wollen Sie selektieren können, was nicht?}
+
+\textcolor{YellowGreen}{Sollen die Backups wirklich händisch selektiert werden oder automatisiert laufen?}
+
+\textcolor{YellowGreen}{Wo und wie werden die Backups gespeichert?}
+
+\textcolor{YellowGreen}{Gibt es redundante Notfallsysteme?}
+
+\textcolor{YellowGreen}{In welche Form wollen Sie die Daten für den Datenaustausch exportieren?}
+
+\textcolor{YellowGreen}{Zu welchen Zwekcen betreiben Sie Datenaustaushc?}
+
+\textcolor{YellowGreen}{Mit welchen Sicherheitsrichtlinien sollen die Backup-/Datenaustauschdateien versehen werden?}
+
+Eine intuitive, leicht bedienbare Benutzeroberfläche setzen wir als selbstverständlich voraus. 
+Es sollen keine besonderen Computerkenntnisse zur Bedienung der Software erforderlich sein.  
+
+\textcolor{YellowGreen}{Was ist Ihre Definition von 'keine besonderen Computerkenntnisse'?}
+
+\textcolor{YellowGreen}{Was verstehen Sie unter leicht bedienbar, wollen Sie Icons oder Labeltexte?}
+
+\textcolor{YellowGreen}{Muss die Benutzeroberfläche auch barrierefrei sein?}
+
+\textcolor{YellowGreen}{Muss es besondere Farb-Modi für z.B. Farbenblindheit, etc. geben?}
+
+
+\subsection{Anwendungsbereiche}
+
+Die Software soll ausschließlich für die Verwaltung von Fahrzeugen, Kunden, Ausrüstung, Fahrzeugstandorte und Angestellten und den damit direkt verbundenen Elementen verwendet werden. 
+Sie soll im Alltag auf Desktop-Rechnern und Laptops eingesetzt werden.  
+
+\textcolor{YellowGreen}{Welches Betriebssystem wird erwünscht oder gefordert?}
+
+\textcolor{YellowGreen}{Es ist wirklich keine mobile Nutzung erwünscht, um spontan von unterwegs Autos buchen zu können?}
+
+\textcolor{YellowGreen}{Gibt es echtzeikritische Aspekte in der Anwendung, die besonders hervorgehoben werden müssen?}
+
+\textcolor{YellowGreen}{Soll das Programm im Browser aufgerufen werden oder eine Anwendung sein?}
+
+
+\subsection{Zielgruppen, Benutzerrollen und verantworklichkeiten}
+
+Es soll verschiedene Benutzerrollen geben: 
+
+\begin{itemize}
+    \item Organisatorinnen und Organisatoren pflegen die jeweiligen Buchungsdaten und Fahrzeuge. 
+    
+    \textcolor{YellowGreen}{Wer ist Organisator?}
+
+    \textcolor{YellowGreen}{Was ist eine zuständige Abteilung?}
+
+    \textcolor{YellowGreen}{Kann jeder Organisator alles?}
+
+    \textcolor{YellowGreen}{Woraus bestehen die Buchungsdaten?}
+
+    \textcolor{YellowGreen}{Was gibt es für Zusatzleistungen?}
+
+    \textcolor{YellowGreen}{Wie sollen die Daten gespeichert werden?}
+
+    \item Personalmitarbeiter pflegen Mitarbeiterdaten im System  
+    
+    \textcolor{YellowGreen}{Pflegen die Personalmitarbeiter auch ihre eigenen Daten?}
+
+    \textcolor{YellowGreen}{Gibt es Einschränkungen, ob bestimmte Daten nicht bearbeitet werden dürfen?}
+
+    \textcolor{YellowGreen}{Dürfen Personalmitarbeiter auh andere Daten einsehen, z.B. Buchungsdaten?}
+
+    \item Eine hauptverantwortliche Person (Administrator) hat Vollzugriff auf sämtliche Daten, vor allem für deren Import und Export sowie deren Backup. 
+    
+    \textcolor{YellowGreen}{Vergibt der Admin die Rechte für die Anderen? Wenn nein: Wer verteilt sonst die Rechte?}
+
+    \textcolor{YellowGreen}{Heißt Vollzugriff auch unbeschränktes ändern?}
+
+    \textcolor{YellowGreen}{Welche Sicherheitsvorkehrungen sollen getroffen werden, sodass kein Datenmissbrauch möglich ist?}
+
+    \item Es gibt keine Gruppen oder Abteilungen, die verwaltet werden müssen.
+    
+    \textcolor{YellowGreen}{Was soll genau aussagen? Wie unterscheiden Sie "Rollen" von "Gruppen"?}
+
+    \textcolor{YellowGreen}{Wie soll dann die Mitgliederverwaltung aussehen?}
+
+    \textcolor{YellowGreen}{Welche "Rolle" soll Kunden zugewiesen werden?}
+\end{itemize}
+
+\subsection{Zusammenspiel mit anderen Systemen}
+
+Die Daten über die Angestellten (Gehälter bzw. Löhne, Steuern, Kranken- und Rentenversicherung usw.) werden separat durch ein vorhandenes Personalbuchhaltungsprogramm verwaltet und müssen hier nicht berücksichtigt werden. Die finanztechnischen Daten werden über unser vorhandenes Finanzsystem erfasst und müssen hier ebenfalls nicht berücksichtigt werden. 
+
+\textcolor{YellowGreen}{Welche Personaldaten werden dann verwaltet? (siehe 5.2.3 PErsonalmitarbeiter)}
+
+\textcolor{YellowGreen}{Welche Kunden-/Buchungsdaten werden verwaltet?}
+
+Die Software soll aus zwei Teilen bestehen:  
+
+\begin{itemize}
+    \item Für die Mitarbeiter im Büro soll eine Desktop-Anwendung erstellt werden, mit denen die Datenbestände verwaltet werden können. Es sollen auch Buchungen erstellt werden können für Kunden, die keine Online-Buchungen machen wollen und persönlich in der Carsharing-Filiale erscheinen. 
+    
+    \textcolor{YellowGreen}{Gibt es Beschränkungen bei Schreibzugriffen?}
+
+    \textcolor{YellowGreen}{Wie soll bei Kunden abgerechnet werden?}
+
+    \textcolor{YellowGreen}{Gibt es Online-Banking, Kartenzahlung, etc.?}
+
+    \textcolor{YellowGreen}{Soll für Kunden, die in der Filiale buchen, auch eine Buchung auf Rechnung möglich sein?}
+
+    \textcolor{YellowGreen}{Wie soll zwischen verschiedenen Rollen unterschieden werden? Über Login, RSA Token, Zweifaktor-Authentifizierung, etc.?}
+
+    \item Eine neue Web-Seite soll unseren Online-Kunden ermöglichen, nach einer Authentifizierung alle Standorte anzeigen zu lassen sowie natürlich die dort befindlichen Fahrzeuge, welche für einen anzugebenden Zeitbereich online gebucht werden können. 
+    
+    \textcolor{YellowGreen}{Soll die Buchung (visuell) identisch zu der Desktop-App stattfinden oder für Webanwendungen angepasst sein?}
+
+    \textcolor{YellowGreen}{Soll vorher der Zeitbereich angegeben und nur verfügbare Fahrzeuge angezeigt werden oder soll erst ein Fahrzeug und dann der verfügbare Zeitraum gezeigt werden?}
+\end{itemize}
+
+Die Web-Seite soll mit dem ersten Teilauftrag noch nicht programmiert werden, allerdings benötigen wir ein klares Konzept, wie diese Web-Seite realisiert werden soll (Schnittstellen usw.).  
+
+\textcolor{YellowGreen}{Wie detailliert sollen die Mock-Ups erstellt werden?}
+
+Möglichst alle Daten sollen vom alten in das neue System übertragen werden. 
+\newpage
+
+\subsection{Produktfunktionen}
+
+\begin{tabular}{l | p{13cm}}
+    \hline
+    /LF10/ & Der jeweilige Benutzer muss die Möglichkeit haben, über eine grafische Benutzeroberfläche alle für ihn relevanten Daten einfach und übersichtlich zu verwalten. 
+
+    \textcolor{YellowGreen}{Wie werden Kunden von Mitarbeitern unterschieden? Unterscheidung durch Login?}
+
+    \textcolor{YellowGreen}{Wie sind die Benutzergruppen definiert?}
+
+    \textcolor{YellowGreen}{Was sind relevante Daten?}
+
+    \textcolor{YellowGreen}{Was heißt einfach und übersichtlich?}
+
+    \textcolor{YellowGreen}{Sollen firmenspezifische Symbole, Farbmuster, etc. integriert werden oder ist dies eher nebensächlich?}
+
+    Es sollen zahlreiche Konfigurationsdaten gespeichert und beim nächsten Start des Programms verwendet werden (z.B. aktuelle Größe und Position des Fensters). Daneben sollen einige Elemente vor dem Start konfigurierbar sein (z.B. Überschriften, Schriftarten und -größen usw.). 
+    
+    \textcolor{YellowGreen}{Was ist mit Unterschriften gemeint?}
+
+    \textcolor{YellowGreen}{Kann die Größe von Überschrift und restlichem Text insgesamt frei gewält werden oder nur im Zusammenhang? Groß, mittel, klein... (Bei freier Wahl könnte eine kleinere Schriftgröße für die Überschrift gewählt werden, wie für den Text).}
+
+    \textcolor{YellowGreen}{Welche Konfigurationsdaten genau? (Farbschema, Shortcuts, etc.?)}
+
+    \textcolor{YellowGreen}{Constraints -> Sollen die Werte dazu frei auswählbar oder in einem gewissen Rahmen vorgegeben sein?}
+
+    \textcolor{YellowGreen}{Sollen die Konfigurationsdaten anwendungsspezifisch oder benutzerspezifisch sein?} \\
+    \hline
+    /LF20/ & Verwaltet werden sollen Mitarbeiter, Fahrzeuge, Standorte, Kunden, Buchungen, Rechnungen, Änderungen, Stornierungen, Mahnungen usw.
+
+    \textcolor{YellowGreen}{Welche Benutzergruppen soll es geben?}
+
+    \textcolor{YellowGreen}{Welche Gruppe hat Zugriff auf welche Daten?}
+
+    \textcolor{YellowGreen}{Was ist usw.?}
+
+    \textcolor{YellowGreen}{Welche Daten soll für Mitarbeiter, Fahrzeuge, Standorte, Kunden, Buchunger, Rechnungen, Änderungen, Stornierungen und Mahnungen erhoben werden?}
+
+    \textcolor{YellowGreen}{Worin unterscheiden sich Buchung und Rechnung?}
+
+    \textcolor{YellowGreen}{Wird eine Rechnung aus den Buchungsdaten generiert?}
+
+    \textcolor{YellowGreen}{Gibt es eine Mindestlänge für einen gebuchten Termin?}
+
+    \textcolor{YellowGreen}{Gibt es eine Maximallänge für einen gebuchten Termin?}
+
+    \textcolor{YellowGreen}{Gibt es Rabatte für längere Buchungen? Ab wann gilt eine Buchung als länger?}
+
+    Es muss möglich sein, jederzeit erkennen zu können, welche angestellte Person   einen Datensatz angelegt, geändert oder gelöscht hat. 
+    
+    \textcolor{YellowGreen}{Müssen alle Änderungen sichtbar sein oder nur die Letzte?}
+    \\
+    \hline
+    /LF30/ & Buchungen haben eine Start- und einen Endtermin, Terminüberschneidungen müssen vermieden werden, um die Verfügbarkeit sicherzustellen. 
+    
+    \textcolor{YellowGreen}{Was wenn der vorherige Kunde sich verspätet? Wird ein Puffer eingeplant?}
+
+    \textcolor{YellowGreen}{Gibt es Wartungsfenster zwischen Buchungen für Reinigungen, etc.?}
+
+    \textcolor{YellowGreen}{Was wenn Mängel während der Fahrt auftreten?}
+
+    \textcolor{YellowGreen}{Sollen nicht verfügbare Fahrzeuge als solche gekennzeichnet werden, z.B. durch eine graue Darstellung?}
+
+    \textcolor{YellowGreen}{Wie soll die Befüllung der Tanks gewährleistet werden?}
+
+    \textcolor{YellowGreen}{Kann es passieren, dass der Standort des Fahrzeuges geändert werden muss?}
+    \\
+    \hline
+    /LF40/ & Unsere Kunden haben neben ihren Kontaktdaten auch Vertragsunterlagen für die Teilnahme am Carsharing, die die Höhe des Eigenanteils für einen Schadensfall der Versicherung sowie die Höhe der Teilnahme-Kaution enthält. Diese Vertragsunterlagen werden von uns eingescannt und sollen als Dokument mit den Kundendaten gespeichert werden. Daneben wird jedem Kunden eine Karte zum Öffnen und Schließen der Fahrzeuge ausgehändigt. 
+
+    \textcolor{YellowGreen}{Wie werden Schließberechtigungen verwaltet?}
+
+    \textcolor{YellowGreen}{Ist die Karte spezifisch für das Fahrzeug?}
+
+    \textcolor{YellowGreen}{Welche Daten sind auf der Kundenkarte gespeichert?}
+
+    \textcolor{YellowGreen}{Wo und in welcher Form sind die Kundendaten gespeichert? Magnetband, Chip oder QU-Code?}
+
+    \textcolor{YellowGreen}{Sollen die Daten auf der Karte bearbeitet werden können?}
+
+    \textcolor{YellowGreen}{Sollen die Daten beim Scan manuell oder automatisch konvertiert werden?}
+
+    \textcolor{YellowGreen}{Wie lange müssen die Vertragsunterlagen und Buchungsbelege aufbewahrt werden?}
+
+    \textcolor{YellowGreen}{Welche Art der Langzeitspeicherung gibt es? Magnetband, Festplatten, etc.?}
+
+    Ein kleiner Prozessor im Fahrzeug sendet nach Fahrtende (Terminende) die exakte Start- und Ende-Zeit sowie die gefahrenen Kilometer an einen Server. Diese Daten sollen von dem Server nach Buchungsende geholt und zur Berechnung der Kosten für die Buchung (und somit für die Rechnung) verwendet werden. 
+    
+    \textcolor{YellowGreen}{Soll dafür http oder ein eigenes Protokoll verwendet werden? Muss Verschlüsselung beachtet werden?}
+
+    \textcolor{YellowGreen}{Was passiert, wenn das Fahrzeug zu Terminende noch fährt?}
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}[ht] {l | p{13cm}}
+    \hline
+    /LF50/ & Die Fahrzeuge selbst gehören unterschiedlichen Kategorien an: 
+
+    Kleinfahrzeuge, Mittelklassefahrzeuge, gehobene Mittelklasse und Transportfahrzeuge.  
+
+    Allen Kategorien sind eine bestimmte Höhe der Stunden-Mietpauschale und die Kosten pro gefahrenem km zugeordnet. Alle Werte sollen konfigurierbar sein. 
+
+    \textcolor{YellowGreen}{Wie sollen die Daten konfigurierbar bleiben? Sollen Preisänderungen über die Datenbankebene oder mittels GUI erfolgen?}
+
+    \textcolor{YellowGreen}{Gibt es Events wie Angebotswochen?}
+
+    \textcolor{YellowGreen}{Können Mitglieder Prämien sammeln, die zu Vergünstigungen oder ähnliches führen?}
+
+    \textcolor{YellowGreen}{Ist diese Stunden-Mietpauschale nur für die Fahrzeugart trefend oder unterscheidet sie sich auch innerhalb dieser Kategorien je nach Auto?}
+
+    Alle Fahrzeuge werden regelmäßig von Fremdfirmen gewartet. Die entsprechenden Dienstleistungen sollen den Fahrzeugen chronologisch zugeordnet werden. 
+    
+    \textcolor{YellowGreen}{Rechnungsverwaltung? Werden die Rechnungsdaten im gleichen System gespeichert oder müssen diese separat verwaltet werden?}
+
+    \textcolor{YellowGreen}{Was ist mit chronologischer Zuordnung gemeint?}
+    \\
+    \hline
+    /LF60/ & Einem Standort können ein oder mehrere Fahrzeuge zugeordnet sein. Ein Fahrzeug ist immer nur einem Standort zugeordnet. 
+    
+    \textcolor{YellowGreen}{Welche Standorte gibt es?}
+
+    \textcolor{YellowGreen}{Kennzeichnungen für Standorte und Fahrzeuge?}
+    
+    \textcolor{YellowGreen}{Gibt es ein (Live-) Fahrzeugtracking?}\\
+    \hline
+    /LF70/ & Nach jeder Fahrt werden sofort die Rechnungen erstellt und dem Kunden per  
+    E-Mail zugesandt. 
+    
+    \textcolor{YellowGreen}{Sollten die Rechnungsdaten nicht erst an den Webserver gesendet und dann dort verarbeitet werden?}
+
+    \textcolor{YellowGreen}{Was ist die Zeitraumdefinition für 'sofort'?}
+
+    Die Bezahlung der Rechnungen erfolgt über Bankeinzug, was durch das Finanzbuchhaltungssystem (FBH) erledigt wird und hier nicht betrachtet werden muss. Allerdings muss über die vorhandene Schnittstelle des FBH der Stand der Rechnungsbegleichung abgefragt werden, damit über das neue System erkennbar ist, ob und wann eine Rechnung bezahlt wurde. 
+    
+    \textcolor{YellowGreen}{Könnten bei der Sendung von Rechnungsdaten per Email al Klartext evtl. DSGVO-Probleme auftreten?}
+
+    \textcolor{YellowGreen}{}Wie regelmäßig soll die Abfrage stattfinden? 1x pro Tag, mehrmals täglich?
+
+    \textcolor{YellowGreen}{Gibt es für die Rechnungen bereits Rechnungsnummern, oder müssen die erst erstellt werden? Welches System wird für die Nummernvergabe verwendet?}
+    \\
+    \hline
+    /LF80/ & Buchungen können bis 10 Stunden vor Antritt der Fahrt storniert werden. 
+    
+    \textcolor{YellowGreen}{In welcher Art soll die Meldung des Systems aussehen, wenn die 10h-Marke unterschritten wird?}
+
+    \textcolor{YellowGreen}{Soll die Funktion "Stornieren" nicht mehr angezeigt werden, falls <10h?}
+
+    \textcolor{YellowGreen}{Bedeutet es, dass Buchungen unter der 10h-Grenze nicht mehr möglich sind oder einfach nur nicht storniert werden können?}
+    \\
+    \hline
+    /LF90/ & Zur einfacheren Eingabe der Daten soll es Auswahllisten für deren Eigenschaften geben, wo immer es möglich ist. Die Auswahllisten sollen auf einfache Weise erweiterbar sein. 
+    
+    \textcolor{YellowGreen}{Wie soll die Listenerweiterung vorgenommen werden? Reicht ein einfacher "Edit"-Button?}
+
+    \textcolor{YellowGreen}{Wer hat die Berechtigungen, diese Liste zu erweitern?}
+
+    \textcolor{YellowGreen}{Kann die Liste im vollen Umfang verändert werden oder soll es noch Rahmenbedingungen geben?}
+
+    \textcolor{YellowGreen}{Ist eine Mehrfachauswahl oder Mehrfachbearbeitung möglich?}
+    \\
+    \hline
+    /LF100/ & Sämtlichen Elementen sollen mehrere Bilder mit Titel zugeordnet werden können, die zentral auf einem Verzeichnis liegen sollen 
+    
+    \textcolor{YellowGreen}{Welche Vorgaben gibt es für die Bilder? Bildformat, Dateiformat, etc.}
+
+    \textcolor{YellowGreen}{Wer hat die dazu benötigten Berechtigungen?}
+
+    \textcolor{YellowGreen}{Gibt es ein zentrales Verzeichnis?}
+
+    \textcolor{YellowGreen}{Ist ein einheitliches Design für die Seiten vorgegeben?}
+
+    \textcolor{YellowGreen}{Gibt es eine maximale Anzahl an Bildern ro Element?}
+
+    \textcolor{YellowGreen}{Gibt es eine maximale Dateigröße für die Bilder, um Ladezeiten und Specher einzugrenzen?}
+    \\
+    \hline
+\end{tabular}
+
+\subsection{Produktdaten}
+
+\begin{center}
+    \begin{tabular}[ht] {l | p{13cm}}
+        \hline
+        /LD10/ & Die Daten sollen zunächst in einer zentralen Datenbasis (lesbare Dateien) abgespeichert und später in eine Datenbank überführt werden. 
+        
+        \textcolor{YellowGreen}{Wo ist diese Datenbasis, wie sieht diese Datenbasis aus?}
+
+        \textcolor{YellowGreen}{Welches Dateiformat wird benötigt?}
+
+        \textcolor{YellowGreen}{Was bedeutet lesbar? Für Menschen, für Computer, welche Sprache (Englisch oder Deutsch)?}
+
+        \textcolor{YellowGreen}{Wer soll die Dateien lesen können?}
+
+        \textcolor{YellowGreen}{Um was für Daten handelt es sich?}
+
+        \textcolor{YellowGreen}{In was für eine Datenbank sollen die Daten überführt werden?}
+
+        \textcolor{YellowGreen}{Wann ist später, sollen Vorbereitungen für die Überführung getroffen werden?}
+
+        \textcolor{YellowGreen}{Wei sieht die Backupstrategie für Datenbasis und Datenbank aus?}
+
+        \textcolor{YellowGreen}{Warum "Datenbasis" und Datenbank separat? Welche Vorteile soll das haben?}
+
+        \textcolor{YellowGreen}{Gibt es einen Multiuser Kontext für die "Datenbasis"? Wie sollen gleichzeitige Zugriffe geregelt sein?}
+        \\
+        \hline
+        
+    \end{tabular}
+\end{center}
+
+\subsection{Produktleistungen}
+
+\begin{center}
+    \begin{tabular}[ht] {l | p{13cm}}
+        \hline
+        /LL10/ & Die Anzahl der zu verwaltenden Elemente wird auf ca. 100.000 geschätzt. 
+        
+        \textcolor{YellowGreen}{Kann mit der Elementzahl in den lesbaren Dateien der zentralen Datenbasis sinnvoll umgegangen werden?}
+
+        \textcolor{YellowGreen}{Ist das eine Schätzung für dne "aktuellen" Satz? Wird das zukünftige Wachstum beachtet? Werden es signifikant mehr?}
+
+        \textcolor{YellowGreen}{Könnte das ständige Synchronisieren von einer großen Anzahl an Elementen ncit fehleranfällig und zeitaufwändig sein?}
+        \\
+        \hline
+        /LL20/ & Um bei HW- und SW-Anschaffungen und -neuerungen flexibel zu bleiben, ist auf Plattformunabhängigkeit besonders zu achten. 
+        
+        \textcolor{YellowGreen}{Gibt es Vorzüge wie die Plattformunabhängigkeit angegangen werden soll?}
+
+        \textcolor{YellowGreen}{Soll die Applikation auch mobil genutzt werden -> auch kompatibel für Mobilgeräte?}
+
+        \textcolor{YellowGreen}{Ist eine Cloudlösung/ oder -speicherung denkbar?}
+        \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Qualitätsanforderungen}
+
+\begin{center}
+    \begin{tabular} {l | c | c | c | c}
+        \hline
+        Produktqualität & sehr gut & gut & normal & nicht relevant \\
+        \hline
+        Funktionalität & X & & & \\
+        \hline
+        Zuverlässigkeit & & X & & \\
+        \hline
+        Effizienz & & X & & \\
+        \hline
+        Benutzbarkeit (auch Gestaltung) & X & & & \\
+        \hline
+        Wartbarkeit & & & X & \\
+        \hline
+        Übertragbarkeit (Portabilität) & & & X & \\
+        \hline
+    \end{tabular}
+\end{center}
+
+
+\textcolor{YellowGreen}{Was bedeuten die einzelnen Begriffe und ihre Bewertung für die zu entwickelnde Applikation?}
+
+\textcolor{YellowGreen}{Gibt es für die Zuverlässigkeite bestimmten Konventionen, Standards oder Vorschriften, die eingehlante nwerden müssen? SLA?}
+
+\textcolor{YellowGreen}{Was bedeutet gute Funktionalität, was soll dabei beachtet werden? Stabilität, unkomplizierte Bedienbarkeit, besonders viele Funktionen oder nur die minimal benötigten Funktionen?}
+
+\textcolor{YellowGreen}{Was mach die Anwendung zuverlässig? Stabilität oder Fehlertoleranz?}
+
+\textcolor{YellowGreen}{Was macht die Anwendung effizient? Geschwindigkeit oder sparsamer Ressourcenumgang?}
+
+\textcolor{YellowGreen}{Benutzbarkeit soll sehr gut sein, welche Anforderungen stehen dahinter? Durch was wird das Programm leicht bedienbar? Mit welchen Hilfsmitteln kann die Bedienbarkeit erleichter werden (Shortcuts, Gesten)?'}
+
+\textcolor{YellowGreen}{Gestaltung soll sehr gut sein? Ist das nötig, wenn in den Büros eigentlich nur die Mitarbeiter arbeiten und die Kunden gar nicht in den Kontakt mit der Anwendung treten?}
+
+\textcolor{YellowGreen}{Protabiliät ist normal relevant, aber die Plattformunabhängigkeit ist besonders zu beachten? Wie ist das zu verstehen?}
