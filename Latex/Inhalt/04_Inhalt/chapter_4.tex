@@ -1,0 +1,9 @@
+\chapter{Vereinfachung für den Programmentwurf}
+
+\begin{enumerate}
+    \item Es muss nicht dafür gesorgt werden, dass auf dieselben Daten bzw. CSV-Dateien nicht gleichzeitig zugegriffen werden kann, d.h. es ist kein \emph{Locking}-Mechanismus erforderlich.  
+    \item Eine Protokollierfunktion und ein Login-Vorgang sind für die Anwendung nicht erforderlich (in der Realität natürlich schon!). 
+    \item Zeitliche Überschneidungen sind natürlich bei allen Buchungen möglich und müssten sowohl beim Anlegen als auch bei Änderungen von Terminen berücksichtigt werden. Im Programmentwurf sollte dies in der Modellierung berücksichtigt werden, bei der Implementierung ist jedoch nur eine Überprüfung bei der Auswahl des Starts und Endes der Buchung erforderlich. 
+    \item Konfigurationsdaten (LF 10) sollen exemplarisch für wenige Elemente änderbar sein (Angabe der realisierten Elemente!) 
+    \item Alle Elemente, die zu einer Buchung zugeordnet werden können, müssen nicht interaktiv erzeugbar, sondern können bereits in CSV-Dateien vorhanden sein. Verwenden Sie dabei realistische Attributwerte! 
+\end{enumerate}

@@ -1,0 +1,134 @@
+\chapter{Lastenheft}
+
+\section{Zielsetzung}
+
+Ziel des Entwicklungsauftrags ist eine Software für die Verwaltung aller Daten, die für die Verwaltung der Fahrzeuge, Kunden sowie Buchungen unserer Carsharing-Organisation anfallen und benötigt werden. 
+
+Alle Daten sollen zentral gespeichert werden, da mehrere Benutzer gleichzeitig auf die Daten und Termine zugreifen werden. 
+
+Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backups und zum Datenaustausch möglich sein. 
+
+Eine intuitive, leicht bedienbare Benutzeroberfläche setzen wir als selbstverständlich voraus. 
+Es sollen keine besonderen Computerkenntnisse zur Bedienung der Software erforderlich sein.  
+
+
+\section{Anwendungsbereiche}
+
+Die Software soll ausschließlich für die Verwaltung von Fahrzeugen, Kunden, Ausrüstung, Fahrzeugstandorte und Angestellten und den damit direkt verbundenen Elementen verwendet werden. 
+Sie soll im Alltag auf Desktop-Rechnern und Laptops eingesetzt werden.  
+
+
+\section{Zielgruppen, Benutzerrollen und verantworklichkeiten}
+
+Es soll verschiedene Benutzerrollen geben: 
+
+\begin{itemize}
+    \item Organisatorinnen und Organisatoren pflegen die jeweiligen Buchungsdaten und Fahrzeuge. 
+    \item Personalmitarbeiter pflegen Mitarbeiterdaten im System  
+    \item Eine hauptverantwortliche Person (Administrator) hat Vollzugriff auf sämtliche Daten, vor allem für deren Import und Export sowie deren Backup. 
+    \item Es gibt keine Gruppen oder Abteilungen, die verwaltet werden müssen. 
+\end{itemize}
+
+\section{Zusammenspiel mit anderen Systemen}
+
+Die Daten über die Angestellten (Gehälter bzw. Löhne, Steuern, Kranken- und Rentenversicherung usw.) werden separat durch ein vorhandenes Personalbuchhaltungsprogramm verwaltet und müssen hier nicht berücksichtigt werden. Die finanztechnischen Daten werden über unser vorhandenes Finanzsystem erfasst und müssen hier ebenfalls nicht berücksichtigt werden. 
+
+Die Software soll aus zwei Teilen bestehen:  
+
+\begin{itemize}
+    \item Für die Mitarbeiter im Büro soll eine Desktop-Anwendung erstellt werden, mit denen die Datenbestände verwaltet werden können. Es sollen auch Buchungen erstellt werden können für Kunden, die keine Online-Buchungen machen wollen und persönlich in der Carsharing-Filiale erscheinen. 
+    \item Eine neue Web-Seite soll unseren Online-Kunden ermöglichen, nach einer Authentifizierung alle Standorte anzeigen zu lassen sowie natürlich die dort befindlichen Fahrzeuge, welche für einen anzugebenden Zeitbereich online gebucht werden können. 
+\end{itemize}
+
+Die Web-Seite soll mit dem ersten Teilauftrag noch nicht programmiert werden, allerdings benötigen wir ein klares Konzept, wie diese Web-Seite realisiert werden soll (Schnittstellen usw.).  
+
+Möglichst alle Daten sollen vom alten in das neue System übertragen werden. 
+\newpage
+
+\section{Produktfunktionen}
+
+\begin{tabular}{l | p{13cm}}
+    \hline
+    /LF10/ & Der jeweilige Benutzer muss die Möglichkeit haben, über eine grafische Benutzeroberfläche alle für ihn relevanten Daten einfach und übersichtlich zu verwalten. 
+
+    Es sollen zahlreiche Konfigurationsdaten gespeichert und beim nächsten Start des Programms verwendet werden (z.B. aktuelle Größe und Position des Fensters). Daneben sollen einige Elemente vor dem Start konfigurierbar sein (z.B. Überschriften, Schriftarten und -größen usw.). \\
+    \hline
+    /LF20/ & Verwaltet werden sollen Mitarbeiter, Fahrzeuge, Standorte, Kunden, Buchungen, Rechnungen, Änderungen, Stornierungen, Mahnungen usw.
+
+    Es muss möglich sein, jederzeit erkennen zu können, welche angestellte Person   einen Datensatz angelegt, geändert oder gelöscht hat. \\
+    \hline
+    /LF30/ & Buchungen haben eine Start- und einen Endtermin, Terminüberschneidungen müssen vermieden werden, um die Verfügbarkeit sicherzustellen. \\
+    \hline
+    /LF40/ & Unsere Kunden haben neben ihren Kontaktdaten auch Vertragsunterlagen für die Teilnahme am Carsharing, die die Höhe des Eigenanteils für einen Schadensfall der Versicherung sowie die Höhe der Teilnahme-Kaution enthält. Diese Vertragsunterlagen werden von uns eingescannt und sollen als Dokument mit den Kundendaten gespeichert werden. Daneben wird jedem Kunden eine Karte zum Öffnen und Schließen der Fahrzeuge ausgehändigt. 
+
+    Ein kleiner Prozessor im Fahrzeug sendet nach Fahrtende (Terminende) die exakte Start- und Ende-Zeit sowie die gefahrenen Kilometer an einen Server. Diese Daten sollen von dem Server nach Buchungsende geholt und zur Berechnung der Kosten für die Buchung (und somit für die Rechnung) verwendet werden. \\
+    \hline
+\end{tabular}
+
+\begin{tabular}[ht] {l | p{13cm}}
+    \hline
+    /LF50/ & Die Fahrzeuge selbst gehören unterschiedlichen Kategorien an: 
+
+    Kleinfahrzeuge, Mittelklassefahrzeuge, gehobene Mittelklasse und Transportfahrzeuge.  
+
+    Allen Kategorien sind eine bestimmte Höhe der Stunden-Mietpauschale und die Kosten pro gefahrenem km zugeordnet. Alle Werte sollen konfigurierbar sein. 
+
+    Alle Fahrzeuge werden regelmäßig von Fremdfirmen gewartet. Die entsprechenden Dienstleistungen sollen den Fahrzeugen chronologisch zugeordnet werden. \\
+    \hline
+    /LF60/ & Einem Standort können ein oder mehrere Fahrzeuge zugeordnet sein. Ein Fahrzeug ist immer nur einem Standort zugeordnet. \\
+    \hline
+    /LF70/ & Nach jeder Fahrt werden sofort die Rechnungen erstellt und dem Kunden per  
+    E-Mail zugesandt. Die Bezahlung der Rechnungen erfolgt über Bankeinzug, was durch das Finanzbuchhaltungssystem (FBH) erledigt wird und hier nicht betrachtet werden muss. Allerdings muss über die vorhandene Schnittstelle des FBH der Stand der Rechnungsbegleichung abgefragt werden, damit über das neue System erkennbar ist, ob und wann eine Rechnung bezahlt wurde. \\
+    \hline
+    /LF80/ & Buchungen können bis 10 Stunden vor Antritt der Fahrt storniert werden. \\
+    \hline
+    /LF90/ & Zur einfacheren Eingabe der Daten soll es Auswahllisten für deren Eigenschaften geben, wo immer es möglich ist. Die Auswahllisten sollen auf einfache Weise erweiterbar sein. \\
+    \hline
+    /LF100/ & Sämtlichen Elementen sollen mehrere Bilder mit Titel zugeordnet werden können, die zentral auf einem Verzeichnis liegen sollen \\
+    \hline
+\end{tabular}
+
+\section{Produktdaten}
+
+\begin{center}
+    \begin{tabular}[ht] {l | p{13cm}}
+        \hline
+        /LD10/ & Die Daten sollen zunächst in einer zentralen Datenbasis (lesbare Dateien) abgespeichert und später in eine Datenbank überführt werden. \\
+        \hline
+        
+    \end{tabular}
+\end{center}
+
+\section{Produktleistungen}
+
+\begin{center}
+    \begin{tabular}[ht] {l | p{13cm}}
+        \hline
+        /LL10/ & Die Anzahl der zu verwaltenden Elemente wird auf ca. 100.000 geschätzt. \\
+        \hline
+        /LL20/ & Um bei HW- und SW-Anschaffungen und -neuerungen flexibel zu bleiben, ist auf Plattformunabhängigkeit besonders zu achten. \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{Qualitätsanforderungen}
+
+\begin{center}
+    \begin{tabular} {l | c | c | c | c}
+        \hline
+        Produktqualität & sehr gut & gut & normal & nicht relevant \\
+        \hline
+        Funktionalität & X & & & \\
+        \hline
+        Zuverlässigkeit & & X & & \\
+        \hline
+        Effizienz & & X & & \\
+        \hline
+        Benutzbarkeit (auch Gestaltung) & X & & & \\
+        \hline
+        Wartbarkeit & & & X & \\
+        \hline
+        Übertragbarkeit (Portabilität) & & & X & \\
+        \hline
+    \end{tabular}
+\end{center}

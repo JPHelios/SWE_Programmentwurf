@@ -1,0 +1,86 @@
+\chapter{Aufgaben}
+
+Es handelt sich hier um eine vereinfachte Verwaltungs-Software. 
+Einzelne Lastenheftpunkte sind bewusst offengehalten. 
+Denken Sie darüber nach, welche Informationen zusätzlich sinnvoll oder auch notwendig sind. 
+Recherchieren Sie evtl. nach einzelnen Zusammenhängen im Internet. 
+
+\section{Analyse}
+
+Für die Analyse sind zu erstellen: 
+
+\begin{itemize}
+    \item Analyse des Lastenhefts (Fragen und Antworten).  
+    \item Ein Use-Case-Diagramm der gesamten Anwendung incl. Beschreibung. 
+    \item Eine Verfeinerung des Use-Case-Diagramms incl. Beschreibung. (nach Absprache) 
+    \item Ein Analyse-Klassendiagramm incl. Beschreibung (Untersuchen Sie dabei den Einsatz geeigneter Analysemuster) 
+    \item Einfache GUI-Skizzen (Mockups) von mindestens zwei wesentlichen GUI-Komponenten (Hauptseite, Tabs, etc.). Die Skizzen können mit einem einfachen Grafikprogramm erstellt werden. Auch sorgfältige Handzeichnungen sind erlaubt. Keine Login-GUI skizzieren! 
+\end{itemize}
+
+\section{Sequenzdiagramm und Aktivitätsdiagramm}
+
+Erstellen Sie ein Sequenzdiagramm und ein Aktivitätsdiagramm (incl. Beschreibung) für folgende Szenarios (ein AD für das eine Szenario, ein SD für das andere Szenario): 
+
+\begin{itemize}
+    \item Die Aktion „Standort mit neuen Fahrzeugen anlegen“ durchführen. Ausgehend von einem neuen Standort und \textbf{leerer Datenbasis} werden dessen gesamte Daten erfasst und in das System eingetragen. (dies wird als Gebrauchsanweisung für die Evaluation Ihrer Implementierung dienen) 
+    \item Die Aktionen „Buchung eines Fahrzeugs“ durchführen. Hierbei soll eine komplette Buchung inklusive Beendigung der Fahrt und bezahlen der Rechnung modelliert werden.  
+\end{itemize}
+
+Die Bewertung Ihrer Diagramme erfolgt auf der Basis der Nutzung der UML-Elemente, auf Ihrer Kreativität sowie dem Detaillierungsgrad des jeweiligen Diagramms. 
+
+Fassen Sie bei beiden Diagrammen die Eingabe aller primitiven Attribute eines Elements (Float, String, Integer, …) in einer einzigen Aktion zusammen (z.B. „Attribute eintragen“). 
+
+Für das Sequenzdiagramm ist das gewählte Szenario ausführlich zu entwickeln (idealerweise mit Pseudocode oder einer anderen Modellierungsmethode Ihrer Wahl). 
+Es sind sämtliche referenzierten Elemente zu berücksichtigen, die zugeordnet werden können.  
+
+In allen Fällen wird eine (noch) leere Datenbasis angenommen. Denken Sie an geeignete Diagrammverfeinerungen.  
+
+
+\section{Entwurf}
+
+Abzuliefern sind hier (alle Diagramme und GUIs jeweils mit Beschreibung): 
+
+\begin{itemize}
+    \item Entwurfsklassendiagramm (Untersuchen Sie dabei den Einsatz geeigneter Entwurfsmuster) 
+    \item GUI-Modellierung: 
+    Es ist das Kommunikationsschema eines Teils der während der Analyse skizzierten GUI mit \textbf{UML} zu modellieren. Die Anwendung selbst soll dabei nach dem einfachen Model-View-Control-Muster aufgebaut sein. Dazu sind mindestens ein Controller, die erforderlichen Modellklassen sowie eine unabhängige GUI (View) erforderlich.
+    \item Die meisten GUI-Elemente werden über eine einfache kleine Java-Bibliothek zur Verfügung gestellt (swe-utils.jar), deren GUI-Komponenten in das Klassendiagramm zu integrieren sind, wenn sie verwendet werden.
+    \item Die GUI-Modellierung kann in einem separaten Diagramm mit den relevanten (gewählten bzw. benötigten) Modellklassen erfolgen, falls das Entwurfsklassendiagramm sonst zu komplex werden würde.
+\end{itemize}
+
+
+\section{Implementierung}
+
+Es ist eine einfache Java-Applikation zu implementieren, die es ermöglicht, Carsharing-Daten anzulegen, zu ändern und zu löschen.  
+
+Zur Realisierung wird die oben bei der Entwurfsaufgabe erwähnte Java-Bibliothek zur Verfügung gestellt (\emph{swe-utils.jar}), die neben mehreren GUI-Komponenten einen \emph{CSVReader}, einen \emph{CSVWriter} sowie mehrere Interfaces bereitstellt (in den Packages \emph{event} und \emph{model}).  
+
+Daneben ist eine Mini-Test-Applikation gegeben, die die Funktionsfähigkeit der GUI-Komponenten demonstriert (Start mit \emph{java -jar swe-utils.jar}). Details sind der Java-Dokumentation der Bibliothek zu entnehmen. 
+
+Zur leichteren und zukunftssicheren Evaluation Ihres Programmentwurfs soll die Java-Applikation als eine Desktop-Applikation mit CSV-Dateien (alternativ XML oder JSON) als zentrale Datenbasis realisiert werden, die von beliebigen Rechnern aus gestartet wird. Dabei sind mehrere Dateien analog zu Datenbanktabellen zu erzeugen. 
+
+\textbf{Einzelne Aufgaben}
+
+\begin{itemize}
+    \item Hauptaufgabe ist die Realisierung einer MVC-Applikation mithilfe des Observer-Patterns entsprechend des vorgegebenen GUI-Entwurfs und der gegebenen Java-Bibliothek. 
+    \item Die Erzeugung der Instanzen soll in einer Entity-Factory erfolgen und zur Verwaltung der Instanzen ist ein Entity-Manager zu realisieren (beides siehe Vorlesung). 
+    \item Beim Anlegen einer Buchung muss für die Zuordnung von Hilfsmitteln sichergestellt sein, dass es keine zeitlichen Überschneidungen gibt (LF30+LF40).
+    \item Es muss eine ausführbare JAR-Datei abgegeben werden, die mit 
+
+    „java -jar SWE-PE-2022\_Carsharing\_<name1>\_<name2>.jar OPTIONEN“  
+
+    gestartet werden kann. Hierfür ist ein BASH-Skript namens \emph{startApp} zu erstellen
+    \item Geprüft wird das Anlegen einer Buchung mit der Zuordnung aller zugehörigen Elemente. Nach dem Anlegen wird die Applikation erneut gestartet und geprüft, ob alle Daten korrekt abgespeichert und beim Laden wieder zugeordnet werden.
+\end{itemize}
+
+\textbf{Verwendung von CSV-Dateien}
+
+\begin{itemize}
+    \item Die Daten sollen in CSV-Dateien vorliegen und können mittels den gegebenen Bibliotheksklassen \emph{CSVReader} und \emph{CSVWriter} gelesen bzw. beschrieben werden. Zur Vereinfachung können die Daten jeweils komplett geschrieben werden.
+    \item Abgegeben werden soll ein ZIP-File (oder TAR-File) mit allen Java- und CSV-Dateien (letztere gesammelt in einem eigenen Verzeichnis): 
+
+    „SWE-PE-2022\_Carsharing\_<n1>\_<n2>.zip (tar oder tar.z)  
+    \item Als OPTIONEN in der Startanweisung soll der Pfad zu den CSV-Dateien sowie zu einer Properties-Datei angegeben werden können: 
+
+    „java -jar SWE-PE-2022\_Carsharing\_<n1>\_<n2>.jar \textbf{–d <csvpath> –p <propfile>}"
+\end{itemize}
