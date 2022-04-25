@@ -443,45 +443,41 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Wie werden Schließberechtigungen verwaltet?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Am Auto soll ein Kartenscanner vorliegen, der die Karte einscannt. Im System ist ja bekannt welche Termine aktuell gebucht sind, wenn die präsentiere Karte mit dem Kunden, der den Termin gebucht hat, übereinstimmt, dann wird das Fahrzeug automatisch entriegelt. Während des Ausleihzeitraums kann das Auto normal verschlossen und auch wieder mit der Karte entsperrt werden.}
 
     \textcolor{YellowGreen}{Ist die Karte spezifisch für das Fahrzeug?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Nein, die Karte ist kundenspezifisch.}
 
     \textcolor{YellowGreen}{Welche Daten sind auf der Kundenkarte gespeichert?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Es muss auf der Karte ein eindeutiger Identifierer für den Kunden geben, zum Beispiel eine Kundennummer oder ähnliches. Weiterhin muss noch eine Sicherheitsvorkehrung existieren, die das einfache fälschen der Karten verhindert, auch wenn die Freigabe vollständig systemseitig stattfindet.}
 
-    \textcolor{YellowGreen}{Wo und in welcher Form sind die Kundendaten gespeichert? Magnetband, Chip oder QU-Code?}
+    \textcolor{YellowGreen}{Wo und in welcher Form sind die Kundendaten gespeichert? Magnetband, Chip oder QR-Code?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Die Daten sollen auf einem Chip gespeichert sein. Das Kartenlesegerät befindet sich im Auto und die Karte muss im verschlossenen Zustand von außen präsentiert werden.} 
 
     \textcolor{YellowGreen}{Sollen die Daten auf der Karte bearbeitet werden können?}
 
-    \textcolor{NavyBlue}{}
-
-    \textcolor{YellowGreen}{Sollen die Daten beim Scan manuell oder automatisch konvertiert werden?}
-
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Nein, da mit der Karte ausschließlich der Kunde identifiziert werden soll, ist es nicht nötig, dass diese Daten bearbeitet werden.}
 
     \textcolor{YellowGreen}{Wie lange müssen die Vertragsunterlagen und Buchungsbelege aufbewahrt werden?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Buchungen müssen nur so lange aufbewahrt werden, bis der Buchungstermin beendet ist. Vertragsunterlagen und Rechnungsbelege müssen jedoch 10 Jahre lang vorliegen.}
 
     \textcolor{YellowGreen}{Welche Art der Langzeitspeicherung gibt es? Magnetband, Festplatten, etc.?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Bis jetzt haben wir die Speicherung mittels Festplatten durchgeführt. Es wäre gut, wenn diese Art beibehalten werden könnte.}
 
     Ein kleiner Prozessor im Fahrzeug sendet nach Fahrtende (Terminende) die exakte Start- und Ende-Zeit sowie die gefahrenen Kilometer an einen Server. Diese Daten sollen von dem Server nach Buchungsende geholt und zur Berechnung der Kosten für die Buchung (und somit für die Rechnung) verwendet werden. 
     
     \textcolor{YellowGreen}{Soll dafür http oder ein eigenes Protokoll verwendet werden? Muss Verschlüsselung beachtet werden?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Es sollte auf alle Fälle ein gewisses Maß an Sicherheit vorhanden sein. Die technische Umsetzung würden wir ihnen überlassen.}
 
     \textcolor{YellowGreen}{Was passiert, wenn das Fahrzeug zu Terminende noch fährt?}
 
-    \textcolor{NavyBlue}{}
+    \textcolor{NavyBlue}{Es ist natürlich sehr ungünstig, dass das Auto direkt auf der Straße anhält, daher soll der Fahrbetrieb normal weitergehen, doch werden für die Zeitüberschreitugen zusätzliche Gebühren erhoben. Damit der Fahrer informiert wird, dass er das gebuchte Terminfenster überschritten hat, soll eine Warnleuchte in der Fahrerkabine angehen.}
     \\
     \hline
 \end{tabular}
