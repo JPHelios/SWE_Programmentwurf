@@ -1,0 +1,10 @@
+Fragen für Software-Engineering:
+
+Use-Case Diagramm: 
+	- Wie ausführlich müssen die einzelnen "verwalten"-Use-Cases ausgearbeitet sein
+
+Fragen und Antworten:
+	- Kann man im Nachhinein noch Fragen hinzufügen, wenn man doch einen Aspekt übersehen hat
+
+Analyse-Klassendiagramm:
+	- Was ist Ausrüstung
