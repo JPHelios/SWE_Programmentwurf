@@ -5,7 +5,9 @@ Dieses Repository fasst alle Analyse-Aspekte des Programmentwurfs zusammen
 
 Beschreibung des Admins is whack
 
-Immer referenzieren! Nicht "in der unten stehenden Tabelle" sonder "in Tabelle 3.1 auf Seite 12" mit \ref{} und \pageref{}
+Jedes Kapitel hat Text
+
+Immer referenzieren! Nicht "in der unten stehenden Tabelle" sondern "in Tabelle 3.1 auf Seite 12" mit \ref{} und \pageref{}
 
 Zeilenabstand in Use-Case Tabelle muss wieder erhöht werden (ist durch Nummerierung der Tabellen somehow flöten gegangen)
 
