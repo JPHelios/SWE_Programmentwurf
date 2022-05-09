@@ -3,8 +3,6 @@
 Dieses Repository fasst alle Analyse-Aspekte des Programmentwurfs zusammen
 
 
-# Beschreibung des Admins is whack
-
 Jedes Kapitel hat Text
 
 Immer referenzieren! Nicht "in der unten stehenden Tabelle" sondern "in Tabelle 3.1 auf Seite 12" mit \ref{} und \pageref{}
