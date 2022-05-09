@@ -2,7 +2,7 @@
 
 \section{Vorüberlegung}
 
-\begin{enumerate}[itemsep= 0 cm]
+\begin{enumerate}
     \item Buchung verwalten
     \begin{enumerate}[itemsep= -0.25 cm]
         \item Buchung eines Termins
@@ -98,7 +98,10 @@ Die analytische Darstellung der Use-Cases in Diagrammform erfolgt später in zwe
 \newpage
 
 \begin{table}[ht]
-    \begin{tabular}{l | p{13cm}}
+
+    \begin{onehalfspace}
+
+    \begin{tabular}{l | p{12.5cm}}
         \hline
         Use-Case 1: & Ein Kunde kann vor Ort in der Filiale einen Termin buchen. Dazu wird der Terminwunsch des Kunden entgegengenommen und der Filialmitarbeiter trägt den Termin als Buchung ins System ein. Zusätzlich ist es nötig, bestehende Buchungen bearbeiten zu können, sollte sich z.B. der Zeitraum der Buchung auf Wunsch des Kunden ändern. Es existiert auch der Fall, dass eine Buchung storniert wird, was bis zu 10h vor dem gebuchten Termin möglich ist. Die Mitarbeiter sollen natürlich auch bestehende Buchungen einsehen können\\
         \hline
@@ -109,12 +112,17 @@ Die analytische Darstellung der Use-Cases in Diagrammform erfolgt später in zwe
     \end{tabular}
     \caption{Use-Cases}
     \label{tbl:usecases1}
+
+    \end{onehalfspace}
 \end{table}
 
-\pagebreak
+\clearpage
 
 \begin{table}[ht]
-    \begin{tabular}{l | p{13cm}}
+
+    \begin{onehalfspace}
+
+    \begin{tabular}{l | p{12.5cm}}
         \hline
         Use-Case 4 & Die 'Vermietung' von Fahrzeugen ist der Kernbestandteil des Business-Konzepts des Car-Sharing-Unternehmens. Aus diesem Grund ist der Umfang der Verwaltung von Fahrzeugen umfangreicher als bei anderen Verwaltungsobjekten. Neben den mittlerweile als Standard-Aufgaben klassifizierten Aufgaben benötigen Fahrzeuge weiterhin Wartungstermine (beispielsweise für Reparaturen oder Reifenwechsel). Die Fahrzeuge sind an Standorten abgestellt. Sollten sich zu viele Fahrzeuge an einem Standort befinden, so müssen die Fahrzeuge wieder auf andere Standorte verteilt werden. Schließlich ist noch vorgesehen, dass jeder Fahrzeug-Datensatz Bilder enthält, die das Fahrzeug zeigen. Auch diese Bilder müssen im System hochgeladen werden. \\
         \hline
@@ -127,11 +135,17 @@ Die analytische Darstellung der Use-Cases in Diagrammform erfolgt später in zwe
     \end{tabular}
     \caption{Use-Cases}
     \label{tbl:usecases2}
+
+    \end{onehalfspace}
 \end{table}
-\pagebreak
+
+\clearpage
 
 \begin{table}[ht]
-    \begin{tabular}{l | p{13cm}}
+
+    \begin{onehalfspace}
+
+    \begin{tabular}{l | p{12.5cm}}
         \hline
         Use-Case 8 & Für die Verwaltung von Standorten sind die vier Grundverwaltungsaufgaben 'anlegen', 'bearbeiten', 'löschen' und 'einsehen' vorgesehen. Auch wenn die Standorte weniger dynamisch sind als andere Datensätze, so ist es doch möglich, dass das Unternehmen neue Fahrzeugstandorte aufbaut oder alte Standorte bei zu wenig Auslastung schließt. \\
         \hline
@@ -139,7 +153,7 @@ Die analytische Darstellung der Use-Cases in Diagrammform erfolgt später in zwe
         \hline
         Use-Case 10 & Eine Anforderung an die Desktopanwendung ist die Konfiguration der Benutzeroberfläche. Schriftgröße, Schriftart und Farbmodus sollen wählbar sein. Die Konfiguration findet anwendungsweit (also auf einzelnen Rechnern mit dieser Anwendung) statt.\\
         \hline
-        Use-Case 11 & Nach jeder abgeschlossenen Fahrt eines Kunden soll automatisch eine Rechnung erstellt werden. Da die Rechnung ein rechtsgültiges Dokument sein muss, ist die Bearbeitung des generierten Dokuments nicht möglich und auch das Löschen der Rechnung soll nicht möglich sein. Nach Abzahlung der offenen Rechnung soll nur die Archivierung erfolgen, welche über Jahre aufgehoben werden muss.\\ 
+        Use-Case 11 & Nach jeder abgeschlossenen Fahrt eines Kunden soll automatisch eine Rechnung erstellt werden. Da die Rechnung ein rechtsgültiges Dokument sein muss, ist die Bearbeitung des generierten Dokuments nicht möglich und auch das Löschen der Rechnung soll nicht möglich sein. Nach Abzahlung der offenen Rechnung soll nur die Archivierung erfolgen, welche für 10 Jahre aufgehoben werden muss.\\ 
         \hline
         Use-Case 12 & Sollte die Zahlung einer ausstehenden Rechnung überfällig sein, soll eine Mahnung zur Zahlung erstellt werden, welche an den Kunden geschickt wird. Die exakten finanziellen Abläufe sind wegen des bereits bestehenden Finanzbuchhaltungssystems für diese Arbeit nicht relevant. \\
         \hline
@@ -149,14 +163,25 @@ Die analytische Darstellung der Use-Cases in Diagrammform erfolgt später in zwe
     \end{tabular}
     \caption{Use-Cases}
     \label{tbl:usecases3}
+
+    \end{onehalfspace}
 \end{table}
 
-\newpage
+\clearpage
 
 \section{Use-Case Diagramm}
 
-\includegraphics[width=\textwidth, height=\textheight - 1.5 cm]{Bilder/Diagramme/Use-Case Diagramm.pdf}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth, trim = 0cm 8cm 0cm 0cm]{Bilder/Diagramme/Use-Case Diagramm.pdf}
+    \caption{Use-Case Diagramm}
+    \label{img:use_case_overview}
+\end{figure}
 
-\newpage
 
-\includegraphics[width=\textwidth, height=\textheight]{Bilder/Diagramme/Use Case 4_ Fahrzeug verwalten.pdf}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth, trim = 0cm 11cm 0cm 0cm]{Bilder/Diagramme/Use Case 4_ Fahrzeug verwalten.pdf}
+    \caption{Use-Case 4: Fahrzeug verwalten}
+    \label{img:use_case_4}
+\end{figure}
