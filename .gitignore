@@ -1,3 +1,8 @@
+.vscode
+*.aux
+*.lol
+*.syntex.gz
+
 
 Latex/Praxisbericht.out
 Latex/Praxisbericht.lof
@@ -22,6 +27,5 @@ Latex/Praxisbericht.lol
 Latex/Inhalt/03_Verzeichnisse/abkuerzungen.aux
 Latex/Praxisbericht.synctex.gz
 
-*.aux
 Latex/Praxisbericht.lol
 Latex/Praxisbericht.lol
