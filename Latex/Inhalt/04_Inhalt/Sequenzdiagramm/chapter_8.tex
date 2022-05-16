@@ -31,6 +31,15 @@ Der Kunde hat nun standardmäßig 30 Tage Zeit, um die Rechnung zu zahlen. Sollt
 
 \subsection{Buchung anlegen}
 
+
+Das Anlegen einer Buchung wird in Abbildung \ref{img:buchung01} auf Seite \pageref{img:buchung01} dargestellt. Die Sequenz beginnt damit, dass der Kunde einen Terminwunsch gegenüber einem Mitarbeiter äußert. Der Organisator öffnet daraufhin das Formular für das Anlegen einer Buchung und teilt dem Kunden mit, dass die Buchung nun entgegengenommen werden kann.
+
+Für die eigentliche Buchung nennt der Kunde dem Organisator zuerst den Zeitraum, den Standort und das Fahrzeug. Der Organisator trägt diese Daten in das Formular ein und klickt anschließend auf 'Buchung überprüfen'. Daraufhin lädt die Anwendung die Fahrzeug-, Standort- sowie Buchungsdaten und gleicht diese mit der Eingabe des Organisators ab. Falls es eine Kollision mit einer anderen Buchung gibt, wird die Buchung abgebrochen. In diesem Fall nennt der Kunde andere Buchungsdaten, bis es keine Kollision mehr gibt. Sollte es keine Kollision geben, wird die Buchung in der Datenbasis hinterlegt und das System bestätigt die Buchung. Daraufhin teilt der Organisator dem Kunden mit, dass die Buchung erfolgreich war.
+
+Optional kann der Kunde die Buchung nun stornieren. Dazu muss der Kunde gegenüber dem Organisator den Wunsch äußern, die Buchung zu stornieren. Der Organisator erfagt daraufhin den Namen des Kunden und gibt diesen in der entsprechenden Suchleiste ein. Die Anwendung lädt daraufhin die Kundendaten aus der Datenbasis und zeigt sie dem Organisator an. Im Anschluss erfagt der Organisator, welche Buchung der Kunde gern stornieren möchte. Nachdem der Kunde die Buchung spezifiziert hat, wählt der Organisator die entsprechende Buchung aus. Daraufhin lädt die Anwendung die Buchungsdaten für die spezifizierte Buchung aus der Datenbasis und zeigt diese Daten an. Der Organisator klickt anschließend auf 'Buchung stornieren', wodurch die Buchung aus der Datenbasis gelöscht wird. Der Organisator erhält darufhin eine Bestätigung für das Löschen der Buchung und teilt dem Kunden mit, dass die Buchung erfolgreich storniert wurde. 
+
+\newpage
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth, height=\textheight-4cm]{Bilder/Diagramme/SD_Buchungsvorgang_01.pdf}
@@ -38,9 +47,13 @@ Der Kunde hat nun standardmäßig 30 Tage Zeit, um die Rechnung zu zahlen. Sollt
     \label{img:buchung01}
 \end{figure}
 
+
 \clearpage
 
 \subsection{Fahrt antreten}
+
+Das Antreten einer Fahrt wird in Abbildung \ref{img:buchung02} auf Seite \pageref{img:buchung02} dargestellt. Hierbei lässt der Kunde zuerst seine Kundenkarte vom Lesegerät einscannen, welches die Kundendaten ausliest und im Anschluss die Buchungsdaten aus der Datenbasis lädt. Nachdem die Buchungsdaten geladen wurden wird zunächst der Standort überprüft, bevor die Kundendaten mit den Buchungsdaten abgeglichen werden. Bei einer übereinstimmung wird zuerst der Kilometerstand für die Abrechnung gespeichert und danach wird das Fahrzeug entriegelt. Nun kann der Kunde seine Fahrt beginnen. 
+
 
 \begin{figure}[!ht]
     \centering
@@ -53,12 +66,18 @@ Der Kunde hat nun standardmäßig 30 Tage Zeit, um die Rechnung zu zahlen. Sollt
 
 \subsection{Fahrt beenden}
 
+Das Beenden einer Fahrt wird in Abbildung \ref{img:buchung03} auf Seite \pageref{img:buchung03} dargestellt. Sobald der Kunde das Fahrzeug abstellt wird der Kilometerstand vom Lesegerät abgefragt und das Fahrzeug wird verriegelt. Während der Kunde auf seine Rechnung wartet wird der neue Kilometerstand an den Server gesendet, welcher nach Abfrage des alten Kilometerstands und den Buchungsdaten die gefahrenen Kilometer berechnet. Basierend auf den Buchungsdaten und den gefahrenen Kilometern wird eine Rechnung erstellt, welche vom Server per Mail an den Kunden geschickt wird.
+
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth, trim = 0cm 14cm 0cm 0cm]{Bilder/Diagramme/SD_Buchungsvorgang_03.pdf}
     \caption{Abschluss eines gebuchten Termins}
     \label{img:buchung03}
 \end{figure}
+
+Falls die Rechnung vom Kunden ignoriert wird, erhält der Kunde nach 30 und nach 45 Tagen eine Mahnung. Dies wird in Abbildung \ref{img:buchung03} auf Seite \pageref{img:buchung03} dargestellt. Um eine Mahnung zu versenden lädt der Server zuerst die Rechnungsdaten der überfälligen Rechnung von der Datenbasis.
+Im Anschluss erstellt der Server basierend auf der Rechnung eine Mahnung und sendet diese per Mail an den Kunden. Sollte der Kunde nach 60 Tagen nicht gezahlt haben, so wird er für vom Carsharing-Angebot ausgeschlossen. Dazu lädt der Server zuerst die Mahnungsdaten aus der Datenbasis, um den Status der Mahnung zu überprüfen. Wenn die Rechnung zu diesem Zeitpunkt nicht beglichen wurde, werden die Kundendaten aus der Datenbasis geladen und aktualisiert, sodass der Kunde für zukünftige Buchungen gesperrt ist. Sobald der Kunde blockiert ist sendet der Server eine Mail an den Kunden mit der Information, dass der Kunde in Zukunft vom Carsharing-Angebot ausgeschlossen ist und sein Schweizer Bankkonto eingefroren wurde.
 
 \begin{figure}[!ht]
     \centering
