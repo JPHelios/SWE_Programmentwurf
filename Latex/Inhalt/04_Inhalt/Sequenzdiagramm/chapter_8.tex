@@ -4,30 +4,39 @@ Im Folgenden wird der Vorgang eines vollständigen Buchungsdurchgangs betrachtet
 
 Bei der Erarbeitung wird aufgrund des Umfangs ein Teil der Detailtiefe entfernt. Die exakte Kommunikation mit der Datenbasis (in Realität mit einer Datenbank und im Projekt mit den CSV-Dateien) wird nicht betrachtet. Bei der Interaktion mit der Anwendung wird die Unterteilung in verschiedene GUIs unter dem Begriff 'Benutzeroberfläche' zusammengefasst. Es wird ebenfalls davon ausgegangen, dass für den Sequenzablauf benötigte Datensätze wie Fahrzeuge, Standorte, Kunden und Mitarbeiter bereits vorhanden sind und nicht erst angelegt werden müssen. Davon auszugehen, dass mit einer vollständig leeren Datenbasis begonnen wird ist für die Abbildung des Buchungsablaufs nicht zielführend. Aus diesem Grund wird angenommen, dass ausschließlich die Datenbasis der Buchungen, Rechnungen und Mahnungen leer ist. Weiterhin wird in den Sequenzdiagrammen auf die Verwendung von Funktionen verzichtet und Vorgänge werden umschrieben oder umgangssprachlich aufgeführt.
 
+\newpage
+
 \section{Aktionsbetrachtung: Buchung eines Fahrzeugs}
 
 Eine Buchung soll angelegt werden. Abgesehen vom eigentlichen Buchungsdurchgangs soll auch die Abrechnung des Buchungstermins einbezogen werden. Ausgehend davon lassen sich mehrere Teil-Abläufe identifizieren: Buchung eines Fahrzeugs, Stornierung einer Buchung, Antreten des gebuchten Termins, Beendigung der Fahrt mit Erstellung einer Rechnung und notfalls Mahnungen. Die Buchung und die Stornierung lassen sich zusammenfassen, gleiches gilt für die Beendigung und die Rechnungsausstellung. Da die Buchung über die Desktopanwendung ausschließlich in der Filiale stattfinden kann, ist ein Akteur der Organisator, der zweite Aktuer ist der Kunde.
 
 
-Der gesamte Buchungsvorgang beginnt damit, dass ein Kunde die Filiale betritt und einen Termin buchen möchte. Sobald der Kunde einen Terminwunsch und die damit verbundenen Bedinungen (Fahrzeug, Zeitraum, Standort) formuliert, kann der Organisator diese Daten in die Benutzeroberfläche eingeben und die Eingabe validieren lassen. Das System meldet anschließend zurück, ob die Eingabekombination buchbar ist oder nicht.
+Für die Buchung und Stornierung interagieren die Akteure mit der Benutzeroberfläche und der Datenbasis. Beim Fahrtantritt findet die Interaktion mit dem Kartenlesegerät und der Datenbasis ab. Das Ende der Fahrt inkludiert neben dem Lesegerät und der Datenbasis einen Server, die Rechnung und Mahnung, sowie den Kunden als Datensatz im System und nicht nur als Akteur.
 
 
-Die Stornierung eines gebuchten Termins ist bis zu 10 Stunden vor Antritt möglich. Um einen Termin stornieren zu können, muss der Kunde telefonisch oder in Person die Stornierung beim Organisator anfragen. Dieser filtert nach dem Kunden und wählt die betroffene Buchung aus. Sobald die richtige Buchung gefunden wurde, kann sie gelöscht werden.
+%Der gesamte Buchungsvorgang beginnt damit, dass ein Kunde die Filiale betritt und einen Termin buchen möchte. Sobald der Kunde einen Terminwunsch und die damit verbundenen Bedinungen (Fahrzeug, Zeitraum, Standort) formuliert, kann der Organisator diese Daten in die Benutzeroberfläche eingeben und die Eingabe validieren lassen. Das System meldet anschließend zurück, ob die Eingabekombination buchbar ist oder nicht.
 
 
-Beim Terminantritt muss der Kunde seine Kundekarte dem Kartenlesegerät präsentieren, welches zum gebuchten Fahrzeug gehört. Der darin enthaltene Mini-Controller vergleicht die in der Karte enthaltenen Kundendaten mit den Daten in der Datenbasis. Sofern für den Kunden eine Buchung hinterlegt ist, bei der das Fahrzeug und die Zeit übereinstimmen, wird das Fahrzeug vom Controller entsperrt.
+%Die Stornierung eines gebuchten Termins ist bis zu 10 Stunden vor Antritt möglich. Um einen Termin stornieren zu können, muss der Kunde telefonisch oder in Person die Stornierung beim Organisator anfragen. Dieser filtert nach dem Kunden und wählt die betroffene Buchung aus. Sobald die richtige Buchung gefunden wurde, kann sie gelöscht werden.
 
 
-Nach der finalen Abgabe überprüft der Controller den Kilometerstand und verriegelt anschließend das Fahrzeug. Serverseitig wird nun der neue Kilometerstand mit dem alten Stand verglichen und daraus wird die gefahrene Kilometeranzahl berechnet. Auf Basis der Buchung (enthält gebuchtes Fahrzeug, welches wieder auf die Preiskalssen verweist) und den Kilometern wird ein Rechnungsobjekt erstellt. Letztendlich erhält der Kunde per E-Mail einen visuellen Export des Rechnungsobjekts.
+%Beim Terminantritt muss der Kunde seine Kundekarte dem Kartenlesegerät präsentieren, welches zum gebuchten Fahrzeug gehört. Der darin enthaltene Mini-Controller vergleicht die in der Karte enthaltenen Kundendaten mit den Daten in der Datenbasis. Sofern für den Kunden eine Buchung hinterlegt ist, bei der das Fahrzeug und die Zeit übereinstimmen, wird das Fahrzeug vom Controller entsperrt.
 
 
-Der Kunde hat nun standardmäßig 30 Tage Zeit, um die Rechnung zu zahlen. Sollte die Frist versäumt werden, wird die erste Mahnung erstellt und dem Kunden zugesandt. Nach 45 Tagen erfolgt die zweite Mahnung. Sollte nach zwei Monaten die Rechnung immer noch ausstehend sein, wird das betroffene Kundenkonto gesperrt und rechtliche Schritte werden eingeleitet.
+%Nach der finalen Abgabe überprüft der Controller den Kilometerstand und verriegelt anschließend das Fahrzeug. Serverseitig wird nun der neue Kilometerstand mit dem alten Stand verglichen und daraus wird die gefahrene Kilometeranzahl berechnet. Auf Basis der Buchung (enthält gebuchtes Fahrzeug, welches wieder auf die Preiskalssen verweist) und den Kilometern wird ein Rechnungsobjekt erstellt. Letztendlich erhält der Kunde per E-Mail einen visuellen Export des Rechnungsobjekts.
+
+
+%Der Kunde hat nun standardmäßig 30 Tage Zeit, um die Rechnung zu zahlen. Sollte die Frist versäumt werden, wird die erste Mahnung erstellt und dem Kunden zugesandt. Nach 45 Tagen erfolgt die zweite Mahnung. Sollte nach zwei Monaten die Rechnung immer noch ausstehend sein, wird das betroffene Kundenkonto gesperrt und rechtliche Schritte werden eingeleitet.
+
+\newpage
 
 \newpage
 
 \section{Pseudo-Code}
 
 \lstinputlisting[style=Pseudocode, caption={Szenario Event anlegen}]{Quellcode/Pseudocode.txt}
+
+\newpage
 
 \section{Diagramme}
 
@@ -54,7 +63,7 @@ Optional kann der Kunde die Buchung nun stornieren. Dazu muss der Kunde gegenüb
 
 \subsection{Fahrt antreten}
 
-Das Antreten einer Fahrt wird in Abbildung \ref{img:buchung02} auf Seite \pageref{img:buchung02} dargestellt. Hierbei lässt der Kunde zuerst seine Kundenkarte vom Lesegerät einscannen, welches die Kundendaten ausliest und im Anschluss die Buchungsdaten aus der Datenbasis lädt. Nachdem die Buchungsdaten geladen wurden wird zunächst der Standort überprüft, bevor die Kundendaten mit den Buchungsdaten abgeglichen werden. Bei einer übereinstimmung wird zuerst der Kilometerstand für die Abrechnung gespeichert und danach wird das Fahrzeug entriegelt. Nun kann der Kunde seine Fahrt beginnen. 
+Das Antreten einer Fahrt wird in Abbildung \ref{img:buchung02} auf Seite \pageref{img:buchung02} dargestellt. Hierbei lässt der Kunde zuerst seine Kundenkarte vom Lesegerät einscannen, welches die Kundendaten ausliest und im Anschluss die Buchungsdaten aus der Datenbasis lädt. Nachdem die Buchungsdaten geladen wurden, wird zunächst der Standort überprüft, bevor die Kundendaten mit den Buchungsdaten abgeglichen werden. Bei einer übereinstimmung wird zuerst der Kilometerstand für die Abrechnung gespeichert und danach wird das Fahrzeug entriegelt. Nun kann der Kunde seine Fahrt beginnen. 
 
 
 \begin{figure}[!ht]
@@ -78,8 +87,8 @@ Das Beenden einer Fahrt wird in Abbildung \ref{img:buchung03} auf Seite \pageref
     \label{img:buchung03}
 \end{figure}
 
-Falls die Rechnung vom Kunden ignoriert wird, erhält der Kunde nach 30 und nach 45 Tagen eine Mahnung. Dies wird in Abbildung \ref{img:buchung03} auf Seite \pageref{img:buchung03} dargestellt. Um eine Mahnung zu versenden lädt der Server zuerst die Rechnungsdaten der überfälligen Rechnung von der Datenbasis.
-Im Anschluss erstellt der Server basierend auf der Rechnung eine Mahnung und sendet diese per Mail an den Kunden. Sollte der Kunde nach 60 Tagen nicht gezahlt haben, so wird er für vom Carsharing-Angebot ausgeschlossen. Dazu lädt der Server zuerst die Mahnungsdaten aus der Datenbasis, um den Status der Mahnung zu überprüfen. Wenn die Rechnung zu diesem Zeitpunkt nicht beglichen wurde, werden die Kundendaten aus der Datenbasis geladen und aktualisiert, sodass der Kunde für zukünftige Buchungen gesperrt ist. Sobald der Kunde blockiert ist sendet der Server eine Mail an den Kunden mit der Information, dass der Kunde in Zukunft vom Carsharing-Angebot ausgeschlossen ist und sein Schweizer Bankkonto eingefroren wurde.
+Falls die Rechnung vom Kunden ignoriert wird, erhält der Kunde nach 30 und nach 45 Tagen eine Mahnung. Dies wird in Abbildung \ref{img:buchung03} auf Seite \pageref{img:buchung03} dargestellt. Um eine Mahnung zu versenden, lädt der Server zuerst die Rechnungsdaten der überfälligen Rechnung von der Datenbasis.
+Im Anschluss erstellt der Server basierend auf der Rechnung eine Mahnung und sendet diese per Mail an den Kunden. Sollte der Kunde nach 60 Tagen nicht gezahlt haben, so wird er für vom Carsharing-Angebot ausgeschlossen. Dazu lädt der Server zuerst die Mahnungsdaten aus der Datenbasis, um den Status der Mahnung zu überprüfen. Wenn die Rechnung zu diesem Zeitpunkt nicht beglichen wurde, werden die Kundendaten aus der Datenbasis geladen und aktualisiert, sodass der Kunde für zukünftige Buchungen gesperrt ist. Sobald der Kunde blockiert ist, sendet der Server eine Mail an den Kunden mit der Information, dass der Kunde in Zukunft vom Carsharing-Angebot ausgeschlossen ist und sein Schweizer Bankkonto eingefroren wurde.
 
 \begin{figure}[!ht]
     \centering
