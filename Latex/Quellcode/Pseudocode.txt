@@ -1,0 +1,82 @@
+"Buchung anlegen"
+
+BEGINN BUCHUNG-ANLEGEN
+    Organisator klickt "Buchung anlegen"
+    Buchungsformular öffnet sich
+
+    SOLANGE nicht alle Felder ausgefüllt sind
+        Zeige Fehlermeldung "Bitte alle Felder ausfüllen"
+
+        WENN Kunde bereits im System vorhanden
+            Organisator wählt Kunde aus
+        SONST
+            FUEHRE AUS KUNDE-ANLEGEN
+            Organisator wählt Kunde aus
+        ENDE WENN
+
+        Organisator wählt Start- und Endetermin der Buchung
+        SOLANGE gewählter Endetermin vor dem Starttermin liegt
+            Zeige Fehlermeldung "Starttermin muss vor Endetermin liegen"
+            Organisator wählt Start- und Endetermin der Buchung
+        ENDE SOLANGE
+
+        Organisator wählt Standort aus
+        Fahrzeuge des gewählten Standortes laden
+        Fahrzeuge des gewählten Standortes werden angezeigt
+        Organisator wählt Fahrzeug aus
+
+        WENN Kunde verfügt über Rabattcode
+            Organisator wählt Rabattaktion aus
+        SONST
+            Organisator wählt "-" bei Rabattaktion aus.
+        ENDE WENN
+    ENDE SOLANGE
+
+    Organisator klickt auf "Buchung überprüfen"
+    WENN Fahrzeug nicht verfügbar
+        SOLANGE Fahrzeug nicht verfügbar
+            Zeige Fehlermeldung "Das gewählte Fahrzeug ist in diesem Zeitraum nicht verfügbar"
+            Organisator wählt Fahrzeug aus
+        ENDE SOLANGE
+    ENDE WENN
+    Buchung speichern
+
+    WENN Kunde möchte Buchung stornieren
+        FUEHRE AUS BUCHUNG-STORNIEREN
+    ENDE WENN
+ENDE BUCHUNG-ANLEGEN
+
+
+BEGINN KUNDE-ANLEGEN
+    Formular für das Anlegen eines Kunden zeigen
+    Solange nicht alle Felder ausgefüllt sind
+        Zeige Fehlermeldung "Bitte alle Felder ausfüllen"
+        Organisator trägt Vorname des Kunden ein
+        Organisator trägt Nachname des Kunden ein
+        Organisator trägt Adresse des Kunden ein
+        Organisator trägt Mail-Adresse des Kunden ein 
+        Organisator trägt Telefonnummer des Kunden ein
+        Organisator trägt Nummer des Schweizer Bankkontos des Kunden ein
+        Organisator klickt auf "Kunde" anlegen
+        WENN Schweizer Bankkonto valide
+            Sende Verifizierungs-Mail an die angegebene Mail-Adresse
+            Kunde klickt auf "Verifizieren"
+        SONST
+            Sende Mail mit Anzeige wegen Betrug an Polizei
+            Abbruch des Anlegens
+        ENDE WENN
+ENDE KUNDE-ANLEGEN
+
+
+BEGINN BUCHUNG-STORNIEREN
+    Organisator klickt auf "Kunden"
+    Zeige Übersicht aller Kunden an
+    Organisator wählt Kunde aus
+    Organisator wählt Buchung aus
+    Organisator klickt "Stornieren"
+    Organisator klickt erneut "Stornieren"
+    Buchung wird aus Datenbasis gelöscht
+ENDE BUCHUNG-STORNIEREN
+
+        
+    

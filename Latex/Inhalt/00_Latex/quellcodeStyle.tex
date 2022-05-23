@@ -165,3 +165,20 @@
 	keywordstyle=[2]\color{CDSFunc}
 }
 
+
+\definecolor{comment}{HTML}{606060}
+\definecolor{string}{HTML}{6060FF}
+\definecolor{keywords}{HTML}{606000}
+
+\lstdefinestyle{Pseudocode} {
+	morekeywords={WENN, SOLANGE, ENDE, BEGINN, FUEHRE, AUS, SONST, GIB, UND, FUER, NICHT, SOBALD},
+	morecomment=[l]{;},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]\=,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\bfseries\color{keywords},
+	stringstyle=\color{string},
+	commentstyle=\itshape\color{comment},
+	xleftmargin=3.0ex
+}
+
