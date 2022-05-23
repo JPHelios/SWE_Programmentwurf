@@ -33,6 +33,30 @@ Bevor der Standort gespeichert wird, erfolgt die Überprüfung, ob dieser Stando
 
 \subsection{Fahrzeug anlegen}
 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth, trim = 0cm 11cm 0cm 0cm]{Bilder/Diagramme/AD_Fahrzeug_anlegen.pdf}
+    \caption{Aktivitätsdiagramm: Fahrzeug anlegen}
+    \label{img:fahrzeug}
+\end{figure}
+
+Die eingentliche Aktion, die mit den Aktivitätsdiagrammen analysiert werden soll, ist das Anlegen eines Standortes mit Fahrzeugen. Nur zum besseren Verständnis wurde diese Aktion aufgeteilt, d. h., dass der gesamte Vorgang eigentlich flüssig hintereinander abläuft und der Mitarbeiter, der sich bereits für das Anlegen eines Standortes angemeldet hat, immer noch im System eingeloggt befindet. Theoretisch könnte eine Unterbrechung möglich sein und wurde daher exemplarisch in dieses Diagramm eingebaut. 
+
+
+Viele Bestandteile des Diagramms sind dem Standort-Diagramm sehr ähnlich, da dass Erstellen und Eingeben von Datensätzen in allen Anwendungsfällen ähnlich ist.
+
+
+Sollte der Mitarbeiter noch im System tätig sein, so wird er sich bereits irgendwo auf den Benutzeroberflächen befinden und muss sich im Verwaltungsbereich der Anwendung zur Fahrzeug-GUI navigieren. Sollte der Mitarbeiter, aus welchen Gründen auch immer, nicht mehr im System angemeldet sein, so muss dieser sich zuerst wieder anmelden. 
+
+
+Die Formularbearbeitung ist identisch zum Aufbau bei den Standorten. Da es auch hier irrelevant ist in welcher Reihenfolge die Daten eingegeben werden, wird Parallelisierung verwendet, um dies darzustellen. Die meisten Eingabeaktionen enthalten "eingeben", doch gibt es einige Aktionen, die "auswählen" lauten und somit eine Auswahlmöglichkeit in Form von Drop-Down-Listen implizieren.
+
+
+Einem Fahrzeug kann Ausrüstung hinzugefügt werden, was durch eine Decision-Node dargestellt wird. Da die Ausrüstung von Fahrzeugen aus Objekten wie Fahrradträger, Dachbox oder Hundetransportskäfig besteht, ist es möglich, dass ein Fahrzeug mehrere Ausrüstungsgegenstände hat. Um eine variable Anzahl an Ausrüstungsgegenständen einem Fahrzeug zuweisen zu können gibt es mittels weiterer Decision-Nodes einen Rückverweis, der solange wiederholt werden kann, bis die hinzugefügte Ausrüstung als vollständig erachtet wird. 
+
+
+Das Hinzufügen eines Bildes für die Detail-Seite der Fahrzeuge ist bei Fahrzeugen sogar wichtiger als bei einem Standort, aber die Funktionsweise ist trotzdem identisch. Dabei ist das Hinzufügen von Ausrüstungsobjekten und Bildern optional und kann auch später durch Bearbeitung hinzugefügt werden. Bei der Speicherung wird ebenfalls überprüft, ob das Fahrzeug bereits existiert, dabei soll später das Kennzeichen als Vergleichswert verwendet werden. 
+
 \newpage
 
 \subsection{Fahrzeug einem Standort zuordnen}
@@ -42,6 +66,7 @@ Bevor der Standort gespeichert wird, erfolgt die Überprüfung, ob dieser Stando
 
 AnalyseKlassenDiagramm: 
 - Abändern: Fahrzeug kann 0 oder 1 Standort zugeordnet sein
+- Abändern: Standort darf auch 1 Bild haben
 
 Sequenzdiagramm:
 - Erstellen: Pseudo-Code ausstehend
