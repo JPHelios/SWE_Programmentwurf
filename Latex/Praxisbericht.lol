@@ -1,4 +1,4 @@
-\babel@toc {ngerman}{}\relax 
+\babel@toc {ngerman}{}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
@@ -16,9 +16,7 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {8.1}Szenario Event anlegen}{56}{lstlisting.8.1}%
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {lstlisting}{\numberline {8.1}{\ignorespaces Szenario Event anlegen}}{56}{lstlisting.8.1}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

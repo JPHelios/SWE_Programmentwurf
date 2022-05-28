@@ -61,13 +61,12 @@ Das Hinzufügen eines Bildes für die Detail-Seite der Fahrzeuge ist bei Fahrzeu
 
 \subsection{Fahrzeug einem Standort zuordnen}
 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth, trim = 0cm 11cm 0cm 0cm]{Bilder/Diagramme/FahrzeugStandortZuordnen.pdf}
+    \caption{Aktivitätsdiagramm: Fahrzeug einem Standort zuordnen}
+    \label{img:fahrzeugzuordnen}
+\end{figure}
 
-\chapter{To-Do}
+Nachdem die Standorte und Fahrzeuge angelegt wurden, können die Fahrzeuge einem Standort zugewiesen werden. Die Zuweisung wird in Abbildung \ref{img:fahrzeugzuordnen} dargestellt. Dazu wird davon ausgegangen, dass der Mitarbeiter noch nicht im System angemeldet ist. Daher ist der erste Schritt die Anmeldung im System. Sollte die Eingabe bei der Anmeldung fehlerhaft sein so wird eine Fehlermeldung angezeigt und der Nutzer kann nicht auf die Anwendung zugreifen. Falls die Anmeldung erfolgreich ist, wird dem Nutzer die Startansicht angezeigt. Um nun ein Fahrzeug einem Standort zuzuweisen muss der Nutzer zunächst auf die Fahrzeug-GUI navigieren. Hier kann das Fahrzeug, welches einem Standort zugewiesen werden soll, ausgewählt werden. Nachdem der Nutzer auf 'Bearbeiten geklickt hat, ist die Auswahl eines Standortes möglich. Sobald der Nutzer auf 'Speichern' klickt wird sowohl der Datensatz des Standortes als auch der Datensatz des Fahrzeugs angepasst und gespeichert.
 
-AnalyseKlassenDiagramm: 
-- Abändern: Fahrzeug kann 0 oder 1 Standort zugeordnet sein
-- Abändern: Standort darf auch 1 Bild haben
-
-Sequenzdiagramm:
-- Erstellen: Pseudo-Code ausstehend
-- Erstellen: Diagramm für neuen Kunden anlegen
