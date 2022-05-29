@@ -1,0 +1,118 @@
+"Standort mit Fahrzeugen anlegen"
+
+BEGINN STANDORT-MIT-FAHRZEUGEN-ANLEGEN
+    FUEHRE AUS STANDORT-ANLEGEN
+    FUEHRE AUS FAHRZEUG-ANLEGEN
+    FUEHRE AUS ZUORDNEN
+ENDE STANDORT-MIT-FAHRZEUGEN-ANLEGEN 
+
+
+BEGINN STANDORT-ANLEGEN
+    Mitarbeiter gibt Nutzername und Passwort ein
+    Mitarbeiter klickt auf anmelden
+    WENN Nutzername nicht existiert ODER Passwort falsch
+        Zeige Fehlermeldung 'Fehlerhafte Anmeldung'
+    SONST
+        Zeige Startseite
+    ENDE WENN
+    Mitarbeiter klickt auf Standorte
+    Zeige Standort-GUI
+    Mitarbeiter klickt auf Button '+' oder auf Link 'neuen Standort'
+    Zeige Formular für das Anlegen eines Standortes
+
+    SOLANGE nicht alle Felder ausgefüllt sind
+        Zeige Fehlermeldung 'Bitte füllen Sie alle Felder aus, um einen neuen Standort anzulegen.'
+        Mitarbeiter gibt Name an
+        Mitarbeiter gibt Beschreibung an
+        Mitarbeiter gibt Straße an
+        Mitarbeiter gibt Hausnummer an
+        Mitarbeiter gibt Postleitzahl an
+        Mitarbeiter gibt Stadt an
+        Mitarbeiter gibt maximale Fahrzeuganzahl an
+    ENDE SOLANGE
+
+    WENN Mitarbeiter hat Administrator-Rolle
+        WENN Mitarbeiter möchte Bilder hochladen
+            Mitarbeiter klickt auf 'Bild hochladen'
+            Mitarbeiter wählt Bild aus
+        ENDE WENN
+    ENDE WENN
+    
+    Mitarbeiter klickt auf 'Standort speichern'
+    
+    WENN Standort bereits vorhanden
+        Zeige Fehlermeldung 'Standort bereits vorhanden'
+    SONST
+        Zeige Bestätigung für das Speichern des Datensatzes
+    ENDE WENN
+ENDE STANDORT-ANLEGEN
+
+
+
+BEGINN FAHRZEUG-ANLEGEN
+    WENN Mitarbeiter noch nicht angemeldet
+        Mitarbeiter gibt Nutzername und Passwort ein
+        Mitarbeiter klickt auf anmelden
+        WENN Nutzername nicht existiert ODER Passwort falsch
+            Zeige Fehlermeldung 'Fehlerhafte Anmeldung'
+        SONST
+            Zeige Startseite
+        ENDE WENN
+    ENDE WENN
+    Mitarbeiterklickt auf 'Fahrzeuge'
+    Zeige Fahrzeug-GUI
+    Mitarbeiter klickt auf Button '+' oder auf Link 'neues Fahrzeug'
+    Zeige Formular für das Anlegen eines Standortes
+
+    SOLANGE nicht alle Felder ausgefüllt sind
+        Zeige Fehlermeldung 'Bitte füllen Sie alle Felder aus, um einen neuen Standort anzulegen.'
+        Mitarbeiter gibt Kennzeichen an
+        Mitarbeiter gibt Farbe an
+        Mitarbeiter gibt Modell an
+        Mitarbeiter gibt Beschreibung an
+        Mitarbeiter wählt Marke aus
+        Mitarbeiter gibt Baujahr an
+        Mitarbeiter wählt Fahrzeugklasse aus
+        Mitarbeiter wählt Reifensatz aus
+    ENDE SOLANGE
+
+    SOLANGE Fahrzeug verfügt über nicht zugewiesene Ausrüstung
+        Mitarbeiter wählt Ausrüstung aus
+    ENDE SOLANGE
+
+    WENN Mitarbeiter hat Administrator-Rolle
+        WENN Mitarbeiter möchte Bilder hochladen
+            Mitarbeiter klickt auf 'Bild hochladen'
+            Mitarbeiter wählt Bild aus
+        ENDE WENN
+    ENDE WENN
+    
+    Mitarbeiter klickt auf 'Fahrzeug speichern'
+    
+    WENN Fahrzeug bereits vorhanden
+        Zeige Fehlermeldung 'Fahrzeug bereits vorhanden'
+    SONST
+        Zeige Bestätigung für das Speichern des Datensatzes
+    ENDE WENN
+ENDE FAHRZEUG-ANLEGEN
+
+
+
+BEGINN ZUORDNEN
+    WENN Mitarbeiter noch nicht angemeldet
+        Mitarbeiter gibt Nutzername und Passwort ein
+        Mitarbeiter klickt auf anmelden
+        WENN Nutzername nicht existiert ODER Passwort falsch
+            Zeige Fehlermeldung 'Fehlerhafte Anmeldung'
+        SONST
+            Zeige Startseite
+        ENDE WENN
+    ENDE WENN
+    Mitarbeiterklickt auf 'Fahrzeuge'
+    Zeige Fahrzeug-GUI
+    Mitarbeiter wählt Fahrzeug aus
+    Mitarbeiter klickt auf 'Bearbeiten'
+    Mitarbeiter wählt Standort aus
+    Mitarbeiter klickt auf 'Speichern'
+    Zeige Bestätigung für das Speichern des Datensatzes
+ENDE ZUORDNEN
