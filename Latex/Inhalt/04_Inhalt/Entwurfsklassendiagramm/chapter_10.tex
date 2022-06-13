@@ -55,14 +55,19 @@ Dieses Paket beinhaltet alle Klassen, welche die Benutzeroberfläche betreffen. 
 Für die Implementierung der Carsharingsoftware verwenden wir verschiedene Entwurfsmuster, welche das Auftreten von Problemen verhindern sollen. Solche Entwurfsmuster sind wiederverwendbare Schablonen zur Problemlösung. Im folgenden Abschnitt werden die verwendeten Entwurfsmuster genauer erläutert und erklärt, wie diese für die Implementierung eingesetzt werden. 
 
 \subsection{EntityManager}
-Bezüglich des EntityManagers wurde sich dafür entschieden eine generische Klasse zu implementieren, welche alle gespeicherten Entitäten verwaltet. 
+Bezüglich des EntityManagers wurde sich dafür entschieden eine generische Klasse zu implementieren, welche alle gespeicherten Entitäten verwaltet. Dies hat den Vorteil, dass die Verwaltung der Entitäten sehr simpel dargestellt und Implementiert werden kann.
 
 \subsection{Builder}
+Für das Erstellen von komplexeren Klassen setzen wir in unserem Entwurf sogenannte Builder ein. Zu diesen Klassen gehören die Buchung, das Fahrzeug, der Standort sowie der Mitarbeiter. Durch den Builder wird ein schrittweises Erstellen von Instanzen dieser Objekte ermöglicht, wodurch die Erstellung dieser Objekte deutlich vereinfacht wird.
 
 \subsection{EntityFactory}
+Die EntityFactory wird verwendet, um Instanzen einzelner Klassen zu erstellen. Dazu verfügt die EntityFactory für jede Klasse, für welche eine Instanz erzeugt werden soll, über eine Methode, welche nach der Persistierung des Objektes mithilfe des EntityManagers eine Instanz zurückgibt. Um solche Insatnzen zu erstellen, müssen den Methoden verschiedene Parameter übergeben werden. Diese Parameter werden im Diagramm zur Vereinfachung als 'properties' dargestellt.
 
 \subsection{Singleton}
+Ein Singleton stellt sicher, dass es zu einer Klasse nur genau ein einziges Objekt gibt. Diese Singletons werden in unserem Entwurf an verschiedenen Stellen eingesetzt. Bei diesen Stellen handelt es sich um die Klasse 'Carsharing', den EntityManager und die EntityFactory. Mit der Verwendung dieses Entwurfsmusters wird die Verhinderung des Auftretens von Dateninkonsistenzen beabsichtigt.
 
-\subsection{Observer}
+\subsection{Beobachter}
+Mit Beobachtern kann auf die Veränderung von Objekten reagiert werden. Solche Beobachter wurden in unserem Entwurf lediglich passiv implementiert. Das heißt, dass die Beobachter nicht aktiv den Zustand eines konkreten Objektes abfragen, sondern nur dann benachrichtigt werden , wenn Änderungen aufgetreten sind. Dadurch ergibt sich eine größere Vielfalt der Abstraktionsmöglichkeiten und die Wiederverwendbarkeit von einzelnen Komponenten.
 
 \subsection{Kompositum}
+Das Kompositum wird genutzt um Teil-Ganzes-Hierachien darzustellen. In unserem Entwurfsklassendiagramm wird dies zum einem bei der Modellierung des Reifensatzes eines Fahrzeuges und zum anderen auch bei der Modellierung der Benutzeroberfläche genutzt. Ein Reifensatz besteht hierbei aus vier oder fünf Reifen, je nachdem, ob ein Ersatzrad vorhanden ist und bei der Benutzeroberfläche sind die Unteransichten ein Teil der Hauptansicht.
