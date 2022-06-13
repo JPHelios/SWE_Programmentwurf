@@ -2,6 +2,17 @@
 
 Im folgenden Kapitel wird das Entwurfsklassendiagramm genauer erklärt. Das Entwurfsklassendiagramm erweitert das Analyseklassendiagramm um Pakete und weitere Elemente, welche für die Umsetzung notwendig sind. Untergliedert wird dieses Kapitel in die Erklärung der verschiedenen Pakete und die vewendeten Entwurfsmuster.
 
+\section{Diagramm}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth, trim = 0cm 12cm 0cm 0cm]{Bilder/Diagramme/Entwurfsklassendiagramm.pdf}
+    \caption{Aktivitätsdiagramm: Fahrzeug einem Standort zuordnen}
+    \label{img:ekd}
+\end{figure}
+
+\newpage
+
 \section{Pakete}
 
 \subsection{model.buchung}
@@ -16,7 +27,7 @@ Das Fahrzeug besitzt Attribute, welche Auskunft über den Hersteller, das Baujah
 \subsection{model.kunde}
 
 Dieses Paket enthält nur die Klasse 'Kunde' und die Klasse 'Vertrag' da dies Bereits alle Klassen sind, welche einen direkten Bezug zum Kunden haben.
-Die Klasse 'Vertrag' enthält nur den Pfad unter welchem  der Vertrag gespeichert wurde. Die Klasse 'Kunde' enthält hingegen alle Informationen, welche für die Kontaktierung des Kunden notwendig sind.
+Die Klasse 'Vertrag' enthält nur den Pfad, unter welchem der Vertrag gespeichert wurde. Die Klasse 'Kunde' enthält hingegen alle Informationen, welche für die Kontaktierung des Kunden notwendig sind.
 
 \subsection{model.standort}
 
@@ -28,11 +39,11 @@ In diesem Paket befinden sich Klassen, welche von verschiedenen anderen Klassen 
 
 \subsection{app}
 
-Hier befindet sich zum einen die zentrale Klasse 'Carsharing', welche die Main-Methode für das starten der Anwendung beinhaltet. Diese Klasse wird als Singleton implementiert. Zum anderen befindet sich hier die 'EntityFactory' und der 'BuchungBuilder', welche für das Erzeugen von Instanzen der Klassen aus den Model-Paketen, welche in der Datenbasis gespeichert werden. Für die Buchungen wird extra ein Builder implementiert, da es sich hierbei um eine besonders komplexe Klasse handelt. 
+Hier befindet sich zum einen die zentrale Klasse 'Carsharing', welche die Main-Methode für das Starten der Anwendung beinhaltet. Diese Klasse wird als Singleton implementiert. Zum anderen befindet sich hier die 'EntityFactory' und der 'BuchungBuilder', welche für das Erzeugen von Instanzen der Klassen aus den Model-Paketen, welche in der Datenbasis gespeichert werden. Für die Buchungen wird extra ein Builder implementiert, da es sich hierbei um eine besonders komplexe Klasse handelt. 
 
 \subsection{swe-utils}
 
-Dieses Paket enthält eigentlich noch wesentlich mehr Klassen, welche jedoch nicht mit dargestellt werden, da sie für die Anwendung irrelevant sind. Die enthalten Klassen beinhalten den 'CSVReader' und 'CSVWriter', welche im EntityManager für das speichern der Daten eingesetzt werden. Für diese Persistierung der Daten ist das Interface 'IPersistable' enthalten. Außerdem befindet sich hier auch der 'PropertyManager' und der 'AppLogger'.
+Dieses Paket enthält eigentlich noch wesentlich mehr Klassen, welche jedoch nicht mit dargestellt werden, da sie für die Anwendung irrelevant sind. Die enthalten Klassen beinhalten den 'CSVReader' und 'CSVWriter', welche im EntityManager für das Speichern der Daten eingesetzt werden. Für diese Persistierung der Daten ist das Interface 'IPersistable' enthalten. Außerdem befindet sich hier auch der 'PropertyManager' und der 'AppLogger'.
 
 \subsection{database}
 Dieses Paket beinhaltet nur eine Klasse. Dabei handelt es sich um den generischen 'EntityManager', welcher von der Klasse 'GenericEntityManager' aus dem Paket 'swe-utils' erbt. Diese Klasse wird als Singleton implementiert und ist für die Verwaltung der Entitäten verantwortlich.
