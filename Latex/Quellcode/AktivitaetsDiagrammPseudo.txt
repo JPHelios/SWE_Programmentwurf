@@ -2,8 +2,10 @@
 
 BEGINN STANDORT-MIT-FAHRZEUGEN-ANLEGEN
     FUEHRE AUS STANDORT-ANLEGEN
-    FUEHRE AUS FAHRZEUG-ANLEGEN
-    FUEHRE AUS ZUORDNEN
+    SOLANGE Nicht alle Fahrzeuge angelegt und zugeordnet UND maximale Fahrzeugzahl des Standortes nicht überschritten
+        FUEHRE AUS FAHRZEUG-ANLEGEN
+        FUEHRE AUS ZUORDNEN
+    ENDE SOLANGE
 ENDE STANDORT-MIT-FAHRZEUGEN-ANLEGEN 
 
 
@@ -11,17 +13,17 @@ BEGINN STANDORT-ANLEGEN
     Mitarbeiter gibt Nutzername und Passwort ein
     Mitarbeiter klickt auf anmelden
     WENN Nutzername nicht existiert ODER Passwort falsch
-        Zeige Fehlermeldung 'Fehlerhafte Anmeldung'
+        Zeige Fehlermeldung "Fehlerhafte Anmeldung"
     SONST
         Zeige Startseite
     ENDE WENN
     Mitarbeiter klickt auf Standorte
     Zeige Standort-GUI
-    Mitarbeiter klickt auf Button '+' oder auf Link 'neuen Standort'
+    Mitarbeiter klickt auf Button "+" oder auf Link "neuen Standort"
     Zeige Formular für das Anlegen eines Standortes
 
     SOLANGE nicht alle Felder ausgefüllt sind
-        Zeige Fehlermeldung 'Bitte füllen Sie alle Felder aus, um einen neuen Standort anzulegen.'
+        Zeige Fehlermeldung "Bitte füllen Sie alle Felder aus, um einen neuen Standort anzulegen."
         Mitarbeiter gibt Name an
         Mitarbeiter gibt Beschreibung an
         Mitarbeiter gibt Straße an
@@ -33,15 +35,15 @@ BEGINN STANDORT-ANLEGEN
 
     WENN Mitarbeiter hat Administrator-Rolle
         WENN Mitarbeiter möchte Bilder hochladen
-            Mitarbeiter klickt auf 'Bild hochladen'
+            Mitarbeiter klickt auf "Bild hochladen"
             Mitarbeiter wählt Bild aus
         ENDE WENN
     ENDE WENN
     
-    Mitarbeiter klickt auf 'Standort speichern'
+    Mitarbeiter klickt auf "Standort speichern"
     
     WENN Standort bereits vorhanden
-        Zeige Fehlermeldung 'Standort bereits vorhanden'
+        Zeige Fehlermeldung "Standort bereits vorhanden"
     SONST
         Zeige Bestätigung für das Speichern des Datensatzes
     ENDE WENN
@@ -54,18 +56,18 @@ BEGINN FAHRZEUG-ANLEGEN
         Mitarbeiter gibt Nutzername und Passwort ein
         Mitarbeiter klickt auf anmelden
         WENN Nutzername nicht existiert ODER Passwort falsch
-            Zeige Fehlermeldung 'Fehlerhafte Anmeldung'
+            Zeige Fehlermeldung "Fehlerhafte Anmeldung"
         SONST
             Zeige Startseite
         ENDE WENN
     ENDE WENN
-    Mitarbeiterklickt auf 'Fahrzeuge'
+    Mitarbeiterklickt auf "Fahrzeuge"
     Zeige Fahrzeug-GUI
-    Mitarbeiter klickt auf Button '+' oder auf Link 'neues Fahrzeug'
+    Mitarbeiter klickt auf Button "+" oder auf Link "neues Fahrzeug"
     Zeige Formular für das Anlegen eines Standortes
 
     SOLANGE nicht alle Felder ausgefüllt sind
-        Zeige Fehlermeldung 'Bitte füllen Sie alle Felder aus, um einen neuen Standort anzulegen.'
+        Zeige Fehlermeldung "Bitte füllen Sie alle Felder aus, um einen neuen Standort anzulegen."
         Mitarbeiter gibt Kennzeichen an
         Mitarbeiter gibt Farbe an
         Mitarbeiter gibt Modell an
@@ -82,15 +84,15 @@ BEGINN FAHRZEUG-ANLEGEN
 
     WENN Mitarbeiter hat Administrator-Rolle
         WENN Mitarbeiter möchte Bilder hochladen
-            Mitarbeiter klickt auf 'Bild hochladen'
+            Mitarbeiter klickt auf "Bild hochladen"
             Mitarbeiter wählt Bild aus
         ENDE WENN
     ENDE WENN
     
-    Mitarbeiter klickt auf 'Fahrzeug speichern'
+    Mitarbeiter klickt auf "Fahrzeug speichern"
     
     WENN Fahrzeug bereits vorhanden
-        Zeige Fehlermeldung 'Fahrzeug bereits vorhanden'
+        Zeige Fehlermeldung "Fahrzeug bereits vorhanden"
     SONST
         Zeige Bestätigung für das Speichern des Datensatzes
     ENDE WENN
@@ -103,16 +105,19 @@ BEGINN ZUORDNEN
         Mitarbeiter gibt Nutzername und Passwort ein
         Mitarbeiter klickt auf anmelden
         WENN Nutzername nicht existiert ODER Passwort falsch
-            Zeige Fehlermeldung 'Fehlerhafte Anmeldung'
+            Zeige Fehlermeldung "Fehlerhafte Anmeldung"
         SONST
             Zeige Startseite
         ENDE WENN
     ENDE WENN
-    Mitarbeiterklickt auf 'Fahrzeuge'
+    Mitarbeiterklickt auf "Fahrzeuge"
     Zeige Fahrzeug-GUI
     Mitarbeiter wählt Fahrzeug aus
-    Mitarbeiter klickt auf 'Bearbeiten'
+    zeige Fahrzeugdetails
+    Mitarbeiter klickt auf "Bearbeiten"
+    Fahrzeugdetails können bearbeitet werden
     Mitarbeiter wählt Standort aus
-    Mitarbeiter klickt auf 'Speichern'
+    Mitarbeiter klickt auf "Speichern"
+    Datensatz speichern
     Zeige Bestätigung für das Speichern des Datensatzes
 ENDE ZUORDNEN

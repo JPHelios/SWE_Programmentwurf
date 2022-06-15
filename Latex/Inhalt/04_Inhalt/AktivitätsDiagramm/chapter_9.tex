@@ -3,10 +3,28 @@
 In diesem Kapitel erfolgt die Erarbeitung der Aktion 'Standort mit neuen Fahrzeugen anlegen' in Form von Aktivitätsdiagrammen. Da hierbei von einer vollständig leeren Datenbasis ausgegangen werden soll, muss jedoch die Aktion aufgegliedert werden. Die Unteraktionen 'Standort anlegen', 'Fahrzeug anlegen' und letztendlich 'Fahrzteug einem Standort zuordnen' müssen somit voneinander getrennt betrachtet werden. 
 
 \section{Pseudo-Code}
+Im folgenden Diagramm wird der Pseudocode für das Anlegen eines Standortes mit neuen Fahrezeugen erläutert. Da dies einen großen Umfang hat, wurde der Pseudocode in mehrere Methoden unterteilt, welche separat erklärt werden. Zu diesen Methoden gehören STANDORT-MIT-FAHRZEUGEN-ANLEGEN, STANDORT-ANLEGEN, FAHRZEUG-ANLEGEN und ZUORDNEN.
 
-\lstinputlisting[style=Pseudocode, caption={Szenario Standort mit Fahrzeugen anlegen}]{Quellcode/AktivitaetsDiagrammPseudo.txt}
+Die Methode STANDORT-MIT-FAHRZEUGEN-ANLEGEN ist die Ausgangsmethode, welche die anderen Methoden aufruft. Für das Anlegen eines neuen Standortes mit Fahrzeugen muss zuerst der Standort angelegt werden. Dazu wird die Methode STANDORT-ANLEGEN ausgeführt. Daraufhin können Fahrzeuge angelegt werden und dem Standort zugeordnet werden. Dies geschieht mithilfe der Methoden FAHRZEUG-ANLEGEN und ZUORDNEN. Diese beiden Methoden können solange Wiederholt werden, bis alle Fahrzeuge die dem Standort zugeordnet werden sollen auch dem Standort zugeordnet sind oder die maximale Fahrzeuganzahl des Standortes erreicht wurde.
+\lstinputlisting[firstline = 3, lastline=9, style=Pseudocode, caption={Szenario Standort mit Fahrzeugen anlegen}]{Quellcode/AktivitaetsDiagrammPseudo.txt}
+
+Die erste Methode, welche in STANDORT-MIT-FAHRZEUGEN-ANLEGEN aufgerufen wird, ist die STANDORT anlegen. Hier wird davon ausgegangen, dass der Mitarbeiter noch nicht angemeldet ist. Daher wird muss der Mitarbeiter sich erst mit NUtzername und Passwort anmelden. Gelingt die Anmeldung, so landet der Mitarbeiter auf der Startansicht. Von da aus kann der Mitarbeiter zur Standortansicht navigieren. Dort kann ein neuer Standort erstellt werden. Dazu muss der Mitarbeiter nur auf das '+' oder auf den Link 'neuer Standort' klicken. Dadurch wird das Formular zum Anlegen eines Standortes geöffnet. Hier füllt der Mitarbeiter nun ähnlich wie beim anlegen eines Kunden auf Seite
+\pageref{code:KundeAnlegen} alle Eingabefelder aus. Dazu gehören Name, Beschreibung, Adresse und die maximale Anzahl an Fahrzeugen. Falls der Mitarbeiter die Administrator-Rolle hat, kann er noch Bilder hochladen. Anschließend kann der Standort gespeichert werden. Bevor der Standort aber in die Datenbasis gespeichert wird, wird zuerst überprüft, ob der Standort bereits existiert.\label{code:StandortAnlegen}
+
+\lstinputlisting[firstline = 12, lastline=50, style=Pseudocode, caption={Methode um Standort anzulegen}]{Quellcode/AktivitaetsDiagrammPseudo.txt}
+
+Nachdem der Standort angelegt wurde müssen zunächst die Fahrzeuge angelegt werden. Dies geschieht mit der Methode FAHRZEUGE-ANLEGEN. Zuerst wird hier überprüft, ob der Mitarbeiter bereits angemeldet ist. Falls dies nicht der Fall ist, muss sich der Mitarbeiter erst anmelden. Um ein Fahrzeug anzulegen muss der Mitarbeiter zunächst zur Fahrzeugansicht navigieren. Dort kann der Mitarbeiter wie beim Anlegen des Standortes (siehe Seite \pageref{code:StandortAnlegen}) das Anlegeformular öffnen. Hier muss das Kennzeichen, die Farbe, das Modell, die Beschreibung, die Marke, das Baujahr, die Fahrzeugklasse sowie ein Refiensatz angegeben werden. Außerdem kann optional auch Ausrüstung hinzugefügt werden. Falls der Mitarbeiter die Administrator-Rolle hat kann er Bilder für das Fahrzeug hochladen. Im Anschluss kann das Fahrzeug gespeichert werden, indem der Mitarbeiter auf 'Speichern' klickt. Falls dieses Fahrzeug bereits existiert wird hier ebenfalls eine Fehlermeldung angezeigt. Ansonsten wird eine Betstätigung des Speicherns angezeigt.
+
+\lstinputlisting[firstline = 54, lastline=99, style=Pseudocode, caption={Methode um Fahrzeug anzulegen}]{Quellcode/AktivitaetsDiagrammPseudo.txt}
+
+Nun muss das Fahrzeug nur noch einem Standort zugeordnet werden. Dies geschieht mit der Methode ZUORDNEN. Dabei wird zuerst wieder überprüft, ob der Nutzer noch angemeldet ist. Falls nicht muss sich der Mitarbeiter erst wieder im System anmelden. Wenn der Mitarbeiter angemeldet ist, muss er zuerst zur Ansicht für die Fahrzeuge navigieren. Dort kann er das entsprechende Fahrzeug auswählen. Daraufhin werden die Fahrzeugdetails angezeigt. Dort ist auch ein Knopf 'Bearbeiten' zu finden. Wenn der Mitarbeiter auf diesen klickt kann er die Daten des Fahrzeuges bearbeiten und auch einen Standort auswählen. Sobald ein Standort ausgewählt wurde, klickt der Mitarbeiter auf 'Speichern'. Der Datensatz wird dann gespeichert und dem Mitarbeiter wird eine Benachrichtigung angezeigt, dass die Änderung erfolgreich war.
+
+\lstinputlisting[firstline = 103, lastline=123, style=Pseudocode, caption={Methode um ein Fahrzeug einem Standort zuzuordnen}]{Quellcode/AktivitaetsDiagrammPseudo.txt}
+\newpage
 
 \section{Diagramme}
+
+Im folgenden Abschnitt werden die Aktivitätsdiagramme für den Pseudocode erläutert.
 
 \newpage
 

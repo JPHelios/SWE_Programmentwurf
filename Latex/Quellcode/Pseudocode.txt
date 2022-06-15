@@ -57,10 +57,11 @@ BEGINN KUNDE-ANLEGEN
         Organisator trägt Mail-Adresse des Kunden ein 
         Organisator trägt Telefonnummer des Kunden ein
         Organisator trägt Nummer des Schweizer Bankkontos des Kunden ein
-        Organisator klickt auf "Kunde" anlegen
+        Organisator klickt auf "Kunde anlegen"
         WENN Schweizer Bankkonto valide
             Sende Verifizierungs-Mail an die angegebene Mail-Adresse
             Kunde klickt auf "Verifizieren"
+            Kunde Speichern
         SONST
             Sende Mail mit Anzeige wegen Betrug an Polizei
             Abbruch des Anlegens
@@ -72,10 +73,13 @@ BEGINN BUCHUNG-STORNIEREN
     Organisator klickt auf "Kunden"
     Zeige Übersicht aller Kunden an
     Organisator wählt Kunde aus
+    Zeige Kundendetails
     Organisator wählt Buchung aus
+    Zeige Buchungsdetails
     Organisator klickt "Stornieren"
+    Zeige Warnmeldung "Wollen Sie die Buchung wirklich stornieren?"
     Organisator klickt erneut "Stornieren"
-    Buchung wird aus Datenbasis gelöscht
+    Buchung wird als storniert markiert
 ENDE BUCHUNG-STORNIEREN
 
         
