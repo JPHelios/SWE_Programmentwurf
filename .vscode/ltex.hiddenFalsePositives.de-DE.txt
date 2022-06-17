@@ -47,3 +47,5 @@
 {"rule":"WURDEN_WORDEN","sentence":"^\\QDa es auch hier irrelevant ist in welcher Reihenfolge die Daten eingegeben werden, wird Parallelisierung verwendet\\E$"}
 {"rule":"WURDEN_WORDEN","sentence":"^\\QDa es auch hier irrelevant ist in welcher Reihenfolge die Daten eingegeben werden, wird Parallelisierung verwendet, um dies darzustellen.\\E$"}
 {"rule":"FRAGEZEICHEN_STATT_PUNKT","sentence":"^\\QSollte die Eingabe bei der Anmeldung fehlerhaft sein so wird eine Fehlermeldung angezeigt und der Nutzer kann nicht auf die Anwendung zugreifen.\\E$"}
+{"rule":"DE_AGREEMENT","sentence":"^\\QDas EKD erweitert das Analyseklassendiagramm um Pakete und weitere Elemente, welche für die Umsetzung notwendig sind.\\E$"}
+{"rule":"DE_AGREEMENT","sentence":"^\\QDas EKD erweitert das Analyseklassendiagramm um Pakete, Methoden, Attribute und weitere Elemente, welche für die Umsetzung notwendig sind.\\E$"}
