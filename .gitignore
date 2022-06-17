@@ -29,3 +29,6 @@ Latex/Praxisbericht.synctex.gz
 
 Latex/Praxisbericht.lol
 Latex/Praxisbericht.lol
+*.aux
+*.aux
+Latex/Inhalt/04_Inhalt/Aufgabe/chapter_1.aux
