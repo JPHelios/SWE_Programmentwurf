@@ -26,8 +26,8 @@ Bisher werden die Mitgliedschaften und Vermietungen mit einem inzwischen in die 
 
 \textcolor{YellowGreen}{Was macht ein Mitglied aus, Eigenschaften hat es?}
 
-\textcolor{NavyBlue}{Ein Mitglied ist in dem Sinne nichts weiter als ein Kunde bei anderen Unternehmen, der die Dienstleistung unserer Firma in Anspruch nimmt. 
-In diesem Sinne beschreibt es eine reale Person, mit allen Informationen, die zur Abbildung nötig sind. 
+\textcolor{NavyBlue}{Ein Mitglied ist ein Kunde, der die Dienstleistung unserer Firma in Anspruch nimmt. 
+In diesem Sinne beschreibt ein Mitglied eine reale Person, mit allen Informationen, die zur Abbildung nötig sind. 
 Besonders wichtig ist uns in dabei die Mail-Adresse, der Name sowie Vorname, die Adresse und eine Telefonnummer. Die Mitglieder sollen außerdem eindeutig identifizierbar sein.} %Attribute von Mitgliedern?
 
 \textcolor{YellowGreen}{Welche Anforderungen müssen erfüllt werden, damit man als Mitglied (ins System) aufgenommen werden kann?}
@@ -71,7 +71,7 @@ Sollten im Rahmen der Entwicklung Hardware-Anschaffungen nötig sein, haben wir 
 
 \textcolor{YellowGreen}{Welche Form soll die Software haben? Soll es zum Beispiel eine Webapp oder eine Desktopanwendung sein?}
 
-\textcolor{NavyBlue}{Siehe Zusammenspiel mit anderen Systemen}
+\textcolor{NavyBlue}{Siehe Zusammenspiel mit anderen Systemen.}
 
 Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backups und zum Datenaustausch möglich sein. 
 
@@ -85,11 +85,11 @@ Ein selektiver Import und Export von Daten über lesbare Dateien muss für Backu
 
 \textcolor{YellowGreen}{Was wollen Sie selektieren können, was nicht?}
 
-\textcolor{NavyBlue}{An sich sollen alle Datensätze selektiert werden können, die Mitgliederdaten, Termin- und Buchungsdaten, sowie Rechnungsdaten enthalten. Kurz gesagt alle Daten, die auch für eine sinnvolle Erstellung von Backups benötigt werden. }
+\textcolor{NavyBlue}{Es sollen alle Datensätze selektiert werden können, die Mitgliederdaten, Termin- und Buchungsdaten, sowie Rechnungsdaten enthalten. Kurz gesagt alle Daten, die auch für eine sinnvolle Erstellung von Backups benötigt werden. }
 
 \textcolor{YellowGreen}{Wo und wie werden die Backups gespeichert?}
 
-\textcolor{NavyBlue}{Wir haben einige externe Festplatten, die wir für das Überspielen der Backups an den Server anschließen. Die Aufbewahrung erfolgt im Firmentresor im Büro der Geschäftsführung. }
+\textcolor{NavyBlue}{Wir haben einige externe Festplatten, die wir für das Überspielen der Backups an den Server anschließen. Die Aufbewahrung erfolgt im Firmentresor im Büro der Geschäftsführung.}
 
 \textcolor{YellowGreen}{Wie oft werden Backups durchgeführt?}
 
@@ -140,7 +140,7 @@ Es sollen keine besonderen Computerkenntnisse zur Bedienung der Software erforde
 
 \textcolor{YellowGreen}{Muss es besondere Farb-Modi für z.B. Farbenblindheit, etc. geben?}
 
-\textcolor{NavyBlue}{Auf Anfrage unserer IT-Abteilung wäre es gut, wenn die Anwendung auch so ein \grqq{}Dark Theme\grqq{} besitzt}
+\textcolor{NavyBlue}{Auf Anfrage unserer IT-Abteilung wäre es gut, wenn die Anwendung auch so ein \grqq{}Dark Theme\grqq{} besitzt.}
 
 \subsection{Anwendungsbereiche}
 
@@ -180,7 +180,7 @@ Es soll verschiedene Benutzerrollen geben:
 
     \textcolor{YellowGreen}{Kann jeder Organisator alles?}
 
-    \textcolor{NavyBlue}{Organisatoren haben vollen Zugriff auf Buchungs- und Fahrzeugdaten, Lesezugriff auf Rechnungsdaten und keinen Zugriff auf etwaige Personaldaten.}
+    \textcolor{NavyBlue}{Organisatoren haben vollen Zugriff auf Buchungs- und Fahrzeugdaten, Lesezugriff auf Rechnungsdaten und keinen Zugriff auf etwaige Personaldaten. Außerdem soll es für Organisatoren nicht möglich sein Bilder hochzuladen.}
 
     \textcolor{YellowGreen}{Woraus bestehen die Buchungsdaten?}
     \textcolor{NavyBlue}{
@@ -193,7 +193,7 @@ Es soll verschiedene Benutzerrollen geben:
         \end{itemize}
     }
 
-    \textcolor{YellowGreen}{Wie sollen die Daten gespeichert werden?}
+    \textcolor{YellowGreen}{Wie sollen die Buchungsdaten gespeichert werden?}
 
     \textcolor{NavyBlue}{Die Daten sollen als zusammengehörender Datensatz wie auch alle anderen Daten gespeichert werden. (siehe oben)}
 
@@ -243,7 +243,7 @@ Die Daten über die Angestellten (Gehälter bzw. Löhne, Steuern, Kranken- und R
 
 \textcolor{YellowGreen}{Welche Personaldaten werden dann verwaltet?}
 
-\textcolor{NavyBlue}{Die benannten Personaldaten beziehen sich auf die Daten der Mitglieder, also alle Menschen, die unsere Dienstleistung des Car-Sharings nutzen.}
+\textcolor{NavyBlue}{In der Anwendung sollen nur anwendungsbezogene Personaldaten wie Rechte innerhalb der Anwendung etc. verwaltet werden.}
 
 \textcolor{YellowGreen}{Welche Kundendaten werden verwaltet?}
 
@@ -253,7 +253,6 @@ Die Daten über die Angestellten (Gehälter bzw. Löhne, Steuern, Kranken- und R
         \item Adresse
         \item Kontaktdaten
         \item Vertragsdaten (als .pdf)
-        \item Führerscheinkopie (als .pdf)
         \item bisherige Buchungen
         \item Zahlungsdaten
     \end{itemize}
@@ -270,15 +269,15 @@ Die Software soll aus zwei Teilen bestehen:
 
     \textcolor{YellowGreen}{Gibt es Online-Banking, Kartenzahlung, etc.?}
 
-    \textcolor{NavyBlue}{Für Online-Buchungen soll natürlich die Möglichkeit bestehen einfach per Kreditkarte oder PayPal zu bezahlen.}
+    \textcolor{NavyBlue}{Dies ist leider nicht möglich, da die zu zahlende Summe erst nach der Fahrt sicher feststeht. Daher wird standardmäßig per Rechnung gezahlt. In Zukunft soll es auch möglich sein per SEPA-Lastschriftmandat zu zahlen.}
 
     \textcolor{YellowGreen}{Soll für Kunden, die in der Filiale buchen, auch eine Buchung auf Rechnung möglich sein?}
 
-    \textcolor{NavyBlue}{ In der Filiale ist es nur möglich auf Rechnung zu Zahlen, da die Kosten ja erst nach der Fahrt errechnet werden. }
+    \textcolor{NavyBlue}{In der Filiale ist es nur möglich auf Rechnung zu Zahlen, da die Kosten ja erst nach der Fahrt errechnet werden. }
 
     \textcolor{YellowGreen}{Gibt es noch weitere Zahlungsmethoden, die verwendet werden können?}
 
-    \textcolor{NavyBlue}{Für Onlinebuchungen oder in der Filiale soll die Möglichkeit existieren per SEPA-Lastschrift automatisch die Kosten einzubeziehen. Dazu muss offiziell ein Mandat vom Mitglied aus erteilt werden, wie es auch bei anderen Produkten gang und gäbe ist.}
+    \textcolor{NavyBlue}{Für Onlinebuchungen oder in der Filiale soll die Möglichkeit existieren per SEPA-Lastschrift automatisch die Kosten einzubeziehen. Dazu muss offiziell ein Mandat vom Mitglied aus erteilt werden.}
 
     \item Eine neue Web-Seite soll unseren Online-Kunden ermöglichen, nach einer Authentifizierung alle Standorte anzeigen zu lassen sowie natürlich die dort befindlichen Fahrzeuge, welche für einen anzugebenden Zeitbereich online gebucht werden können. 
     
@@ -312,15 +311,15 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Wie werden Kunden von Mitarbeitern unterschieden? Unterscheidung durch Login?}
 
-    \textcolor{NavyBlue}{Abgesehen von den vergebenen Rollen, sollen sich die Nutzer im System mittels Benutzername und Kennwort anmelden. Wir verwenden intern IDs für unsere Mitarbeiter, es wäre also gut, wenn wir diese als Benutzername verwenden könnten. Kunden haben keine solchen IDs, also entweder müssten sie auch welche erhalten oder sich mit der E-Mail anmelden.}
+    \textcolor{NavyBlue}{Abgesehen von den vergebenen Rollen, sollen sich die Nutzer im System mittels Benutzername und Kennwort anmelden. Wir verwenden intern IDs für unsere Mitarbeiter, es wäre also gut, wenn wir diese als Benutzername verwenden könnten. Kunden haben keine solchen IDs, da sie nicht in Konatkt mit der Desktopanwendung kommen sollen. Also ist eine Betrachtung des Kunden in Zusammenhang mit der Benutzeroberfläche der Desktopanwendung irrelevant.}
 
     \textcolor{YellowGreen}{Wie sind die Benutzergruppen definiert?}
 
-    \textcolor{NavyBlue}{Durch die unterschiedlichen Rechte sollen die unterschiedlichen Nutzergruppen leicht abgewandelte Nutzeroberflächen verwenden können.}
+    \textcolor{NavyBlue}{Durch die unterschiedlichen Rechte sollen die unterschiedlichen Nutzergruppen leicht abgewandelte Benutzeroberflächen verwenden können.}
 
     \textcolor{YellowGreen}{Sollen firmenspezifische Symbole, Farbmuster, etc. integriert werden oder ist dies eher nebensächlich?}
 
-    \textcolor{NavyBlue}{Da die Desktopanwendung intern verwendet wird, ist ein Firmen-Farbkonzept eher überflüssig, auch wenn zumindest die Darstellung des Logos wünschenswert ist. Für die Webanwendung dagegen, die direkten Kundenkontakt haben wird, ist die Verwendung eines Farbschemas wichtig, wobei unsere Firmenfarben Schwarz-Gelb sind.}
+    \textcolor{NavyBlue}{Da die Desktopanwendung intern verwendet wird, ist ein Firmen-Farbkonzept eher überflüssig, auch wenn zumindest die Darstellung des Logos wünschenswert ist. Für die Webanwendung dagegen, die direkten Kundenkontakt haben wird, ist die Verwendung eines Farbschemas wichtig, wobei unsere Firmenfarben Schwarz-Gelb sind. Bei einer firmeninternen Umfrage wurde ermittlet, dass die Lieblingsfarbe unserer Mitarbeiter rosa-rot ist. Unsere Mitarbeiter würden sich dementsprechend sehr über ein rosa-rotes Farbschema freuen.}
 
     Es sollen zahlreiche Konfigurationsdaten gespeichert und beim nächsten Start des Programms verwendet werden (z.B. aktuelle Größe und Position des Fensters). Daneben sollen einige Elemente vor dem Start konfigurierbar sein (z.B. Überschriften, Schriftarten und -größen usw.). \\
     \hline
@@ -338,6 +337,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
     \textcolor{NavyBlue}{
         \begin{itemize}
             \item Textgröße
+            \item Fenstergröße
             \item Schriftart
             \item Dark- oder Lightmodus
         \end{itemize}
@@ -345,7 +345,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Sollen die Werte dazu frei auswählbar oder in einem gewissen Rahmen vorgegeben sein?}
 
-    \textcolor{NavyBlue}{Nein, es soll in allen Fällen eine Auswahl geben. Für die Textgröße soll zwischen klein, normal und groß entschieden werden können.
+    \textcolor{NavyBlue}{Nein, es soll in allen Fällen eine Auswahl geben. Für die Textgröße soll zwischen klein, normal und groß entschieden werden können. Bezüglich der Fenstergröße soll man die gängigsten Größen, wie auch bei anderen Programmen wählen können.
     Als Schriftart soll man \grqq{}Calibri\grqq{}, \grqq{}Arial\grqq{}, \grqq{}Times New Roman\grqq{} und für unsere älteren Mitarbeiter auch \grqq{}Old English Text MT\grqq{} auswählen können. Beim Farb-Modus gibt es nur die Option zwischen \grqq{}Hell\grqq{} oder \grqq{}Dunkel\grqq{} zu wählen.}
 
     \textcolor{YellowGreen}{Sollen die Konfigurationsdaten anwendungsspezifisch oder benutzerspezifisch sein?} 
@@ -364,25 +364,25 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
     \textcolor{NavyBlue}{
         \begin{itemize}
             \item Administrator: Hat Zugriff auf alle Datenbestände und Funktionen
-            \item Organisator: Fahrzeuge, Kunden, Buchungen, Rechnungen
+            \item Organisator: Fahrzeuge (bis auf Bilder), Kunden, Buchungen, Rechnungen
             \item Personalmitarbeiter: Personal/Kundenstammdaten
             \item Kunde: aktuell noch keine Zugriffe, später aber Fahrzeuge, Standorte, eigene Buchungen
         \end{itemize} 
     }
 
-    \textcolor{YellowGreen}{Welche Daten soll für Mitarbeiter, Fahrzeuge, Standorte, Kunden, Buchungen, Rechnungen, Änderungen, Stornierungen und Mahnungen erhoben werden?}
+    \textcolor{YellowGreen}{Welche Daten sollen für Mitarbeiter, Fahrzeuge, Standorte, Kunden, Buchungen, Rechnungen, Änderungen, Stornierungen und Mahnungen erhoben werden?}
 
     \textcolor{NavyBlue}{
         \begin{itemize}
-            \item  Mitarbeiter: nicht nötig, dafür haben wir unser eigenes System
+            \item  Mitarbeiter: Rollen und Kontaktmöglichkeiten
             \item Fahrzeug: Kennzeichen, Typ/Bezeichnung, Kategorie, Farbe, Baujahr, Buchungen 
-            \item Standort: Adresse, ansässige Fahrzeuge 
+            \item Standort: Adresse, ansässige Fahrzeuge, maximale Fahrzeugzahl 
             \item Kunde: siehe 5.2.4
             \item Buchung: siehe 5.2.3
             \item Rechnung: Inhalt der Buchung (Fahrzeug, Dauer), Gesamtkosten, Steuern, Rechnungsadresse, Rechnungsnummer, gefahrene Kilometer 
-            \item Änderung: Benutzer, der die Änderung vorgenommen hat, betroffene Buchung, Inhalt der Änderung, Zeitpunkt der Änderung 
-            \item Stornierung: Benutzer, der die Stornierung vorgenommen hat, betroffene Buchung, Zeitpunkt der Stornierung, Grund der Stornierung 
-            \item Mahnung: Rechnung
+            \item Änderung: Änderungszeitpunkt und Person, welche verantwortlich für Änderung ist
+            \item Stornierung: Es ist nur relevant, ob eine Buchung storniert wurde oder nicht
+            \item Mahnung: siehe Rechnung
         \end{itemize}       
     } \\
     \hline
@@ -408,7 +408,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Gibt es Rabatte für längere Buchungen? Ab wann gilt eine Buchung als länger?}
 
-    \textcolor{NavyBlue}{Es ist bei uns schon öfter vorgekommen, dass Kunden ein Fahrzeug (meistens Kastenwagen) für länger als einen Tag brauchen, da sie beispielsweise Umziehen und keine Firma in Auftrag geben wollen. In solchen Fällen wollen wir einen Rabatt ermöglichen, der am Ende der Abrechnung erstattet wird. Die genaue Preisliste kann gerne nachgeliefert werden.}
+    \textcolor{NavyBlue}{Nein das gibt es nicht. Allerdings soll es Rabattaktionen geben, welche sich auf ganze Fahrzeugklassen beziehen, geben.}
 
     \textcolor{YellowGreen}{Soll es auch Eventwochen und Rabattaktionen geben?}
 
@@ -418,7 +418,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
     
     \textcolor{YellowGreen}{Müssen alle Änderungen sichtbar sein oder nur die Letzte?}
 
-    \textcolor{NavyBlue}{Ja, es sollen alle Änderungen sichtbar sein wie in einem Ticket-System.}
+    \textcolor{NavyBlue}{Für unseren Anwendungsfall reicht es aus, wenn nur die letzte Änderung zu sehen ist.}
     \\
     \hline
 \end{tabular}
@@ -494,7 +494,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     Ein kleiner Prozessor im Fahrzeug sendet nach Fahrtende (Terminende) die exakte Start- und Ende-Zeit sowie die gefahrenen Kilometer an einen Server. Diese Daten sollen von dem Server nach Buchungsende geholt und zur Berechnung der Kosten für die Buchung (und somit für die Rechnung) verwendet werden. 
     
-    \textcolor{YellowGreen}{Soll dafür http oder ein eigenes Protokoll verwendet werden? Muss Verschlüsselung beachtet werden?}
+    \textcolor{YellowGreen}{Soll dafür HTTP oder ein eigenes Protokoll verwendet werden? Muss Verschlüsselung beachtet werden?}
 
     \textcolor{NavyBlue}{Es sollte auf alle Fälle ein gewisses Maß an Sicherheit vorhanden sein. Die technische Umsetzung würden wir ihnen überlassen.}
 
@@ -519,7 +519,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Gibt es Events wie Angebotswochen?}
 
-    \textcolor{NavyBlue}{Dies ist in Zukunft auf jeden Fall geplant, jedoch Bedarf dies auch nur einer Änderung der Preise in der Konfigurationsdatei.}
+    \textcolor{NavyBlue}{Dies ist in Zukunft auf jeden Fall geplant.}
 
     \textcolor{YellowGreen}{Können Mitglieder Prämien sammeln, die zu Vergünstigungen oder ähnliches führen?}
 
@@ -596,7 +596,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
     \textcolor{YellowGreen}{Impliziert diese Einschränkung auch, dass Buchungen unter der 10h-Grenze nicht mehr möglich sind oder einfach nur nicht storniert werden können?}
 
-    \textcolor{NavyBlue}{Ja. Da die Buchung von unseren Mitarbeitern freigeschaltet werden muss, ist auch hierfür eine Grenze von 10h einzubauen.}
+    \textcolor{NavyBlue}{Buchungen sollen auch spontan möglich sein. Allerdings können sie dann nicht mehr storniert werden.}
     \\
     \hline
 \end{tabular}
@@ -680,7 +680,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 
         \textcolor{YellowGreen}{Wie sieht die Backupstrategie für Datenbasis und Datenbank aus?}
 
-        \textcolor{NavyBlue}{Um die Datenbank kümmert sich wie bereits erwähnt unsere IT-Abteilung. Da die Datenbasis sowieso abgelöst werden soll, müssen hier keine Backups erstellt werden.}
+        \textcolor{NavyBlue}{Es soll ein mal pro Woche ein komplettes Backup erstellt werden. Zusätzlich können von Administratoren jederzeit Backups erstellt werden.}
 
         \textcolor{YellowGreen}{Gibt es einen Multiuser-Kontext für die \grqq{}Datenbasis\grqq{}? Wie sollen gleichzeitige Zugriffe geregelt sein?}
 
@@ -757,7 +757,7 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 \textcolor{NavyBlue}{Als funktional betrachten wir eine Anwendung, welche unkompliziert zu bedienen ist und mit allen Anwendungsszenarien umgehen kann.}
 
 
-\textcolor{YellowGreen}{Was mach die Anwendung zuverlässig? Stabilität oder Fehlertoleranz?}
+\textcolor{YellowGreen}{Was macht die Anwendung zuverlässig? Stabilität oder Fehlertoleranz?}
 
 \textcolor{NavyBlue}{Die Anwendung soll einfach nicht abstürzen. Dies bezieht sich natürlich auch auf den Umgang mit fehlerhaften Eingaben.}
 
@@ -767,16 +767,16 @@ Möglichst alle Daten sollen vom alten in das neue System übertragen werden.
 \textcolor{NavyBlue}{Die Effizienz bezieht sich auf sparsamen Ressourcenumgang. In diesem Zusammenhang soll das Speichern unnötiger Daten vermieden werden.}
 
 
-\textcolor{YellowGreen}{Benutzbarkeit soll sehr gut sein, welche Anforderungen stehen dahinter? Durch was wird das Programm leicht bedienbar? Mit welchen Hilfsmitteln kann die Bedienbarkeit erleichter werden (Shortcuts, Gesten)?}
+\textcolor{YellowGreen}{Die Benutzbarkeit soll sehr gut sein. Welche Anforderungen stehen dahinter? Durch was wird das Programm leicht bedienbar? Mit welchen Hilfsmitteln kann die Bedienbarkeit erleichter werden (Shortcuts, Gesten)?}
 
 \textcolor{NavyBlue}{Alle Funktionen des Programms sollen mit maximal 3 Klicks erreichbar sein und es soll auf Transaktionen verzichtet werden. Shortcuts werden nicht benötigt.}
 
 
-\textcolor{YellowGreen}{Gestaltung soll sehr gut sein? Ist das nötig, wenn in den Büros eigentlich nur die Mitarbeiter arbeiten und die Kunden gar nicht in den Kontakt mit der Anwendung treten?}
+\textcolor{YellowGreen}{Die Gestaltung soll sehr gut sein? Ist das nötig, wenn in den Büros eigentlich nur die Mitarbeiter arbeiten und die Kunden gar nicht in den Kontakt mit der Anwendung treten?}
 
 \textcolor{NavyBlue}{Die Bedienung der SAP GUI bereitet unseren Mitarbeitern momentan große Kopfschmerzen. Daher wünschen wir uns eine ansprechendere Benutzeroberfläche mit vereinfachter Bedienung, um die Mitarbeiterzufriedenheit zu erhöhen.}
 
 
-\textcolor{YellowGreen}{Portabilität ist normal relevant, aber die Plattformunabhängigkeit ist besonders zu beachten? Wie ist das zu verstehen?}
+\textcolor{YellowGreen}{ Die Portabilität ist normal relevant, aber die Plattformunabhängigkeit ist besonders zu beachten? Wie ist das zu verstehen?}
 
 \textcolor{NavyBlue}{Die Anwendung soll plattformunabhängig auf allen gängigen Betriebssystemen eingesetzt werden können. Außerdem kann es in seltenen Fällen vorkommen, dass die Anwendung auf ein anderes System übertragen werden soll. Allerdings muss kein besonderer Fokus auf die Erleichterung dieser Übertragung gelegt werden.}
