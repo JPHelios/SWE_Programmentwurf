@@ -47,7 +47,7 @@ Dabei kann jeder Kunde nur eine Adresse haben. Umgekehrt könnte zwar auch die g
 
 Für eine rechtliche Grundlage muss jeder Kunde einen Vertrag unterzeichnen, der digital eingescannt und abgespeichert werden soll. Die bidirektionale Verbindung weist jedem Kunden genau einen Kundenvertrag zu und natürlich wurde jeder Kundenvertrag von nur einem Kunden unterzeichnet. 
 
-Ein Kunde kann mehrere Buchungen durchführen, die er aber zum aktuellen Projektstand nicht selbst tätigen soll. Der Kunde äußert einen Kundenwunsch an einen Mitarbeiter und der Mitarbeiter legt für den Kunden eine Buchung an, die auf den Kunden verweist. Ein Kunde darf mehrere Buchungen anlegen lassen, aber eine Buchung verweist nur auf einen Kunden. Aus diesem Grund fungiert die Mitarbeiter-Klasse als Koordinator.  
+Ein Kunde kann mehrere Buchungen durchführen, die er aber zum aktuellen Projektstand nicht selbst tätigen soll. Der Kunde äußert einen Terminwunsch an einen Mitarbeiter und der Mitarbeiter legt für den Kunden eine Buchung an, die auf den Kunden verweist. Ein Kunde darf mehrere Buchungen anlegen lassen, aber eine Buchung verweist nur auf einen Kunden. Aus diesem Grund fungiert die Mitarbeiter-Klasse als Koordinator.  
 
 \textbf{Adresse}: Die Adresse wird in Straße, Hausnummer, Wohnungszusatz, Ort und Postleitzahl aufgeteilt. Mit der Adress-Klasse werden die Adressen der Kunden und Filialen dargestellt. Da die Adresse-Klasse jeweils nur als Bestandteil anderer Klassen fungiert sind alle Assoziationen unidirektional auf die Adress-Klasse verweisend. 
 
@@ -55,17 +55,17 @@ Ein Kunde kann mehrere Buchungen durchführen, die er aber zum aktuellen Projekt
 
 \textbf{Mitarbeiter}: Die Klasse 'Mitarbeiter' stellt die Mitarbeiter des Unternehmens dar. Die Darstellung eines Mitarbeiters im System dient der Zugriffsbeschränkung der Anwendung mittels Rollen und der Identifikation von im System eingetragene Veränderungen. Jedem Mitarbeiter wird unidirektional eine Rolle zugewiesen. Da die Anwendung nicht auf Basis einer Datenbank arbeitet und auf Abfragen wie die Gruppierung der Mitarbeiter nach vergebenen Rollen irrelevant ist, wurde nur eine unidirektionale und keine bidirektionale Assoziation angenommen.
 
-Jeder Mitarbeiter hat einen festen Arbeitsplatz, welcher durch eine Referennz auf die Klasse 'Filiale' gekennzeichnet ist. Umgekehrt sind in einer Filiale mehrere Mitarbeiter beschäftigt. 
+Jeder Mitarbeiter hat einen festen Arbeitsplatz, welcher durch eine Referenz auf die Klasse 'Filiale' gekennzeichnet ist. Umgekehrt sind in einer Filiale mehrere Mitarbeiter beschäftigt. 
 
 Bereits bei der Klasse 'Kunde' angesprochen fungiert der Mitarbeiter als Koordinator zwischen Kunde und Buchung. 
 
 Weiterhin können Mitarbeiter, unter der Einschränkung, dass der Mitarbeiter die 'Admin'-Rolle hat, Backups erstellen. Der Ausdruck 'können' impliziert, dass nicht jeder Mitarbeiter ein Backup anlegt und dass auch auch der selbe Mitarbeiter mehrere Backups erstellen kann. 
 
-\textbf{Rolle}: Mit den Rollen sollen die Rechte innerhalb der Anwendung verteilt werden können. Dazu stellt die Klasse 'Rolle' neben dem Rollennamen für alle Funktionen der Anwendung jeweils ein Attribut bereit, welches vom Datentyp Boolean ist und angibt, ob ein Nutzer mit dieser Rolle Zugriff auf die entsprechende Funktion bzw. auf eine GUI-Komponente haben soll. Die Klasse 'Rolle' referenziert keine anderen Klassen, sondern wird nur von der Klasse 'Mitarbeiter' referenziert.
+\textbf{Rolle}: Mit den Rollen sollen die Rechte innerhalb der Anwendung verteilt werden können. Dazu stellt die Klasse 'Rolle' neben dem Rollennamen auch ein Array aus Objekten, welches angibt, ob ein Nutzer mit dieser Rolle Zugriff auf die entsprechende Funktion bzw. auf eine GUI-Komponente haben soll. Die Klasse 'Rolle' referenziert keine anderen Klassen, sondern wird nur von der Klasse 'Mitarbeiter' referenziert.
 
 \textbf{Buchung}: Die Klasse 'Buchung' stellt einen vereinbarten Termin für die Mietung eines Autos dar. Dazu wird der Mitarbeiter, welcher die Buchung angelegt hat zusammen mit dem Kunden und dem Datum sowie der Uhrzeit des Termins gespeichert. Außerdem steht die Klasse 'Buchung' in Assoziation mit der Fahrzeug-Klasse, um festlegen zu können, welches Fahrzeug gemietet werden soll. Pro Buchung soll ein Kunde nur ein einziges Fahrzeug buchen können.
 
-Da bei einer Buchung eines Fahrzeugs der Preis durch Rabattaktionen beeinflusst werden kann, steht die Buchungs-Klasse in Assoziation mit der Klasse 'Rabattaktion'. Um den Preis zufälligerweise durch mehrere Rabattaktionen nicht mehrfach zu drücken, soll pro Buchung wenn überhaupt nur eine einzige Rabattaktion einbezogen werden.
+Da bei einer Buchung eines Fahrzeugs der Preis durch Rabattaktionen beeinflusst werden kann, steht die Buchungs-Klasse über die Rechnung indirekt in Assoziation mit der Klasse 'Rabattaktion'. Um den Preis zufälligerweise durch mehrere Rabattaktionen nicht mehrfach zu drücken, soll pro Buchung wenn überhaupt nur eine einzige Rabattaktion einbezogen werden.
 
 Nach Abschluss einer Fahrt bzw. nach Ablauf eines Buchungszeitraums wird automatisch eine Rechnung erstellt. Die dadurch entstehende Assoziation zwischen Buchung und Rechnung ist bidirektional. Eine Buchung weist entweder keine Rechnung vor, solange der Termin noch offen ist oder genau eine Rechnung, wenn der Termin abgeschlossen wurde.
 
@@ -86,7 +86,7 @@ Die letzte Assoziation für ein Fahrzeug verweist auf den Standort. Um ein Fahrz
 
 \textbf{Fahrzeugklasse}: Die Fahrzeugklassen sind für das Unterteilen der Fahrzeuge in verschiedene Kategorien zuständig. Diese Kategorien werden mit der Klasse 'Fahrzeugklasse' dargestellt. Eine Kategorie zeichnet sich dabei durch einen Namen, einen Preis und den benötigten Führerschein aus. Solch einer Kategorie sind beliebig viele Fahrzeuge zugeordnet. Dabei ist es denkbar, dass eine Fahrzeugklasse existiert, das Carsharing-Unternehmen aber keinen Klassenvertreter im Fuhrpark besitzt. 
 
-\textbf{Bild}: Die Klasse Bild stellt die Bilder der Fahrzeuge dar. Jedes Bild ist einem Fahrzeug zugeordnet. Als weitere Attribute besitzt diese Klasse den Titel des Bildes sowie den Pfad, an welchem das Bild liegt.
+\textbf{Bild}: Die Klasse Bild stellt allgemein alle Bilder in der Anwendung dar dar. Jedes Bild ist einem anderen Element (zum Beispiel Fahrzeug, Standort, ...) zugeordnet. Als weitere Attribute besitzt diese Klasse den Titel des Bildes sowie den Pfad, an welchem das Bild liegt.
 
 \textbf{Reifensatz}: Ein Reifensatz dient der Unterscheidung zwischen Sommer- und Winterreifen und verweist auf ein bestimmtes, zugehöriges Fahrzeug, sodass jedes Fahrzeug zwei Reifensätze haben sollte. Da es z.B. auch Ganzjahresreifen gibt, kann ein Fahrzeug entweder ein oder zwei Reifensätze vorweisen.  
 Jeder Reifensatz besteht aus vier Reifen und potenziell einem weiteren Reifen (Ersatzreifen).
