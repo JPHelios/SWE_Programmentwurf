@@ -65,8 +65,6 @@ Weiterhin können Mitarbeiter, unter der Einschränkung, dass der Mitarbeiter di
 
 \textbf{Buchung}: Die Klasse 'Buchung' stellt einen vereinbarten Termin für die Mietung eines Autos dar. Dazu wird der Mitarbeiter, welcher die Buchung angelegt hat zusammen mit dem Kunden und dem Datum sowie der Uhrzeit des Termins gespeichert. Außerdem steht die Klasse 'Buchung' in Assoziation mit der Fahrzeug-Klasse, um festlegen zu können, welches Fahrzeug gemietet werden soll. Pro Buchung soll ein Kunde nur ein einziges Fahrzeug buchen können.
 
-Da bei einer Buchung eines Fahrzeugs der Preis durch Rabattaktionen beeinflusst werden kann, steht die Buchungs-Klasse über die Rechnung indirekt in Assoziation mit der Klasse 'Rabattaktion'. Um den Preis zufälligerweise durch mehrere Rabattaktionen nicht mehrfach zu drücken, soll pro Buchung wenn überhaupt nur eine einzige Rabattaktion einbezogen werden.
-
 Nach Abschluss einer Fahrt bzw. nach Ablauf eines Buchungszeitraums wird automatisch eine Rechnung erstellt. Die dadurch entstehende Assoziation zwischen Buchung und Rechnung ist bidirektional. Eine Buchung weist entweder keine Rechnung vor, solange der Termin noch offen ist oder genau eine Rechnung, wenn der Termin abgeschlossen wurde.
 
 Sofern die Rechnung im vorgegebenene Zeitrahmen beglichen wird, ist damit der Buchungsvorgang abgeschlossen, doch sollte eine Zahlung überfällig sein, erzeugt das System auf Basis der Buchung eine oder zwei Mahnungen. Jede Mahnung verweist dabei eindeutig auf die zugehörige Buchung. Eine dritte Mahnung wird nicht ausgestellt, denn anstelle dieser soll das schweizer Bankkonto eingefroren werden und andere rechtliche Schritte werden eingeleitet. 
@@ -96,6 +94,8 @@ Jeder Reifensatz besteht aus vier Reifen und potenziell einem weiteren Reifen (E
 \textbf{Kennzeichen}: Das Kennzeichen dient der Identifikation eines Fahrzeugs. Um das Kennzeichen eines Fahrzeugs in der Anwendung darzustellen wird die Klasse 'Kennzeichen' implementiert, welche die Zulassungsstelle, die Art des Kennzeichens und eine Zeichenkette für das eigentliche Kennzeichen als Attribute enthält.
 
 \textbf{Rechnung}: Eine Rechnung fällt immer nach dem Abschluss einer Fahrt an. Die Klasse 'Rechnung' bildet solch eine Rechnung ab und beinhaltet Methoden um basierend auf der Buchung eine Rechnung in Form eines PDF-Dokuments zu erstellen und an den Kunden per E-Mail zu versenden. Solch eine Rechnung referenziert dabei immer auf die zugrundeliegende Buchung.
+
+Der Preis auf der Rechnung kann von Rabattaktionen beeinflusst werden. Daher steht die Rechnung in Assoziation zur Rabattaktion.
 
 \textbf{Mahnung}: Wenn der Kunde die Rechnung nicht im vorgegebenen Zeitraum begleicht, wird eine Mahnung versendet. Die Klasse 'Mahnung' bildet solch eine Mahnung ab und beinhaltet Methoden, um basierend auf der Buchung eine Mahnung zu erstellen und um diese anschließend an den Kunden zu versenden. Ähnlich der Erstellung einer Rechnung wird ein PDF-Dokument erzeugt, welches im Fall einer Mahnung jedoch manuell ausgedruckt und mittels Post versendet wird. Da eine Mahnung stets auf einer Buchung basiert, wird die zugrundeliegende Buchung referenziert.
 
