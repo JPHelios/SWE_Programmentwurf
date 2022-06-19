@@ -6,6 +6,19 @@ Eine Software kann noch so gut geplant und durchstrukturiert sein, wenn die Benu
 
 Übergeordnet soll in der gesamten Anwendung ein einheitliches Design vorliegen. Darum haben wir uns bereits zu Beginn auf ein Farbschema abgestimmt. Basierend auf einer Mitarbeiterumfrage haben wir uns für ein rötlich-rosa Farbschema entschieden, sodass die Farben (in Hexwerten) \textbf{\#DE639A}, \textbf{\#E388B1}, \textbf{\#D7A6B3}, \textbf{\#F1E2E2}, \textbf{\#707070} ihre Anwendung fanden. 
 
+\newpage
+
+\section{Diagramm}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth, trim = 0cm 10cm 0cm 0cm]{Bilder/Diagramme/EKD_GUI.pdf}
+    \caption{Entwurfsklassendiagramm: GUI}
+    \label{img:ekd_gui}
+\end{figure}
+
+\newpage
+
 \section{Fahrzeuge verwalten}
 
 Grundsätzlich sollen alle Verwaltungsbereiche der Anwendung den selben oder einen sehr ähnlichen Aufbau haben, damit auch Mitarbeiter ohne besondere IT-Kenntnisse die Anwendung verwenden können. Neben einer Headline, die eine Überschrift und das Firmenlogo präsentiert, gibt es an dem linken Bildschirmrand die Navigationsleiste, mit der Mitarbeiter sich durch die unterschiedlichen Verwaltungsaufgaben klicken können. Der Hauptbereich einer jeden Seite wird in zwei Felder aufgeteilt. Das linke Feld besteht aus einer Liste, in der alle Einträge zum betroffenen Verwaltungsobjekt angezeigt werden, in diesem Fall alle Fahrzeuge. Bei Auswahl eines Fahrzeuges erscheint im rechten Feld eine Detail-Anzeige aller nötiger Informationen, die es zu dem Listeneintrag gibt. Neben einem Filter- und Suchfeld ist natürlich auch die Manipulation der Datensätze vorgesehen, sodass man einerseits neue Fahrzeuge anlegen kann. Wie in vorhergehenden Analysen angedacht gibt es dabei einerseits einen einfachen Button mit 'anlegen' und für erfahrenere Nutzer einen Button mit '+'. Sollte ein Listeneintrag ausgewählt sein, ist auch die Bearbeitung oder das Löschen des ausgewählten Datensatzes mittels entsprechender Buttons möglich. 
@@ -89,13 +102,6 @@ Sofern man eine Markierung auf der Karte oder einen Listeneintrag auswählt, wir
     \caption{Mock-Up: Detailansicht von Standorten}
     \label{mu:standortdetails}
 \end{figure}
-
-
-
-
-
-
-
 
 Der Nutzer soll die Möglichkeit haben das Design der Benutzeroberfläche auf ein 'Dark Theme' umzustellen. Durch die Auswahl des 'Dark Themes' soll die Benutzeroberfläche der Anwendung dunkler dargestellt werden. Dazu haben wir uns für folgendes Farbschema entschieden (siehe Abbildung \ref{mu:darkmode}).
 
