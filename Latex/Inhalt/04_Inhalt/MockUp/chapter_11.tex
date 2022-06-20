@@ -6,6 +6,15 @@ Eine Software kann noch so gut geplant und durchstrukturiert sein, wenn die Benu
 
 Übergeordnet soll in der gesamten Anwendung ein einheitliches Design vorliegen. Darum haben wir uns bereits zu Beginn auf ein Farbschema abgestimmt. Basierend auf einer Mitarbeiterumfrage haben wir uns für ein rötlich-rosa Farbschema entschieden, sodass die Farben (in Hexwerten) \textbf{\#DE639A}, \textbf{\#E388B1}, \textbf{\#D7A6B3}, \textbf{\#F1E2E2}, \textbf{\#707070} ihre Anwendung fanden. 
 
+Der Nutzer soll die Möglichkeit haben das Design der Benutzeroberfläche auf ein 'Dark Theme' umzustellen. Durch die Auswahl des 'Dark Themes' soll die Benutzeroberfläche der Anwendung dunkler dargestellt werden. Dazu haben wir uns zusätzlich für folgendes Farbschema entschieden (siehe Abbildung \ref{mu:darkmode}).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{Bilder/Mockup/colorscheme_darkmode.PNG}
+    \caption{Dark Theme Farbschema}
+    \label{mu:darkmode}
+\end{figure}
+
 \newpage
 
 \section{Diagramm}
@@ -21,11 +30,23 @@ Eine Software kann noch so gut geplant und durchstrukturiert sein, wenn die Benu
 
 \section{Mock-Up}
 
-Grundsätzlich sollen alle Verwaltungsbereiche der Anwendung den selben oder einen sehr ähnlichen Aufbau haben, damit auch Mitarbeiter ohne besondere IT-Kenntnisse die Anwendung verwenden können. Neben einer Headline, die eine Überschrift und das Firmenlogo präsentiert, gibt es an dem linken Bildschirmrand die Navigationsleiste, mit der Mitarbeiter sich durch die unterschiedlichen Verwaltungsaufgaben klicken können. Der Hauptbereich einer jeden Seite wird in zwei Felder aufgeteilt. Das linke Feld besteht aus einer Liste, in der alle Einträge zum betroffenen Verwaltungsobjekt angezeigt werden.
+Der Aufbau der Benutzeroberfläche ist an die Vorgehensweise bei mobilen Android Anwendungen angelehnt und basiert auf dem Konzept von 'Activity' und 'Fragments'. 
+Die NavigationGUI dient dabei als 'Activity' und stellt eine Navigationsleiste bereit, die es den Anwendern ermöglicht zwischen verschiedenen Verwaltungsbereichen hin und her zu wechseln. 
+Diese Navigationsleiste befindet sich vertikal angeordnet auf der linken Seite des Bildschirms, während der gesamte obere Bereich den Schriftzug des Unternehmens und das Firmenlogo zeigt. 
+Die Hauptfläche des Bildschirms erscheint als das 'Fragment', welches je nach Verwaltungsbereich unterschiedlich gestaltet ist. 
+Um Rücksicht auf die technisch weniger versierten Mitarbeiter zu nehmen, soll die Aufteilung der Fragment-Fläche bei den unterschiedlichen Bereichen so ähnlich wie möglich sein.
+Grundsätzlich besteht daher jede Fragment-Seite aus zwei Feldern.
+Das linke Feld zeigt eine Liste, in der sich meist alle Einträge des betroffenen Verwaltungsobjekts befinden, das rechte Feld dient der Detailansicht bei Auswahl eines Datensatzes. 
 
 \subsection{Fahrzeuge verwalten}
 
-Bei Auswahl eines Fahrzeuges erscheint im rechten Feld eine Detail-Anzeige aller nötiger Informationen, die es zu dem Listeneintrag gibt. Neben einem Filter- und Suchfeld ist natürlich auch die Manipulation der Datensätze vorgesehen, sodass man einerseits neue Fahrzeuge anlegen kann. Wie in vorhergehenden Analysen angedacht gibt es dabei einerseits einen einfachen Button mit 'anlegen' und für erfahrenere Nutzer einen Button mit '+'. Sollte ein Listeneintrag ausgewählt sein, ist auch die Bearbeitung oder das Löschen des ausgewählten Datensatzes mittels entsprechender Buttons möglich. 
+Sobald ein Anwender zur Fahrzeugverwaltung navigiert, erhält er eine Übersicht an allen vorhanden Fahrzeugen aus der Datenbasis. 
+Diese Datenabfrage wird automatisch beim Aufrufen der GUI ausgeführt. 
+Wie auch bei vielen anderen Listenanwendungen gibt es die Möglichkeit nach bestimmten Dateneinträgen zu Suchen oder zu Filtern. 
+Das durch den Klick auf den Button oder das Enter in der Texteingabe wird ein Listener getriggert, welcher eine modifizierte Datenabfrage an die Datenbasis absetzt.
+Mittel eines GUIEvents wird die Liste neu geladen und die geänderte Datenauswahl wird in der Liste angezeigt. 
+Sofern ein Fahrzeugeintrag ausgewählt wird, soll auf der rechten Bildschirmseite die Detailansicht des Fahrzeuges erscheinen. 
+Auch hier wird mittels eines actionListeners auf eine Mauseingabe gewartet, welche ein GUIEvent auslöst, welches die Detailinformationen auf den Bildschirm schreibt. 
 
 \newpage
 
@@ -47,7 +68,11 @@ Bei Auswahl eines Fahrzeuges erscheint im rechten Feld eine Detail-Anzeige aller
 
 \textbf{Fahrzeug löschen}
 
-Die Interaktion zum Löschen des ausgewählten Fahrzeug-Datensatzes erfolgt über ein einfaches Pop-Up-Fenster. Der Anwender muss dieses Bestätigen, wenn er den Datensatz löschen möchte, um versehentliches Löschen auszuschließen. Nach dem Löschen wird der Anwender auf die Fahrzeug-Startseite zurückverwiesen, jedoch wird in der Liste der gelöschte Eintrag entfernt. 
+Exemplarisch für Fahrzeuge, doch übertragbar auch alle anderen Datenobjekte, ist die Manipulationen der Datensätze grundlegend möglich. 
+Zu den Manipulationsmöglichkeiten gehören 'Anlegen', 'Bearbeiten' und 'Löschen'. 
+Die Interaktion zum Löschen des ausgewählten Fahrzeug-Datensatzes erfolgt über ein einfaches Pop-Up-Fenster, dass bei der Ausführung eines Listener erzeugt wird.  
+Der Anwender muss diesen Dialog bestätigen, wenn er den Datensatz löschen möchte.
+Nach dem Löschen wird der Anwender auf die Fahrzeug-Startseite zurückverwiesen, jedoch wird in der Liste der gelöschte Eintrag entfernt. 
 
 
 \begin{figure}[!ht]
@@ -111,6 +136,9 @@ Sofern man eine Markierung auf der Karte oder einen Listeneintrag auswählt, wir
 
 \subsection{Buchung verwalten}
 
+Ebenfalls wichtig ist die Buchung der Fahrzeuge, da dies die Kernaufgabe des Unternehmens darstellt. 
+Identisch zur 'Fahrzeugverwaltung' funktioniet die initial angezeigte 
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{Bilder/Mockup/Web 1920 – 1.png}
@@ -124,13 +152,3 @@ Sofern man eine Markierung auf der Karte oder einen Listeneintrag auswählt, wir
     \caption{Mock-Up: Detailansicht beim Erstellen einer Buchung}
     \label{mu:buchung_anlegen}
 \end{figure}
-
-
-%Der Nutzer soll die Möglichkeit haben das Design der Benutzeroberfläche auf ein 'Dark Theme' umzustellen. Durch die Auswahl des 'Dark Themes' soll die Benutzeroberfläche der Anwendung dunkler dargestellt werden. Dazu haben wir uns für folgendes Farbschema entschieden (siehe Abbildung \ref{mu:darkmode}).
-
-%\begin{figure}[!ht]
-%    \centering
-%    \includegraphics[width=\textwidth]{Bilder/Mockup/colorscheme_darkmode.PNG}
-%    \caption{Dark Theme Farbschema}
-%    \label{mu:darkmode}
-%\end{figure}
