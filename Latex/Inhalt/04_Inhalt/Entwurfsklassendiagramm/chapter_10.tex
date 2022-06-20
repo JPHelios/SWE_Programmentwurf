@@ -7,7 +7,7 @@ Im folgenden Kapitel wird das Entwurfsklassendiagramm (EKD) genauer erklärt. Da
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth, trim = 0cm 14cm 0cm 0cm]{Bilder/Diagramme/Entwurfsklassendiagramm_v2.pdf}
-    \caption{Entwurfsklassendiagramm : Allgemein}
+    \caption{Entwurfsklassendiagramm: Allgemein}
     \label{img:ekd}
 \end{figure}
 
@@ -17,7 +17,7 @@ Im folgenden Kapitel wird das Entwurfsklassendiagramm (EKD) genauer erklärt. Da
 
 \subsection{model.buchung}
 
-Dieses Paket enthält alle Klassen aus dem Analyseklassendiagramm, welche der Klasse 'Buchung' zugeordent werden können. Dazu gehören die Klassen 'Buchung', 'Rabattaktion', 'Rechnung' und 'Mahnung'. Damit auch die stornierten Buchungen noch eingesehen werden können, verfügt jede Buchung über ein Attribut, welches indiziert, ob die Buchung storniert wurde. Die Rabattaktion verfügt über ein Attribut für den prozentualen Preisnachlass. Die Rechnung ist durch Attribute für den Betrag der Rechnung und deren Fälligkeit definiert. Dazu gibt es eine Methode, um die Rechnung zum Kunden zu senden. Die Mahnung unterscheidet sich bezüglich der Attribute und Methoden nicht von der Rechnung.
+Dieses Paket enthält alle Klassen aus dem Analyseklassendiagramm, welche der Klasse 'Buchung' zugeordent werden können. Dazu gehören die Klassen 'Buchung', 'Rabattaktion', 'Rechnung' und 'Mahnung'. Damit auch die stornierten Buchungen noch eingesehen werden können, verfügt jede Buchung über ein Attribut, welches indiziert, ob die Buchung storniert wurde. Die Rabattaktion verfügt über ein Attribut für den prozentualen Preisnachlass. Die Rechnung ist durch Attribute für den Betrag der Rechnung und deren Fälligkeit definiert. Dazu gibt es eine Methode, um die Rechnung zum Kunden zu senden. Die Mahnung unterscheidet sich bezüglich der Attribute und Methoden nicht von der Rechnung, doch wird das Senden der Mahnung manuell durch Mitarbeiter übernommen, da diese per Post an den Kunden gesendet werden soll. 
 
 \subsection{model.fahrzeug}
 
@@ -27,11 +27,11 @@ Das Fahrzeug besitzt Attribute, welche Auskunft über den Hersteller, das Baujah
 \subsection{model.kunde}
 
 Dieses Paket enthält nur die Klasse 'Kunde' und die Klasse 'Vertrag' da dies bereits alle Klassen sind, welche einen direkten Bezug zum Kunden haben.
-Die Klasse 'Vertrag' enthält nur den Pfad, unter welchem der Vertrag gespeichert wurde. Die Klasse 'Kunde' enthält hingegen alle Informationen, welche für die Kontaktierung des Kunden notwendig sind.
+Die Klasse 'Vertrag' enthält nur den Pfad, unter welchem der Vertrag gespeichert wurde. Auf die extra Verwendung eines Dateinamen wurde verzichtet, da dieser aus dem Pfad herausgelesen werden kann. Die Klasse 'Kunde' enthält hingegen alle Informationen, welche für die Kontaktierung des Kunden notwendig sind.
 
 \subsection{model.standort}
 
-Dieses Paket enthält alle Klassen, welche einen Standort sowie dessen Mitarbeiter darstellen. Dazu gehören neben der Klasse 'Standort' auch die Klassen 'Filiale', 'Mitarbeiter' und 'Rolle'. Die Rolle definiert dabei auf welche Objekte ein Mitarbeiter zugreifen darf. Der Standort hat als Attribute die Anzahl der Parkplätze und Ladesäulen, welche zur Verfügung stehen und die Filiale besitzt die Öffnungszeiten als Attribut. Der Mitarbeiter wird ähnlich wie der Kunde hauptsächlich durch Kontaktinformationen dargestellt. Jedoch wird außerdem noch das Passwort des Mitarbeiters gespeichert, damit dieser sich bei der Anwendung anmelden kann.
+Dieses Paket enthält alle Klassen, welche einen Standort sowie dessen Mitarbeiter darstellen. Dazu gehören neben der Klasse 'Standort' auch die Klassen 'Filiale', 'Mitarbeiter' und 'Rolle'. Die Rolle definiert dabei auf welche Objekte bzw. GUIs ein Mitarbeiter zugreifen darf. Der Standort hat als Attribute die Anzahl der Parkplätze und Ladesäulen, welche zur Verfügung stehen und die Filiale besitzt die Öffnungszeiten als Attribut. Die Präsenz des Mitarbeiters im System dient nur der Rollenverteilung im System, d.h. es werden keine HR-Aufgaben darüber abgewickelt. Mitarbeiter zeichnen sich neben Vor- und Nachnamen durch eine Betriebs-E-Mail-Adresse und Betriebstelefonnummer aus. Außerdem wird noch das Passwort des Mitarbeiters gespeichert, damit dieser sich bei der Anwendung über die E-Mail als Benutzernamen anmelden kann.
 
 \subsection{model.utils}
 
@@ -39,16 +39,20 @@ In diesem Paket befinden sich Klassen, welche von verschiedenen anderen Klassen 
 
 \subsection{app}
 
-Hier befindet sich zum einen die zentrale Klasse 'Carsharing', welche die Main-Methode für das Starten der Anwendung beinhaltet. Diese Klasse wird als Singleton implementiert. Zum anderen befindet sich hier die 'EntityFactory', welche für das Erzeugen von Instanzen der Klassen aus den Model-Paketen, welche in der Datenbasis gespeichert werden, verantwortlich ist. Für die Buchungen, Fahrzeuge, Standorte, Mitarbeiter, Kunden, Rabattaktionen, Dachboxen, Fahrradträger und Hundetransportboxen werden extra Builder implementiert, da es sich hierbei um besonders komplexe Klassen handelt. 
+Hier befindet sich die zentrale Klasse 'Carsharing', welche die Main-Methode für das Starten der Anwendung beinhaltet. Diese Klasse wird als Singleton implementiert. 
+
+\subsection{util}
+
+Im Package 'util' befindet sich die 'EntityFactory', welche für das Erzeugen von Instanzen der Klassen aus den Model-Paketen, welche in der Datenbasis gespeichert werden, verantwortlich ist. Für die Buchungen, Fahrzeuge, Standorte, Mitarbeiter, Kunden, Rabattaktionen, Dachboxen, Fahrradträger und Hundetransportboxen werden extra Builder implementiert, da es sich hierbei um besonders komplexe Klassen handelt. 
 
 \subsection{swe-utils}
 
-Dieses Paket enthält eigentlich noch wesentlich mehr Klassen, welche jedoch nicht mit dargestellt werden, da sie für die Anwendung irrelevant sind. Die enthalten Klassen beinhalten den 'CSVReader' und 'CSVWriter', welche im EntityManager für das Speichern der Daten eingesetzt werden. Für diese Persistierung der Daten ist das Interface 'IPersistable' enthalten. Außerdem befindet sich hier auch der 'PropertyManager' und der 'AppLogger'.
+Dieses Paket enthält eigentlich noch wesentlich mehr Klassen, welche jedoch nicht mit dargestellt werden, da sie für die Anwendung irrelevant sind. Die enthalten Klassen beinhalten den 'CSVReader' und 'CSVWriter', welche im EntityManager für das Speichern der Daten eingesetzt werden. Für diese Persistierung der Daten ist das Interface 'IPersistable' enthalten. Außerdem befindet sich hier auch der 'PropertyManager' und der 'AppLogger'. Das Packet wurde vom Auftraggeber zur einfacheren Implementierung mitgeliefert. 
 
 \subsection{database}
 Dieses Paket beinhaltet nur eine Klasse. Dabei handelt es sich um den generischen 'EntityManager', welcher von der Klasse 'GenericEntityManager' aus dem Paket 'swe-utils' erbt. Diese Klasse wird als Singleton implementiert und ist für die Verwaltung der Entitäten verantwortlich.
 
-\subsection{gui}
+\subsection{view.gui}
 Dieses Paket beinhaltet alle Klassen, welche die Benutzeroberfläche betreffen. Dazu gehören neben einer Vielzahl von Klassen, welche auf 'GUI' enden auch die abstrakte Klasse 'GUIComponent' und die Klasse 'JComponent'. 'GUIComponent' erbt hierbei von 'JComponent' und alle auf 'GUI' endenden Klassen erben von 'GUIComponent'. Diese Klassen, welche auf 'GUI' enden, stellen die einzelnen Ansichten der Anwendung dar. Im Sinne der Übersichtlichkeit wurde in diesem Diagramm auf die Detailtiefe bezüglich der Benutzeroberfläche verzichtet. Diese wird im nächsten Kapitel ab Seite \pageref{chapter:gui} genauer beschrieben.
 
 \section{Entwurfsmuster}
@@ -70,4 +74,4 @@ Ein Singleton stellt sicher, dass es zu einer Klasse nur genau ein einziges Obje
 Mit Beobachtern kann auf die Veränderung von Objekten reagiert werden. Solche Beobachter wurden in unserem Entwurf lediglich passiv implementiert. Das heißt, dass die Beobachter nicht aktiv den Zustand eines konkreten Objektes abfragen, sondern nur dann benachrichtigt werden , wenn Änderungen aufgetreten sind. Dadurch ergibt sich eine größere Vielfalt der Abstraktionsmöglichkeiten und die Wiederverwendbarkeit von einzelnen Komponenten.
 
 \subsection{Kompositum}
-Das Kompositum wird genutzt um Teil-Ganzes-Hierachien darzustellen. In unserem Entwurfsklassendiagramm wird dies zum einem bei der Modellierung des Reifensatzes eines Fahrzeuges und zum anderen auch bei der Modellierung der Benutzeroberfläche genutzt. Ein Reifensatz besteht hierbei aus vier oder fünf Reifen, je nachdem, ob ein Ersatzrad vorhanden ist und bei der Benutzeroberfläche sind die Unteransichten ein Teil der Hauptansicht.
+Das Kompositum wird genutzt, um Teil-Ganzes-Hierachien darzustellen. In unserem Entwurfsklassendiagramm wird dies zum einen bei der Modellierung des Reifensatzes eines Fahrzeuges und zum anderen auch bei der Modellierung der Benutzeroberfläche genutzt. Ein Reifensatz besteht hierbei aus vier oder fünf Reifen, je nachdem, ob ein Ersatzrad vorhanden ist und bei der Benutzeroberfläche sind die Unteransichten ein Teil der Hauptansicht.
