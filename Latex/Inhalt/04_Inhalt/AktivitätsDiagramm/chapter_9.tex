@@ -22,20 +22,16 @@ Nun muss das Fahrzeug nur noch einem Standort zugeordnet werden. Dies geschieht 
 \lstinputlisting[firstline = 103, lastline=123, style=Pseudocode, caption={Methode um ein Fahrzeug einem Standort zuzuordnen}]{Quellcode/AktivitaetsDiagrammPseudo.txt}
 \newpage
 
-\section{Diagramme}
-
-Im folgenden Abschnitt werden die Aktivitätsdiagramme für den Pseudocode erläutert.
-
-\newpage
-
-\subsection{Standort anlegen}
+\section{Standort anlegen}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth, height=\textheight-3cm, trim = 0cm 3cm 0cm 0cm]{Bilder/Diagramme/AD_Standort_anlegen.pdf}
+    \includegraphics[width=\textwidth, height=\textheight-3cm, trim = 0cm 6cm 0cm 0cm]{Bilder/Diagramme/AD_Standort_anlegen.pdf}
     \caption{Aktivitätsdiagramm: Standort anlegen}
     \label{img:ad_standort}
 \end{figure}
+
+\newpage
 
 Wie bei jeder anderen auf dem System ausgeführten Aktion muss auch beim Anlegen eines neuen Standorts zuerst eine Anmeldung vollzogen werden. Sobald ein Mitarbeiter im System angemeldet ist stehen mittels seines Benutzerprofils auch die Rechte des Nutzers griffbereit. Personalmitarbeiter soll es nicht möglich sein, Standorte anzulegen oder andere Aktionen mit solchen Datensätzen auszuführen, sodass diesen Mitarbeitern eine andere Benutzeroberfläche gezeigt wird wie den Organisatoren und Administratoren. 
 
@@ -49,7 +45,7 @@ In welcher Reihenfolge dies ausgeführt wird, ist irrelevant, weshalb im Diagram
 Bevor der Standort gespeichert wird, erfolgt die Überprüfung, ob dieser Standort bereits vorhanden ist. Sollte das Ergebnis negativ sein, wird der Standort gespeichert. Ist jedoch in der Planung oder Organisation ein Fehler aufgetreten und der Standort exisitiert bereits, erscheint eine Fehlermeldung und die Aktion wird abgebrochen. An sich hätte man im Diagramm anstelle des Endzustandes 'Fehlermeldung' auch eine Schleife einbauen können, die solange läuft wie die Eingabe inkorrekt ist oder bis die Aktion händisch abgebrochen wird. In diesem Fall wird jedoch davon ausgegangen, dass allein auf Basis der Funktionsart eines Eingabeformulars die Eigabefelder geleert werden und die Eingabe wiederholt werden muss. Außer der Abfrage, ob der Standort bereits existiert, findet keine andere logische Überprüfung statt. Sofern sich die Adresse nicht doppelt wird der Datensatz gespeichert. Sollte die Fehlermeldung erscheinen, ist es auch sehr unwahrscheinlich, dass der Mitarbeiter ein zweites Mal die Erstellung des Standortes versucht. 
 \newpage
 
-\subsection{Fahrzeug anlegen}
+\section{Fahrzeug anlegen}
 
 \begin{figure}[!ht]
     \centering
@@ -77,7 +73,7 @@ Das Hinzufügen eines Bildes für die Detail-Seite der Fahrzeuge ist bei Fahrzeu
 
 \newpage
 
-\subsection{Fahrzeug einem Standort zuordnen}
+\section{Fahrzeug einem Standort zuordnen}
 
 \begin{figure}[!ht]
     \centering
