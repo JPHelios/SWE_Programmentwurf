@@ -1,0 +1,12 @@
+model\fahrzeug\Reifensatz.class
+model\fahrzeug\Ausrüstung.class
+model\fahrzeug\Dachbox.class
+model\utils\Bild.class
+model\standort\Standort.class
+model\fahrzeug\Fahrzeugklasse.class
+model\fahrzeug\Hundetransportbox.class
+model\fahrzeug\Reifen.class
+model\kunde\Vertrag.class
+model\fahrzeug\Fahrzeug.class
+model\fahrzeug\Kennzeichen.class
+model\fahrzeug\Fahrradtraeger.class
