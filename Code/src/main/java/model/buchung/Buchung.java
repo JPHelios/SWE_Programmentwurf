@@ -4,6 +4,8 @@ package model.buchung;
 import lombok.Getter;
 import lombok.Setter;
 import model.fahrzeug.Fahrzeug;
+import model.kunde.Kunde;
+import model.standort.Mitarbeiter;
 
 import java.sql.Array;
 import java.util.Date;
@@ -20,6 +22,8 @@ public class Buchung {
     private Fahrzeug fahrzeug;
     private Rechnung abrechnung;
     private Mahnung[] aufforderung;
+    private Kunde kunde;
+    private Mitarbeiter mitarbeiter;
 
     public Buchung(){
 

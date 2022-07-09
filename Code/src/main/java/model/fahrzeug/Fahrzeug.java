@@ -20,7 +20,8 @@ public class Fahrzeug {
     private Ausruestung[] ausruestung;
     private Reifensatz reifensatz;
     private Standort standort;
-    private Bild[] bilder;
+    private Bild[] bilder = new Bild[3];
+    private Fahrzeugklasse fahrzeugklasse;
 
     public Fahrzeug(){
 
