@@ -5,12 +5,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Bild {
+public class Backup {
 
     private String pfad;
-    private String titel;
 
-    public Bild(){
+    public Backup(){
 
     }
+
+    public Backup loadBackup(){
+        return null;
+    }
 }
+
+
+
