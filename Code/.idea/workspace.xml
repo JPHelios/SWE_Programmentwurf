@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4706f68-d7a6-4bbd-b29a-0b57fbc8e7c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/kunde/Kunde.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/utils/Adresse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/utils/Backup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/utils/Bild.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/buchung/Buchung.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/buchung/Mahnung.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/buchung/Rabattaktion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/buchung/Rechnung.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/kunde/Vertrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/kunde/Vertrag.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +43,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -51,13 +57,6 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="15" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -71,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1657354605851</updated>
-      <workItem from="1657354607069" duration="3185000" />
+      <workItem from="1657354607069" duration="4694000" />
     </task>
     <servers />
   </component>
