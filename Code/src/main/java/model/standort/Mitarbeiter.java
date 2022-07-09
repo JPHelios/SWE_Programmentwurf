@@ -9,6 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Mitarbeiter {
+    private int mitarbeiterID;
+
     private String nachname;
     private String vorname;
     private  String tel;

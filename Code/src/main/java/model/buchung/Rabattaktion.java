@@ -7,6 +7,7 @@ import model.fahrzeug.Fahrzeugklasse;
 @Getter
 @Setter
 public class Rabattaktion {
+    private int rabattaktionID;
 
     private int preisnachlass;
     private String beschreibung;

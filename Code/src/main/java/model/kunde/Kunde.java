@@ -7,6 +7,7 @@ import model.utils.Adresse;
 @Setter
 @Getter
 public class Kunde {
+    private int kundeID;
 
     private String nachname;
     private String vorname;

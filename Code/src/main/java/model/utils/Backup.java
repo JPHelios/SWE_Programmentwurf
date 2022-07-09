@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Backup {
+    private int backupID;
 
     private String pfad;
 

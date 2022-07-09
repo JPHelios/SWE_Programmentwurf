@@ -10,6 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Standort {
+    private int standortID;
+
     private int anzahlPlaetze;
     private int anzahlSaeulen;
     private Fahrzeug[] fahrzeuge;

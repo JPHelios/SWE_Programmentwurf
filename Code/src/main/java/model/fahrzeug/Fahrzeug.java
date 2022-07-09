@@ -8,6 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Fahrzeug {
+    private int fahrzeugID;
+
     private String hersteller;
     private String modell;
     private int baujahr;

@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Reifen {
+    private int reifenID;
+
     private String hersteller;
     private String modell;
     private int jahr;

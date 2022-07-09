@@ -11,6 +11,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class Buchung {
+    private int buchungID;
 
     private boolean canceled;
     private Date starttermin;

@@ -8,6 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class Rechnung {
+    private int rechnungID;
 
     private double betrag;
     private Date faelligkeitsDatum;

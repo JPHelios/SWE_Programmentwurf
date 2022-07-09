@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Kennzeichen {
+    private int kennzeichenID;
+
     private String kennzeichen;
     private String zulassungstelle;
 

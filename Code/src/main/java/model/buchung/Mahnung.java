@@ -8,6 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class Mahnung {
+    private int mahnungID;
 
     private double betrag;
     private Date faelligkeitsDatum;
