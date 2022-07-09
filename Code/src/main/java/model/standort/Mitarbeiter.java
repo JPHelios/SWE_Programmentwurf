@@ -1,7 +1,7 @@
 package model.standort;
 
 import model.utils.Backup;
-import model.buchung.Buchung
+import model.buchung.Buchung;
 
 import lombok.Getter;
 import lombok.Setter;
