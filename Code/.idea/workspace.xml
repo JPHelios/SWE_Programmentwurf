@@ -4,11 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4706f68-d7a6-4bbd-b29a-0b57fbc8e7c7" name="Default Changelist" comment="" />
+    <list default="true" id="b4706f68-d7a6-4bbd-b29a-0b57fbc8e7c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/kunde/Kunde.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/utils/Adresse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/utils/Backup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/utils/Bild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/kunde/Vertrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/kunde/Vertrag.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -57,12 +71,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1657354605851</updated>
-      <workItem from="1657354607069" duration="1682000" />
+      <workItem from="1657354607069" duration="3185000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
