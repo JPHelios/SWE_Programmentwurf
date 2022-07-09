@@ -15,12 +15,12 @@ public class Fahrzeug {
     private int kilometerstand;
     private boolean reserviert;
     private Kennzeichen kennzeichen;
-    private Ausrüstung[] ausrüstung;
+    private Ausruestung[] ausruestung;
     private Reifensatz reifensatz;
     private Standort standort;
     private Bild[] bilder;
 
-    public void Fahrzeug(){
+    public Fahrzeug(){
 
     }
 

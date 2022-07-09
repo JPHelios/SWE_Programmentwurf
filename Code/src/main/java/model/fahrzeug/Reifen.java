@@ -11,7 +11,7 @@ public class Reifen {
     private int jahr;
     private String txp;
 
-    public void Reifen(){
+    public Reifen(){
 
     }
 }

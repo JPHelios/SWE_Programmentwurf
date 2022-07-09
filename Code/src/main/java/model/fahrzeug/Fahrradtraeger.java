@@ -5,12 +5,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Fahrradtraeger extends Ausrüstung {
-    private int anzahlFahrräder;
+public class Fahrradtraeger extends Ausruestung {
+    private int anzahlFahrraeder;
     private String montierung;
     private int maximalGewicht;
 
-    public void Fahrradtraeger(){
+    public Fahrradtraeger(){
 
     }
 }

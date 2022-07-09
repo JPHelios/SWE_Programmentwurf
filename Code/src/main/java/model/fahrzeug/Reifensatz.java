@@ -9,7 +9,7 @@ public class Reifensatz {
     private Reifen[] reifensatz = new Reifen[4];
     private Reifen ersatzrad;
 
-    public void Reifensatz(){
-        
+    public Reifensatz(){
+
     }
 }

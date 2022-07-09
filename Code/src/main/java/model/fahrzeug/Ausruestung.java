@@ -5,13 +5,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Ausrüstung {
+public class Ausruestung {
     private String name;
     private String beschreibung;
     private Fahrzeug[] kompatibel;
     private Fahrzeug fahzeug;
 
-    public void Ausrüstung(){
+    public Ausruestung(){
 
     }
 }

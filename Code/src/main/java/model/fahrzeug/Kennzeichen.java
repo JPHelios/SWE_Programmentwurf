@@ -9,7 +9,7 @@ public class Kennzeichen {
     private String kennzeichen;
     private String zulassungstelle;
 
-    public void Kennzeichen(){
+    public Kennzeichen(){
 
     }
 }

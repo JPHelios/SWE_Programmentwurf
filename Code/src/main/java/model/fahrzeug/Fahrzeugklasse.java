@@ -9,10 +9,10 @@ public class Fahrzeugklasse {
     private String name;
     private int preis;
     private String beschreibung;
-    private String führerschein;
+    private String fuehrerschein;
     private Fahrzeug[] fahrzeuge;
 
-    public void Fahrzeugklasse(){
+    public Fahrzeugklasse(){
 
     }
 }

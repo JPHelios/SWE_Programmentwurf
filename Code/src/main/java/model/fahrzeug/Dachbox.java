@@ -5,11 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Dachbox extends Ausrüstung {
+public class Dachbox extends Ausruestung {
     private float volumen;
-    private float höhe;
+    private float hoehe;
 
-    public void Dachbox(){
+    public Dachbox(){
 
     }
 }
