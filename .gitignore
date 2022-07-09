@@ -30,3 +30,10 @@ Latex/Praxisbericht.synctex.gz
 Latex/Praxisbericht.lol
 *.aux
 *.auxy
+
+Code/.idea/.name
+Code/.idea/*
+Code/.idea/.name
+Code/.idea/compiler.xml
+Code/.idea/jarRepositories.xml
+Code/.idea/.name
