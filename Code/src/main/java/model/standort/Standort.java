@@ -1,5 +1,6 @@
 package model.standort;
 
+import de.dhbwka.swe.utils.model.IPersistable;
 import model.fahrzeug.Fahrzeug;
 import model.utils.Adresse;
 import model.utils.Bild;
@@ -9,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Standort {
+public class Standort implements IPersistable {
     private int standortID;
 
     private int anzahlPlaetze;
@@ -21,5 +22,10 @@ public class Standort {
 
     public Standort(){
 
+    }
+
+    @Override
+    public Object getPrimaryKey() {
+        return standortID;
     }
 }

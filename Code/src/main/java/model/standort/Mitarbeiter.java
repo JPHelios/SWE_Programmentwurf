@@ -1,5 +1,6 @@
 package model.standort;
 
+import de.dhbwka.swe.utils.model.IPersistable;
 import model.utils.Backup;
 import model.buchung.Buchung;
 
@@ -8,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Mitarbeiter {
+public class Mitarbeiter implements IPersistable {
     private int mitarbeiterID;
 
     private String nachname;
@@ -23,5 +24,10 @@ public class Mitarbeiter {
 
     public Mitarbeiter(){
 
+    }
+
+    @Override
+    public Object getPrimaryKey() {
+        return mitarbeiterID;
     }
 }

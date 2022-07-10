@@ -1,4 +1,5 @@
 package model.fahrzeug;
+import de.dhbwka.swe.utils.model.IPersistable;
 import model.standort.Standort;
 import model.utils.Bild;
 
@@ -7,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Fahrzeug {
+public class Fahrzeug implements IPersistable {
     private int fahrzeugID;
 
     private String hersteller;
@@ -28,4 +29,8 @@ public class Fahrzeug {
     }
 
 
+    @Override
+    public Object getPrimaryKey() {
+        return fahrzeugID;
+    }
 }

@@ -6,8 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Ausruestung {
-    private int ausruestungID;
-
     private String name;
     private String beschreibung;
     private Fahrzeug[] kompatibel;

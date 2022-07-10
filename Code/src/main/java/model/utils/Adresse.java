@@ -1,12 +1,13 @@
 package model.utils;
 
 
+import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class Adresse {
+public class Adresse implements IPersistable {
     private int adresseID;
 
     private String strasse;
@@ -17,5 +18,10 @@ public class Adresse {
 
     public Adresse(){
 
+    }
+
+    @Override
+    public Object getPrimaryKey() {
+        return adresseID;
     }
 }

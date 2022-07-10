@@ -1,11 +1,12 @@
 package model.standort;
 
+import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Filiale {
+public class Filiale implements IPersistable {
     private int filialeID;
 
     private String[] oeffnungszeiten = new String[7];
@@ -14,5 +15,10 @@ public class Filiale {
 
     public Filiale(){
 
+    }
+
+    @Override
+    public Object getPrimaryKey() {
+        return filialeID;
     }
 }
