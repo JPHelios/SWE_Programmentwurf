@@ -1,6 +1,7 @@
 package app;
 
 import lombok.Data;
+import lombok.SneakyThrows;
 import model.standort.Mitarbeiter;
 import view.gui.NavigationGUI;
 
@@ -10,6 +11,7 @@ public class Carsharing {
     private Mitarbeiter angemeldeterMitarbeiter;
     private NavigationGUI gui;
 
+    @SneakyThrows
     public Carsharing(){
 
         gui = new NavigationGUI();
