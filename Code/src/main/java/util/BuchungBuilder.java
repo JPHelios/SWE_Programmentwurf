@@ -1,6 +1,5 @@
 package util;
 import model.buchung.Buchung;
-import model.buchung.Rabattaktion;
 import model.fahrzeug.Fahrzeug;
 import model.kunde.Kunde;
 import model.standort.Mitarbeiter;

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class Hundetransportbox extends Ausruestung {
     private String[] hundekompatibilitaet;
-    private int anzahlHunde[];
+    private int anzahlHunde;
 
     public Hundetransportbox(){
 

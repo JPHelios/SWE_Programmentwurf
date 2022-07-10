@@ -2,6 +2,7 @@ package model.kunde;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.buchung.Buchung;
 import model.utils.Adresse;
 
 @Setter
@@ -15,6 +16,7 @@ public class Kunde {
     private String email;
     private Vertrag vertrag;
     private Adresse adresse;
+    private Buchung[] buchungen;
 
     public Kunde(){
 
