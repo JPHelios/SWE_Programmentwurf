@@ -4,7 +4,9 @@ import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URL;
 
 public class NavigationGUI extends GUIWindowComponent {
 
@@ -19,10 +21,11 @@ public class NavigationGUI extends GUIWindowComponent {
     Color smokeyGrey = new Color(112,112,112);
 
     public NavigationGUI() throws IOException, FontFormatException {
-        createFrame();
         createNavigationBar();
         createHeader();
         createMainComponent();
+
+        createFrame();
     }
 
     private void createFrame(){
@@ -44,23 +47,28 @@ public class NavigationGUI extends GUIWindowComponent {
 
     private void createHeader(){
 
-        JPanel header = new JPanel();
+        ImageIcon icon = new ImageIcon("src\\main\\resources\\logo.PNG");
+        icon = new ImageIcon(icon.getImage().getScaledInstance(200, 100, BufferedImage.SCALE_SMOOTH));
 
-        header.setBackground(paleVioletRed);
-        header.setSize(frame.getWidth(), (int) (frame.getHeight() * 0.1));
+        JLabel headline_label = new JLabel("Carsharing Dödelhausen", SwingConstants.CENTER);
+        headline_label.setFont(new Font("Serif", Font.BOLD, 50));
 
-        JLabel headline = new JLabel("Carsharing Dödelhausen");
-        headline.setFont(new Font("Serif", Font.BOLD, 50));
+        JLabel logo_label = new JLabel();
+        logo_label.setSize(300,100);
+        logo_label.setIcon(icon);
 
-        JLabel logo = new JLabel();
-        ImageIcon icon = new ImageIcon("logo.PNG");
-        logo.setIcon(icon);
+        JLabel placeholder_label = new JLabel(" ");
 
-        header.add(headline, BorderLayout.CENTER);
-        header.add(logo, BorderLayout.WEST);
+        JPanel header_panel = new JPanel();
+        header_panel.setBackground(paleVioletRed);
+        header_panel.setSize(frame.getWidth(), (int) (frame.getHeight() * 0.1));
+        header_panel.setLayout(new GridLayout(1,3));
 
+        header_panel.add(logo_label);
+        header_panel.add(headline_label);
+        header_panel.add(placeholder_label);
 
-        frame.add(header, BorderLayout.NORTH);
+        frame.add(header_panel, BorderLayout.NORTH);
     }
 
     private void createMainComponent(){
