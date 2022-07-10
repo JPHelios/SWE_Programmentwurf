@@ -4,6 +4,7 @@ import de.dhbwka.swe.utils.model.IPersistable;
 import de.dhbwka.swe.utils.util.GenericEntityManager;
 import model.fahrzeug.Fahrzeug;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EntityManager extends GenericEntityManager {
@@ -25,6 +26,6 @@ public class EntityManager extends GenericEntityManager {
     }
 
     public List<IPersistable> getAllEl(Class c){
-        return [new Fahrzeug()];
+        return new ArrayList<>();
     }
 }
