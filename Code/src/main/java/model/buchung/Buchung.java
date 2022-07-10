@@ -7,7 +7,6 @@ import model.fahrzeug.Fahrzeug;
 import model.kunde.Kunde;
 import model.standort.Mitarbeiter;
 
-import java.sql.Array;
 import java.util.Date;
 
 @Getter
