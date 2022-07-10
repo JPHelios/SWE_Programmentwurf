@@ -1,4 +1,25 @@
-*.aux
+**.aux
+**.vscode
+**.class
+**target
+**.vpp*
 
-Code/.idea
-Code/.idea/workspace.xml
+##############################
+#Für die komischen LTeX-Files
+#
+    **.bbl
+    **.bcf
+    **.blg
+    **.fdb_latexmk
+    **.fls
+    **.lof
+    **.log
+    **.lol
+    **.out
+    **.run.xml
+    **synchtex.gz
+    **.toc
+#
+###############################
+
+**.idea
