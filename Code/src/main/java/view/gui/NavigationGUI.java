@@ -27,6 +27,8 @@ public class NavigationGUI extends GUIWindowComponent {
     Border noBorder = new EmptyBorder(10, 20, 10, 20);
     Font navigationFont = new Font("Arial", Font.PLAIN, 25);
 
+    JPanel mainComponent = new JPanel();
+
     public NavigationGUI() throws IOException, FontFormatException {
         createNavigationBar();
         createHeader();
@@ -227,9 +229,14 @@ public class NavigationGUI extends GUIWindowComponent {
 
     private void createMainComponent(){
 
-        JPanel mainComponent = new JPanel();
-        mainComponent.setBackground(pinkRose);
+        mainComponent = new StandortGUI(frame).getGui();
 
+        frame.add(mainComponent, BorderLayout.CENTER);
+    }
+
+    private void switchMainComponent(JPanel newComponent){
+        frame.remove(mainComponent);
+        mainComponent = newComponent;
         frame.add(mainComponent, BorderLayout.CENTER);
     }
 }
