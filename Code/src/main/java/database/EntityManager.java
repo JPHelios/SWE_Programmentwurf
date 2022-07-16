@@ -2,7 +2,6 @@ package database;
 
 import de.dhbwka.swe.utils.model.IPersistable;
 import de.dhbwka.swe.utils.util.GenericEntityManager;
-import model.fahrzeug.Fahrzeug;
 
 import java.util.ArrayList;
 import java.util.List;
