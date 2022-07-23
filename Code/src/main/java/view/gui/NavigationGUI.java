@@ -1,5 +1,8 @@
 package view.gui;
 
+import lombok.Getter;
+import lombok.Setter;
+import view.controller.NavigationController;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
@@ -13,8 +16,25 @@ import java.io.*;
 import java.net.URL;
 
 public class NavigationGUI extends GUIWindowComponent {
-
+    @Getter
     JFrame frame = new JFrame();
+
+    NavigationController controller;
+
+    @Getter
+    JButton standortButton;
+    @Getter
+    JButton fahrzeugeButton;
+    @Getter
+    JButton buchungenButton;
+    @Getter
+    JButton kundenButton;
+    @Getter
+    JButton mitarbeiterButton;
+    @Getter
+    JButton rechnungenButton;
+    @Getter
+    JButton settingsButton;
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -27,6 +47,7 @@ public class NavigationGUI extends GUIWindowComponent {
     Border noBorder = new EmptyBorder(10, 20, 10, 20);
     Font navigationFont = new Font("Arial", Font.PLAIN, 25);
 
+    @Getter @Setter
     JPanel mainComponent = new JPanel();
 
     public NavigationGUI() throws IOException, FontFormatException {
@@ -35,6 +56,8 @@ public class NavigationGUI extends GUIWindowComponent {
         createMainComponent();
 
         createFrame();
+
+        controller = new NavigationController(this);
     }
 
     private void createFrame(){
@@ -56,7 +79,7 @@ public class NavigationGUI extends GUIWindowComponent {
 
 
 
-        JButton standortButton = new JButton("Standorte");
+        standortButton = new JButton("Standorte");
         standortButton.setBackground(cadillacPink);
         standortButton.setBorder(noBorder);
         standortButton.setFont(navigationFont);
@@ -76,7 +99,7 @@ public class NavigationGUI extends GUIWindowComponent {
 
         navigationBar.add(standortButton);
 
-        JButton fahrzeugeButton = new JButton("Fahrzeuge");
+        fahrzeugeButton = new JButton("Fahrzeuge");
         fahrzeugeButton.setBackground(cadillacPink);
         fahrzeugeButton.setBorder(noBorder);
         fahrzeugeButton.setFont(navigationFont);
@@ -96,7 +119,7 @@ public class NavigationGUI extends GUIWindowComponent {
         navigationBar.add(fahrzeugeButton);
 
 
-        JButton buchungenButton = new JButton("Buchungen");
+        buchungenButton = new JButton("Buchungen");
         buchungenButton.setBackground(cadillacPink);
         buchungenButton.setBorder(noBorder);
         buchungenButton.setFont(navigationFont);
@@ -116,7 +139,7 @@ public class NavigationGUI extends GUIWindowComponent {
         navigationBar.add(buchungenButton);
 
 
-        JButton kundenButton = new JButton("Kunden");
+        kundenButton = new JButton("Kunden");
         kundenButton.setBackground(cadillacPink);
         kundenButton.setBorder(noBorder);
         kundenButton.setFont(navigationFont);
@@ -136,7 +159,7 @@ public class NavigationGUI extends GUIWindowComponent {
         navigationBar.add(kundenButton);
 
 
-        JButton mitarbeiterButton = new JButton("Mitarbeiter");
+        mitarbeiterButton = new JButton("Mitarbeiter");
         mitarbeiterButton.setBackground(cadillacPink);
         mitarbeiterButton.setBorder(noBorder);
         mitarbeiterButton.setFont(navigationFont);
@@ -156,7 +179,7 @@ public class NavigationGUI extends GUIWindowComponent {
         navigationBar.add(mitarbeiterButton);
 
 
-        JButton rechnungenButton = new JButton("Rechnungen");
+        rechnungenButton = new JButton("Rechnungen");
         rechnungenButton.setBackground(cadillacPink);
         rechnungenButton.setBorder(noBorder);
         rechnungenButton.setFont(navigationFont);
@@ -176,7 +199,7 @@ public class NavigationGUI extends GUIWindowComponent {
         navigationBar.add(rechnungenButton);
 
 
-        JButton settingsButton = new JButton("Einstellungen");
+        settingsButton = new JButton("Einstellungen");
         settingsButton.setBackground(cadillacPink);
         settingsButton.setBorder(noBorder);
         settingsButton.setFont(navigationFont);
@@ -225,6 +248,8 @@ public class NavigationGUI extends GUIWindowComponent {
         header_panel.add(placeholder_label);
 
         frame.add(header_panel, BorderLayout.NORTH);
+
+
     }
 
     private void createMainComponent(){
@@ -234,9 +259,5 @@ public class NavigationGUI extends GUIWindowComponent {
         frame.add(mainComponent, BorderLayout.CENTER);
     }
 
-    private void switchMainComponent(JPanel newComponent){
-        frame.remove(mainComponent);
-        mainComponent = newComponent;
-        frame.add(mainComponent, BorderLayout.CENTER);
-    }
+
 }

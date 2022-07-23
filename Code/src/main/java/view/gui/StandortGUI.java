@@ -21,7 +21,7 @@ public class StandortGUI extends GUIWindowComponent {
 
     public StandortGUI(JFrame frame){
         gui.setBackground(pinkRose);
-        gui.setLayout(new FlowLayout());
+        gui.setLayout(new BorderLayout());
 
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.PAGE_AXIS));
@@ -42,7 +42,7 @@ public class StandortGUI extends GUIWindowComponent {
 
 
         ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
-        icon = new ImageIcon(icon.getImage().getScaledInstance(200, 100, BufferedImage.SCALE_SMOOTH));
+        icon = new ImageIcon(icon.getImage().getScaledInstance(600, 900, BufferedImage.SCALE_SMOOTH));
 
         JLabel map = new JLabel();
         map.setSize((int) (frame.getWidth() * 0.4), (int) (frame.getHeight() * 0.7));
@@ -53,8 +53,8 @@ public class StandortGUI extends GUIWindowComponent {
         listPanel.add(listBar);
         listPanel.add(createButton);
 
-        gui.add(listPanel);
-        gui.add(map);
+        gui.add(listPanel, BorderLayout.WEST);
+        gui.add(map, BorderLayout.EAST);
 
 
     }
