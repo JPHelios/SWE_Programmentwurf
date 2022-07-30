@@ -10,6 +10,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -217,6 +218,56 @@ public class NavigationGUI extends GUIWindowComponent {
         settingsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         navigationBar.add(settingsButton);
+
+
+        standortButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navToGUI(new StandortGUI(frame).getGui());
+            }
+        });
+
+        fahrzeugeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navToGUI(new FahrzeugGUI(frame).getGui());
+            }
+        });
+
+        buchungenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navToGUI(new BuchungGUI(frame).getGui());
+            }
+        });
+
+        kundenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navToGUI(new KundeGUI(frame).getGui());
+            }
+        });
+
+        mitarbeiterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navToGUI(new MitarbeiterGUI(frame).getGui());
+            }
+        });
+
+        rechnungenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navToGUI(new RechnungGUI(frame).getGui());
+            }
+        });
+
+        settingsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navToGUI(new SettingsGUI(frame).getGui());
+            }
+        });
 
 
 
