@@ -1,9 +1,12 @@
 package view.gui;
 
+import de.dhbwka.swe.utils.gui.ButtonElement;
+import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import view.controller.StandortController;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -21,40 +24,74 @@ public class StandortGUI extends GUIWindowComponent {
 
     public StandortGUI(JFrame frame){
         gui.setBackground(pinkRose);
-        gui.setLayout(new BorderLayout());
+        gui.setLayout(new GridLayout(1,3));
 
         JPanel listPanel = new JPanel();
-        listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.PAGE_AXIS));
+        listPanel.setLayout(new BorderLayout());
 
-        JPanel searchPanel = new JPanel();
-        searchPanel.setLayout(new FlowLayout());
+        JLabel mapLabel = new JLabel();
 
-        DefaultListModel list_data = controller.getListData();
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(pinkRose);
+        buttonPanel.setLayout(new BorderLayout());
 
-        JList standortListe = new JList(list_data);
-        JScrollPane listPane = new JScrollPane(standortListe,
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        JScrollBar listBar = listPane.getVerticalScrollBar();
-        listBar.setSize((int) (frame.getWidth() * 0.4), (int) (frame.getHeight() * 0.7));
+        JPanel buttonFilterPanel = new JPanel();
+        buttonFilterPanel.setBackground(pinkRose);
+        buttonFilterPanel.setLayout(new GridLayout(1,2));
 
-        JButton createButton = new JButton("Anlegen");
+        JPanel createPanel = new JPanel();
+        createPanel.setLayout(new BorderLayout());
+        createPanel.setBackground(pinkRose);
+
+        SimpleListComponent standortList = SimpleListComponent.builder("STLC")
+                .font(new Font("Arial", Font.PLAIN, 25))
+                .selectionMode(ListSelectionModel.SINGLE_SELECTION)
+                .build();
+
+        ButtonElement anlegenButton = ButtonElement.builder("BTN-AST")
+                .buttonText("Anlegen")
+                .type(ButtonElement.Type.BUTTON)
+                .build();
+
+        ButtonElement filterButton = ButtonElement.builder("BTN-FST")
+                .buttonText("Filter")
+                .type(ButtonElement.Type.BUTTON)
+                .build();
+        filterButton.setSize((int) (buttonPanel.getWidth() * 0.3), (int) (buttonPanel.getHeight() * 0.8));
+
+        ButtonElement createButton = ButtonElement.builder("BTN-CST")
+                .buttonText("Create")
+                .type(ButtonElement.Type.BUTTON)
+                .build();
+
+        JTextField searchField = new JTextField();
+        searchField.setText("Search");
+        searchField.setSize((int) (buttonPanel.getWidth() * 0.7), (int) (buttonPanel.getHeight() * 0.8));
+
+        buttonFilterPanel.add(searchField);
+        buttonFilterPanel.add(filterButton);
+
+        buttonPanel.add(buttonFilterPanel, BorderLayout.WEST);
+        buttonPanel.add(createButton, BorderLayout.EAST);
+
+        createPanel.add(anlegenButton, BorderLayout.WEST);
+
+        listPanel.add(buttonPanel, BorderLayout.NORTH);
+        listPanel.add(standortList, BorderLayout.CENTER);
+        listPanel.add(createPanel, BorderLayout.SOUTH);
+
 
 
         ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
         icon = new ImageIcon(icon.getImage().getScaledInstance(600, 900, BufferedImage.SCALE_SMOOTH));
 
-        JLabel map = new JLabel();
-        map.setSize((int) (frame.getWidth() * 0.4), (int) (frame.getHeight() * 0.7));
-        map.setIcon(icon);
+        mapLabel.setSize((int) (frame.getWidth() * 0.4), (int) (frame.getHeight() * 0.7));
+        mapLabel.setIcon(icon);
+        mapLabel.setHorizontalAlignment(JLabel.CENTER);
+        mapLabel.setVerticalAlignment(JLabel.CENTER);
 
-
-        listPanel.add(searchPanel);
-        listPanel.add(listBar);
-        listPanel.add(createButton);
-
-        gui.add(listPanel, BorderLayout.WEST);
-        gui.add(map, BorderLayout.EAST);
+        gui.add(listPanel);
+        gui.add(mapLabel);
 
 
     }

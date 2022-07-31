@@ -1,5 +1,6 @@
 package view.gui;
 
+import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
@@ -17,7 +18,19 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     public FahrzeugGUI(JFrame frame){
         JLabel test = new JLabel("Fahrzeuge");
+
+        JPanel listComponent = new JPanel();
+        JPanel detailComponent = new JPanel();
+
+        SimpleListComponent listComp = SimpleListComponent.builder("SLC")
+                .font(new Font("Arial", Font.PLAIN, 25))
+                .selectionMode(ListSelectionModel.SINGLE_SELECTION)
+                .build();
+
+
         gui.add(test);
+
+        gui.add(listComp);
     }
 
     public JPanel getGui(){
