@@ -6,12 +6,10 @@ import view.controller.StandortController;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class StandortGUI extends GUIWindowComponent {
-
     JPanel gui = new JPanel();
 
     StandortController controller = new StandortController();
@@ -57,7 +55,6 @@ public class StandortGUI extends GUIWindowComponent {
                 .buttonText("Filter")
                 .type(ButtonElement.Type.BUTTON)
                 .build();
-        filterButton.setSize((int) (buttonPanel.getWidth() * 0.3), (int) (buttonPanel.getHeight() * 0.8));
 
         ButtonElement createButton = ButtonElement.builder("BTN-CST")
                 .buttonText("Create")
@@ -66,7 +63,6 @@ public class StandortGUI extends GUIWindowComponent {
 
         JTextField searchField = new JTextField();
         searchField.setText("Search");
-        searchField.setSize((int) (buttonPanel.getWidth() * 0.7), (int) (buttonPanel.getHeight() * 0.8));
 
         buttonFilterPanel.add(searchField);
         buttonFilterPanel.add(filterButton);
@@ -80,8 +76,6 @@ public class StandortGUI extends GUIWindowComponent {
         listPanel.add(standortList, BorderLayout.CENTER);
         listPanel.add(createPanel, BorderLayout.SOUTH);
 
-
-
         ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
         icon = new ImageIcon(icon.getImage().getScaledInstance(600, 900, BufferedImage.SCALE_SMOOTH));
 
@@ -92,8 +86,6 @@ public class StandortGUI extends GUIWindowComponent {
 
         gui.add(listPanel);
         gui.add(mapLabel);
-
-
     }
 
     public JPanel getGui(){
