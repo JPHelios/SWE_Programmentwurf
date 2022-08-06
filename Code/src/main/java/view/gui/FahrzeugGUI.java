@@ -83,7 +83,6 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         String[] placeholderDropDown = {"Placeholder 1" , "Placeholder 2", "Placeholder 3"};
 
-
         JPanel rightComponentPanel = new JPanel();
         rightComponentPanel.setBackground(Colors.PINK_ROSE.getColor());
         rightComponentPanel.setLayout(new BorderLayout());
@@ -105,19 +104,40 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         JPanel statusPanel = new JPanel();
         statusPanel.setBackground(Colors.CADILLAC_PINK.getColor());
+        statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.Y_AXIS));
+
         JPanel buchungPanel = new JPanel();
+        buchungPanel.setLayout(new BoxLayout(buchungPanel, BoxLayout.Y_AXIS));
+
         JPanel herstellerPanel = new JPanel();
         herstellerPanel.setBackground(Colors.PINK_ROSE.getColor());
+        herstellerPanel.setLayout(new BoxLayout(herstellerPanel, BoxLayout.Y_AXIS));
+
         JPanel modellPanel = new JPanel();
+        modellPanel.setLayout(new BoxLayout(modellPanel, BoxLayout.Y_AXIS));
+
         JPanel klassenPanel = new JPanel();
         klassenPanel.setBackground(Colors.CADILLAC_PINK.getColor());
+        klassenPanel.setLayout(new BoxLayout(klassenPanel, BoxLayout.Y_AXIS));
+
         JPanel preisPanel = new JPanel();
+        preisPanel.setLayout(new BoxLayout(preisPanel, BoxLayout.Y_AXIS));
+
         JPanel baujahrPanel = new JPanel();
         baujahrPanel.setBackground(Colors.PINK_ROSE.getColor());
+        baujahrPanel.setLayout(new BoxLayout(baujahrPanel, BoxLayout.Y_AXIS));
+
         JPanel kilometerPanel = new JPanel();
+        kilometerPanel.setLayout(new BoxLayout(kilometerPanel, BoxLayout.Y_AXIS));
+
         JPanel reifenPanel = new JPanel();
         reifenPanel.setBackground(Colors.CADILLAC_PINK.getColor());
+        reifenPanel.setLayout(new BoxLayout(reifenPanel, BoxLayout.Y_AXIS));
+
         JPanel ausruestungPanel = new JPanel();
+        ausruestungPanel.setLayout(new BoxLayout(ausruestungPanel, BoxLayout.Y_AXIS));
+
+        //----------------
 
         JLabel statusTextLabel = new JLabel("Status");
         statusTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
