@@ -2,9 +2,13 @@ package view.gui;
 
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import model.fahrzeug.Ausruestung;
+import model.fahrzeug.Reifen;
+import util.Colors;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -12,32 +16,30 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
 
-    Color paleVioletRed = new Color(222,99,154);
-    Color cadillacPink = new Color(227,136,177);
-    Color pinkRose = new Color(215,166,179);
-    Color pinkMercury = new Color(241, 226, 226);
-    Color smokeyGrey = new Color(112,112,112);
-
     public FahrzeugGUI(JFrame frame){
-        gui.setBackground(pinkRose);
+        gui.setBackground(Colors.PINK_ROSE.getColor());
         gui.setLayout(new GridLayout(1,3));
+
+        createListComponent();
+        createDetailComponent();
+    }
+
+    private void createListComponent() {
 
         JPanel leftComponentPanel = new JPanel();
         leftComponentPanel.setLayout(new BorderLayout());
 
-        JLabel rightComponentLabel = new JLabel("Placeholder");
-
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(pinkRose);
+        buttonPanel.setBackground(Colors.PINK_ROSE.getColor());
         buttonPanel.setLayout(new BorderLayout());
 
         JPanel buttonFilterPanel = new JPanel();
-        buttonFilterPanel.setBackground(pinkRose);
-        buttonFilterPanel.setLayout(new GridLayout(1,2));
+        buttonFilterPanel.setBackground(Colors.PINK_ROSE.getColor());
+        buttonFilterPanel.setLayout(new GridLayout(1, 2));
 
         JPanel createPanel = new JPanel();
         createPanel.setLayout(new BorderLayout());
-        createPanel.setBackground(pinkRose);
+        createPanel.setBackground(Colors.PINK_ROSE.getColor());
 
         SimpleListComponent standortList = SimpleListComponent.builder("STLC")
                 .font(new Font("Arial", Font.PLAIN, 25))
@@ -74,11 +76,152 @@ public class FahrzeugGUI extends GUIWindowComponent {
         leftComponentPanel.add(standortList, BorderLayout.CENTER);
         leftComponentPanel.add(createPanel, BorderLayout.SOUTH);
 
-        rightComponentLabel.setHorizontalAlignment(JLabel.CENTER);
-        rightComponentLabel.setVerticalAlignment(JLabel.CENTER);
-
         gui.add(leftComponentPanel);
-        gui.add(rightComponentLabel);
+    }
+
+    private void createDetailComponent(){
+
+        String[] placeholderDropDown = {"Placeholder 1" , "Placeholder 2", "Placeholder 3"};
+
+
+        JPanel rightComponentPanel = new JPanel();
+        rightComponentPanel.setBackground(Colors.PINK_ROSE.getColor());
+        rightComponentPanel.setLayout(new BorderLayout());
+
+        JLabel mapLabel = new JLabel();
+
+        ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
+        icon = new ImageIcon(icon.getImage().getScaledInstance(900, 300, BufferedImage.SCALE_SMOOTH));
+
+        mapLabel.setIcon(icon);
+        mapLabel.setHorizontalAlignment(JLabel.CENTER);
+        mapLabel.setVerticalAlignment(JLabel.CENTER);
+
+        rightComponentPanel.add(mapLabel, BorderLayout.NORTH);
+
+//      #######################
+        JPanel panelPanel = new JPanel();
+        panelPanel.setLayout(new GridLayout(5,2, 18,18));
+
+        JPanel statusPanel = new JPanel();
+        statusPanel.setBackground(Colors.CADILLAC_PINK.getColor());
+        JPanel buchungPanel = new JPanel();
+        JPanel herstellerPanel = new JPanel();
+        herstellerPanel.setBackground(Colors.PINK_ROSE.getColor());
+        JPanel modellPanel = new JPanel();
+        JPanel klassenPanel = new JPanel();
+        klassenPanel.setBackground(Colors.CADILLAC_PINK.getColor());
+        JPanel preisPanel = new JPanel();
+        JPanel baujahrPanel = new JPanel();
+        baujahrPanel.setBackground(Colors.PINK_ROSE.getColor());
+        JPanel kilometerPanel = new JPanel();
+        JPanel reifenPanel = new JPanel();
+        reifenPanel.setBackground(Colors.CADILLAC_PINK.getColor());
+        JPanel ausruestungPanel = new JPanel();
+
+        JLabel statusTextLabel = new JLabel("Status");
+        statusTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        JLabel statusLabel = new JLabel("Placeholder");
+        statusLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        statusPanel.add(statusTextLabel);
+        statusPanel.add(statusLabel);
+
+        //----------------
+
+        JLabel buchungLabel = new JLabel("Buchung");
+        buchungLabel.setFont(new Font("Arial", Font.ITALIC, 20));
+
+        buchungPanel.add(buchungLabel);
+
+        //----------------
+
+        JLabel herstellerTextLabel = new JLabel("Hersteller");
+        herstellerTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        JLabel herstellerLabel = new JLabel("Placeholder");
+        herstellerLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        herstellerPanel.add(herstellerTextLabel);
+        herstellerPanel.add(herstellerLabel);
+
+        //----------------
+
+        JLabel modellTextLabel = new JLabel("Hersteller");
+        modellTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        JLabel modellLabel = new JLabel("Placeholder");
+        modellLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        modellPanel.add(modellTextLabel);
+        modellPanel.add(modellLabel);
+
+        //----------------
+
+        JLabel klasseTextLabel = new JLabel("Klasse");
+        klasseTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        JLabel klasseLabel = new JLabel("Placeholder");
+        klasseLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        klassenPanel.add(klasseTextLabel);
+        klassenPanel.add(klasseLabel);
+
+        //----------------
+
+        JLabel preisTextLabel = new JLabel("Preis");
+        preisTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        JLabel preisLabel = new JLabel("Placeholder");
+        preisLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        preisPanel.add(preisTextLabel);
+        preisPanel.add(preisLabel);
+
+        //----------------
+
+        JLabel baujahrTextLabel = new JLabel("Baujahr");
+        baujahrTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        JLabel baujahrLabel = new JLabel("Placeholder");
+        baujahrLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        baujahrPanel.add(baujahrTextLabel);
+        baujahrPanel.add(baujahrLabel);
+
+        //----------------
+
+        JLabel kilometerTextLabel = new JLabel("Kilometerstand");
+        kilometerTextLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        JLabel kilometerLabel = new JLabel("Placeholder");
+        kilometerLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        kilometerPanel.add(kilometerTextLabel);
+        kilometerPanel.add(kilometerLabel);
+
+        //----------------
+
+        JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
+
+        reifenPanel.add(reifenDropDown);
+
+        //----------------
+
+        JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
+
+        ausruestungPanel.add(ausruestungDropDown);
+
+        //----------------
+
+        panelPanel.add(statusPanel);
+        panelPanel.add(buchungPanel);
+        panelPanel.add(herstellerPanel);
+        panelPanel.add(modellPanel);
+        panelPanel.add(klassenPanel);
+        panelPanel.add(preisPanel);
+        panelPanel.add(baujahrPanel);
+        panelPanel.add(kilometerPanel);
+        panelPanel.add(reifenPanel);
+        panelPanel.add(ausruestungPanel);
+
+        rightComponentPanel.add(panelPanel, BorderLayout.CENTER);
+
+        gui.add(rightComponentPanel);
     }
 
     public JPanel getGui(){
