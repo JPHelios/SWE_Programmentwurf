@@ -17,7 +17,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         gui.setBackground(Colors.PINK_ROSE.getColor());
         gui.setLayout(new GridLayout(1,3));
 
-        creat ListComponent();
+        createListComponent();
         createDetailComponent();
     }
 
@@ -94,7 +94,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         mapLabel.setVerticalAlignment(JLabel.CENTER);
 
         rightComponentPanel.add(mapLabel, BorderLayout.NORTH);
-        
+
         JPanel panelPanel = new JPanel();
         panelPanel.setLayout(new GridLayout(5,2, 200,50));
         panelPanel.setBackground(Colors.PINK_ROSE.getColor());
