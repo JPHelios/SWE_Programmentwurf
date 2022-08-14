@@ -14,4 +14,12 @@ public enum TextSize {
         this.labelSize = labelSize;
         this.textSize = textSize;
     }
+
+    public int label(){
+        return labelSize;
+    }
+
+    public int text(){
+        return textSize;
+    }
 }

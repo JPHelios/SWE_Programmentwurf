@@ -1,8 +1,10 @@
 package view.gui;
 
+import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import util.enums.Colors;
+import util.enums.FontType;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
@@ -113,21 +115,22 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JPanel reifenPanel = createPanel();
         JPanel ausruestungPanel = createPanel();
 
-        JLabel statusTextLabel = createLabel("Status", "Arial", Font.PLAIN, 15);
-        JLabel statusLabel = createLabel("Placeholder", "Arial", Font.BOLD, 20);
-        JLabel buchungLabel = createLabel("Buchung", "Arial", Font.PLAIN, 15);
-        JLabel herstellerTextLabel = createLabel("Hersteller", "Arial", Font.PLAIN, 15);
-        JLabel herstellerLabel = createLabel("Placeholder", "Arial", Font.BOLD, 20);
-        JLabel modellTextLabel = createLabel("Hersteller", "Arial", Font.PLAIN, 15);
-        JLabel modellLabel = createLabel("Placeholder", "Arial", Font.BOLD, 20);
-        JLabel klasseTextLabel = createLabel("Klasse", "Arial", Font.PLAIN, 15);
-        JLabel klasseLabel = createLabel("Placeholer", "Arial", Font.BOLD, 20);
-        JLabel preisTextLabel = createLabel("Preis", "Arial", Font.PLAIN, 15);
-        JLabel preisLabel = createLabel("Placeholder", "Arial", Font.BOLD, 20);
-        JLabel baujahrTextLabel = createLabel("Baujahr", "Arial", Font.PLAIN, 15);
-        JLabel baujahrLabel = createLabel("Placeholder", "Arial", Font.BOLD, 20);
-        JLabel kilometerTextLabel = createLabel("Kilometerstand", "Arial", Font.PLAIN, 15);
-        JLabel kilometerLabel = createLabel("Placeholder", "Arial", Font.BOLD, 20);
+        JLabel statusTextLabel = createLabel("Status",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JLabel statusLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        JLabel buchungLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        //...
+        JLabel herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JLabel herstellerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        JLabel modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JLabel modellLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        JLabel klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JLabel klasseLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        JLabel preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JLabel preisLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        JLabel baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JLabel baujahrLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        JLabel kilometerTextLabel = createLabel("Kilometerstand", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JLabel kilometerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
         JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
 
