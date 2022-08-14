@@ -2,7 +2,7 @@ package view.gui;
 
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
-import util.Colors;
+import util.enums.Colors;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;

@@ -2,19 +2,18 @@ package view.gui;
 
 import lombok.Getter;
 import lombok.Setter;
+import util.enums.FrameSize;
 import view.controller.NavigationController;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.URL;
 
 public class NavigationGUI extends GUIWindowComponent {
     @Getter
@@ -65,7 +64,7 @@ public class NavigationGUI extends GUIWindowComponent {
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setTitle("Carsharing Dödelhausen");
-        frame.setSize(screenSize.width, screenSize.height);
+        frame.setSize(FrameSize.WINDOW_XLARGE.x(), FrameSize.WINDOW_XLARGE.y());
         frame.setResizable(false);
         frame.setVisible(true);
         
