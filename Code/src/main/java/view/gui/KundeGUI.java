@@ -1,11 +1,14 @@
 package view.gui;
 
+import de.dhbwka.swe.utils.gui.AttributeElement;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import de.dhbwka.swe.utils.util.CSVReader;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class KundeGUI extends GUIWindowComponent {
 
@@ -23,8 +26,6 @@ public class KundeGUI extends GUIWindowComponent {
 
         JPanel leftComponentPanel = new JPanel();
         leftComponentPanel.setLayout(new BorderLayout());
-
-        JLabel rightComponentLabel = new JLabel("Placeholder");
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(pinkRose);
@@ -73,11 +74,13 @@ public class KundeGUI extends GUIWindowComponent {
         leftComponentPanel.add(standortList, BorderLayout.CENTER);
         leftComponentPanel.add(createPanel, BorderLayout.SOUTH);
 
-        rightComponentLabel.setHorizontalAlignment(JLabel.CENTER);
-        rightComponentLabel.setVerticalAlignment(JLabel.CENTER);
+        //######################################################
+        JPanel rightComponentPanel = new JPanel();
+
+
 
         gui.add(leftComponentPanel);
-        gui.add(rightComponentLabel);
+        gui.add(rightComponentPanel);
     }
 
     public JPanel getGui(){
