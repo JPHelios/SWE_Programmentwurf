@@ -1,5 +1,7 @@
 package view.gui;
 
+import database.EntityManager;
+import model.standort.Standort;
 import view.controller.SettingsController;
 import view.utils.GUIWindowComponent;
 
@@ -13,6 +15,7 @@ public class SettingsGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
     SettingsController controller = new SettingsController();
+    EntityManager em = new EntityManager();
 
     public SettingsGUI(JFrame frame){
         JLabel test = new JLabel("Einstellungen");
@@ -32,7 +35,8 @@ public class SettingsGUI extends GUIWindowComponent {
         writeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.write(data);
+                /*controller.write(data);*/
+                Object o = em.find(Standort.class, "69");
             }
         });
 

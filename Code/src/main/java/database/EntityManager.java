@@ -7,6 +7,9 @@ import de.dhbwka.swe.utils.util.GenericEntityManager;
 import util.enums.Entities;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,15 +36,57 @@ public class EntityManager extends GenericEntityManager {
 
     }
 
+    public Object find(Class c, String key){
+        String path = getCSVPath(c);
+        List<String[]> elements = read(path);
+        System.out.println(elements);
+        for(String[] el:elements){
+            System.out.println("elm: " + el[0]);
+            System.out.println("key: " + key);
+            if(key.equals(el[0])){
+                System.out.println("Found");
+                try {
+                    Constructor<?> cons = c.getConstructor(Array.newInstance(String.class, 0).getClass());
+                    System.out.println(cons);
+                    Object i = cons.newInstance(new String[][]{el});
+                    System.out.println(i);
+                    return i;
+                } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
+    public String[] findTuple(Class c, String key){
+        String path = getCSVPath(c);
+        List<String[]> elements = read(path);
+        for(String[] el:elements){
+            if(el[0]==key){
+                return el;
+            }
+        }
+        return null;
+    }
+
     public List<IPersistable> getAllEl(Class c){
-        String class_name = c.getName();
-        Entities.valueOf(class_name);
+        String path = getCSVPath(c);
+        List<String[]> elements = read(path);
+
         return new ArrayList<>();
     }
 
+    private String getCSVPath(Class c) {
+        String class_name = c.getName();
+        class_name = class_name.split("\\.")[2];
+        System.out.println(class_name);
+        String path = Entities.valueOf(class_name).getPath();
+        return path;
+    }
 
 
-    public void read(String path){
+    private List<String[]> read(String path){
         reader = new CSVReader(path);
         try {
             List<String[]> data = reader.readData();
@@ -50,15 +95,15 @@ public class EntityManager extends GenericEntityManager {
                     System.out.println(y);
                 }
             }
-
+            return data;
         } catch (IOException e) {
             e.printStackTrace();
+            return null ;
         }
-
     }
     //1, 12, 4, "s1.jpg", 1
     //2, 100, 25, "s2.jpg", 2
-    public void write(Object[][] args){
+    private void write(Object[][] args){
         writer = new CSVWriter("src\\main\\resources\\database\\standort.csv", false);
         try {
             writer.writeDataToFile(args, new String[]{});
