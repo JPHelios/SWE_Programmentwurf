@@ -30,56 +30,36 @@ public class SettingsGUI extends GUIWindowComponent {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String[] selectedFontType = new String[] {fontTypeDropDown.getSelectedItem().toString()};
-                String[] selectedFrameSize = new String[] {frameSizeDropDown.getSelectedItem().toString()};
+                String selectedFontType = fontTypeDropDown.getSelectedItem().toString();
+                String selectedFrameSize = frameSizeDropDown.getSelectedItem().toString();
 
-                String[][] data = new String[][] {selectedFontType, selectedFrameSize};
+                String[] settings = new String[] {selectedFontType, selectedFrameSize};
+                String[][] data = new String[][] {settings};
 
                 controller.write(data);
 
+                Object[] options = {"Restart Now", "Load Later"};
+
+                int dialog = JOptionPane.showOptionDialog(
+                        gui,
+                        "App needs to be restarted to apply changes",
+                        "Reload Required",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+
+                switch (dialog){
+                    case 0:
+                        System.exit(0);
+                        break;
+                    case 1:
+                        break;
+                }
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        JLabel test = new JLabel("Einstellungen");
-        JButton readButton = new JButton("read");
-        readButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //controller.read();
-            }
-        });
-
-        String[] rawdata1 = {"69", "69", "69", "test.jpg", "69"};
-        String[] rawdata2 = {"70", "70", "70", "test.jpg", "70"};
-        String[][] data = new String[][]{rawdata1, rawdata2};
-
-        JButton writeButton = new JButton("write");
-        writeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //controller.write(data);
-            }
-        });
-
-        gui.add(test);
-        gui.add(readButton);
-        gui.add(writeButton);
         gui.add(fontTypeDropDown);
         gui.add(frameSizeDropDown);
         gui.add(saveButton);
