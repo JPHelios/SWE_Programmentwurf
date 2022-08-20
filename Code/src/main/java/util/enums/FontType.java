@@ -17,4 +17,8 @@ public enum FontType {
     public String toString(){
         return fontType;
     }
+
+    public String getFontArray(){
+        return null;
+    }
 }
