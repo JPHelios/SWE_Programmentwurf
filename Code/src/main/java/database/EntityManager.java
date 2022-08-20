@@ -4,6 +4,7 @@ import de.dhbwka.swe.utils.model.IPersistable;
 import de.dhbwka.swe.utils.util.CSVReader;
 import de.dhbwka.swe.utils.util.CSVWriter;
 import de.dhbwka.swe.utils.util.GenericEntityManager;
+import util.enums.Entities;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class EntityManager extends GenericEntityManager {
     }
 
     public void modify(IPersistable el){
+        String class_name= el.getClass().getName();
+
 
     }
 
@@ -31,13 +34,15 @@ public class EntityManager extends GenericEntityManager {
     }
 
     public List<IPersistable> getAllEl(Class c){
+        String class_name = c.getName();
+        Entities.valueOf(class_name);
         return new ArrayList<>();
     }
 
 
 
-    public void read(){
-        reader = new CSVReader("src\\main\\resources\\database\\standort.csv");
+    public void read(String path){
+        reader = new CSVReader(path);
         try {
             List<String[]> data = reader.readData();
             for (String[] x: data) {
@@ -56,7 +61,7 @@ public class EntityManager extends GenericEntityManager {
     public void write(Object[][] args){
         writer = new CSVWriter("src\\main\\resources\\database\\standort.csv", false);
         try {
-            writer.writeDataToFile(args, new String[]{"Standort-ID", "Anzahl Stellplätze", "Anzahl E-Säulen", "Bild-ID", "Adress-ID"});
+            writer.writeDataToFile(args, new String[]{});
         } catch (IOException e) {
             e.printStackTrace();
         }
