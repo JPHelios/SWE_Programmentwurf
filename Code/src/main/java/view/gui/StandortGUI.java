@@ -1,7 +1,9 @@
 package view.gui;
 
+import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import util.enums.Colors;
 import view.controller.StandortController;
 import view.utils.GUIWindowComponent;
 
@@ -14,14 +16,8 @@ public class StandortGUI extends GUIWindowComponent {
 
     StandortController controller = new StandortController();
 
-    Color paleVioletRed = new Color(222,99,154);
-    Color cadillacPink = new Color(227,136,177);
-    Color pinkRose = new Color(215,166,179);
-    Color pinkMercury = new Color(241, 226, 226);
-    Color smokeyGrey = new Color(112,112,112);
-
     public StandortGUI(JFrame frame){
-        gui.setBackground(pinkRose);
+        gui.setBackground(Colors.PINK_ROSE.getColor());
         gui.setLayout(new GridLayout(1,3));
 
         JPanel listPanel = new JPanel();
@@ -30,16 +26,16 @@ public class StandortGUI extends GUIWindowComponent {
         JLabel mapLabel = new JLabel();
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(pinkRose);
+        buttonPanel.setBackground(Colors.PINK_ROSE.getColor());
         buttonPanel.setLayout(new BorderLayout());
 
         JPanel buttonFilterPanel = new JPanel();
-        buttonFilterPanel.setBackground(pinkRose);
+        buttonFilterPanel.setBackground(Colors.PINK_ROSE.getColor());
         buttonFilterPanel.setLayout(new GridLayout(1,2));
 
         JPanel createPanel = new JPanel();
         createPanel.setLayout(new BorderLayout());
-        createPanel.setBackground(pinkRose);
+        createPanel.setBackground(Colors.PINK_ROSE.getColor());
 
         SimpleListComponent standortList = SimpleListComponent.builder("STLC")
                 .font(new Font("Arial", Font.PLAIN, 25))
@@ -77,7 +73,10 @@ public class StandortGUI extends GUIWindowComponent {
         listPanel.add(createPanel, BorderLayout.SOUTH);
 
         ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
-        icon = new ImageIcon(icon.getImage().getScaledInstance(600, 900, BufferedImage.SCALE_SMOOTH));
+        icon = new ImageIcon(icon.getImage().getScaledInstance(
+                (int) (Carsharing.config.FRAME_SIZE.x() * 0.23),
+                (int) (Carsharing.config.FRAME_SIZE.y() * 0.63),
+                BufferedImage.SCALE_SMOOTH));
 
         mapLabel.setSize((int) (frame.getWidth() * 0.4), (int) (frame.getHeight() * 0.7));
         mapLabel.setIcon(icon);

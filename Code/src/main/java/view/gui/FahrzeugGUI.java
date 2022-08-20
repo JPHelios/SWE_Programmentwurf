@@ -89,7 +89,10 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JLabel mapLabel = new JLabel();
 
         ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
-        icon = new ImageIcon(icon.getImage().getScaledInstance(900, 500, BufferedImage.SCALE_SMOOTH));
+        icon = new ImageIcon(icon.getImage().getScaledInstance(
+                (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
+                (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
+                BufferedImage.SCALE_SMOOTH));
 
         mapLabel.setIcon(icon);
         mapLabel.setHorizontalAlignment(JLabel.CENTER);

@@ -2,6 +2,7 @@ package view.gui;
 
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import util.enums.Colors;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
@@ -11,14 +12,8 @@ public class RechnungGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
 
-    Color paleVioletRed = new Color(222,99,154);
-    Color cadillacPink = new Color(227,136,177);
-    Color pinkRose = new Color(215,166,179);
-    Color pinkMercury = new Color(241, 226, 226);
-    Color smokeyGrey = new Color(112,112,112);
-
     public RechnungGUI(JFrame frame){
-        gui.setBackground(pinkRose);
+        gui.setBackground(Colors.PINK_ROSE.getColor());
         gui.setLayout(new GridLayout(1,3));
 
         JPanel leftComponentPanel = new JPanel();
@@ -27,16 +22,16 @@ public class RechnungGUI extends GUIWindowComponent {
         JLabel rightComponentLabel = new JLabel("Placeholder");
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(pinkRose);
+        buttonPanel.setBackground(Colors.PINK_ROSE.getColor());
         buttonPanel.setLayout(new BorderLayout());
 
         JPanel buttonFilterPanel = new JPanel();
-        buttonFilterPanel.setBackground(pinkRose);
+        buttonFilterPanel.setBackground(Colors.PINK_ROSE.getColor());
         buttonFilterPanel.setLayout(new GridLayout(1,2));
 
         JPanel createPanel = new JPanel();
         createPanel.setLayout(new BorderLayout());
-        createPanel.setBackground(pinkRose);
+        createPanel.setBackground(Colors.PINK_ROSE.getColor());
 
         SimpleListComponent standortList = SimpleListComponent.builder("STLC")
                 .font(new Font("Arial", Font.PLAIN, 25))
