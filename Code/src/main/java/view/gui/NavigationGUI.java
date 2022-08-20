@@ -4,7 +4,6 @@ import app.Carsharing;
 import lombok.Getter;
 import lombok.Setter;
 import util.enums.Colors;
-import util.enums.FrameSize;
 import view.controller.NavigationController;
 import view.utils.GUIWindowComponent;
 
@@ -38,10 +37,8 @@ public class NavigationGUI extends GUIWindowComponent {
     @Getter
     JButton settingsButton;
 
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
     Border noBorder = new EmptyBorder(10, 20, 10, 20);
-    Font navigationFont = new Font("Arial", Font.PLAIN, 25);
+    Font navigationFont = new Font(Carsharing.config.FONT, Font.PLAIN, (int) (Carsharing.config.FONT_SIZE_HEADLINE * 0.5));
 
     @Getter @Setter
     JPanel mainComponent = new JPanel();
@@ -50,7 +47,6 @@ public class NavigationGUI extends GUIWindowComponent {
         createNavigationBar();
         createHeader();
         createMainComponent();
-
         createFrame();
 
         controller = new NavigationController(this);
@@ -73,8 +69,6 @@ public class NavigationGUI extends GUIWindowComponent {
         navigationBar.setLayout(new BoxLayout(navigationBar, BoxLayout.PAGE_AXIS));
         navigationBar.setBorder(new EmptyBorder(28, 28, 28, 28));
 
-
-
         standortButton = new JButton("Standorte");
         standortButton.setBackground(Colors.CADILLAC_PINK.getColor());
         standortButton.setBorder(noBorder);
@@ -91,7 +85,6 @@ public class NavigationGUI extends GUIWindowComponent {
             }
         });
         standortButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
 
         navigationBar.add(standortButton);
 
@@ -114,7 +107,6 @@ public class NavigationGUI extends GUIWindowComponent {
 
         navigationBar.add(fahrzeugeButton);
 
-
         buchungenButton = new JButton("Buchungen");
         buchungenButton.setBackground(Colors.CADILLAC_PINK.getColor());
         buchungenButton.setBorder(noBorder);
@@ -133,7 +125,6 @@ public class NavigationGUI extends GUIWindowComponent {
         buchungenButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         navigationBar.add(buchungenButton);
-
 
         kundenButton = new JButton("Kunden");
         kundenButton.setBackground(Colors.CADILLAC_PINK.getColor());
@@ -154,7 +145,6 @@ public class NavigationGUI extends GUIWindowComponent {
 
         navigationBar.add(kundenButton);
 
-
         mitarbeiterButton = new JButton("Mitarbeiter");
         mitarbeiterButton.setBackground(Colors.CADILLAC_PINK.getColor());
         mitarbeiterButton.setBorder(noBorder);
@@ -173,7 +163,6 @@ public class NavigationGUI extends GUIWindowComponent {
         mitarbeiterButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         navigationBar.add(mitarbeiterButton);
-
 
         rechnungenButton = new JButton("Rechnungen");
         rechnungenButton.setBackground(Colors.CADILLAC_PINK.getColor());
@@ -194,7 +183,6 @@ public class NavigationGUI extends GUIWindowComponent {
 
         navigationBar.add(rechnungenButton);
 
-
         settingsButton = new JButton("Einstellungen");
         settingsButton.setBackground(Colors.CADILLAC_PINK.getColor());
         settingsButton.setBorder(noBorder);
@@ -213,7 +201,6 @@ public class NavigationGUI extends GUIWindowComponent {
         settingsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         navigationBar.add(settingsButton);
-
 
         standortButton.addActionListener(new ActionListener() {
             @Override
@@ -264,9 +251,6 @@ public class NavigationGUI extends GUIWindowComponent {
             }
         });
 
-
-
-
         frame.add(navigationBar, BorderLayout.WEST);
     }
 
@@ -276,7 +260,7 @@ public class NavigationGUI extends GUIWindowComponent {
         icon = new ImageIcon(icon.getImage().getScaledInstance(200, 100, BufferedImage.SCALE_SMOOTH));
 
         JLabel headline_label = new JLabel("Carsharing Dödelhausen", SwingConstants.CENTER);
-        headline_label.setFont(new Font("Serif", Font.BOLD, 50));
+        headline_label.setFont(new Font("Serif", Font.BOLD, Carsharing.config.FONT_SIZE_HEADLINE));
 
         JLabel logo_label = new JLabel();
         logo_label.setSize(300,100);
@@ -295,15 +279,12 @@ public class NavigationGUI extends GUIWindowComponent {
 
         frame.add(header_panel, BorderLayout.NORTH);
 
-
     }
 
     private void createMainComponent(){
 
         mainComponent = new StandortGUI(frame).getGui();
-
         frame.add(mainComponent, BorderLayout.CENTER);
+
     }
-
-
 }

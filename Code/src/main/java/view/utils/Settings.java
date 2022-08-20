@@ -19,6 +19,7 @@ public class Settings {
     public String FONT = FontType.ARIAL.toString();
     public int FONT_SIZE_SMALL = TextSize.TEXT_SIZE_XLARGE.label();
     public int FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_XLARGE.text();
+    public int FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_XLARGE.headline();
     public FrameSize FRAME_SIZE = FrameSize.WINDOW_XLARGE;
 
     public Settings(){
@@ -59,18 +60,22 @@ public class Settings {
             case WINDOW_SMALL:
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_SMALL.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_SMALL.text();
+                FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_SMALL.headline();
                 break;
             case WINDOW_MEDIUM:
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_MEDIUM.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_MEDIUM.text();
+                FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_MEDIUM.headline();
                 break;
             case WINDOW_LARGE:
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_LARGE.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_LARGE.text();
+                FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_LARGE.headline();
                 break;
             case WINDOW_XLARGE:
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_XLARGE.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_XLARGE.text();
+                FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_XLARGE.headline();
                 break;
 
         }
