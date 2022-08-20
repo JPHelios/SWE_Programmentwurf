@@ -1,12 +1,10 @@
-package model.utils;
+package view.utils;
 
 import util.enums.FontType;
 import util.enums.FrameSize;
 import util.enums.TextSize;
 
-import java.awt.*;
-
-public class Setting {
+public class Settings {
 
     public String FONT = FontType.ARIAL.toString();
     public int FONT_SIZE_SMALL = TextSize.TEXT_SIZE_XLARGE.label();
@@ -14,7 +12,7 @@ public class Setting {
     public FrameSize frameSize = FrameSize.WINDOW_XLARGE;
 
 
-    public Setting(){
+    public Settings(){
 
         /*  Folgende Überlegung:
             Beim Start der App soll zuerst überprüft werden, ob denn bereits ein Dokument mit den Settings existiert
