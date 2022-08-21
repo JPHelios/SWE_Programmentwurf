@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class Settings {
 
     String filePath = "src\\main\\resources\\database\\settings.csv";
@@ -35,51 +34,45 @@ public class Settings {
         ArrayList<String> existingSettings = new ArrayList<>();
 
         CSVReader reader = new CSVReader("src\\main\\resources\\database\\settings.csv");
+
         try {
             List<String[]> data = reader.readData();
 
             Collections.addAll(existingSettings, data.get(0));
-            
-            System.out.println(existingSettings);
 
             FONT = existingSettings.get(0);
             FRAME_SIZE = FrameSize.valueOf(existingSettings.get(1));
             calculateFontSize();
-            
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private void calculateFontSize() {
 
         switch (FRAME_SIZE) {
-            case WINDOW_SMALL:
+            case WINDOW_SMALL -> {
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_SMALL.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_SMALL.text();
                 FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_SMALL.headline();
-                break;
-            case WINDOW_MEDIUM:
+            }
+            case WINDOW_MEDIUM -> {
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_MEDIUM.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_MEDIUM.text();
                 FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_MEDIUM.headline();
-                break;
-            case WINDOW_LARGE:
+            }
+            case WINDOW_LARGE -> {
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_LARGE.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_LARGE.text();
                 FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_LARGE.headline();
-                break;
-            case WINDOW_XLARGE:
+            }
+            case WINDOW_XLARGE -> {
                 FONT_SIZE_SMALL = TextSize.TEXT_SIZE_XLARGE.label();
                 FONT_SIZE_MEDIUM = TextSize.TEXT_SIZE_XLARGE.text();
                 FONT_SIZE_HEADLINE = TextSize.TEXT_SIZE_XLARGE.headline();
-                break;
-
+            }
         }
-
     }
 
     private boolean checkExistingSettings() {

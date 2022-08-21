@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 public class FahrzeugGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
+    Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
 
     public FahrzeugGUI(JFrame frame){
         gui.setBackground(Colors.PINK_ROSE.getColor());
@@ -48,16 +49,19 @@ public class FahrzeugGUI extends GUIWindowComponent {
         ButtonElement anlegenButton = ButtonElement.builder("BTN-AST")
                 .buttonText("Anlegen")
                 .type(ButtonElement.Type.BUTTON)
+                .font(buttonFont)
                 .build();
 
         ButtonElement filterButton = ButtonElement.builder("BTN-FST")
                 .buttonText("Filter")
                 .type(ButtonElement.Type.BUTTON)
+                .font(buttonFont)
                 .build();
 
         ButtonElement createButton = ButtonElement.builder("BTN-CST")
                 .buttonText("Create")
                 .type(ButtonElement.Type.BUTTON)
+                .font(buttonFont)
                 .build();
 
         JTextField searchField = new JTextField();
