@@ -1,5 +1,7 @@
 package view.gui;
 
+import app.Carsharing;
+import database.EntityManager;
 import util.enums.FontType;
 import util.enums.FrameSize;
 import view.controller.SettingsController;
@@ -8,7 +10,8 @@ import view.utils.GUIWindowComponent;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
+import java.util.Arrays;
+import java.util.List;
 
 public class SettingsGUI extends GUIWindowComponent {
 
@@ -16,13 +19,31 @@ public class SettingsGUI extends GUIWindowComponent {
     SettingsController controller = new SettingsController();
     EntityManager em = new EntityManager();
 
-    public SettingsGUI(JFrame frame){
+        public SettingsGUI(JFrame frame){
 
-        FontType[] fontTypes = FontType.values();
-        JComboBox<FontType> fontTypeDropDown = new JComboBox<>(fontTypes);
+        List<FontType> fontTypes = Arrays.asList(FontType.values());
+        JComboBox<FontType> fontTypeDropDown = new JComboBox<>(FontType.values());
 
-        FrameSize[] frameSizes = FrameSize.values();
-        JComboBox<FrameSize> frameSizeDropDown = new JComboBox<>(frameSizes);
+        int index = 0;
+        for(FontType ft : fontTypes){
+            if(ft.toString().equals(Carsharing.config.FONT)){
+                index = fontTypes.indexOf(ft);
+            }
+        }
+
+        fontTypeDropDown.setSelectedIndex(index);
+
+        List<FrameSize> frameSizes = Arrays.asList(FrameSize.values());
+        JComboBox<FrameSize> frameSizeDropDown = new JComboBox<>(FrameSize.values());
+
+        index = 0;
+        for(FrameSize fs : frameSizes){
+            if(fs.size().equals(Carsharing.config.FRAME_SIZE.size())){
+                index = frameSizes.indexOf(fs);
+            }
+        }
+
+        frameSizeDropDown.setSelectedIndex(index);
 
         JButton saveButton = new JButton("Speichern");
 

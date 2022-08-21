@@ -25,4 +25,8 @@ public enum FrameSize {
         return y;
     }
 
+    public String size() {
+        return description;
+    }
+
 }
