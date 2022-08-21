@@ -2,6 +2,7 @@ package view.gui;
 
 import app.Carsharing;
 import database.EntityManager;
+import model.standort.Standort;
 import util.enums.FontType;
 import util.enums.FrameSize;
 import view.controller.SettingsController;
@@ -81,6 +82,19 @@ public class SettingsGUI extends GUIWindowComponent {
                 }
             }
         });
+
+
+
+        //Clemens' Testarea
+        JButton test = new JButton("Test");
+        test.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Carsharing.em.removeEl(new Standort(new String[]{"70","70","70","70","70"}));
+            }
+        });
+        gui.add(test);
+        //Clemens Testarea Ende
 
         gui.add(fontTypeDropDown);
         gui.add(frameSizeDropDown);
