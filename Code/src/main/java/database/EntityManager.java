@@ -70,11 +70,22 @@ public class EntityManager extends GenericEntityManager {
         return null;
     }
 
-    public List<IPersistable> getAllEl(Class c){
+    public List<Object> getAllEl(Class c){
         String path = getCSVPath(c);
         List<String[]> elements = read(path);
-
-        return new ArrayList<>();
+        List<Object> return_elements = new ArrayList<>();
+        for(String[] el:elements){
+            try {
+                Constructor<?> cons = c.getConstructor(Array.newInstance(String.class, 0).getClass());
+                System.out.println(cons);
+                Object i = cons.newInstance(new String[][]{el});
+                System.out.println(i);
+                return_elements.add(i);
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        return return_elements;
     }
 
     private String getCSVPath(Class c) {
