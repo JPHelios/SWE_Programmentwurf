@@ -1,4 +1,6 @@
 package model.fahrzeug;
+import de.dhbwka.swe.utils.model.Attribute;
+import de.dhbwka.swe.utils.model.IDepictable;
 import de.dhbwka.swe.utils.model.IPersistable;
 import model.standort.Standort;
 import model.utils.Bild;
@@ -8,8 +10,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Fahrzeug implements IPersistable {
-    private int fahrzeugID;
+public class Fahrzeug implements IPersistable, IDepictable {
+    private String fahrzeugID;
 
     private String hersteller;
     private String modell;
@@ -28,9 +30,29 @@ public class Fahrzeug implements IPersistable {
 
     }
 
+    public Fahrzeug(String[] props){
+        this.fahrzeugID = props[0];
+        this.hersteller = props[1];
+        this.modell = props[2];
+        this.baujahr = Integer.parseInt(props[3]);
+        this.status = Boolean.parseBoolean(props[4]);
+        this.kilometerstand = Integer.parseInt(props[5]);
+        this.reserviert = Boolean.parseBoolean(props[6]);
+    }
+
 
     @Override
     public Object getPrimaryKey() {
         return fahrzeugID;
+    }
+
+    @Override
+    public Attribute[] getAttributeArray() {
+        return new Attribute[0];
+    }
+
+    @Override
+    public String getElementID() {
+        return null;
     }
 }

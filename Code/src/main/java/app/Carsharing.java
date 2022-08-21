@@ -1,5 +1,6 @@
 package app;
 
+import database.EntityManager;
 import lombok.Data;
 import lombok.SneakyThrows;
 import model.standort.Mitarbeiter;
@@ -10,6 +11,7 @@ import view.gui.NavigationGUI;
 public class Carsharing {
 
     public static Settings config;
+    public static EntityManager em;
 
     private Mitarbeiter angemeldeterMitarbeiter;
     private NavigationGUI gui;
@@ -18,6 +20,7 @@ public class Carsharing {
     public Carsharing(){
 
         config = new Settings();
+        em = new EntityManager();
         gui = new NavigationGUI();
 
     }

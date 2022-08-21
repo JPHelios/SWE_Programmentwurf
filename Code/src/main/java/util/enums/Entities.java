@@ -8,7 +8,7 @@ public enum Entities {
     Rechnung("src\\main\\resources\\database\\rechnung.csv", new String[]{""}),
     Dachbox("src\\main\\resources\\database\\dachbox.csv", new String[]{""}),
     Fahrradtraeger("src\\main\\resources\\database\\fahrradtraeger.csv", new String[]{""}),
-    Fahrzeug("src\\main\\resources\\database\\fahrzeug.csv", new String[]{""}),
+    Fahrzeug("src\\main\\resources\\database\\fahrzeug.csv", new String[]{"Fahrzeug-ID", "Hersteller", "Modell", "Baujahr", "Status", "Kilometerstand", "Reserviert"}),
     Fahrzeugklasse("src\\main\\resources\\database\\fahrzeugklasse.csv", new String[]{""}),
     Hundetransportbox("src\\main\\resources\\database\\hundetransportbox.csv", new String[]{""}),
     Kennzeichen("src\\main\\resources\\database\\kennzeichen.csv", new String[]{""}),

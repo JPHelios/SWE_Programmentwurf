@@ -4,7 +4,7 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import util.enums.Colors;
-import util.enums.FontType;
+import view.controller.FahrzeugController;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
@@ -14,11 +14,29 @@ import java.awt.image.BufferedImage;
 public class FahrzeugGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
+
+    JPanel leftComponentPanel = new JPanel();
+    JPanel rightComponentPanel = new JPanel();
+
+    FahrzeugController controller;
+
     Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+
+    public JLabel statusLabel = new JLabel();
+    public JLabel buchungLabel = new JLabel();
+    public JLabel herstellerLabel = new JLabel();
+    public JLabel modellLabel = new JLabel();
+    public JLabel klasseLabel = new JLabel();
+    public JLabel preisLabel = new JLabel();
+    public JLabel baujahrLabel = new JLabel();
+    public JLabel kilometerLabel = new JLabel();
 
     public FahrzeugGUI(JFrame frame){
         gui.setBackground(Colors.PINK_ROSE.getColor());
         gui.setLayout(new GridLayout(1,3));
+
+        controller = new FahrzeugController(this);
+
 
         createListComponent();
         createDetailComponent();
@@ -26,7 +44,6 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     private void createListComponent() {
 
-        JPanel leftComponentPanel = new JPanel();
         leftComponentPanel.setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel();
@@ -41,16 +58,22 @@ public class FahrzeugGUI extends GUIWindowComponent {
         createPanel.setLayout(new BorderLayout());
         createPanel.setBackground(Colors.PINK_ROSE.getColor());
 
-        SimpleListComponent standortList = SimpleListComponent.builder("STLC")
-                .font(new Font("Arial", Font.PLAIN, 25))
+        SimpleListComponent fahrzeugList = SimpleListComponent.builder("FahrzeugListComp")
+                .font(new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_MEDIUM))
                 .selectionMode(ListSelectionModel.SINGLE_SELECTION)
                 .build();
+
+        fahrzeugList.setListElements(controller.loadData());
+        fahrzeugList.addObserver(controller);
+
 
         ButtonElement anlegenButton = ButtonElement.builder("BTN-AST")
                 .buttonText("Anlegen")
                 .type(ButtonElement.Type.BUTTON)
                 .font(buttonFont)
                 .build();
+
+        anlegenButton.addObserver(controller);
 
         ButtonElement filterButton = ButtonElement.builder("BTN-FST")
                 .buttonText("Filter")
@@ -76,7 +99,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         createPanel.add(anlegenButton, BorderLayout.WEST);
 
         leftComponentPanel.add(buttonPanel, BorderLayout.NORTH);
-        leftComponentPanel.add(standortList, BorderLayout.CENTER);
+        leftComponentPanel.add(fahrzeugList, BorderLayout.CENTER);
         leftComponentPanel.add(createPanel, BorderLayout.SOUTH);
 
         gui.add(leftComponentPanel);
@@ -86,9 +109,9 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         String[] placeholderDropDown = {"Placeholder 1" , "Placeholder 2", "Placeholder 3"};
 
-        JPanel rightComponentPanel = new JPanel();
         rightComponentPanel.setBackground(Colors.PINK_ROSE.getColor());
         rightComponentPanel.setLayout(new BorderLayout());
+        rightComponentPanel.setVisible(false);
 
         JLabel mapLabel = new JLabel();
 
@@ -123,26 +146,26 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JPanel ausruestungPanel = createPanel();
 
         JLabel statusTextLabel = createLabel("Status",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        JLabel statusLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-        JLabel buchungLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        //...
+        statusLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        JLabel buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        buchungLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JLabel herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        JLabel herstellerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        herstellerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JLabel modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        JLabel modellLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        modellLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JLabel klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        JLabel klasseLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        klasseLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JLabel preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        JLabel preisLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        preisLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JLabel baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        JLabel baujahrLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        baujahrLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JLabel kilometerTextLabel = createLabel("Kilometerstand", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-        JLabel kilometerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+        kilometerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
         JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
         JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
 
         addLabels(statusTextLabel, statusLabel, statusPanel);
-        buchungPanel.add(buchungLabel);
+        addLabels(buchungTextLabel, buchungLabel, buchungPanel);
         addLabels(herstellerTextLabel, herstellerLabel, herstellerPanel);
         addLabels(modellTextLabel, modellLabel, modellPanel);
         addLabels(klasseTextLabel, klasseLabel, klassenPanel);
@@ -242,4 +265,20 @@ public class FahrzeugGUI extends GUIWindowComponent {
         panel.add(label1);
         panel.add(label2);
     }
+
+    public void setRightSiteVisible(){
+        rightComponentPanel.setVisible(true);
+    }
+
+    public void setRightSiteInvisible(){
+        rightComponentPanel.setVisible(false);
+    }
+
+    public void render(){
+        //to-do
+    }
+
+
+
+
 }
