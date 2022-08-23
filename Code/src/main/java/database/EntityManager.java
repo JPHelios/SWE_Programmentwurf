@@ -11,6 +11,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EntityManager extends GenericEntityManager {
@@ -32,8 +33,26 @@ public class EntityManager extends GenericEntityManager {
 
     }
 
-    public void removeEl(IPersistable el){
+    //69;69;69;69;69
+    //70;70;70;70;70
 
+    public void removeEl(IPersistable el){
+        String path = getCSVPath(el.getClass());
+        List<String[]> elements = read(path);
+        System.out.println(elements);
+        Object key = el.getPrimaryKey();
+        Object[][] write_elements = new Object[elements.size()-1][];
+        int new_index = 0;
+        for(int i =0; i<elements.size(); i++){
+            System.out.println("elm: " + elements.get(i)[0]);
+            if(!key.equals(elements.get(i)[0])){
+                System.out.println("+1");
+                System.out.println(elements.get(i));
+                write_elements[new_index] = elements.get(i);
+                new_index++;
+            }
+        }
+        write(write_elements, el.getClass());
     }
 
     public Object find(Class c, String key){
@@ -91,8 +110,14 @@ public class EntityManager extends GenericEntityManager {
     private String getCSVPath(Class c) {
         String class_name = c.getName();
         class_name = class_name.split("\\.")[2];
-        System.out.println(class_name);
         String path = Entities.valueOf(class_name).getPath();
+        return path;
+    }
+
+    private String[] getCSVHeader(Class c) {
+        String class_name = c.getName();
+        class_name = class_name.split("\\.")[2];
+        String[] path = Entities.valueOf(class_name).getHeader();
         return path;
     }
 
@@ -114,10 +139,10 @@ public class EntityManager extends GenericEntityManager {
     }
     //1, 12, 4, "s1.jpg", 1
     //2, 100, 25, "s2.jpg", 2
-    private void write(Object[][] args){
-        writer = new CSVWriter("src\\main\\resources\\database\\standort.csv", false);
+    private void write(Object[][] values, Class c){
+        writer = new CSVWriter(getCSVPath(c), false);
         try {
-            writer.writeDataToFile(args, new String[]{});
+            writer.writeDataToFile(values, getCSVHeader(c));
         } catch (IOException e) {
             e.printStackTrace();
         }
