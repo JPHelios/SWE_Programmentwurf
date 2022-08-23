@@ -1,8 +1,8 @@
 package view.controller;
 
 import app.Carsharing;
-import database.EntityManager;
 import de.dhbwka.swe.utils.event.GUIEvent;
+import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeug;
 import view.gui.FahrzeugGUI;
@@ -39,13 +39,28 @@ public class FahrzeugController extends GUIController {
             if (guiEvent.getData() instanceof Fahrzeug) {
                 currentFahrzeug = (Fahrzeug) guiEvent.getData();
                 gui.setRightSiteVisible();
-                updateLabelText();
-
+                updateDetailLabelTexts();
             }
         }
+
+        if (guiEvent.getCmd() == ButtonElement.Commands.BUTTON_PRESSED) {
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Anlegen")){
+                gui.setRightSiteVisible();
+            }
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Filter")){
+                System.out.println("Button-Filter selected");
+            }
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
+                System.out.println("Button-Create selected");
+            }
+        }
+
+        //if (){
+
+        //}
     }
 
-    public void updateLabelText(){
+    public void updateDetailLabelTexts(){
 
         gui.herstellerLabel.setText(currentFahrzeug.getHersteller());
         gui.modellLabel.setText(currentFahrzeug.getModell());
