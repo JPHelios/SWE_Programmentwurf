@@ -67,7 +67,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         fahrzeugList.addObserver(controller);
 
 
-        ButtonElement anlegenButton = ButtonElement.builder("BTN-AST")
+        ButtonElement anlegenButton = ButtonElement.builder("Button-Anlegen")
                 .buttonText("Anlegen")
                 .type(ButtonElement.Type.BUTTON)
                 .font(buttonFont)
@@ -75,17 +75,21 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         anlegenButton.addObserver(controller);
 
-        ButtonElement filterButton = ButtonElement.builder("BTN-FST")
+        ButtonElement filterButton = ButtonElement.builder("Button-Filer")
                 .buttonText("Filter")
                 .type(ButtonElement.Type.BUTTON)
                 .font(buttonFont)
                 .build();
 
-        ButtonElement createButton = ButtonElement.builder("BTN-CST")
+        filterButton.addObserver(controller);
+
+        ButtonElement createButton = ButtonElement.builder("Button-Create")
                 .buttonText("Create")
                 .type(ButtonElement.Type.BUTTON)
                 .font(buttonFont)
                 .build();
+
+        createButton.addObserver(controller);
 
         JTextField searchField = new JTextField();
         searchField.setText("Search");
@@ -277,8 +281,4 @@ public class FahrzeugGUI extends GUIWindowComponent {
     public void render(){
         //to-do
     }
-
-
-
-
 }

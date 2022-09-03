@@ -55,4 +55,9 @@ public class Fahrzeug implements IPersistable, IDepictable {
     public String getElementID() {
         return null;
     }
+
+    @Override
+    public String toString(){
+        return fahrzeugID + ": " + hersteller + " " + modell + " -> 10,50€" + " Buchen -> " + status;
+    }
 }
