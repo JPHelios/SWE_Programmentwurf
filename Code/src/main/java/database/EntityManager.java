@@ -36,7 +36,7 @@ public class EntityManager extends GenericEntityManager {
             }
         }
 
-        Object[][] write_elements = new Object[elements.size()+1][];
+        Object[][] write_elements = new Object[elements.size()][];
         for(int i = 0; i<elements.size(); i++){
             write_elements[i] = elements.get(i);
         }
@@ -47,10 +47,7 @@ public class EntityManager extends GenericEntityManager {
         String path = getCSVPath(c);
         List<String[]> elements = read(path);
         elements.add(el);
-        for(String s:el){
-            System.out.println(s);
-        }
-        Object[][] write_elements = new Object[elements.size()+1][];
+        Object[][] write_elements = new Object[elements.size()][];
         for(int i = 0; i<elements.size(); i++){
             write_elements[i] = elements.get(i);
         }
