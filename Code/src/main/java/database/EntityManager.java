@@ -23,14 +23,38 @@ public class EntityManager extends GenericEntityManager {
 
     }
 
-    public void modify(IPersistable el){
-        String class_name= el.getClass().getName();
+    public void modify(Class c, String[] new_el){
+        String path = getCSVPath(c);
+        List<String[]> elements = read(path);
+        System.out.println(elements);
+        Object key = new_el[0];
+        for(String[] el:elements){
+            System.out.println("elm: " + el[0]);
+            System.out.println("key: " + key);
+            if(key.equals(el[0])){
+                elements.set(elements.indexOf(el), new_el);
+            }
+        }
 
-
+        Object[][] write_elements = new Object[elements.size()+1][];
+        for(int i = 0; i<elements.size(); i++){
+            write_elements[i] = elements.get(i);
+        }
+        write(write_elements, c);
     }
 
-    public void persistEl(IPersistable el){
-
+    public void persistEl(Class c, String[] el){
+        String path = getCSVPath(c);
+        List<String[]> elements = read(path);
+        elements.add(el);
+        for(String s:el){
+            System.out.println(s);
+        }
+        Object[][] write_elements = new Object[elements.size()+1][];
+        for(int i = 0; i<elements.size(); i++){
+            write_elements[i] = elements.get(i);
+        }
+        write(write_elements, c);
     }
 
     //69;69;69;69;69

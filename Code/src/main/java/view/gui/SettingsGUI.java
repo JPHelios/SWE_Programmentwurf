@@ -90,7 +90,9 @@ public class SettingsGUI extends GUIWindowComponent {
         test.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Carsharing.em.removeEl(new Standort(new String[]{"70","70","70","70","70"}));
+                //Carsharing.em.removeEl(new Standort(new String[]{"70","70","70","70","70"}));
+                //Carsharing.em.persistEl(Standort.class, new String[]{"71","71","71","71","71"});
+                Carsharing.em.modify(Standort.class, new String[]{"70","70","70","70","71"});
             }
         });
         gui.add(test);

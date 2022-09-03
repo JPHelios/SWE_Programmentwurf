@@ -19,8 +19,11 @@ public class Standort implements IPersistable {
     private int anzahlSaeulen;
     private Fahrzeug[] fahrzeuge;
     private Filiale[] filialen;
+    private String bildID;
     private Bild bild;
+    private String adresseID;
     private Adresse adresse;
+
 
     public Standort(){
 
@@ -30,9 +33,16 @@ public class Standort implements IPersistable {
         this.standortID = props[0];
         this.anzahlPlaetze = parseInt(props[1]);
         this.anzahlSaeulen = parseInt(props[2]);
-        //this.bild = EntityManager.find(Bild, props[3])
-        //this.adresse = EntityManager.find(Adresse, props[4])
+        this.bildID = props[3];
+        this.adresseID = props[4];
+        //this.bild = EntityManager.find(Bild, this.bildId)
+        //this.adresse = EntityManager.find(Adresse, this.adresseID)
         System.out.println("success");
+    }
+
+    public String[] toStringArray(){
+        String[] arr = {this.standortID, String.valueOf(this.anzahlPlaetze), String.valueOf(this.anzahlSaeulen), this.bildID, this.adresseID};
+        return arr;
     }
 
     @Override
