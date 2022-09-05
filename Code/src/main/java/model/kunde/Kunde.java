@@ -6,10 +6,12 @@ import lombok.Setter;
 import model.buchung.Buchung;
 import model.utils.Adresse;
 
+import java.util.UUID;
+
 @Setter
 @Getter
 public class Kunde implements IPersistable {
-    private int kundeID;
+    private String kundeID;
 
     private String nachname;
     private String vorname;
@@ -20,7 +22,7 @@ public class Kunde implements IPersistable {
     private Buchung[] buchungen;
 
     public Kunde(){
-
+        this.kundeID = UUID.randomUUID().toString();
     }
 
     @Override

@@ -7,10 +7,12 @@ import model.buchung.Buchung;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class Mitarbeiter implements IPersistable {
-    private int mitarbeiterID;
+    private String mitarbeiterID;
 
     private String nachname;
     private String vorname;
@@ -23,7 +25,7 @@ public class Mitarbeiter implements IPersistable {
     private Buchung[] buchungen;
 
     public Mitarbeiter(){
-
+        this.mitarbeiterID = UUID.randomUUID().toString();
     }
 
     @Override

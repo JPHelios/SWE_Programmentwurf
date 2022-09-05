@@ -8,6 +8,8 @@ import model.utils.Bild;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 import static java.lang.Integer.parseInt;
 
 @Getter
@@ -26,7 +28,7 @@ public class Standort implements IPersistable {
 
 
     public Standort(){
-
+        this.standortID = UUID.randomUUID().toString();
     }
 
     public Standort(String[] props){

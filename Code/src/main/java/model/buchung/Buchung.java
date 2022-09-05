@@ -8,11 +8,12 @@ import model.kunde.Kunde;
 import model.standort.Mitarbeiter;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class Buchung {
-    private int buchungID;
+    private String buchungID;
 
     private boolean canceled;
     private Date starttermin;
@@ -25,7 +26,7 @@ public class Buchung {
     private Mitarbeiter mitarbeiter;
 
     public Buchung(){
-
+        this.buchungID = UUID.randomUUID().toString();
     }
 
 }

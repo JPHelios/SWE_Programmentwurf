@@ -8,6 +8,8 @@ import model.utils.Bild;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class Fahrzeug implements IPersistable, IDepictable {
@@ -27,7 +29,7 @@ public class Fahrzeug implements IPersistable, IDepictable {
     private Fahrzeugklasse fahrzeugklasse;
 
     public Fahrzeug(){
-
+        this.fahrzeugID = UUID.randomUUID().toString();
     }
 
     public Fahrzeug(String[] props){

@@ -4,15 +4,17 @@ import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class Backup implements IPersistable {
-    private int backupID;
+    private String backupID;
 
     private String pfad;
 
     public Backup(){
-
+        this.backupID = UUID.randomUUID().toString();
     }
 
     public Backup loadBackup(){

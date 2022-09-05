@@ -5,10 +5,12 @@ import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Setter
 @Getter
 public class Adresse implements IPersistable {
-    private int adresseID;
+    private String adresseID;
 
     private String strasse;
     private int hausnummer;
@@ -17,7 +19,7 @@ public class Adresse implements IPersistable {
     private String zusatz;
 
     public Adresse(){
-
+        this.adresseID = UUID.randomUUID().toString();
     }
 
     @Override

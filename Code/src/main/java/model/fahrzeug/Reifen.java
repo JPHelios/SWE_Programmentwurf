@@ -4,10 +4,12 @@ import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class Reifen implements IPersistable {
-    private int reifenID;
+    private String reifenID;
 
     private String hersteller;
     private String modell;
@@ -15,7 +17,7 @@ public class Reifen implements IPersistable {
     private String txp;
 
     public Reifen(){
-
+        this.reifenID = UUID.randomUUID().toString();
     }
 
     @Override

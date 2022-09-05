@@ -4,16 +4,18 @@ import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class Rolle implements IPersistable {
-    private int rolleID;
+    private String rolleID;
 
     private String bezeichnung;
     private Object[] berechtigt;
 
     public Rolle(){
-
+        this.rolleID = UUID.randomUUID().toString();
     }
 
     @Override

@@ -4,10 +4,12 @@ import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class Fahrzeugklasse implements IPersistable {
-    private int fahrzeugklasseID;
+    private String fahrzeugklasseID;
 
     private String name;
     private int preis;
@@ -16,7 +18,7 @@ public class Fahrzeugklasse implements IPersistable {
     private Fahrzeug[] fahrzeuge;
 
     public Fahrzeugklasse(){
-
+        this.fahrzeugklasseID = UUID.randomUUID().toString();
     }
 
     @Override
