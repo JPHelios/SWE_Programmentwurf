@@ -16,13 +16,14 @@ public class Fahrzeugklasse implements IPersistable {
     private String beschreibung;
     private String fuehrerschein;
     private Fahrzeug[] fahrzeuge;
+    private String[] fahrzeugeIDs;
 
     public Fahrzeugklasse(){
         this.fahrzeugklasseID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.fahrzeugklasseID, this.name, String.valueOf(this.preis), this.beschreibung, this.fuehrerschein, String.join(",", this.fahrzeugeIDs)};
         return arr;
     }
 

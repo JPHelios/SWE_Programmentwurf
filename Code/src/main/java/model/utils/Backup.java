@@ -12,6 +12,7 @@ public class Backup implements IPersistable {
     private String backupID;
 
     private String pfad;
+    private String mitarbeiterID;
 
     public Backup(){
         this.backupID = UUID.randomUUID().toString();
@@ -22,7 +23,7 @@ public class Backup implements IPersistable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.backupID, this.pfad, this.mitarbeiterID};
         return arr;
     }
 

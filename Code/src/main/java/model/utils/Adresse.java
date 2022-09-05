@@ -14,7 +14,7 @@ public class Adresse implements IPersistable {
 
     private String strasse;
     private int hausnummer;
-    private int plz;
+    private String plz;
     private String ort;
     private String zusatz;
 
@@ -23,7 +23,7 @@ public class Adresse implements IPersistable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.adresseID, this.strasse, String.valueOf(this.hausnummer), this.plz, this.ort, this.zusatz};
         return arr;
     }
 

@@ -20,13 +20,16 @@ public class Kunde implements IPersistable {
     private Vertrag vertrag;
     private Adresse adresse;
     private Buchung[] buchungen;
+    private String vertragID;
+    private String adresseID;
+    private String[] buchungIDs;
 
     public Kunde(){
         this.kundeID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.kundeID, this.nachname, this.vorname, this.telefon, this.email, this.vertragID, this.adresseID, String.join(",", this.buchungIDs)};
         return arr;
     }
 

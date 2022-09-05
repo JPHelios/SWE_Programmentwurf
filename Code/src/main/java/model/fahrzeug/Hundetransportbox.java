@@ -12,13 +12,19 @@ public class Hundetransportbox extends Ausruestung implements IPersistable {
     private String hundetransportboxID;
     private String[] hundekompatibilitaet;
     private int anzahlHunde;
+    private String beschreibung;
+    private String name;
+    private String[] fahrzeugeIDs;
+    private String fahrzeugID;
+    private Fahrzeug[] fahrzeuge;
+    private Fahrzeug fahrzeug;
 
     public Hundetransportbox(){
         this.hundetransportboxID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.hundetransportboxID, String.join(",", this.hundekompatibilitaet), String.valueOf(this.anzahlHunde), this.beschreibung, this.name, String.join(",", this.fahrzeugeIDs), this.fahrzeugID};
         return arr;
     }
 

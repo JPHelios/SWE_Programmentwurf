@@ -12,14 +12,14 @@ public class Rolle implements IPersistable {
     private String rolleID;
 
     private String bezeichnung;
-    private Object[] berechtigt;
+    private String[] berechtigt;
 
     public Rolle(){
         this.rolleID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.rolleID, this.bezeichnung, String.join(",", this.berechtigt)};
         return arr;
     }
 

@@ -16,20 +16,24 @@ public class Mitarbeiter implements IPersistable {
 
     private String nachname;
     private String vorname;
-    private  String tel;
+    private String tel;
     private String mail;
     private String passwort;
     private Rolle rolle;
+    private String rolleID;
     private Filiale filiale;
-    private Backup[] backups;
+    private String filialeID;
     private Buchung[] buchungen;
+    private Backup[] backups;
+    private String[] backupIDs;
+    private String[] buchungIDs;
 
     public Mitarbeiter(){
         this.mitarbeiterID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.mitarbeiterID, this.nachname, this.vorname, this.tel, this.mail, this.passwort, this.rolleID, this.filialeID, String.join(",", this.backupIDs), String.join(",", this.buchungIDs) };
         return arr;
     }
 

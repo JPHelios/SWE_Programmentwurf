@@ -21,7 +21,7 @@ public class Reifen implements IPersistable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.reifenID, this.hersteller, this.modell, String.valueOf(this.jahr), this.txp};
         return arr;
     }
 

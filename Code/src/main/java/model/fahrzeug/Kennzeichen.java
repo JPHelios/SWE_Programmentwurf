@@ -19,7 +19,7 @@ public class Kennzeichen implements IPersistable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.kennzeichenID, this.kennzeichen, this.zulassungstelle};
         return arr;
     }
 

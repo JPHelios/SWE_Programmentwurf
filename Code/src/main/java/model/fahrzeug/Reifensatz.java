@@ -12,14 +12,16 @@ public class Reifensatz implements IPersistable {
     private String reifensatzID;
 
     private Reifen[] reifensatz = new Reifen[4];
+    private String[] reifenIDs;
     private Reifen ersatzrad;
+    private String ersatzradID;
 
     public Reifensatz(){
         this.reifensatzID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.reifensatzID, String.join(",", this.reifenIDs), this.ersatzradID};
         return arr;
     }
 

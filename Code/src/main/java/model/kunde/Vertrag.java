@@ -14,13 +14,15 @@ public class Vertrag implements IPersistable {
 
     private String pfad;
     private Date datum;
+    private Kunde kunde;
+    private String kundeID;
 
     public Vertrag(){
         this.vertragID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.vertragID, this.pfad, this.datum.toString(), this.kundeID};
         return arr;
     }
 
