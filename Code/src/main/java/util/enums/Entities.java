@@ -22,7 +22,7 @@ public enum Entities {
     Standort("src\\main\\resources\\database\\standort.csv", new String[]{"Standort-ID", "Anzahl Stellplätze", "Anzahl E-Säulen", "Bild-ID", "Adress-ID"}),
     Adresse("src\\main\\resources\\database\\adresse.csv", new String[]{""}),
     Backup("src\\main\\resources\\database\\backup.csv", new String[]{""}),
-    Bild("src\\main\\resources\\database\\bild.csv", new String[]{""});
+    Bild("src\\main\\resources\\database\\bild.csv", new String[]{"Bild-ID", "Pfad", "Titel"});
 
 
 

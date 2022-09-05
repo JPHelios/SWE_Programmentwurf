@@ -19,6 +19,11 @@ public class Vertrag implements IPersistable {
         this.vertragID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return vertragID;

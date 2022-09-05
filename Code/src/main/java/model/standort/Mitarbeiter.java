@@ -28,6 +28,11 @@ public class Mitarbeiter implements IPersistable {
         this.mitarbeiterID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return mitarbeiterID;

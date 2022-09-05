@@ -18,6 +18,11 @@ public class Reifensatz implements IPersistable {
         this.reifensatzID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return reifensatzID;

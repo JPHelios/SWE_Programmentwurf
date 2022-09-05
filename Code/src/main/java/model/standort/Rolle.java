@@ -18,6 +18,11 @@ public class Rolle implements IPersistable {
         this.rolleID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return rolleID;

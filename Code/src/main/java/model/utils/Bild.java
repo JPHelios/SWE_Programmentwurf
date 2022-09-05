@@ -18,6 +18,11 @@ public class Bild implements IPersistable {
         this.bildID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{this.bildID, this.pfad, this.titel};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return bildID;

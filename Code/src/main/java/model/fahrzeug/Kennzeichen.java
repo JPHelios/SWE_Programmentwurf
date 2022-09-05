@@ -18,6 +18,11 @@ public class Kennzeichen implements IPersistable {
         this.kennzeichenID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return kennzeichenID;

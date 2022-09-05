@@ -25,6 +25,11 @@ public class Kunde implements IPersistable {
         this.kundeID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return kundeID;

@@ -17,6 +17,11 @@ public class Hundetransportbox extends Ausruestung implements IPersistable {
         this.hundetransportboxID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return hundetransportboxID;

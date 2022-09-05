@@ -17,6 +17,11 @@ public class Dachbox extends Ausruestung implements IPersistable {
         this.dachboxID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return dachboxID;

@@ -21,6 +21,11 @@ public class Fahrzeugklasse implements IPersistable {
         this.fahrzeugklasseID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return fahrzeugklasseID;

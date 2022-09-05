@@ -22,6 +22,11 @@ public class Adresse implements IPersistable {
         this.adresseID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return adresseID;

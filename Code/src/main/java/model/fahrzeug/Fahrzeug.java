@@ -32,6 +32,11 @@ public class Fahrzeug implements IPersistable, IDepictable {
         this.fahrzeugID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     public Fahrzeug(String[] props){
         this.fahrzeugID = props[0];
         this.hersteller = props[1];

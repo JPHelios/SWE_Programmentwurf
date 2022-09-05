@@ -18,6 +18,11 @@ public class Fahrradtraeger extends Ausruestung implements IPersistable {
         this.fahrradtraegerID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return fahrradtraegerID;

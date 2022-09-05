@@ -19,6 +19,11 @@ public class Filiale implements IPersistable {
         this.filialeID = UUID.randomUUID().toString();
     }
 
+    public String[] toStringArray(){
+        String arr[] = new String[]{};
+        return arr;
+    }
+
     @Override
     public Object getPrimaryKey() {
         return filialeID;
