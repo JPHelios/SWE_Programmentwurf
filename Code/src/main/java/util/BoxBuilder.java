@@ -25,7 +25,7 @@ public class BoxBuilder {
         return this;
     }
 
-    public BoxBuilder hundekompatibilität(String[] hk){
+    public BoxBuilder hundekompatibilitaet(String[] hk){
         h.setHundekompatibilitaet(hk);
         return this;
     }

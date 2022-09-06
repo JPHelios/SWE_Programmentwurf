@@ -1,2 +1,4 @@
+#Fahrzeug-ID;Hersteller;Modell;Baujahr;Status;Kilometerstand;Reserviert;Kennzeichen-ID;Ausrüstung-IDs;Reifensatz-ID;Standort-ID;Bild-IDs;Fahrzeugklasse-ID
 1;Porsche;Clapmens;2002;false;40074;false
 2;Tesla;Mooncart;2022;false;10;false
+9a3e2d48-f7bc-4016-9647-f7286b81ba5d;w,fbwjkf;wfbwkfbwe;3247;true;2954872;false
