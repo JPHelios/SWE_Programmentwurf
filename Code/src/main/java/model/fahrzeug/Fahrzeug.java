@@ -51,6 +51,12 @@ public class Fahrzeug implements IPersistable, IDepictable {
         this.status = Boolean.parseBoolean(props[4]);
         this.kilometerstand = Integer.parseInt(props[5]);
         this.reserviert = Boolean.parseBoolean(props[6]);
+        this.kennzeichenID = (props[7]);
+        this.ausruestungIDs = props[8].split(",");
+        this.reifensatzID = (props[9]);
+        this.standortID = (props[10]);
+        this.bildIDs = props[11].split(",");
+        this.fahrzeugklasseID = (props[12]);
     }
 
 

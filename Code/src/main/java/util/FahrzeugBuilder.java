@@ -1,10 +1,7 @@
 package util;
 
 import app.Carsharing;
-import model.fahrzeug.Ausruestung;
-import model.fahrzeug.Fahrzeug;
-import model.fahrzeug.Kennzeichen;
-import model.fahrzeug.Reifensatz;
+import model.fahrzeug.*;
 import model.standort.Standort;
 import model.utils.Bild;
 
@@ -78,6 +75,12 @@ public class FahrzeugBuilder {
 
     public FahrzeugBuilder status(Boolean s){
         f.setStatus(s);
+        return this;
+    }
+
+    public FahrzeugBuilder klasse(String name){
+        f.setFahrzeugklasseID(name.toUpperCase());
+        f.setFahrzeugklasse(Fahrzeugklasse.valueOf(name.toUpperCase()));
         return this;
     }
 

@@ -13,6 +13,7 @@ import view.utils.GUIController;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FahrzeugController extends GUIController {
 
@@ -58,14 +59,32 @@ public class FahrzeugController extends GUIController {
                 gui.setRightSiteVisible(panel);
                 gui.clearListSelection();
 
-            }
+            } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Filter")){
                 System.out.println("Es wurde Filter geklickt");
 
                 List<Fahrzeug> fahrzeuge = loadData();
+                List<Fahrzeug> foundFahrzeuge = new ArrayList<Fahrzeug>();
+
                 String searchField = gui.searchField.getText();
 
-            }
+                for (Fahrzeug fz : fahrzeuge){
+
+                    if(fz.getHersteller().equalsIgnoreCase(searchField)) foundFahrzeuge.add(fz);
+                    else if(fz.getFahrzeugklasseID().equalsIgnoreCase(searchField)) foundFahrzeuge.add(fz);
+
+                }
+
+                if(foundFahrzeuge.size() != 0 ){
+                    gui.fahrzeugList.removeAllListElements();
+                    gui.fahrzeugList.setListElements(foundFahrzeuge);
+                } else {
+                    gui.fahrzeugList.setListElements(loadData());
+                    JOptionPane.showMessageDialog(gui, "Es konnte leider kein übereinstimmender Eintrag gefunden werden");
+                }
+
+
+            } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
                 System.out.println("Es wurde Create geklickt");
 
@@ -98,6 +117,7 @@ public class FahrzeugController extends GUIController {
                     fahrzeugBuilder.baujahr(baujahr);
                     fahrzeugBuilder.kilometerstand(kilometer);
                     fahrzeugBuilder.status(true);
+                    fahrzeugBuilder.klasse(((Fahrzeugklasse) Objects.requireNonNull(gui.klassenDropDown.getSelectedItem())).getName());
 
                     fahrzeugBuilder.standort("69");
                     fahrzeugBuilder.ausruestung(new String[]{});
@@ -126,7 +146,7 @@ public class FahrzeugController extends GUIController {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
                 System.out.println("Es wurde Bearbeiten geklickt");
 
-            }
+            } // #! Ausstehend !#
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Loeschen")){
                 System.out.println("Es wurde Löschen geklickt");
 
