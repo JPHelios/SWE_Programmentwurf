@@ -21,17 +21,22 @@ public class Buchung implements IPersistable {
     private Date endtermin;
 
     private Fahrzeug fahrzeug;
-    private Rechnung abrechnung;
-    private Mahnung[] aufforderung;
+    private String fahrzeugID;
+    private Rechnung rechnung;
+    private String rechnungID;
+    private Mahnung[] mahnung;
+    private String[] mahnungIDs;
     private Kunde kunde;
+    private String kundeID;
     private Mitarbeiter mitarbeiter;
+    private String mitarbeiterID;
 
     public Buchung(){
         this.buchungID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.buchungID, String.valueOf(this.canceled), this.starttermin.toString(), this.endtermin.toString(), this.fahrzeugID, this.rechnungID, String.join(",", this.mahnungIDs), this.kundeID, this.mitarbeiterID};
         return arr;
     }
 

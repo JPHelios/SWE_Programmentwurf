@@ -16,7 +16,9 @@ public class Rechnung  implements IPersistable {
     private Date faelligkeitsDatum;
     private String pfad;
 
-    private Buchung rechnungsgrundlage;
+    private Buchung buchung;
+    private String buchungID;
+    private String eventID;
     private Rabattaktion event;
 
     public Rechnung(){
@@ -24,7 +26,7 @@ public class Rechnung  implements IPersistable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.rechnungID, this.faelligkeitsDatum.toString(), this.pfad, this.buchungID, this.eventID};
         return arr;
     }
 

@@ -13,13 +13,17 @@ public class Fahrradtraeger extends Ausruestung implements IPersistable {
     private int anzahlFahrraeder;
     private String montierung;
     private int maximalGewicht;
+    private String name;
+    private String beschreibung;
+    private Fahrzeug[] kompatibel;
+    private String[] kompatibelIDs;
 
     public Fahrradtraeger(){
         this.fahrradtraegerID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.fahrradtraegerID, String.valueOf(this.anzahlFahrraeder), this.montierung, String.valueOf(this.maximalGewicht), this.name, this.beschreibung, String.join(",", this.kompatibelIDs)};
         return arr;
     }
 

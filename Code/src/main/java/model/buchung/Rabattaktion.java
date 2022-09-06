@@ -15,13 +15,14 @@ public class Rabattaktion implements IPersistable {
     private int preisnachlass;
     private String beschreibung;
     private Fahrzeugklasse[] aktionsKlassen;
+    private String[] aktionsKlassenIDs;
 
     public Rabattaktion(){
         this.rabattaktionID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.rabattaktionID, String.valueOf(this.preisnachlass), this.beschreibung, String.join(",", this.aktionsKlassenIDs)};
         return arr;
     }
 

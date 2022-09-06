@@ -16,14 +16,15 @@ public class Mahnung implements IPersistable {
     private Date faelligkeitsDatum;
     private int anzahl;
 
-    private Buchung mahnungsgrund;
+    private Buchung buchung;
+    private String buchungID;
 
     public Mahnung(){
         this.mahnungID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.mahnungID, String.valueOf(this.betrag), this.faelligkeitsDatum.toString(), String.valueOf(this.anzahl), this.buchungID};
         return arr;
     }
 

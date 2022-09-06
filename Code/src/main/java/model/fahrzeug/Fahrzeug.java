@@ -22,18 +22,24 @@ public class Fahrzeug implements IPersistable, IDepictable {
     private int kilometerstand;
     private boolean reserviert;
     private Kennzeichen kennzeichen;
+    private String kennzeichenID;
     private Ausruestung[] ausruestung;
+    private String[] ausruestungIDs;
     private Reifensatz reifensatz;
+    private String reifensatzID;
     private Standort standort;
+    private String standortID;
     private Bild[] bilder = new Bild[3];
+    private String[] bildIDs;
     private Fahrzeugklasse fahrzeugklasse;
+    private String fahrzeugklasseID;
 
     public Fahrzeug(){
         this.fahrzeugID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{};
+        String arr[] = new String[]{this.fahrzeugID, this.hersteller, this.modell, String.valueOf(this.baujahr), String.valueOf(this.status), String.valueOf(this.kilometerstand), String.valueOf(this.reserviert), this.kennzeichenID, String.join(",", this.ausruestungIDs), this.reifensatzID, this.standortID, String.join(",", this.bildIDs), this.fahrzeugklasseID};
         return arr;
     }
 
