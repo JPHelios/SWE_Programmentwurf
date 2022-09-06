@@ -4,8 +4,9 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.event.GUIEvent;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
-import model.fahrzeug.*;
-import util.BoxBuilder;
+import model.fahrzeug.Fahrzeug;
+import model.fahrzeug.Fahrzeugklasse;
+import model.fahrzeug.Kennzeichen;
 import util.FahrzeugBuilder;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
@@ -230,8 +231,8 @@ public class FahrzeugController extends GUIController {
 
         gui.herstellerLabel.setText(currentFahrzeug.getHersteller());
         gui.modellLabel.setText(currentFahrzeug.getModell());
-        gui.klasseLabel.setText("Well, fck");
-        gui.preisLabel.setText("Well, fck");
+        gui.klasseLabel.setText(currentFahrzeug.getFahrzeugklasseID());
+        gui.preisLabel.setText(String.valueOf(Fahrzeugklasse.valueOf(currentFahrzeug.getFahrzeugklasseID()).getPreis()));
         gui.baujahrLabel.setText(String.valueOf(currentFahrzeug.getBaujahr()));
         gui.kilometerLabel.setText(String.valueOf(currentFahrzeug.getKilometerstand()));
 

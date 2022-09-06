@@ -77,6 +77,6 @@ public class Fahrzeug implements IPersistable, IDepictable {
 
     @Override
     public String toString(){
-        return fahrzeugID + ": " + hersteller + " " + modell + " -> 10,50€" + " Buchen -> " + status;
+        return hersteller + " " + modell + " | Preis pro Stunde: " + Fahrzeugklasse.valueOf(fahrzeugklasseID).getPreis() + " | Buchung möglich: " + status;
     }
 }
