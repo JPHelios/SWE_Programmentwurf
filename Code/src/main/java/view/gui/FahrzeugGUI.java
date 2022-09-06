@@ -18,6 +18,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     public JPanel leftComponentPanel = new JPanel();
 
+    //Labels
     public JLabel statusLabel = new JLabel();
     public JLabel buchungLabel = new JLabel();
     public JLabel herstellerLabel = new JLabel();
@@ -26,6 +27,16 @@ public class FahrzeugGUI extends GUIWindowComponent {
     public JLabel preisLabel = new JLabel();
     public JLabel baujahrLabel = new JLabel();
     public JLabel kilometerLabel = new JLabel();
+
+    //TextFields
+    public JTextField kennzeichenInput = new JTextField();
+    public JComboBox<Fahrzeugklasse> standortDropDown = new JComboBox<>();
+    public JTextField herstellerInput = new JTextField();
+    public JTextField modellInput = new JTextField();
+    public JComboBox<Fahrzeugklasse> klassenDropDown = new JComboBox<>();
+    public JTextField preisInput = new JTextField();
+    public JTextField baujahrInput = new JTextField();
+    public JTextField kilometerInput = new JTextField();
 
     FahrzeugController controller;
     Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -214,33 +225,30 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         } else if (task == 1){
 
-            statusTextLabel = createLabel("Status",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JTextField statusInput = new JTextField("Unbekannt", 10);
-            statusInput.setEditable(false);
-            buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JTextField buchungInput = new JTextField("Unbekannt", 10);
-            buchungInput.setEditable(false);
+            statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            kennzeichenInput = new JTextField("", 10);
+            buchungTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
             herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JTextField herstellerInput = new JTextField("", 10);
+            herstellerInput = new JTextField("", 10);
             modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JTextField modellInput = new JTextField("", 10);
+            modellInput = new JTextField("", 10);
             klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JComboBox<Fahrzeugklasse> klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
             preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JTextField preisInput = new JTextField("Automatically", 10);
-            preisInput.setEditable(false);
+            preisInput = new JTextField("Automatically", 10);
             baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JTextField bauhjahrInput = new JTextField("", 10);
+            baujahrInput = new JTextField("", 10);
             kilometerTextLabel = createLabel("Kilometer", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            JTextField kilometerInput = new JTextField("", 10);
+            kilometerInput = new JTextField("", 10);
 
-            addComponents(statusTextLabel, statusInput, statusPanel);
-            addComponents(buchungTextLabel, buchungInput, buchungPanel);
+            addComponents(statusTextLabel, kennzeichenInput, statusPanel);
+            addComponents(buchungTextLabel, standortDropDown, buchungPanel);
             addComponents(herstellerTextLabel, herstellerInput, herstellerPanel);
             addComponents(modellTextLabel, modellInput, modellPanel);
             addComponents(klasseTextLabel, klassenDropDown, klassenPanel);
             addComponents(preisTextLabel, preisInput, preisPanel);
-            addComponents(baujahrTextLabel, bauhjahrInput, baujahrPanel);
+            addComponents(baujahrTextLabel, baujahrInput, baujahrPanel);
             addComponents(kilometerTextLabel, kilometerInput, kilometerPanel);
 
         }

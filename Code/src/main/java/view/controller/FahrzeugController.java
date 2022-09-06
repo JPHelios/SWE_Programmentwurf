@@ -5,12 +5,18 @@ import de.dhbwka.swe.utils.event.GUIEvent;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeug;
+import model.fahrzeug.Fahrzeugklasse;
+import model.fahrzeug.Kennzeichen;
+import model.standort.Standort;
+import util.FahrzeugBuilder;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static util.enums.Entities.Kennzeichen;
 
 public class FahrzeugController extends GUIController {
 
@@ -69,10 +75,43 @@ public class FahrzeugController extends GUIController {
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
                 gui.clearListSelection();
-            }
+            } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern geklickt");
 
+                //Eingabeüberprüfung muss noch eingebaut werden!!!
+
+                String kennzeichenInput = gui.kennzeichenInput.getText();
+                //Standort standort = (Standort) gui.standortDropDown.getSelectedItem();
+                String hersteller = gui.herstellerInput.getText();
+                String model = gui.modellInput.getText();
+                Fahrzeugklasse klasse = (Fahrzeugklasse) gui.klassenDropDown.getSelectedItem();
+
+                try {
+                    int baujahr = Integer.parseInt(gui.baujahrInput.getText());
+                    int kilometer = Integer.parseInt(gui.kilometerInput.getText());
+
+                    Kennzeichen kennzeichen = new Kennzeichen(kennzeichenInput);
+
+                    FahrzeugBuilder fahrzeugBuilder = new FahrzeugBuilder();
+
+                    fahrzeugBuilder.hersteller(hersteller);
+                    fahrzeugBuilder.modell(model);
+                    fahrzeugBuilder.baujahr(baujahr);
+                    fahrzeugBuilder.kilometerstand(kilometer);
+                    fahrzeugBuilder.status(true);
+
+                    fahrzeugBuilder.standort(null);
+                    fahrzeugBuilder.ausruestung(null);
+                    fahrzeugBuilder.bilder(null);
+                    fahrzeugBuilder.kennzeichen(kennzeichen);
+
+                    fahrzeugBuilder.build();
+
+
+                } catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
+                }
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
                 System.out.println("Es wurde Abbrechen geklickt");
@@ -80,7 +119,7 @@ public class FahrzeugController extends GUIController {
                 JPanel panel = gui.createRightSidePanel(-1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
-            }
+            } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
                 System.out.println("Es wurde Bearbeiten geklickt");
 
@@ -130,7 +169,7 @@ public class FahrzeugController extends GUIController {
                     }
                 }
 
-            }
+            } //Funktion done
         }
 
 

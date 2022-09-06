@@ -12,10 +12,12 @@ public class Kennzeichen implements IPersistable {
     private String kennzeichenID;
 
     private String kennzeichen;
-    private String zulassungstelle;
+    private String zulassungstelle = "Karlsruhe";
 
-    public Kennzeichen(){
+    public Kennzeichen(String kennzeichen){
         this.kennzeichenID = UUID.randomUUID().toString();
+        this.kennzeichen = kennzeichen;
+        //this.zulassungstelle = zulassungstelle;
     }
 
     public String[] toStringArray(){

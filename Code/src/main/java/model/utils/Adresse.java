@@ -13,13 +13,22 @@ public class Adresse implements IPersistable {
     private String adresseID;
 
     private String strasse;
-    private int hausnummer;
+    private String hausnummer;
     private String plz;
     private String ort;
     private String zusatz;
 
     public Adresse(){
         this.adresseID = UUID.randomUUID().toString();
+    }
+
+    public Adresse(String strasse, String hausnummer, String plz, String ort, String zusatz ){
+        this.adresseID = UUID.randomUUID().toString();
+        this.strasse = strasse;
+        this.hausnummer = hausnummer;
+        this.plz = plz;
+        this.ort = ort;
+        this.zusatz = zusatz;
     }
 
     public String[] toStringArray(){
