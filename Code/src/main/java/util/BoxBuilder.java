@@ -1,5 +1,6 @@
 package util;
 
+import app.Carsharing;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Hundetransportbox;
 
@@ -20,8 +21,20 @@ public class BoxBuilder {
         return this;
     }
 
-    public BoxBuilder kompatibel(Fahrzeug[] f){
-        h.setKompatibel(f);
+    public BoxBuilder kompatibel(String[] fzIDs){
+        h.setKompatibelIDs(fzIDs);
+        Fahrzeug[] fz = new Fahrzeug[fzIDs.length];
+        for (int i = 0; i<fzIDs.length; i++){
+            fz[i] = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, fzIDs[i]);
+        }
+        h.setKompatibel(fz);
+        return this;
+    }
+
+    public BoxBuilder fahrzeug(String fzID){
+        h.setFahrzeugID(fzID);
+        Fahrzeug fz = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, fzID);
+        h.setFahrzeug(fz);
         return this;
     }
 

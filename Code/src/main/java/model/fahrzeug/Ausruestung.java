@@ -9,7 +9,7 @@ public class Ausruestung {
     private String name;
     private String beschreibung;
     private Fahrzeug[] kompatibel;
-    private Fahrzeug fahzeug;
+    private Fahrzeug fahrzeug;
 
     public Ausruestung(){
 

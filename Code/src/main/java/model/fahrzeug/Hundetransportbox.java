@@ -14,9 +14,9 @@ public class Hundetransportbox extends Ausruestung implements IPersistable {
     private int anzahlHunde;
     private String beschreibung;
     private String name;
-    private String[] fahrzeugeIDs;
+    private String[] kompatibelIDs;
     private String fahrzeugID;
-    private Fahrzeug[] fahrzeuge;
+    private Fahrzeug[] kompatibel;
     private Fahrzeug fahrzeug;
 
     public Hundetransportbox(){
@@ -24,7 +24,7 @@ public class Hundetransportbox extends Ausruestung implements IPersistable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{this.hundetransportboxID, String.join(",", this.hundekompatibilitaet), String.valueOf(this.anzahlHunde), this.beschreibung, this.name, String.join(",", this.fahrzeugeIDs), this.fahrzeugID};
+        String arr[] = new String[]{this.hundetransportboxID, String.join(",", this.hundekompatibilitaet), String.valueOf(this.anzahlHunde), this.beschreibung, this.name, String.join(",", this.kompatibelIDs), this.fahrzeugID};
         return arr;
     }
 

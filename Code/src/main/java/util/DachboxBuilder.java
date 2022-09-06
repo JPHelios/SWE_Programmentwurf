@@ -1,5 +1,6 @@
 package util;
 
+import app.Carsharing;
 import model.fahrzeug.Dachbox;
 import model.fahrzeug.Fahrzeug;
 
@@ -20,8 +21,20 @@ public class DachboxBuilder {
         return this;
     }
 
-    public DachboxBuilder kompatibel(Fahrzeug[] f){
-        d.setKompatibel(f);
+    public DachboxBuilder kompatibel(String[] fzIDs){
+        d.setKompatibelIDs(fzIDs);
+        Fahrzeug[] fz = new Fahrzeug[fzIDs.length];
+        for (int i = 0; i<fzIDs.length; i++){
+            fz[i] = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, fzIDs[i]);
+        }
+        d.setKompatibel(fz);
+        return this;
+    }
+
+    public DachboxBuilder fahrzeug(String fzID){
+        d.setFahrzeugID(fzID);
+        Fahrzeug fz = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, fzID);
+        d.setFahrzeug(fz);
         return this;
     }
 

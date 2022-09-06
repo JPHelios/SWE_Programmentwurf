@@ -1,5 +1,6 @@
 package util;
 
+import app.Carsharing;
 import model.fahrzeug.Fahrradtraeger;
 import model.fahrzeug.Fahrzeug;
 
@@ -20,8 +21,20 @@ public class FahrradtraegerBuilder {
         return this;
     }
 
-    public FahrradtraegerBuilder kompatibel(Fahrzeug[] fz){
+    public FahrradtraegerBuilder kompatibel(String[] fzIDs){
+        f.setKompatibelIDs(fzIDs);
+        Fahrzeug[] fz = new Fahrzeug[fzIDs.length];
+        for (int i = 0; i<fzIDs.length; i++){
+            fz[i] = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, fzIDs[i]);
+        }
         f.setKompatibel(fz);
+        return this;
+    }
+
+    public FahrradtraegerBuilder fahrzeug(String fzID){
+            f.setFahrzeugID(fzID);
+            Fahrzeug fz = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, fzID);
+            f.setFahrzeug(fz);
         return this;
     }
 

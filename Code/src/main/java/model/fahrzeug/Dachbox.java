@@ -16,13 +16,15 @@ public class Dachbox extends Ausruestung implements IPersistable {
     private String beschreibung;
     private Fahrzeug[] kompatibel;
     private String[] kompatibelIDs;
+    private Fahrzeug fahrzeug;
+    private String fahrzeugID;
 
     public Dachbox(){
         this.dachboxID = UUID.randomUUID().toString();
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{this.dachboxID, String.valueOf(this.volumen), String.valueOf(this.hoehe), this.name, this.beschreibung, String.join(",", this.kompatibelIDs)};
+        String arr[] = new String[]{this.dachboxID, String.valueOf(this.volumen), String.valueOf(this.hoehe), this.name, this.beschreibung, String.join(",", this.kompatibelIDs), this.fahrzeugID};
         return arr;
     }
 
