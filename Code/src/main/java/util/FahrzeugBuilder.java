@@ -1,5 +1,6 @@
 package util;
 
+import app.Carsharing;
 import model.fahrzeug.Ausruestung;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Kennzeichen;
@@ -14,27 +15,43 @@ public class FahrzeugBuilder {
         f = new Fahrzeug();
     }
 
-    public FahrzeugBuilder kennzeichen(Kennzeichen k){
+    public FahrzeugBuilder kennzeichen(String kID){
+        f.setKennzeichenID(kID);
+        Kennzeichen k = (Kennzeichen) Carsharing.em.find(Kennzeichen.class, kID);
         f.setKennzeichen(k);
         return this;
     }
 
-    public FahrzeugBuilder reifensatz(Reifensatz rs){
+    public FahrzeugBuilder reifensatz(String rsID){
+        f.setReifensatzID(rsID);
+        Reifensatz rs = (Reifensatz) Carsharing.em.find(Reifensatz.class, rsID);
         f.setReifensatz(rs);
         return this;
     }
 
-    public FahrzeugBuilder bilder(Bild[] b){
+    public FahrzeugBuilder bilder(String[] bIDs){
+        f.setBildIDs(bIDs);
+        Bild[] b = new Bild[3];
+        for (int i = 0; i<bIDs.length; i++){
+            b[i] = (Bild) Carsharing.em.find(Bild.class, bIDs[i]);
+        }
         f.setBilder(b);
         return this;
     }
 
-    public FahrzeugBuilder ausruestung(Ausruestung[] a){
+    public FahrzeugBuilder ausruestung(String[] aIDs){
+        f.setAusruestungIDs(aIDs);
+        Ausruestung[] a = new Ausruestung[aIDs.length];
+        for (int i = 0; i<aIDs.length; i++){
+            a[i] = (Ausruestung) Carsharing.em.find(Ausruestung.class, aIDs[i]);
+        }
         f.setAusruestung(a);
         return this;
     }
 
-    public FahrzeugBuilder standort(Standort s){
+    public FahrzeugBuilder standort(String sID){
+        f.setStandortID(sID);
+        Standort s = (Standort) Carsharing.em.find(Standort.class, sID);
         f.setStandort(s);
         return this;
     }
