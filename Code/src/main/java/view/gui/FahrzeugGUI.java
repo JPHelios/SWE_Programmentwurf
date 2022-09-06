@@ -3,6 +3,7 @@ package view.gui;
 import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import model.fahrzeug.Fahrzeugklasse;
 import util.enums.Colors;
 import view.controller.FahrzeugController;
 import view.utils.GUIWindowComponent;
@@ -15,12 +16,10 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
 
-    JPanel leftComponentPanel = new JPanel();
-    JPanel rightComponentPanel = new JPanel();
+    public JPanel leftComponentPanel = new JPanel();
+    public JPanel rightComponentPanelDetails = new JPanel();
+    public JPanel rightComponentPanelInput = new JPanel();
 
-    FahrzeugController controller;
-
-    Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
 
     public JLabel statusLabel = new JLabel();
     public JLabel buchungLabel = new JLabel();
@@ -31,18 +30,36 @@ public class FahrzeugGUI extends GUIWindowComponent {
     public JLabel baujahrLabel = new JLabel();
     public JLabel kilometerLabel = new JLabel();
 
+    FahrzeugController controller;
+    Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+
+    SimpleListComponent fahrzeugList;
+
+
     public FahrzeugGUI(JFrame frame){
         gui.setBackground(Colors.PINK_ROSE.getColor());
         gui.setLayout(new GridLayout(1,3));
 
         controller = new FahrzeugController(this);
 
+        createLeftSide();
+        createRightSide();
 
-        createListComponent();
-        createDetailComponent();
     }
 
-    private void createListComponent() {
+    public void createRightSide(JPanel panel){
+        gui.remove(1);
+        gui.add(panel);
+    }
+
+    private void createRightSide(){
+        JPanel placeholder = new JPanel();
+        placeholder.setBackground(Colors.PINK_ROSE.getColor());
+
+        gui.add(placeholder);
+    }
+
+    private void createLeftSide() {
 
         leftComponentPanel.setLayout(new BorderLayout());
 
@@ -58,7 +75,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         createPanel.setLayout(new BorderLayout());
         createPanel.setBackground(Colors.PINK_ROSE.getColor());
 
-        SimpleListComponent fahrzeugList = SimpleListComponent.builder("FahrzeugListComp")
+        fahrzeugList = SimpleListComponent.builder("FahrzeugListComp")
                 .font(new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_MEDIUM))
                 .selectionMode(ListSelectionModel.SINGLE_SELECTION)
                 .build();
@@ -75,7 +92,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         anlegenButton.addObserver(controller);
 
-        ButtonElement filterButton = ButtonElement.builder("Button-Filer")
+        ButtonElement filterButton = ButtonElement.builder("Button-Filter")
                 .buttonText("Filter")
                 .type(ButtonElement.Type.BUTTON)
                 .font(buttonFont)
@@ -109,13 +126,13 @@ public class FahrzeugGUI extends GUIWindowComponent {
         gui.add(leftComponentPanel);
     }
 
-    private void createDetailComponent(){
+    public JPanel createDetailComponentWithLabels(){
 
         String[] placeholderDropDown = {"Placeholder 1" , "Placeholder 2", "Placeholder 3"};
 
-        rightComponentPanel.setBackground(Colors.PINK_ROSE.getColor());
-        rightComponentPanel.setLayout(new BorderLayout());
-        rightComponentPanel.setVisible(false);
+        rightComponentPanelDetails.setBackground(Colors.PINK_ROSE.getColor());
+        rightComponentPanelDetails.setLayout(new BorderLayout());
+        rightComponentPanelDetails.setVisible(false);
 
         JLabel mapLabel = new JLabel();
 
@@ -129,7 +146,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         mapLabel.setHorizontalAlignment(JLabel.CENTER);
         mapLabel.setVerticalAlignment(JLabel.CENTER);
 
-        rightComponentPanel.add(mapLabel, BorderLayout.NORTH);
+        rightComponentPanelDetails.add(mapLabel, BorderLayout.NORTH);
 
         JPanel panelPanel = new JPanel();
         panelPanel.setLayout(new GridLayout(5,2, 200,50));
@@ -168,14 +185,14 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
         JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
 
-        addLabels(statusTextLabel, statusLabel, statusPanel);
-        addLabels(buchungTextLabel, buchungLabel, buchungPanel);
-        addLabels(herstellerTextLabel, herstellerLabel, herstellerPanel);
-        addLabels(modellTextLabel, modellLabel, modellPanel);
-        addLabels(klasseTextLabel, klasseLabel, klassenPanel);
-        addLabels(preisTextLabel, preisLabel, preisPanel);
-        addLabels(baujahrTextLabel, baujahrLabel, baujahrPanel);
-        addLabels(kilometerTextLabel, kilometerLabel, kilometerPanel);
+        addComponents(statusTextLabel, statusLabel, statusPanel);
+        addComponents(buchungTextLabel, buchungLabel, buchungPanel);
+        addComponents(herstellerTextLabel, herstellerLabel, herstellerPanel);
+        addComponents(modellTextLabel, modellLabel, modellPanel);
+        addComponents(klasseTextLabel, klasseLabel, klassenPanel);
+        addComponents(preisTextLabel, preisLabel, preisPanel);
+        addComponents(baujahrTextLabel, baujahrLabel, baujahrPanel);
+        addComponents(kilometerTextLabel, kilometerLabel, kilometerPanel);
         reifenPanel.add(reifenDropDown);
         ausruestungPanel.add(ausruestungDropDown);
 
@@ -201,7 +218,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         panelPanel.add(layoutPanel9);
         panelPanel.add(layoutPanel10);
 
-        rightComponentPanel.add(panelPanel, BorderLayout.CENTER);
+        rightComponentPanelDetails.add(panelPanel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Colors.PINK_ROSE.getColor());
@@ -231,9 +248,142 @@ public class FahrzeugGUI extends GUIWindowComponent {
         buttonPanel.add(loeschenButton);
         buttonPanel.add(fillLabel5);
 
-        rightComponentPanel.add(buttonPanel, BorderLayout.SOUTH);
+        rightComponentPanelDetails.add(buttonPanel, BorderLayout.SOUTH);
 
-        gui.add(rightComponentPanel);
+        return rightComponentPanelDetails;
+    }
+
+    public JPanel createDetailComponentWithTextFields(){
+        String[] placeholderDropDown = {"Placeholder 1" , "Placeholder 2", "Placeholder 3"};
+
+        rightComponentPanelInput.setBackground(Colors.PINK_ROSE.getColor());
+        rightComponentPanelInput.setLayout(new BorderLayout());
+        rightComponentPanelInput.setVisible(false);
+
+        JLabel imageLabel = new JLabel();
+
+        ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
+        icon = new ImageIcon(icon.getImage().getScaledInstance(
+                (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
+                (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
+                BufferedImage.SCALE_SMOOTH));
+
+        imageLabel.setIcon(icon);
+        imageLabel.setHorizontalAlignment(JLabel.CENTER);
+        imageLabel.setVerticalAlignment(JLabel.CENTER);
+
+        rightComponentPanelInput.add(imageLabel, BorderLayout.NORTH);
+
+        JPanel panelPanel = new JPanel();
+        panelPanel.setLayout(new GridLayout(5,2, 200,50));
+        panelPanel.setBackground(Colors.PINK_ROSE.getColor());
+
+        JPanel statusPanel = new JPanel();
+        statusPanel.setBackground(Colors.PINK_ROSE.getColor());
+        statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.Y_AXIS));
+
+        JPanel buchungPanel = createPanel();
+        JPanel herstellerPanel = createPanel();
+        JPanel modellPanel = createPanel();
+        JPanel klassenPanel = createPanel();
+        JPanel preisPanel = createPanel();
+        JPanel baujahrPanel = createPanel();
+        JPanel kilometerPanel = createPanel();
+        JPanel reifenPanel = createPanel();
+        JPanel ausruestungPanel = createPanel();
+
+        JLabel statusTextLabel = createLabel("Status",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JTextField statusInput = new JTextField("Unbekannt", 10);
+        statusInput.setEditable(false);
+        JLabel buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JTextField buchungInput = new JTextField("Unbekannt", 10);
+        buchungInput.setEditable(false);
+        JLabel herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JTextField herstellerInput = new JTextField("", 10);
+        JLabel modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JTextField modellInput = new JTextField("", 10);
+        JLabel klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JComboBox<Fahrzeugklasse> klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
+        JLabel preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JTextField preisInput = new JTextField("Automatically", 10);
+        preisInput.setEditable(false);
+        JLabel baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JTextField bauhjahrInput = new JTextField("", 10);
+        JLabel kilometerTextLabel = createLabel("Kilometer", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+        JTextField kilometerInput = new JTextField("", 10);
+        JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
+        JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
+
+        addComponents(statusTextLabel, statusInput, statusPanel);
+        addComponents(buchungTextLabel, buchungInput, buchungPanel);
+        addComponents(herstellerTextLabel, herstellerInput, herstellerPanel);
+        addComponents(modellTextLabel, modellInput, modellPanel);
+        addComponents(klasseTextLabel, klassenDropDown, klassenPanel);
+        addComponents(preisTextLabel, preisInput, preisPanel);
+        addComponents(baujahrTextLabel, bauhjahrInput, baujahrPanel);
+        addComponents(kilometerTextLabel, kilometerInput, kilometerPanel);
+        reifenPanel.add(reifenDropDown);
+        ausruestungPanel.add(ausruestungDropDown);
+
+        JPanel layoutPanel1 = createPanel(statusPanel, BorderLayout.EAST);
+        JPanel layoutPanel2 = createPanel(buchungPanel, BorderLayout.WEST);
+        JPanel layoutPanel3 = createPanel(herstellerPanel, BorderLayout.EAST);
+        JPanel layoutPanel4 = createPanel(modellPanel, BorderLayout.WEST);
+        JPanel layoutPanel5 = createPanel(klassenPanel, BorderLayout.EAST);
+        JPanel layoutPanel6 = createPanel(preisPanel, BorderLayout.WEST);
+        JPanel layoutPanel7 = createPanel(baujahrPanel, BorderLayout.EAST);
+        JPanel layoutPanel8 = createPanel(kilometerPanel, BorderLayout.WEST);
+        JPanel layoutPanel9 = createPanel(reifenPanel, BorderLayout.EAST);
+        JPanel layoutPanel10 = createPanel(ausruestungPanel, BorderLayout.WEST);
+
+        panelPanel.add(layoutPanel1);
+        panelPanel.add(layoutPanel2);
+        panelPanel.add(layoutPanel3);
+        panelPanel.add(layoutPanel4);
+        panelPanel.add(layoutPanel5);
+        panelPanel.add(layoutPanel6);
+        panelPanel.add(layoutPanel7);
+        panelPanel.add(layoutPanel8);
+        panelPanel.add(layoutPanel9);
+        panelPanel.add(layoutPanel10);
+
+        rightComponentPanelInput.add(panelPanel, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(Colors.PINK_ROSE.getColor());
+        buttonPanel.setLayout(new GridLayout(1,7));
+
+        JLabel fillLabel1 = new JLabel(" ");
+        JLabel fillLabel2 = new JLabel(" ");
+        JLabel fillLabel3 = new JLabel(" ");
+        JLabel fillLabel4 = new JLabel(" ");
+        JLabel fillLabel5 = new JLabel(" ");
+
+        ButtonElement speicherButton = ButtonElement.builder("Button-Save")
+                .buttonText("Speichern")
+                .type(ButtonElement.Type.BUTTON)
+                .build();
+
+        speicherButton.addObserver(controller);
+
+        ButtonElement abbrechenButton = ButtonElement.builder("Button-Cancel")
+                .buttonText("Abbrechen")
+                .type(ButtonElement.Type.BUTTON)
+                .build();
+
+        abbrechenButton.addObserver(controller);
+
+        buttonPanel.add(fillLabel1);
+        buttonPanel.add(speicherButton);
+        buttonPanel.add(fillLabel2);
+        buttonPanel.add(fillLabel3);
+        buttonPanel.add(fillLabel4);
+        buttonPanel.add(abbrechenButton);
+        buttonPanel.add(fillLabel5);
+
+        rightComponentPanelInput.add(buttonPanel, BorderLayout.SOUTH);
+
+        return rightComponentPanelInput;
     }
 
     public JPanel getGui(){
@@ -265,20 +415,31 @@ public class FahrzeugGUI extends GUIWindowComponent {
         return label;
     }
 
-    private void addLabels(JLabel label1, JLabel label2, JPanel panel){
+    private void addComponents(JLabel label1, JLabel label2, JPanel panel){
         panel.add(label1);
         panel.add(label2);
     }
 
-    public void setRightSiteVisible(){
-        rightComponentPanel.setVisible(true);
+    private void addComponents(JLabel label, JTextField textField, JPanel panel){
+        panel.add(label);
+        panel.add(textField);
     }
 
-    public void setRightSiteInvisible(){
-        rightComponentPanel.setVisible(false);
+    private void addComponents(JLabel label, JComboBox comboBox, JPanel panel){
+        panel.add(label);
+        panel.add(comboBox);
     }
 
-    public void render(){
-        //to-do
+    public void setRightSiteVisible(JPanel panel){
+        panel.setVisible(true);
     }
+
+    public void setRightSiteInvisible(JPanel panel){
+        panel.setVisible(false);
+    }
+
+    public void clearListSelection(){
+        fahrzeugList.clearSelection();
+    }
+
 }

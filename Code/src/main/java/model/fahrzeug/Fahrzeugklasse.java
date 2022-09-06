@@ -1,34 +1,32 @@
 package model.fahrzeug;
 
-import de.dhbwka.swe.utils.model.IPersistable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import java.util.UUID;
+public enum Fahrzeugklasse {
 
-@Getter
-@Setter
-public class Fahrzeugklasse implements IPersistable {
-    private String fahrzeugklasseID;
+    TRANSPORTER(1, "Transporter", 20, "B"),
+    KLEINWAGEN(2, "Kleinwagen", 10, "B"),
+    SPORTWAGEN(3, "Sportwagen", 25, "B"),
+    HYBRID(4, "Hybrid", 15, "B");
 
-    private String name;
-    private int preis;
-    private String beschreibung;
-    private String fuehrerschein;
-    private Fahrzeug[] fahrzeuge;
-    private String[] fahrzeugeIDs;
+    private final int id;
+    private final String name;
+    private final float preis;
+    private final String fuehrerschein;
 
-    public Fahrzeugklasse(){
-        this.fahrzeugklasseID = UUID.randomUUID().toString();
+    private Fahrzeugklasse(final int id, final String name, final float preis, final String fuehrerschein){
+        this.id = id;
+        this.name = name;
+        this.preis = preis;
+        this.fuehrerschein = fuehrerschein;
     }
 
-    public String[] toStringArray(){
-        String arr[] = new String[]{this.fahrzeugklasseID, this.name, String.valueOf(this.preis), this.beschreibung, this.fuehrerschein, String.join(",", this.fahrzeugeIDs)};
-        return arr;
+    public String getName(){
+        return name;
     }
 
-    @Override
-    public Object getPrimaryKey() {
-        return fahrzeugklasseID;
+    public float getPreis(){
+        return preis;
     }
+
 }

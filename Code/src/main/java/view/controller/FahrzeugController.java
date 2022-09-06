@@ -8,6 +8,7 @@ import model.fahrzeug.Fahrzeug;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,26 +39,46 @@ public class FahrzeugController extends GUIController {
         if (guiEvent.getCmd() == SimpleListComponent.Commands.ELEMENT_SELECTED){
             if (guiEvent.getData() instanceof Fahrzeug) {
                 currentFahrzeug = (Fahrzeug) guiEvent.getData();
-                gui.setRightSiteVisible();
+
+                JPanel panel = gui.createDetailComponentWithLabels();
+                gui.createRightSide(panel);
                 updateDetailLabelTexts();
+                gui.setRightSiteVisible(panel);
             }
         }
 
         if (guiEvent.getCmd() == ButtonElement.Commands.BUTTON_PRESSED) {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Anlegen")){
-                gui.setRightSiteVisible();
+                System.out.println("Log Anlegen Button");
+                JPanel panel = gui.createDetailComponentWithTextFields();
+                gui.createRightSide(panel);
+                gui.setRightSiteVisible(panel);
+                gui.clearListSelection();
+
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Filter")){
                 System.out.println("Button-Filter selected");
+
+                gui.clearListSelection();
+
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
                 System.out.println("Button-Create selected");
+
+                JPanel panel = gui.createDetailComponentWithTextFields();
+                gui.createRightSide(panel);
+                gui.setRightSiteVisible(panel);
+                gui.clearListSelection();
+            }
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
+                System.out.println("Es wurde Speichern geklickt");
+            }
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
+                System.out.println("Es wurde Abbrechen geklickt");
             }
         }
 
-        //if (){
 
-        //}
     }
 
     public void updateDetailLabelTexts(){

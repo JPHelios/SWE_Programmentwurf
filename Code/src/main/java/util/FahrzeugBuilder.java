@@ -21,10 +21,10 @@ public class FahrzeugBuilder {
         return this;
     }
 
-    public FahrzeugBuilder fahrzeugklasse(Fahrzeugklasse fk){
-        f.setFahrzeugklasse(fk);
+    /*public FahrzeugBuilder fahrzeugklasse(Fahrzeugklassen fk){
+        f.setFahrzeugklassen(fk);
         return this;
-    }
+    }*/
 
     public FahrzeugBuilder bilder(Bild[] b){
         f.setBilder(b);
