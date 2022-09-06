@@ -5,7 +5,6 @@ import de.dhbwka.swe.utils.event.GUIEvent;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeug;
-import util.enums.Colors;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
 
@@ -81,6 +80,55 @@ public class FahrzeugController extends GUIController {
                 JPanel panel = gui.createRightSidePanel(-1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
+            }
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
+                System.out.println("Es wurde Bearbeiten geklickt");
+
+            }
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Loeschen")){
+                System.out.println("Es wurde Löschen geklickt");
+
+                Object[] options = {"Ja", "Nein"};
+
+                int value1 = JOptionPane.showOptionDialog(
+                        gui,
+                        "Wollen Sie den Datensatz löschen?",
+                        "Eintrag Löschen",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+
+                if (value1 == 0){
+                    int value2 = JOptionPane.showOptionDialog(
+                            gui,
+                            "Sind Sie sich sicher, dass Sie den Eintrag löschen wollen?",
+                            "Eintrag Löschen",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            options,
+                            options[0]);
+
+                    if (value2 == 0){
+                        int value3 = JOptionPane.showOptionDialog(
+                                gui,
+                                "Sind Sie sich ganz sicher, dass Sie den Eintrag löschen wollen?",
+                                "Eintrag Löschen",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                options,
+                                options[0]);
+
+                        if(value3 == 0){
+                            //Delete-Routine
+                            Carsharing.em.removeEl(currentFahrzeug);
+                        }
+                    }
+                }
+
             }
         }
 

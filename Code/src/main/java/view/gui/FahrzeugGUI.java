@@ -289,15 +289,19 @@ public class FahrzeugGUI extends GUIWindowComponent {
         ButtonElement button2 = null;
 
         if(task == 0 ){
-            button1 = ButtonElement.builder("BTN-BAR")
+            button1 = ButtonElement.builder("Button-Edit")
                     .buttonText("Bearbeiten")
                     .type(ButtonElement.Type.BUTTON)
                     .build();
 
-            button2 = ButtonElement.builder("BTN-DEL")
+            button1.addObserver(controller);
+
+            button2 = ButtonElement.builder("Button-Loeschen")
                     .buttonText("Löschen")
                     .type(ButtonElement.Type.BUTTON)
                     .build();
+
+            button2.addObserver(controller);
 
         } else if (task == 1){
             button1 = ButtonElement.builder("Button-Save")
