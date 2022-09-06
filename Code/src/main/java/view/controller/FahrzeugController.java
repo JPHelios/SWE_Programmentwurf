@@ -40,7 +40,7 @@ public class FahrzeugController extends GUIController {
             if (guiEvent.getData() instanceof Fahrzeug) {
                 currentFahrzeug = (Fahrzeug) guiEvent.getData();
 
-                JPanel panel = gui.createDetailComponentWithLabels();
+                JPanel panel = gui.createRightSidePanel(0);
                 gui.createRightSide(panel);
                 updateDetailLabelTexts();
                 gui.setRightSiteVisible(panel);
@@ -50,7 +50,7 @@ public class FahrzeugController extends GUIController {
         if (guiEvent.getCmd() == ButtonElement.Commands.BUTTON_PRESSED) {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Anlegen")){
                 System.out.println("Log Anlegen Button");
-                JPanel panel = gui.createDetailComponentWithTextFields();
+                JPanel panel = gui.createRightSidePanel(1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
                 gui.clearListSelection();
@@ -65,7 +65,7 @@ public class FahrzeugController extends GUIController {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
                 System.out.println("Button-Create selected");
 
-                JPanel panel = gui.createDetailComponentWithTextFields();
+                JPanel panel = gui.createRightSidePanel(1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
                 gui.clearListSelection();
