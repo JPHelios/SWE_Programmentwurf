@@ -4,10 +4,8 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.event.GUIEvent;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
-import model.fahrzeug.Fahrzeug;
-import model.fahrzeug.Fahrzeugklasse;
-import model.fahrzeug.Kennzeichen;
-import model.standort.Standort;
+import model.fahrzeug.*;
+import util.BoxBuilder;
 import util.FahrzeugBuilder;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
@@ -16,12 +14,11 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static util.enums.Entities.Kennzeichen;
-
 public class FahrzeugController extends GUIController {
 
     Fahrzeug currentFahrzeug;
     FahrzeugGUI gui;
+    ArrayList<String> ausruestungTmp = new ArrayList<String>();
 
     public FahrzeugController(FahrzeugGUI gui){
         this.gui = gui;
@@ -65,7 +62,8 @@ public class FahrzeugController extends GUIController {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Filter")){
                 System.out.println("Es wurde Filter geklickt");
 
-                gui.clearListSelection();
+                List<Fahrzeug> fahrzeuge = loadData();
+                String searchField = gui.searchField.getText();
 
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
@@ -101,18 +99,23 @@ public class FahrzeugController extends GUIController {
                     fahrzeugBuilder.kilometerstand(kilometer);
                     fahrzeugBuilder.status(true);
 
-                    fahrzeugBuilder.standort(null);
-                    fahrzeugBuilder.ausruestung(null);
-                    fahrzeugBuilder.bilder(null);
-                    fahrzeugBuilder.kennzeichen(kennzeichen);
+                    fahrzeugBuilder.standort("69");
+                    fahrzeugBuilder.ausruestung(new String[]{});
+                    fahrzeugBuilder.bilder(new String[]{});
+                    fahrzeugBuilder.kennzeichen("");
 
-                    fahrzeugBuilder.build();
+                    //persist newly created vehicle
+                    Fahrzeug newFahrzeug = fahrzeugBuilder.build();
+                    Carsharing.em.persistEl(Fahrzeug.class, newFahrzeug.toStringArray());
+
+                    //refresh list
+                    refreshList();
 
 
                 } catch(NumberFormatException e){
                     JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
                 }
-            }
+            } //Referenzen zu anderen Objekten!
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
                 System.out.println("Es wurde Abbrechen geklickt");
 
@@ -164,15 +167,43 @@ public class FahrzeugController extends GUIController {
                         if(value3 == 0){
                             //Delete-Routine
                             Carsharing.em.removeEl(currentFahrzeug);
-                            gui.fahrzeugList.setListElements(this.loadData());
+                            refreshList();
                         }
                     }
                 }
 
             } //Funktion done
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Ausruestung")){
+                Object[] options = {"Speichern", "Abbrechen"};
+
+                String[] stringArray = {"Dachbox: Klein", "Dachbox: Mittel", "Dachbox: Groß",
+                    "Hundebox, 1 Hund", "Hundebox, 2 Hunde", "Fahrradträger: 2 Räder", "Fahrradträger: 4 Räder"};
+                JCheckBox[] checkBoxArray = new JCheckBox[7];
+                for (int i = 0; i < stringArray.length; i++){
+                    checkBoxArray[i] = new JCheckBox(stringArray[i]);
+                }
+
+                int save = JOptionPane.showOptionDialog(
+                        gui,
+                        checkBoxArray,
+                        "Ausrüstung auswählen",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+
+                if (save == 0){
+                    System.out.println("OK");
+                    for (JCheckBox cb : checkBoxArray){
+                        if (cb.isSelected()){
+                            System.out.println(cb.getText());
+                            ausruestungTmp.add(cb.getText());
+                        }
+                    }
+                }
+            } //Noch Objekte in Checkboxen einfügen
         }
-
-
     }
 
     public void updateDetailLabelTexts(){
@@ -184,6 +215,10 @@ public class FahrzeugController extends GUIController {
         gui.baujahrLabel.setText(String.valueOf(currentFahrzeug.getBaujahr()));
         gui.kilometerLabel.setText(String.valueOf(currentFahrzeug.getKilometerstand()));
 
+    }
+
+    private void refreshList(){
+        gui.fahrzeugList.setListElements(this.loadData());
     }
 
 

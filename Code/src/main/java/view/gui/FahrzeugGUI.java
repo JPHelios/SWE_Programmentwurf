@@ -3,7 +3,10 @@ package view.gui;
 import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import model.fahrzeug.Dachbox;
+import model.fahrzeug.Fahrradtraeger;
 import model.fahrzeug.Fahrzeugklasse;
+import model.fahrzeug.Hundetransportbox;
 import util.enums.Colors;
 import view.controller.FahrzeugController;
 import view.utils.GUIWindowComponent;
@@ -11,12 +14,13 @@ import view.utils.GUIWindowComponent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 public class FahrzeugGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
 
-    public JPanel leftComponentPanel = new JPanel();
+    public JTextField searchField;
 
     //Labels
     public JLabel statusLabel = new JLabel();
@@ -69,6 +73,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     private void createLeftSide() {
 
+        JPanel leftComponentPanel = new JPanel();
         leftComponentPanel.setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel();
@@ -116,8 +121,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         createButton.addObserver(controller);
 
-        JTextField searchField = new JTextField();
-        searchField.setText("Search");
+        searchField = new JTextField("", 7);
 
         buttonFilterPanel.add(searchField);
         buttonFilterPanel.add(filterButton);
@@ -193,7 +197,14 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JLabel baujahrTextLabel = new JLabel();
         JLabel kilometerTextLabel = new JLabel();
         JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
-        JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
+        ButtonElement ausruestungButton = ButtonElement.builder("Button-Ausruestung")
+                .buttonText("Ausrüstung")
+                .type(ButtonElement.Type.BUTTON)
+                .build();
+
+        ausruestungButton.addObserver(controller);
+
+        //JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
 
         if(task == 0){
 
@@ -254,7 +265,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         }
 
         reifenPanel.add(reifenDropDown);
-        ausruestungPanel.add(ausruestungDropDown);
+        ausruestungPanel.add(ausruestungButton);
 
         JPanel layoutPanel1 = createPanel(statusPanel, BorderLayout.EAST);
         JPanel layoutPanel2 = createPanel(buchungPanel, BorderLayout.WEST);
