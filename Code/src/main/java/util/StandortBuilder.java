@@ -1,9 +1,12 @@
 package util;
 
+import app.Carsharing;
 import model.fahrzeug.Fahrzeug;
 import model.standort.Filiale;
 import model.standort.Standort;
+import model.utils.Adresse;
 import model.utils.Backup;
+import model.utils.Bild;
 
 public class StandortBuilder {
     private Standort s;
@@ -45,6 +48,21 @@ public class StandortBuilder {
         s.setAnzahlSaeulen(l);
         return this;
     }
+
+    public StandortBuilder adresse(String aID){
+        s.setAdresseID(aID);
+        Adresse a = (Adresse) Carsharing.em.find(Adresse.class, aID);
+        s.setAdresse(a);
+        return this;
+    }
+
+    public StandortBuilder bild(String bID){
+        s.setBildID(bID);
+        Bild b = (Bild) Carsharing.em.find(Bild.class, bID);
+        s.setBild(b);
+        return this;
+    }
+
 
     public Standort build(){
         return s;
