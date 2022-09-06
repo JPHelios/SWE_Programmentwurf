@@ -17,9 +17,6 @@ public class FahrzeugGUI extends GUIWindowComponent {
     JPanel gui = new JPanel();
 
     public JPanel leftComponentPanel = new JPanel();
-    public JPanel rightComponentPanelDetails = new JPanel();
-    public JPanel rightComponentPanelInput = new JPanel();
-
 
     public JLabel statusLabel = new JLabel();
     public JLabel buchungLabel = new JLabel();
@@ -33,7 +30,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
     FahrzeugController controller;
     Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
 
-    SimpleListComponent fahrzeugList;
+    public SimpleListComponent fahrzeugList;
 
 
     public FahrzeugGUI(JFrame frame){

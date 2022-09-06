@@ -125,6 +125,7 @@ public class FahrzeugController extends GUIController {
                         if(value3 == 0){
                             //Delete-Routine
                             Carsharing.em.removeEl(currentFahrzeug);
+                            gui.fahrzeugList.setListElements(this.loadData());
                         }
                     }
                 }
