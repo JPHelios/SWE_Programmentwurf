@@ -1,5 +1,6 @@
 package util;
 
+import app.Carsharing;
 import model.buchung.Buchung;
 import model.standort.Filiale;
 import model.standort.Mitarbeiter;
@@ -62,12 +63,16 @@ public class MitarbeiterBuilder {
         return this;
     }
 
-    public MitarbeiterBuilder rolle(Rolle r){
+    public MitarbeiterBuilder rolle(String rID){
+        m.setRolleID(rID);
+        Rolle r = (Rolle) Carsharing.em.find(Rolle.class, rID);
         m.setRolle(r);
         return this;
     }
 
-    public MitarbeiterBuilder filiale(Filiale f){
+    public MitarbeiterBuilder filiale(String fID){
+        m.setFilialeID(fID);
+        Filiale f = (Filiale) Carsharing.em.find(Filiale.class, fID);
         m.setFiliale(f);
         return this;
     }
