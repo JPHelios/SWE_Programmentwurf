@@ -52,7 +52,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         gui.add(panel);
     }
 
-    private void createRightSide(){
+    public void createRightSide(){
         JPanel placeholder = new JPanel();
         placeholder.setBackground(Colors.PINK_ROSE.getColor());
 
@@ -127,6 +127,16 @@ public class FahrzeugGUI extends GUIWindowComponent {
     }
 
     public JPanel createRightSidePanel(int task){
+
+        if(task == -1){
+
+            JPanel clearPanel = new JPanel();
+            clearPanel.setBackground(Colors.PINK_ROSE.getColor());
+            clearPanel.setVisible(false);
+            return clearPanel;
+
+        }
+
         String[] placeholderDropDown = {"Placeholder 1" , "Placeholder 2", "Placeholder 3"};
 
         JPanel returnPanel = new JPanel();
