@@ -1,5 +1,6 @@
 package util;
 
+import app.Carsharing;
 import model.buchung.Buchung;
 import model.kunde.Kunde;
 import model.kunde.Vertrag;
@@ -44,12 +45,16 @@ public class KundeBuilder {
         return this;
     }
 
-    public KundeBuilder vertrag(Vertrag v){
+    public KundeBuilder vertrag(String vID){
+        k.setVertragID(vID);
+        Vertrag v = (Vertrag) Carsharing.em.find(Vertrag.class, vID);
         k.setVertrag(v);
         return this;
     }
 
-    public KundeBuilder adresse(Adresse a){
+    public KundeBuilder adresse(String aID){
+        k.setAdresseID(aID);
+        Adresse a = (Adresse) Carsharing.em.find(Adresse.class, aID);
         k.setAdresse(a);
         return this;
     }
