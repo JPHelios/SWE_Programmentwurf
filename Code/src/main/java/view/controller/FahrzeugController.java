@@ -57,7 +57,7 @@ public class FahrzeugController extends GUIController {
                 JPanel panel = gui.createRightSidePanel(1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
-                gui.clearListSelection();
+                gui.clearListSelection(gui.fahrzeugList);
 
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Filter")){
@@ -91,7 +91,7 @@ public class FahrzeugController extends GUIController {
                 JPanel panel = gui.createRightSidePanel(1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
-                gui.clearListSelection();
+                gui.clearListSelection(gui.fahrzeugList);
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern geklickt");
@@ -141,7 +141,7 @@ public class FahrzeugController extends GUIController {
                 JPanel panel = gui.createRightSidePanel(-1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
-                gui.clearListSelection();
+                gui.clearListSelection(gui.fahrzeugList);
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
                 System.out.println("Es wurde Bearbeiten geklickt");
@@ -262,8 +262,6 @@ public class FahrzeugController extends GUIController {
     }
 
     private void updateEditLabelTexts(){
-
-        System.out.println(currentFahrzeug);
 
         gui.kennzeichenInput.setText(currentFahrzeug.getKennzeichen());
         //gui.standortDropDown.

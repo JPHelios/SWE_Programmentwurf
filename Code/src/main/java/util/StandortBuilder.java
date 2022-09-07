@@ -15,15 +15,8 @@ public class StandortBuilder {
         s = new Standort();
     }
 
-    public StandortBuilder addFiliale(Filiale f){
-        Filiale[] filialen = s.getFilialen();
-        int i;
-        Filiale[] nf = new Filiale[filialen.length + 1];
-        for(i = 0; i<filialen.length; i++){
-            nf[i]=filialen[i];
-        }
-        nf[i]=f;
-        s.setFilialen(nf);
+    public StandortBuilder filiale(Filiale f){
+        s.setFiliale(f);
         return this;
     }
 

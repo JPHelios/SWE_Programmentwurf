@@ -242,14 +242,14 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JPanel reifenPanel = createPanel();
         JPanel ausruestungPanel = createPanel();
 
-        JLabel statusTextLabel = new JLabel();
-        JLabel buchungTextLabel = new JLabel();
-        JLabel herstellerTextLabel = new JLabel();
-        JLabel modellTextLabel = new JLabel();
-        JLabel klasseTextLabel = new JLabel();
-        JLabel preisTextLabel = new JLabel();
-        JLabel baujahrTextLabel = new JLabel();
-        JLabel kilometerTextLabel = new JLabel();
+        JLabel statusTextLabel;
+        JLabel buchungTextLabel;
+        JLabel herstellerTextLabel;
+        JLabel modellTextLabel;
+        JLabel klasseTextLabel;
+        JLabel preisTextLabel;
+        JLabel baujahrTextLabel;
+        JLabel kilometerTextLabel;
         JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
         ButtonElement ausruestungButton = ButtonElement.builder("Button-Ausruestung")
                 .buttonText("Ausrüstung")
@@ -257,8 +257,6 @@ public class FahrzeugGUI extends GUIWindowComponent {
                 .build();
 
         ausruestungButton.addObserver(controller);
-
-        //JComboBox<String> ausruestungDropDown = new JComboBox<>(placeholderDropDown);
 
         if(task == 0){
 
@@ -448,56 +446,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
         return gui;
     }
 
-    private JPanel createPanel(){
-        JPanel panel = new JPanel();
-        panel.setBackground(Colors.PINK_ROSE.getColor());
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        return panel;
-    }
 
-    private JPanel createPanel(JPanel panel2Add, String orientation){
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-        panel.setBackground(Colors.PINK_ROSE.getColor());
-        panel.add(panel2Add, orientation);
 
-        return panel;
-    }
-
-    private JLabel createLabel(String text, String font, int fontType , int size){
-
-        JLabel label = new JLabel(text);
-        label.setFont(new Font(font, fontType, size));
-
-        return label;
-    }
-
-    private void addComponents(JLabel label1, JLabel label2, JPanel panel){
-        panel.add(label1);
-        panel.add(label2);
-    }
-
-    private void addComponents(JLabel label, JTextField textField, JPanel panel){
-        panel.add(label);
-        panel.add(textField);
-    }
-
-    private void addComponents(JLabel label, JComboBox comboBox, JPanel panel){
-        panel.add(label);
-        panel.add(comboBox);
-    }
-
-    public void setRightSiteVisible(JPanel panel){
-        panel.setVisible(true);
-    }
-
-    public void setRightSiteInvisible(JPanel panel){
-        panel.setVisible(false);
-    }
-
-    public void clearListSelection(){
-        fahrzeugList.clearSelection();
-    }
 
 }
