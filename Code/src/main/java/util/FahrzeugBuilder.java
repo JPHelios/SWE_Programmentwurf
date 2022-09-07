@@ -12,9 +12,7 @@ public class FahrzeugBuilder {
         f = new Fahrzeug();
     }
 
-    public FahrzeugBuilder kennzeichen(String kID){
-        f.setKennzeichenID(kID);
-        Kennzeichen k = (Kennzeichen) Carsharing.em.find(Kennzeichen.class, kID);
+    public FahrzeugBuilder kennzeichen(String k){
         f.setKennzeichen(k);
         return this;
     }

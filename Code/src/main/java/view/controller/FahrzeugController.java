@@ -6,7 +6,6 @@ import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
-import model.fahrzeug.Kennzeichen;
 import util.FahrzeugBuilder;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
@@ -104,12 +103,11 @@ public class FahrzeugController extends GUIController {
                 String hersteller = gui.herstellerInput.getText();
                 String model = gui.modellInput.getText();
                 Fahrzeugklasse klasse = (Fahrzeugklasse) gui.klassenDropDown.getSelectedItem();
+                String kennzeichen = gui.kennzeichenInput.getText().toUpperCase();
 
                 try {
                     int baujahr = Integer.parseInt(gui.baujahrInput.getText());
                     int kilometer = Integer.parseInt(gui.kilometerInput.getText());
-
-                    Kennzeichen kennzeichen = new Kennzeichen(kennzeichenInput);
 
                     FahrzeugBuilder fahrzeugBuilder = new FahrzeugBuilder();
 
@@ -123,7 +121,7 @@ public class FahrzeugController extends GUIController {
                     fahrzeugBuilder.standort("69");
                     fahrzeugBuilder.ausruestung(new String[]{});
                     fahrzeugBuilder.bilder(new String[]{});
-                    fahrzeugBuilder.kennzeichen("");
+                    fahrzeugBuilder.kennzeichen(kennzeichen);
 
                     //persist newly created vehicle
                     Fahrzeug newFahrzeug = fahrzeugBuilder.build();
@@ -143,11 +141,19 @@ public class FahrzeugController extends GUIController {
                 JPanel panel = gui.createRightSidePanel(-1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
+                gui.clearListSelection();
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
                 System.out.println("Es wurde Bearbeiten geklickt");
 
-            } // #! Ausstehend !#
+                JPanel panel = gui.createRightSidePanel(2);
+                gui.createRightSide(panel);
+                updateEditLabelTexts();
+                gui.setRightSiteVisible(panel);
+
+                
+
+            }//Noch einige Funktionen ausstehend
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Loeschen")){
                 System.out.println("Es wurde Löschen geklickt");
 
@@ -224,11 +230,28 @@ public class FahrzeugController extends GUIController {
                     }
                 }
             } //Noch Objekte in Checkboxen einfügen
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save-Edit")){
+                System.out.println("Es wurde Speichern beim Bearbeiten geklickt");
+
+                currentFahrzeug.setKennzeichen(gui.kennzeichenInput.getText().toUpperCase());
+                //Standort hinzufügen
+                currentFahrzeug.setHersteller(gui.herstellerInput.getText());
+                currentFahrzeug.setModell(gui.modellInput.getText());
+                currentFahrzeug.setFahrzeugklasse((Fahrzeugklasse) gui.klassenDropDown.getSelectedItem());
+                currentFahrzeug.setBaujahr(Integer.parseInt(gui.baujahrInput.getText()));
+                currentFahrzeug.setKilometerstand(Integer.parseInt(gui.kilometerInput.getText()));
+                //Reifensatz hinzufügen
+                //Ausrüstung hinzufügen
+
+                Carsharing.em.modify(Fahrzeug.class, currentFahrzeug.toStringArray());
+                refreshList();
+            } //Noch einige Askepte ausstehend
         }
     }
 
     public void updateDetailLabelTexts(){
 
+        gui.statusLabel.setText(String.valueOf(currentFahrzeug.isStatus()));
         gui.herstellerLabel.setText(currentFahrzeug.getHersteller());
         gui.modellLabel.setText(currentFahrzeug.getModell());
         gui.klasseLabel.setText(currentFahrzeug.getFahrzeugklasseID());
@@ -236,6 +259,20 @@ public class FahrzeugController extends GUIController {
         gui.baujahrLabel.setText(String.valueOf(currentFahrzeug.getBaujahr()));
         gui.kilometerLabel.setText(String.valueOf(currentFahrzeug.getKilometerstand()));
 
+    }
+
+    private void updateEditLabelTexts(){
+
+        System.out.println(currentFahrzeug);
+
+        gui.kennzeichenInput.setText(currentFahrzeug.getKennzeichen());
+        //gui.standortDropDown.
+        gui.herstellerInput.setText(currentFahrzeug.getHersteller());
+        gui.modellInput.setText(currentFahrzeug.getModell());
+        gui.klassenDropDown.setSelectedIndex(currentFahrzeug.getFahrzeugklasse().ordinal());
+        gui.preisLabel.setText(String.valueOf(currentFahrzeug.getFahrzeugklasse().getPreis()));
+        gui.baujahrInput.setText(String.valueOf(currentFahrzeug.getBaujahr()));
+        gui.kilometerInput.setText(String.valueOf(currentFahrzeug.getKilometerstand()));
     }
 
     private void refreshList(){

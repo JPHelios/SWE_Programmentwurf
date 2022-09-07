@@ -262,6 +262,34 @@ public class FahrzeugGUI extends GUIWindowComponent {
             addComponents(baujahrTextLabel, baujahrInput, baujahrPanel);
             addComponents(kilometerTextLabel, kilometerInput, kilometerPanel);
 
+        } else if (task == 2){
+
+            statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            kennzeichenInput = new JTextField("", 10);
+            buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            herstellerInput = new JTextField("", 10);
+            modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            modellInput = new JTextField("", 10);
+            klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            preisLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            baujahrInput = new JTextField("", 10);
+            kilometerTextLabel = createLabel("Kilometerstand", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            kilometerInput = new JTextField("", 10);
+
+            addComponents(statusTextLabel, kennzeichenInput, statusPanel);
+            addComponents(buchungTextLabel, standortDropDown, buchungPanel);
+            addComponents(herstellerTextLabel, herstellerInput, herstellerPanel);
+            addComponents(modellTextLabel, modellInput, modellPanel);
+            addComponents(klasseTextLabel, klassenDropDown, klassenPanel);
+            addComponents(preisTextLabel, preisLabel, preisPanel);
+            addComponents(baujahrTextLabel, baujahrInput, baujahrPanel);
+            addComponents(kilometerTextLabel, kilometerInput, kilometerPanel);
+
         }
 
         reifenPanel.add(reifenDropDown);
@@ -304,7 +332,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         ButtonElement button1 = null;
         ButtonElement button2 = null;
 
-        if(task == 0 ){
+        if(task == 0){
             button1 = ButtonElement.builder("Button-Edit")
                     .buttonText("Bearbeiten")
                     .type(ButtonElement.Type.BUTTON)
@@ -333,17 +361,31 @@ public class FahrzeugGUI extends GUIWindowComponent {
                     .build();
 
             button2.addObserver(controller);
+        } else if (task == 2){
+            button1 = ButtonElement.builder("Button-Save-Edit")
+                    .buttonText("Speichern")
+                    .type(ButtonElement.Type.BUTTON)
+                    .build();
+
+            button1.addObserver(controller);
+
+            button2 = ButtonElement.builder("Button-Cancel")
+                    .buttonText("Abbrechen")
+                    .type(ButtonElement.Type.BUTTON)
+                    .build();
+
+            button2.addObserver(controller);
         }
 
-        buttonPanel.add(fillLabel1);
-        buttonPanel.add(button1);
-        buttonPanel.add(fillLabel2);
-        buttonPanel.add(fillLabel3);
-        buttonPanel.add(fillLabel4);
-        buttonPanel.add(button2);
-        buttonPanel.add(fillLabel5);
+            buttonPanel.add(fillLabel1);
+            buttonPanel.add(button1);
+            buttonPanel.add(fillLabel2);
+            buttonPanel.add(fillLabel3);
+            buttonPanel.add(fillLabel4);
+            buttonPanel.add(button2);
+            buttonPanel.add(fillLabel5);
 
-        returnPanel.add(buttonPanel, BorderLayout.SOUTH);
+            returnPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         return returnPanel;
     }

@@ -3,6 +3,7 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.model.Attribute;
 import de.dhbwka.swe.utils.model.IDepictable;
 import de.dhbwka.swe.utils.model.IPersistable;
+import lombok.Data;
 import model.standort.Standort;
 import model.utils.Bild;
 
@@ -11,9 +12,9 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-@Getter
-@Setter
+@Data
 public class Fahrzeug implements IPersistable, IDepictable {
+
     private String fahrzeugID;
 
     private String hersteller;
@@ -22,8 +23,7 @@ public class Fahrzeug implements IPersistable, IDepictable {
     private boolean status;
     private int kilometerstand;
     private boolean reserviert;
-    private Kennzeichen kennzeichen;
-    private String kennzeichenID;
+    private String kennzeichen;
     private Ausruestung[] ausruestung;
     private String[] ausruestungIDs;
     private Reifensatz reifensatz;
@@ -40,7 +40,7 @@ public class Fahrzeug implements IPersistable, IDepictable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{this.fahrzeugID, this.hersteller, this.modell, String.valueOf(this.baujahr), String.valueOf(this.status), String.valueOf(this.kilometerstand), String.valueOf(this.reserviert), this.kennzeichenID, String.join(",", this.ausruestungIDs), this.reifensatzID, this.standortID, String.join(",", this.bildIDs), this.fahrzeugklasseID};
+        String arr[] = new String[]{this.fahrzeugID, this.hersteller, this.modell, String.valueOf(this.baujahr), String.valueOf(this.status), String.valueOf(this.kilometerstand), String.valueOf(this.reserviert), this.kennzeichen, String.join(",", this.ausruestungIDs), this.reifensatzID, this.standortID, String.join(",", this.bildIDs), this.fahrzeugklasseID};
         return arr;
     }
 
@@ -52,7 +52,7 @@ public class Fahrzeug implements IPersistable, IDepictable {
         this.status = Boolean.parseBoolean(props[4]);
         this.kilometerstand = Integer.parseInt(props[5]);
         this.reserviert = Boolean.parseBoolean(props[6]);
-        this.kennzeichenID = (props[7]);
+        this.kennzeichen = (props[7]);
         this.ausruestungIDs = props[8].split(",");
         this.reifensatzID = (props[9]);
         this.standortID = (props[10]);
@@ -69,8 +69,8 @@ public class Fahrzeug implements IPersistable, IDepictable {
         this.bilder = new Bild[this.bildIDs.length];
         for(int j =0; j < this.bildIDs.length; j++){
             this.bilder[j] = (Bild) Carsharing.em.find(Bild.class, this.bildIDs[j]);
-        }
-        this.fahrzeugklasse = Fahrzeugklasse.valueOf(this.fahrzeugklasseID);*/
+        }*/
+        this.fahrzeugklasse = Fahrzeugklasse.valueOf(this.fahrzeugklasseID);
     }
 
 
