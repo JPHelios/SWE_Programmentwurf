@@ -53,7 +53,12 @@ public class StandortController extends GUIController {
         if (guiEvent.getCmd() == ButtonElement.Commands.BUTTON_PRESSED) {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Anlegen")){
                 System.out.println("Es wurde Anlegen geklickt");
-            }
+
+                JPanel panel = gui.createRightSidePanel(1);
+
+                gui.createRightSide(panel);
+                gui.setRightSiteVisible(panel);
+            }//Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Filter")){
                 System.out.println("Es wurde Filter geklickt");
 
@@ -79,7 +84,12 @@ public class StandortController extends GUIController {
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
                 System.out.println("Es wurde Create geklickt ");
-            }
+
+                JPanel panel = gui.createRightSidePanel(-1);
+                gui.createRightSide(panel);
+                gui.setRightSiteVisible(panel);
+                gui.clearListSelection(gui.standortList);
+            }//Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
                 System.out.println("Es wurde Bearbeiten gewählt");
 
@@ -137,6 +147,8 @@ public class StandortController extends GUIController {
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern gewählt");
+
+                //stuff to do
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save-Edit")){
                 System.out.println("Es wurde Speichern gewählt");
@@ -153,10 +165,13 @@ public class StandortController extends GUIController {
                 gui.setRightSiteVisible(panel);
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
-                JPanel panel = gui.createRightSidePanel(0);
+                System.out.println("Es wurde Abbrechen geklickt");
+
+
+                JPanel panel = gui.createRightSidePanel(-1);
                 gui.createRightSide(panel);
-                updateDetailLabelTexts();
                 gui.setRightSiteVisible(panel);
+                gui.clearListSelection(gui.standortList);
             }//Funktion done
 
         }

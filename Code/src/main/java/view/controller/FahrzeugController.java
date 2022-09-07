@@ -138,10 +138,10 @@ public class FahrzeugController extends GUIController {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
                 System.out.println("Es wurde Abbrechen geklickt");
 
-                JPanel panel = gui.createRightSidePanel(0);
+                JPanel panel = gui.createRightSidePanel(-1);
                 gui.createRightSide(panel);
-                updateDetailLabelTexts();
                 gui.setRightSiteVisible(panel);
+                gui.clearListSelection(gui.fahrzeugList);
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
                 System.out.println("Es wurde Bearbeiten geklickt");

@@ -34,15 +34,10 @@ public class StandortGUI extends GUIWindowComponent {
 
     public JTextField plaetzeInput = new JTextField();
     public JTextField saeulenInput = new JTextField();
-
-    public JTextField kennzeichenInput = new JTextField();
-    public JComboBox<Fahrzeugklasse> standortDropDown = new JComboBox<>();
-    public JTextField herstellerInput = new JTextField();
-    public JTextField modellInput = new JTextField();
-    public JComboBox<Fahrzeugklasse> klassenDropDown = new JComboBox<>();
-    public JTextField preisInput = new JTextField();
-    public JTextField baujahrInput = new JTextField();
-    public JTextField kilometerInput = new JTextField();
+    public JTextField adressInput = new JTextField();
+    public JTextField plzInput = new JTextField();
+    public JTextField ortInput = new JTextField();
+    public JComboBox<Fahrzeugklasse> filialeDropDown = new JComboBox<>();
 
     Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
 
@@ -232,31 +227,31 @@ public class StandortGUI extends GUIWindowComponent {
 
         } else if (task == 1){
 
-            adresseTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            kennzeichenInput = new JTextField("", 10);
-            buchungTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
-            plzTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            herstellerInput = new JTextField("", 10);
-            ortTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            modellInput = new JTextField("", 10);
-            plaetzeTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
-            ladesaeulenTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            preisInput = new JTextField("Automatically", 10);
-            filialeTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            baujahrInput = new JTextField("", 10);
-            zeitenTextLabel = createLabel("Kilometer", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            kilometerInput = new JTextField("", 10);
+            adresseTextLabel = createLabel("Straße, Nr.",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            adressInput = new JTextField("", 10);
+            buchungTextLabel = createLabel("", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            buchungLabel = createLabel("", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            plzTextLabel = createLabel("Postleitzahl", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            plzInput = new JTextField("", 10);
+            ortTextLabel = createLabel("Ort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            ortInput = new JTextField("", 10);
+            plaetzeTextLabel = createLabel("Plätze", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            plaetzeInput = new JTextField("", 10);
+            ladesaeulenTextLabel = createLabel("Ladesäulen", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            saeulenInput = new JTextField("", 10);
+            filialeTextLabel = createLabel("Niederlassung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            filialeDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            zeitenTextLabel = createLabel("Öffnungszeiten", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            zeitenLabel = createLabel("Unbekannt", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
 
-            addComponents(adresseTextLabel, kennzeichenInput, statusPanel);
-            addComponents(buchungTextLabel, standortDropDown, buchungPanel);
-            addComponents(plzTextLabel, herstellerInput, herstellerPanel);
-            addComponents(ortTextLabel, modellInput, modellPanel);
-            addComponents(plaetzeTextLabel, klassenDropDown, klassenPanel);
-            addComponents(ladesaeulenTextLabel, preisInput, preisPanel);
-            addComponents(filialeTextLabel, baujahrInput, baujahrPanel);
-            addComponents(zeitenTextLabel, kilometerInput, kilometerPanel);
+            addComponents(adresseTextLabel, adressInput, statusPanel);
+            addComponents(buchungTextLabel, buchungLabel, buchungPanel);
+            addComponents(plzTextLabel, plzInput, herstellerPanel);
+            addComponents(ortTextLabel, ortInput, modellPanel);
+            addComponents(plaetzeTextLabel, plaetzeInput, klassenPanel);
+            addComponents(ladesaeulenTextLabel, saeulenInput, preisPanel);
+            addComponents(filialeTextLabel, filialeDropDown, baujahrPanel);
+            addComponents(zeitenTextLabel, zeitenLabel, kilometerPanel);
 
         } else if (task == 2){
 
