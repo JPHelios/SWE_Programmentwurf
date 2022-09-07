@@ -19,7 +19,7 @@ public enum Entities {
     Filiale("src\\main\\resources\\database\\filiale.csv", new String[]{"Filiale-ID", "Öffnungszeiten", "Mitarbeiter-IDs", "Standort-ID"}),
     Mitarbeiter("src\\main\\resources\\database\\mitarbeiter.csv", new String[]{"Mitarbeiter-ID", "Nachname", "Vorname", "Telefon", "Mail", "Passwort", "Rolle-ID", "Filiale-ID", "Backup-IDs", "Buchung-IDs"}),
     Rolle("src\\main\\resources\\database\\rolle.csv", new String[]{"Rolle-ID", "Bezeichnung", "Berechtigt"}),
-    Standort("src\\main\\resources\\database\\standort.csv", new String[]{"Standort-ID", "Anzahl Stellplätze", "Anzahl E-Säulen", "Bild-ID", "Adress-ID"}),
+    Standort("src\\main\\resources\\database\\standort.csv", new String[]{"Standort-ID", "Anzahl Stellplätze", "Anzahl E-Säulen","Fahrzeug-IDs", "Filialen-IDs", "Bild-ID", "Adress-ID"}),
     Adresse("src\\main\\resources\\database\\adresse.csv", new String[]{"Adresse-ID", "Straße", "Hausnummer", "PLZ", "Ort", "Zusatz"}),
     Backup("src\\main\\resources\\database\\backup.csv", new String[]{"Backup-ID", "Pfad", "Mitarbeiter-ID"}),
     Bild("src\\main\\resources\\database\\bild.csv", new String[]{"Bild-ID", "Pfad", "Titel"});

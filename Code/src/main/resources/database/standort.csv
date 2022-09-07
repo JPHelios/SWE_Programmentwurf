@@ -1,4 +1,6 @@
-#Standort-ID;Anzahl Stellplätze;Anzahl E-Säulen;Bild-ID;Adress-ID
-69;69;69;69;69
-70;70;70;70;71
-71;71;71;71;71
+#Standort-ID;Anzahl Stellplätze;Anzahl E-Säulen;Fahrzeug-IDs;Filialen-IDs;Bild-ID;Adress-ID
+1;1;1;1;1;1;1
+2;2;2;2,3;2,3,4;2;2
+69;69;69;69;69;69;69
+70;70;70;70;70;70;71
+71;71;71;71;71;71;71

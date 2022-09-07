@@ -1,5 +1,7 @@
 package model.standort;
 
+import app.Carsharing;
+import database.EntityManager;
 import de.dhbwka.swe.utils.model.IPersistable;
 import model.fahrzeug.Fahrzeug;
 import model.utils.Adresse;
@@ -20,7 +22,9 @@ public class Standort implements IPersistable {
     private int anzahlPlaetze;
     private int anzahlSaeulen;
     private Fahrzeug[] fahrzeuge;
+    private String[] fahrzeugIDs;
     private Filiale[] filialen;
+    private String[] filialenIDs;
     private String bildID;
     private Bild bild;
     private String adresseID;
@@ -35,15 +39,25 @@ public class Standort implements IPersistable {
         this.standortID = props[0];
         this.anzahlPlaetze = parseInt(props[1]);
         this.anzahlSaeulen = parseInt(props[2]);
-        this.bildID = props[3];
-        this.adresseID = props[4];
-        //this.bild = EntityManager.find(Bild, this.bildId)
-        //this.adresse = EntityManager.find(Adresse, this.adresseID)
-        System.out.println("success");
+        this.fahrzeugIDs = props[3].split(",");
+        this.filialenIDs = props[4].split(",");
+        this.bildID = props[5];
+        this.adresseID = props[6];
+
+        /*this.bild = (Bild) Carsharing.em.find(Bild.class, this.bildID);
+        this.adresse = (Adresse) Carsharing.em.find(Adresse.class, this.adresseID);
+        this.fahrzeuge = new Fahrzeug[this.fahrzeugIDs.length];
+        for(int i = 0; i < this.fahrzeugIDs.length; i++){
+            this.fahrzeuge[i] = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, this.fahrzeugIDs[i]);
+        }
+        this.filialen = new Filiale[this.filialenIDs.length];
+        for(int j = 0; j< this.filialenIDs.length; j++){
+            this.filialen[j] = (Filiale) Carsharing.em.find(Filiale.class, this.filialenIDs[j]);
+        }*/
     }
 
     public String[] toStringArray(){
-        String[] arr = {this.standortID, String.valueOf(this.anzahlPlaetze), String.valueOf(this.anzahlSaeulen), this.bildID, this.adresseID};
+        String[] arr = {this.standortID, String.valueOf(this.anzahlPlaetze), String.valueOf(this.anzahlSaeulen), String.join(",", this.fahrzeugIDs), String.join(",", this.filialenIDs), this.bildID, this.adresseID};
         return arr;
     }
 

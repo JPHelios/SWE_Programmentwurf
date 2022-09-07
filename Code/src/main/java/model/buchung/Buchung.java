@@ -59,7 +59,7 @@ public class Buchung implements IPersistable {
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{this.buchungID, String.valueOf(this.canceled), this.starttermin.toString(), this.endtermin.toString(), this.fahrzeugID, this.rechnungID, String.join(",", this.mahnungIDs), this.kundeID, this.mitarbeiterID};
+        String arr[] = new String[]{this.buchungID, String.valueOf(this.canceled), String.valueOf(this.starttermin.getTime()), String.valueOf(this.endtermin.getTime()), this.fahrzeugID, this.rechnungID, String.join(",", this.mahnungIDs), this.kundeID, this.mitarbeiterID};
         return arr;
     }
 
