@@ -4,14 +4,17 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.event.GUIEvent;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
-import model.fahrzeug.Fahrzeug;
+import model.standort.Filiale;
 import model.standort.Standort;
+import model.utils.Adresse;
+import util.StandortBuilder;
 import view.gui.StandortGUI;
 import view.utils.GUIController;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class StandortController extends GUIController {
 
@@ -32,6 +35,17 @@ public class StandortController extends GUIController {
         }
 
         return standortList;
+    }
+
+    public Filiale[] loadFiliale(){
+        List<Object> test = Carsharing.em.getAllEl(Filiale.class);
+        Filiale[] filialeList = new Filiale[test.size()];
+
+        for(int i = 0; i < test.size(); i++){
+            filialeList[i] = (Filiale) test.get(i);
+        }
+
+        return filialeList;
     }
 
     @Override
@@ -58,6 +72,7 @@ public class StandortController extends GUIController {
 
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
+                gui.clearListSelection(gui.standortList);
             }//Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Filter")){
                 System.out.println("Es wurde Filter geklickt");
@@ -148,13 +163,48 @@ public class StandortController extends GUIController {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern gewählt");
 
-                //stuff to do
-            }
+                //Eingabeüberprüfung muss noch eingebaut werden
+                String strasse = gui.adressInput.getText().split(" ")[0];
+                String hausnummer = gui.adressInput.getText().split(" ")[1];
+                String plz = gui.plzInput.getText();
+                String ort = gui.ortInput.getText();
+
+                Adresse newAdresse = Carsharing.ef.createAdresse(new String[]{strasse, hausnummer, plz, ort, null});
+                //Eig. müsste das in einen Try-Catch... entweder klappt alles oder nichts
+                Carsharing.em.persistEl(Adresse.class, newAdresse.toStringArray());
+
+                int plaetze = Integer.parseInt(gui.plaetzeInput.getText());
+                int saeulen = Integer.parseInt(gui.saeulenInput.getText());
+                Filiale filiale = (Filiale) gui.filialeDropDown.getSelectedItem();
+
+                StandortBuilder standortBuilder = new StandortBuilder();
+
+                standortBuilder.adresse(newAdresse.getAdresseID());
+                standortBuilder.filiale(filiale);
+                standortBuilder.ladesaeulen(saeulen);
+                standortBuilder.stellplaetze(plaetze);
+                standortBuilder.bild("1");
+
+                Standort newStandort = standortBuilder.build();
+                Carsharing.em.persistEl(Standort.class, newStandort.toStringArray());
+
+                refreshList();
+
+                JPanel panel = gui.createRightSidePanel(-1);
+                gui.createRightSide(panel);
+                gui.setRightSiteVisible(panel);
+                gui.clearListSelection(gui.standortList);
+
+
+            }//Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save-Edit")){
                 System.out.println("Es wurde Speichern gewählt");
 
                 currentStandort.setAnzahlPlaetze(Integer.parseInt(gui.plaetzeInput.getText()));
                 currentStandort.setAnzahlSaeulen(Integer.parseInt(gui.saeulenInput.getText()));
+
+                currentStandort.setFiliale((Filiale) gui.filialeDropDown.getSelectedItem());
+                currentStandort.setFilialeID(((Filiale) Objects.requireNonNull(gui.filialeDropDown.getSelectedItem())).getFilialeID());
 
                 Carsharing.em.modify(Standort.class, currentStandort.toStringArray());
                 refreshList();
@@ -163,6 +213,7 @@ public class StandortController extends GUIController {
                 gui.createRightSide(panel);
                 updateDetailLabelTexts();
                 gui.setRightSiteVisible(panel);
+
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
                 System.out.println("Es wurde Abbrechen geklickt");
@@ -186,14 +237,13 @@ public class StandortController extends GUIController {
         gui.plaetzeLabel.setText(String.valueOf(currentStandort.getAnzahlPlaetze()));
         gui.saeulenLabel.setText(String.valueOf(currentStandort.getAnzahlSaeulen()));
 
-        if(currentStandort.existFiliale()){
-            gui.filialeLabel.setText("Ja");
-            gui.zeitenLabel.setText(String.valueOf(currentStandort.getFiliale().getOeffnungszeiten()));
+        if (currentStandort.getFiliale().getStandortID().equals("0")){
+            gui.filialeLabel.setText("Nicht Vorhanden");
+            gui.zeitenLabel.setText("Keine Zeiten");
         } else {
-            gui.filialeLabel.setText("Nein");
-            gui.zeitenLabel.setText("keine Zeiten");
+            gui.filialeLabel.setText("Vorhanden");
+            gui.zeitenLabel.setText(String.valueOf(currentStandort.getFiliale().getOeffnungszeiten()));
         }
-
     }
 
     private void updateEditLabelTexts(){
@@ -203,13 +253,18 @@ public class StandortController extends GUIController {
         gui.plaetzeInput.setText(String.valueOf(currentStandort.getAnzahlPlaetze()));
         gui.saeulenInput.setText(String.valueOf(currentStandort.getAnzahlSaeulen()));
 
-        if(currentStandort.existFiliale()){
-            gui.filialeLabel.setText("Ja");
-            gui.zeitenLabel.setText(String.valueOf(currentStandort.getFiliale().getOeffnungszeiten()));
-        } else {
-            gui.filialeLabel.setText("Nein");
-            gui.zeitenLabel.setText("keine Zeiten");
+        //dirty solution, da setSelectedItem kömischerweise keine Funktion hier zeigt
+        int index = 0;
+        Filiale[] listTmp = this.loadFiliale();
+        for(int i = 0; i < listTmp.length; i++){
+            if(listTmp[i].getFilialeID().equals(currentStandort.getFiliale().getFilialeID())){
+                index = i;
+            }
         }
+
+        gui.filialeDropDown.setSelectedIndex(index);
+        gui.zeitenLabel.setText("lade Zeiten...");
+
     }
 
     private void refreshList(){

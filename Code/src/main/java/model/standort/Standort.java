@@ -47,6 +47,7 @@ public class Standort implements IPersistable, IDepictable {
         this.adresseID = props[6];
 
         this.adresse = (Adresse) Carsharing.em.find(Adresse.class, this.adresseID);
+        this.filiale = (Filiale) Carsharing.em.find(Filiale.class, this.filialeID);
 
         /*this.bild = (Bild) Carsharing.em.find(Bild.class, this.bildID);
         this.adresse = (Adresse) Carsharing.em.find(Adresse.class, this.adresseID);
@@ -61,7 +62,15 @@ public class Standort implements IPersistable, IDepictable {
     }
 
     public String[] toStringArray(){
-        String[] arr = {this.standortID, String.valueOf(this.anzahlPlaetze), String.valueOf(this.anzahlSaeulen), String.join(",", this.fahrzeugIDs), String.join(",", this.filialeID), this.bildID, this.adresseID};
+
+        String[] arr;
+
+        if (this.fahrzeugIDs == null){
+            arr = new String[]{this.standortID, String.valueOf(this.anzahlPlaetze), String.valueOf(this.anzahlSaeulen), "", this.filialeID, this.bildID, this.adresseID};
+        } else {
+            arr = new String[]{this.standortID, String.valueOf(this.anzahlPlaetze), String.valueOf(this.anzahlSaeulen), String.join(",", this.fahrzeugIDs), this.filialeID, this.bildID, this.adresseID};
+        }
+
         return arr;
     }
 
@@ -82,11 +91,10 @@ public class Standort implements IPersistable, IDepictable {
 
     @Override
     public String toString(){
-        return this.adresse.toString() + " | Filiale: ";
+        return this.adresse.toString();
     }
 
     public boolean existFiliale(){
-        if (this.filiale == null) return false;
-        else return true;
+        return this.filiale != null;
     }
 }

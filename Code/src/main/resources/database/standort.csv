@@ -1,3 +1,3 @@
-#Standort-ID;Anzahl Stellplätze;Anzahl E-Säulen;Fahrzeug-IDs;Filiale-ID;Bild-ID;Adress-ID
-1;1;1;1;1;1;1
-2;2;2;2,3;2;2;2
+#Standort-ID;Anzahl Stellplätze;Anzahl E-Säulen;Fahrzeug-IDs;Filialen-IDs;Bild-ID;Adress-ID
+29615b75-012a-45bc-97d6-7a9be4383f3d;10;10;;4;1;14c687bb-191e-43bd-9ae6-02a8872728d4
+695fe2ba-babd-4aa2-9a3e-055bc212f967;12;10;;1;1;0b71d8be-ab8a-439d-aa94-63c9560ad792

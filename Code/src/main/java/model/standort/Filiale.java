@@ -44,4 +44,25 @@ public class Filiale implements IPersistable {
     public Object getPrimaryKey() {
         return filialeID;
     }
+
+    public String getOeffnungszeiten(){
+
+        StringBuilder sb = new StringBuilder();
+
+        for(String s : this.oeffnungszeiten){
+            sb.append(s).append(" ");
+        }
+
+        return String.valueOf(sb);
+    }
+
+    @Override
+    public String toString(){
+
+        if(this.oeffnungszeiten[0].equals("")){
+            return "Keine Filiale";
+        } else {
+            return filialeID;
+        }
+    }
 }

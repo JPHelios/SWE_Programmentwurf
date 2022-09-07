@@ -130,6 +130,10 @@ public class FahrzeugController extends GUIController {
                     //refresh list
                     refreshList();
 
+                    JPanel panel = gui.createRightSidePanel(-1);
+                    gui.createRightSide(panel);
+                    gui.setRightSiteVisible(panel);
+                    gui.clearListSelection(gui.fahrzeugList);
 
                 } catch(NumberFormatException e){
                     JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");

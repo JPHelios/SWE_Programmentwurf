@@ -4,6 +4,7 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeugklasse;
+import model.standort.Filiale;
 import util.enums.Colors;
 import view.controller.StandortController;
 import view.utils.GUIWindowComponent;
@@ -37,7 +38,7 @@ public class StandortGUI extends GUIWindowComponent {
     public JTextField adressInput = new JTextField();
     public JTextField plzInput = new JTextField();
     public JTextField ortInput = new JTextField();
-    public JComboBox<Fahrzeugklasse> filialeDropDown = new JComboBox<>();
+    public JComboBox<Filiale> filialeDropDown = new JComboBox<>();
 
     Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
 
@@ -240,7 +241,7 @@ public class StandortGUI extends GUIWindowComponent {
             ladesaeulenTextLabel = createLabel("Ladesäulen", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             saeulenInput = new JTextField("", 10);
             filialeTextLabel = createLabel("Niederlassung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            filialeDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            filialeDropDown = new JComboBox<>(controller.loadFiliale());
             zeitenTextLabel = createLabel("Öffnungszeiten", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             zeitenLabel = createLabel("Unbekannt", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
 
@@ -268,7 +269,7 @@ public class StandortGUI extends GUIWindowComponent {
             ladesaeulenTextLabel = createLabel("Ladesäulen", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             saeulenInput = new JTextField("", 10);
             filialeTextLabel = createLabel("Niederlassung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            filialeLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            filialeDropDown = new JComboBox<>(controller.loadFiliale());
             zeitenTextLabel = createLabel("Öffnungszeiten", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             zeitenLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
 
@@ -278,7 +279,7 @@ public class StandortGUI extends GUIWindowComponent {
             addComponents(ortTextLabel, ortLabel, modellPanel);
             addComponents(plaetzeTextLabel, plaetzeInput, klassenPanel);
             addComponents(ladesaeulenTextLabel, saeulenInput, preisPanel);
-            addComponents(filialeTextLabel, filialeLabel, baujahrPanel);
+            addComponents(filialeTextLabel, filialeDropDown, baujahrPanel);
             addComponents(zeitenTextLabel, zeitenLabel, kilometerPanel);
 
         }

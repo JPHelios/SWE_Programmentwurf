@@ -17,6 +17,7 @@ public class StandortBuilder {
 
     public StandortBuilder filiale(Filiale f){
         s.setFiliale(f);
+        s.setFilialeID(f.getFilialeID());
         return this;
     }
 
