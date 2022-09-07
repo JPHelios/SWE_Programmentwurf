@@ -5,7 +5,7 @@ public enum Entities {
     Buchung("src\\main\\resources\\database\\buchung.csv", new String[]{"Buchung-ID", "Canceled", "Starttermin", "Endtermin", "Fahrzeug-ID", "Rechnung-ID", "Mahnung-IDs", "Kunde-ID", "Mitarbeiter-ID"}),
     Mahnung("src\\main\\resources\\database\\mahnung.csv", new String[]{"Mahnung-ID", "Betrag", "Fälligkeitsdatum", "Anzahl", "Buchung-ID"}),
     Rabattaktion("src\\main\\resources\\database\\rabattaktion.csv", new String[]{"Rabattaktion-ID", "Preisnachlass", "Beschreibung", "Aktionsklassen"}),
-    Rechnung("src\\main\\resources\\database\\rechnung.csv", new String[]{"Rechnung-ID", "Fälligkeitsdatum", "Pfad", "Buchung-ID", "Rabattaktion-ID"}),
+    Rechnung("src\\main\\resources\\database\\rechnung.csv", new String[]{"Rechnung-ID","Betrag", "Fälligkeitsdatum", "Pfad", "Buchung-ID", "Rabattaktion-ID"}),
     Dachbox("src\\main\\resources\\database\\dachbox.csv", new String[]{"Dachbox-ID", "Volumen", "Höhe", "Name", "Beschreibung", "kompatibel-IDs", "Fahrzeug-ID"}),
     Fahrradtraeger("src\\main\\resources\\database\\fahrradtraeger.csv", new String[]{"Fahrradträger-ID", "Anzahl-Fahrräder", "Montierung", "Maximalgewicht", "Name", "Beschreibung", "kompatibel", "Fahrzeug-ID"}),
     Fahrzeug("src\\main\\resources\\database\\fahrzeug.csv", new String[]{"Fahrzeug-ID", "Hersteller", "Modell", "Baujahr", "Status", "Kilometerstand", "Reserviert", "Kennzeichen", "Ausrüstung-IDs", "Reifensatz-ID", "Standort-ID", "Bild-IDs", "Fahrzeugklasse-ID"}),

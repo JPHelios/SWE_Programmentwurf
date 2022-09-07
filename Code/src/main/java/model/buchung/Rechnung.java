@@ -28,17 +28,18 @@ public class Rechnung  implements IPersistable {
 
     public Rechnung(String[] props){
         this.rechnungID = props[0];
-        this.faelligkeitsDatum = new Date(Integer.parseInt(props[1]));
-        this.pfad = props[2];
-        this.buchungID = props[3];
-        this.eventID = props[4];
+        this.betrag = Double.parseDouble(props[1]);
+        this.faelligkeitsDatum = new Date(Integer.parseInt(props[2]));
+        this.pfad = props[3];
+        this.buchungID = props[4];
+        this.eventID = props[5];
 
         //this.buchung = (Buchung) Carsharing.em.find(Buchung.class, this.buchungID);
         //this.event = (Rabattaktion) Carsharing.em.find(Rabattaktion.class, this.eventID);
     }
 
     public String[] toStringArray(){
-        String arr[] = new String[]{this.rechnungID, String.valueOf(this.faelligkeitsDatum.getTime()), this.pfad, this.buchungID, this.eventID};
+        String arr[] = new String[]{this.rechnungID, String.valueOf(this.betrag), String.valueOf(this.faelligkeitsDatum.getTime()), this.pfad, this.buchungID, this.eventID};
         return arr;
     }
 
