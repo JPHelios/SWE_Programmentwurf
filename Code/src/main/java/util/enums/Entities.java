@@ -8,7 +8,7 @@ public enum Entities {
     Rechnung("src\\main\\resources\\database\\rechnung.csv", new String[]{"Rechnung-ID", "Fälligkeitsdatum", "Pfad", "Buchung-ID", "Rabattaktion-ID"}),
     Dachbox("src\\main\\resources\\database\\dachbox.csv", new String[]{"Dachbox-ID", "Volumen", "Höhe", "Name", "Beschreibung", "kompatibel-IDs", "Fahrzeug-ID"}),
     Fahrradtraeger("src\\main\\resources\\database\\fahrradtraeger.csv", new String[]{"Fahrradträger-ID", "Anzahl-Fahrräder", "Montierung", "Maximalgewicht", "Name", "Beschreibung", "kompatibel", "Fahrzeug-ID"}),
-    Fahrzeug("src\\main\\resources\\database\\fahrzeug.csv", new String[]{"Fahrzeug-ID", "Hersteller", "Modell", "Baujahr", "Status", "Kilometerstand", "Reserviert", "Kennzeichen-ID", "Ausrüstung-IDs", "Reifensatz-ID", "Standort-ID", "Bild-IDs", "Fahrzeugklasse-ID"}),
+    Fahrzeug("src\\main\\resources\\database\\fahrzeug.csv", new String[]{"Fahrzeug-ID", "Hersteller", "Modell", "Baujahr", "Status", "Kilometerstand", "Reserviert", "Kennzeichen", "Ausrüstung-IDs", "Reifensatz-ID", "Standort-ID", "Bild-IDs", "Fahrzeugklasse-ID"}),
     Fahrzeugklasse("src\\main\\resources\\database\\fahrzeugklasse.csv", new String[]{"Fahrzeugklasse-ID", "Name", "Preis", "Beschreibung", "Führerschein", "Fahrzeug-IDs"}),
     Hundetransportbox("src\\main\\resources\\database\\hundetransportbox.csv", new String[]{"Hundetransportbox-ID", "Hundekompatibilität", "AnzahlHunde", "Beschreibung", "Name", "FahrzeugKompatibilität-IDs", "Fahrzeug-ID"}),
     Kennzeichen("src\\main\\resources\\database\\kennzeichen.csv", new String[]{"Kennzeichen-ID", "Kennzeichen", "Zulassungsstelle"}),
