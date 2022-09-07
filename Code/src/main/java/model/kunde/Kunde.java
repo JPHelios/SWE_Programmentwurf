@@ -1,5 +1,6 @@
 package model.kunde;
 
+import app.Carsharing;
 import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,24 @@ public class Kunde implements IPersistable {
 
     public Kunde(){
         this.kundeID = UUID.randomUUID().toString();
+    }
+
+    public Kunde(String[] props){
+        this.kundeID = props[0];
+        this.nachname = props[1];
+        this.vorname = props[2];
+        this.telefon = props[3];
+        this.email = props[4];
+        this.vertragID = props[5];
+        this.adresseID = props[6];
+        this.buchungIDs = props[7].split(",");
+
+        /*this.vertrag = (Vertrag) Carsharing.em.find(Vertrag.class, this.vertragID);
+        this.adresse = (Adresse) Carsharing.em.find(Adresse.class, this.adresseID);
+        this.buchungen = new Buchung[this.buchungIDs.length];
+        for(int i = 0; i < this.buchungIDs.length; i++){
+            this.buchungen[i] = (Buchung) Carsharing.em.find(Buchung.class, this.buchungIDs[i]);
+        }*/
     }
 
     public String[] toStringArray(){

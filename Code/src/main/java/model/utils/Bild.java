@@ -18,6 +18,12 @@ public class Bild implements IPersistable {
         this.bildID = UUID.randomUUID().toString();
     }
 
+    public Bild(String[] props){
+        this.bildID = props[0];
+        this.pfad = props[1];
+        this.titel = props[2];
+    }
+
     public String[] toStringArray(){
         String arr[] = new String[]{this.bildID, this.pfad, this.titel};
         return arr;

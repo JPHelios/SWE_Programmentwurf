@@ -18,6 +18,12 @@ public class Rolle implements IPersistable {
         this.rolleID = UUID.randomUUID().toString();
     }
 
+    public Rolle(String[] props){
+        this.rolleID = props[0];
+        this.bezeichnung = props[1];
+        this.berechtigt = props[2].split(",");
+    }
+
     public String[] toStringArray(){
         String arr[] = new String[]{this.rolleID, this.bezeichnung, String.join(",", this.berechtigt)};
         return arr;

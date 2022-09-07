@@ -1,4 +1,5 @@
 package model.fahrzeug;
+import app.Carsharing;
 import de.dhbwka.swe.utils.model.Attribute;
 import de.dhbwka.swe.utils.model.IDepictable;
 import de.dhbwka.swe.utils.model.IPersistable;
@@ -57,6 +58,19 @@ public class Fahrzeug implements IPersistable, IDepictable {
         this.standortID = (props[10]);
         this.bildIDs = props[11].split(",");
         this.fahrzeugklasseID = (props[12]);
+
+        /*this.kennzeichen = (Kennzeichen) Carsharing.em.find(Kennzeichen.class, this.kennzeichenID);
+        this.ausruestung = new Ausruestung[this.ausruestungIDs.length];
+        for(int i = 0; i < this.ausruestungIDs.length; i++){
+            this.ausruestung[i] = (Ausruestung) Carsharing.em.find(Ausruestung.class, this.ausruestungIDs[i]);
+        }
+        this.reifensatz = (Reifensatz) Carsharing.em.find(Reifensatz.class, this.reifensatzID);
+        this.standort = (Standort) Carsharing.em.find(Standort.class, this.standortID);
+        this.bilder = new Bild[this.bildIDs.length];
+        for(int j =0; j < this.bildIDs.length; j++){
+            this.bilder[j] = (Bild) Carsharing.em.find(Bild.class, this.bildIDs[j]);
+        }
+        this.fahrzeugklasse = Fahrzeugklasse.valueOf(this.fahrzeugklasseID);*/
     }
 
 

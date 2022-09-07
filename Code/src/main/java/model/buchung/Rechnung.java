@@ -1,5 +1,6 @@
 package model.buchung;
 
+import app.Carsharing;
 import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,8 +26,19 @@ public class Rechnung  implements IPersistable {
         this.rechnungID = UUID.randomUUID().toString();
     }
 
+    public Rechnung(String[] props){
+        this.rechnungID = props[0];
+        this.faelligkeitsDatum = new Date(Integer.parseInt(props[1]));
+        this.pfad = props[2];
+        this.buchungID = props[3];
+        this.eventID = props[4];
+
+        //this.buchung = (Buchung) Carsharing.em.find(Buchung.class, this.buchungID);
+        //this.event = (Rabattaktion) Carsharing.em.find(Rabattaktion.class, this.eventID);
+    }
+
     public String[] toStringArray(){
-        String arr[] = new String[]{this.rechnungID, this.faelligkeitsDatum.toString(), this.pfad, this.buchungID, this.eventID};
+        String arr[] = new String[]{this.rechnungID, String.valueOf(this.faelligkeitsDatum.getTime()), this.pfad, this.buchungID, this.eventID};
         return arr;
     }
 

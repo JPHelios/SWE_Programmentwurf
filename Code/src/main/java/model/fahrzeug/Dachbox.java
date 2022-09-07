@@ -1,5 +1,6 @@
 package model.fahrzeug;
 
+import app.Carsharing;
 import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,22 @@ public class Dachbox extends Ausruestung implements IPersistable {
 
     public Dachbox(){
         this.dachboxID = UUID.randomUUID().toString();
+    }
+
+    public Dachbox(String[] props){
+        this.dachboxID = props[0];
+        this.volumen = Float.parseFloat(props[1]);
+        this.hoehe = Float.parseFloat(props[2]);
+        this.name = props[3];
+        this.beschreibung = props[4];
+        this.kompatibelIDs = props[5].split(",");
+        this.fahrzeugID = props[6];
+
+        /*this.kompatibel = new Fahrzeug[this.kompatibelIDs.length];
+        for(int i = 0; i < this.kompatibelIDs.length; i++){
+            this.kompatibel[i] = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, this.kompatibelIDs[i]);
+        }
+        this.fahrzeug = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, this.fahrzeugID);*/
     }
 
     public String[] toStringArray(){

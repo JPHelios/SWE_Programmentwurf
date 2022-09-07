@@ -22,6 +22,15 @@ public class Adresse implements IPersistable {
         this.adresseID = UUID.randomUUID().toString();
     }
 
+    public Adresse(String[] props){
+        this.adresseID = props[0];
+        this.strasse = props[1];
+        this.hausnummer = props[2];
+        this.plz = props[3];
+        this.ort =props[4];
+        this.zusatz = props[5];
+    }
+
     public Adresse(String strasse, String hausnummer, String plz, String ort, String zusatz ){
         this.adresseID = UUID.randomUUID().toString();
         this.strasse = strasse;

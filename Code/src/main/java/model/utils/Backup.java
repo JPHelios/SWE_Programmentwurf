@@ -22,6 +22,12 @@ public class Backup implements IPersistable {
         return null;
     }
 
+    public Backup(String[] props){
+        this.backupID = props[0];
+        this.pfad = props[1];
+        this.mitarbeiterID = props[2];
+    }
+
     public String[] toStringArray(){
         String arr[] = new String[]{this.backupID, this.pfad, this.mitarbeiterID};
         return arr;
