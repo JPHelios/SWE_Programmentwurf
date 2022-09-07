@@ -76,15 +76,64 @@ public class StandortController extends GUIController {
                     gui.standortList.setListElements(loadData());
                     JOptionPane.showMessageDialog(gui, "Es konnte leider kein übereinstimmender Eintrag gefunden werden");
                 }
-            }
+            } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
                 System.out.println("Es wurde Create geklickt ");
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Edit")){
                 System.out.println("Es wurde Bearbeiten gewählt");
+
+                JPanel panel = gui.createRightSidePanel(2);
+
+                gui.createRightSide(panel);
+                updateEditLabelTexts();
+                gui.setRightSiteVisible(panel);
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Loeschen")){
                 System.out.println("Es wurde Löschen gewählt");
+
+                Object[] options = {"Ja", "Nein"};
+
+                int value1 = JOptionPane.showOptionDialog(
+                        gui,
+                        "Wollen Sie den Datensatz löschen?",
+                        "Eintrag Löschen",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+
+                if (value1 == 0){
+                    int value2 = JOptionPane.showOptionDialog(
+                            gui,
+                            "Sind Sie sich sicher, dass Sie den Eintrag löschen wollen?",
+                            "Eintrag Löschen",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            options,
+                            options[0]);
+
+                    if (value2 == 0){
+                        int value3 = JOptionPane.showOptionDialog(
+                                gui,
+                                "Sind Sie sich ganz sicher, dass Sie den Eintrag löschen wollen?",
+                                "Eintrag Löschen",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                options,
+                                options[0]);
+
+                        if(value3 == 0){
+                            //Delete-Routine
+                            Carsharing.em.removeEl(currentStandort);
+                            refreshList();
+                        }
+                    }
+                }
+
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern gewählt");
@@ -115,4 +164,23 @@ public class StandortController extends GUIController {
 
     }
 
+    private void updateEditLabelTexts(){
+        gui.adresseLabel.setText(currentStandort.getAdresse().getStrasse() + ", " + currentStandort.getAdresse().getHausnummer());
+        gui.plzLabel.setText(currentStandort.getAdresse().getPlz());
+        gui.ortLabel.setText(currentStandort.getAdresse().getOrt());
+        gui.plaetzeInput.setText(String.valueOf(currentStandort.getAnzahlPlaetze()));
+        gui.saeulenInput.setText(String.valueOf(currentStandort.getAnzahlSaeulen()));
+
+        if(currentStandort.existFiliale()){
+            gui.filialeLabel.setText("Ja");
+            gui.zeitenLabel.setText(String.valueOf(currentStandort.getFiliale().getOeffnungszeiten()));
+        } else {
+            gui.filialeLabel.setText("Nein");
+            gui.zeitenLabel.setText("keine Zeiten");
+        }
+    }
+
+    private void refreshList(){
+        gui.standortList.setListElements(this.loadData());
+    }
 }

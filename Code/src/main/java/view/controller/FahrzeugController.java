@@ -263,8 +263,6 @@ public class FahrzeugController extends GUIController {
 
     private void updateEditLabelTexts(){
 
-        System.out.println(currentFahrzeug);
-
         gui.kennzeichenInput.setText(currentFahrzeug.getKennzeichen());
         //gui.standortDropDown.
         gui.herstellerInput.setText(currentFahrzeug.getHersteller());
