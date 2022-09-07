@@ -12,8 +12,12 @@ import view.controller.FahrzeugController;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.List;
 
 public class FahrzeugGUI extends GUIWindowComponent {
@@ -41,6 +45,10 @@ public class FahrzeugGUI extends GUIWindowComponent {
     public JTextField preisInput = new JTextField();
     public JTextField baujahrInput = new JTextField();
     public JTextField kilometerInput = new JTextField();
+
+    //FileChooser
+    public JFileChooser img_chooser = new JFileChooser();
+
 
     FahrzeugController controller;
     Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -156,7 +164,13 @@ public class FahrzeugGUI extends GUIWindowComponent {
         returnPanel.setLayout(new BorderLayout());
         returnPanel.setVisible(false);
 
-        JLabel mapLabel = new JLabel();
+
+        img_chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        img_chooser.setMultiSelectionEnabled(true);
+        img_chooser.setDialogTitle("Bilder Öffnen");
+        img_chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        JLabel bildLabel = new JLabel();
 
         ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
         icon = new ImageIcon(icon.getImage().getScaledInstance(
@@ -164,11 +178,51 @@ public class FahrzeugGUI extends GUIWindowComponent {
                 (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
                 BufferedImage.SCALE_SMOOTH));
 
-        mapLabel.setIcon(icon);
-        mapLabel.setHorizontalAlignment(JLabel.CENTER);
-        mapLabel.setVerticalAlignment(JLabel.CENTER);
+        bildLabel.setIcon(icon);
+        bildLabel.setHorizontalAlignment(JLabel.CENTER);
+        bildLabel.setVerticalAlignment(JLabel.CENTER);
+        bildLabel.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {}
 
-        returnPanel.add(mapLabel, BorderLayout.NORTH);
+            @Override
+            public void mousePressed(MouseEvent e) {
+                img_chooser.setFileFilter(new FileFilter() {
+
+                    public String getDescription() {
+                        return "Bilder (*.jpg / *.png)";
+                    }
+
+                    public boolean accept(File f) {
+                        if (f.isDirectory()) {
+                            return true;
+                        } else {
+                            String filename = f.getName().toLowerCase();
+                            return filename.endsWith(".jpg") || filename.endsWith(".jpeg") ;
+                        }
+                    }
+                });
+                img_chooser.setCurrentDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator")+ "Pictures"));
+                int approval = img_chooser.showOpenDialog(null);
+
+                if(approval == JFileChooser.APPROVE_OPTION){
+                    File selectedFile = img_chooser.getSelectedFile();
+                    System.out.println("we selected: " + selectedFile);
+                    //Carsharing.ef.createBild("", img_chooser.getSelectedFile().getName());
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+
+        returnPanel.add(bildLabel, BorderLayout.NORTH);
 
         JPanel panelPanel = new JPanel();
         panelPanel.setLayout(new GridLayout(5,2, 200,50));
