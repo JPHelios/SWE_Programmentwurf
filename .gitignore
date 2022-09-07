@@ -23,3 +23,8 @@
 ###############################
 
 **.idea
+
+###############################
+#Für Visual Paradigm Diagramme
+**.EKD.vpp*
+**.EKD_GUI.vpp*
