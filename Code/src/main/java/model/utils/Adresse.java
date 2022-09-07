@@ -28,7 +28,7 @@ public class Adresse implements IPersistable {
         this.hausnummer = props[2];
         this.plz = props[3];
         this.ort =props[4];
-        this.zusatz = props[5];
+        if (props.length == 6) this.zusatz = props[5];
     }
 
     public Adresse(String strasse, String hausnummer, String plz, String ort, String zusatz ){
@@ -48,5 +48,15 @@ public class Adresse implements IPersistable {
     @Override
     public Object getPrimaryKey() {
         return adresseID;
+    }
+
+    @Override
+    public String toString(){
+        if (this.zusatz == null){
+            return this.strasse + " " + this.hausnummer + ", " + this.plz + " " + this.ort;
+        } else {
+            return this.strasse + " " + this.hausnummer + ", " + this.plz + " " + this.ort + " (" + this.zusatz + ")";
+        }
+
     }
 }
