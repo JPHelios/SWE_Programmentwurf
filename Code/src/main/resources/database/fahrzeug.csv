@@ -1,3 +1,4 @@
 #Fahrzeug-ID;Hersteller;Modell;Baujahr;Status;Kilometerstand;Reserviert;Kennzeichen-ID;Ausrüstung-IDs;Reifensatz-ID;Standort-ID;Bild-IDs;Fahrzeugklasse-ID
 3bec8626-8356-4aa9-ae95-9f56f7c5d5ca;Porsche;Clapmens;2002;true;187187;false;;;;69;;SPORTWAGEN
 08ce6e0d-bb9f-4197-a677-1dd28ce26458;Tesla;MoonKart;2020;true;1000;false;;;;69;;HYBRID
+abb78f13-364f-454e-b55f-ddf50a99929f;Honda;Skyline;1999;true;15000;false;KA-KA-1234;;;69;;SPORTWAGEN
