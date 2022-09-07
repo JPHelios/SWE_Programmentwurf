@@ -88,7 +88,7 @@ public class StandortController extends GUIController {
                 gui.createRightSide(panel);
                 updateEditLabelTexts();
                 gui.setRightSiteVisible(panel);
-            }
+            } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Loeschen")){
                 System.out.println("Es wurde Löschen gewählt");
 
@@ -134,13 +134,30 @@ public class StandortController extends GUIController {
                     }
                 }
 
-            }
+            } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern gewählt");
             }
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save-Edit")){
                 System.out.println("Es wurde Speichern gewählt");
-            }
+
+                currentStandort.setAnzahlPlaetze(Integer.parseInt(gui.plaetzeInput.getText()));
+                currentStandort.setAnzahlSaeulen(Integer.parseInt(gui.saeulenInput.getText()));
+
+                Carsharing.em.modify(Standort.class, currentStandort.toStringArray());
+                refreshList();
+
+                JPanel panel = gui.createRightSidePanel(0);
+                gui.createRightSide(panel);
+                updateDetailLabelTexts();
+                gui.setRightSiteVisible(panel);
+            } //Funktion done
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
+                JPanel panel = gui.createRightSidePanel(0);
+                gui.createRightSide(panel);
+                updateDetailLabelTexts();
+                gui.setRightSiteVisible(panel);
+            }//Funktion done
 
         }
 
