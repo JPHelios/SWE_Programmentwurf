@@ -43,8 +43,6 @@ public class BuchungGUI extends GUIWindowComponent {
     public JTextField baujahrInput = new JTextField();
     public JTextField kilometerInput = new JTextField();
 
-    //FileChooser
-    public JFileChooser img_chooser = new JFileChooser();
 
 
     BuchungController controller;
@@ -162,65 +160,6 @@ public class BuchungGUI extends GUIWindowComponent {
         returnPanel.setVisible(false);
 
 
-        img_chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        img_chooser.setMultiSelectionEnabled(true);
-        img_chooser.setDialogTitle("Bilder Öffnen");
-        img_chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-        JLabel bildLabel = new JLabel();
-
-        ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
-        icon = new ImageIcon(icon.getImage().getScaledInstance(
-                (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
-                (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
-                BufferedImage.SCALE_SMOOTH));
-
-        bildLabel.setIcon(icon);
-        bildLabel.setHorizontalAlignment(JLabel.CENTER);
-        bildLabel.setVerticalAlignment(JLabel.CENTER);
-        bildLabel.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {}
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                img_chooser.setFileFilter(new FileFilter() {
-
-                    public String getDescription() {
-                        return "Bilder (*.jpg / *.png)";
-                    }
-
-                    public boolean accept(File f) {
-                        if (f.isDirectory()) {
-                            return true;
-                        } else {
-                            String filename = f.getName().toLowerCase();
-                            return filename.endsWith(".jpg") || filename.endsWith(".jpeg") ;
-                        }
-                    }
-                });
-                img_chooser.setCurrentDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator")+ "Pictures"));
-                int approval = img_chooser.showOpenDialog(null);
-
-                if(approval == JFileChooser.APPROVE_OPTION){
-                    File selectedFile = img_chooser.getSelectedFile();
-                    System.out.println("we selected: " + selectedFile);
-                    //Carsharing.ef.createBild("", img_chooser.getSelectedFile().getName());
-                }
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-
-        returnPanel.add(bildLabel, BorderLayout.NORTH);
-
         JPanel panelPanel = new JPanel();
         panelPanel.setLayout(new GridLayout(5,2, 200,50));
         panelPanel.setBackground(Colors.PINK_ROSE.getColor());
@@ -257,21 +196,21 @@ public class BuchungGUI extends GUIWindowComponent {
 
         if(task == 0){
 
-            statusTextLabel = createLabel("Status",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            statusTextLabel = createLabel("Hersteller",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             statusLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            buchungTextLabel = createLabel("Modell", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             buchungLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            herstellerTextLabel = createLabel("Starttermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             herstellerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            modellTextLabel = createLabel("Endtermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             modellLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             klasseLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             preisLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            baujahrTextLabel = createLabel("Kunde", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             baujahrLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            kilometerTextLabel = createLabel("Kilometerstand", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            kilometerTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             kilometerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
 
             addComponents(statusTextLabel, statusLabel, statusPanel);

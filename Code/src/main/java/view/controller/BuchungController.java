@@ -248,9 +248,9 @@ public class BuchungController extends GUIController {
     public void updateDetailLabelTexts(){
 
         gui.statusLabel.setText(currentBuchung.getFahrzeug().getHersteller());
-        gui.herstellerLabel.setText(currentBuchung.getFahrzeug().getModell());
-        gui.modellLabel.setText(currentBuchung.getStarttermin().toString());
-        gui.klasseLabel.setText(currentBuchung.getEndtermin().toString());
+        gui.buchungLabel.setText(currentBuchung.getFahrzeug().getModell());
+        gui.herstellerLabel.setText(currentBuchung.getStarttermin().toString());
+        gui.modellLabel.setText(currentBuchung.getEndtermin().toString());
         gui.preisLabel.setText(String.valueOf(currentBuchung.getRechnung().getBetrag()));
         gui.baujahrLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());
         gui.kilometerLabel.setText(currentBuchung.getMitarbeiter().getNachname() + ", " + currentBuchung.getMitarbeiter().getVorname());
