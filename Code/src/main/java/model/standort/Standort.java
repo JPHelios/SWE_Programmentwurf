@@ -84,4 +84,9 @@ public class Standort implements IPersistable, IDepictable {
     public String toString(){
         return this.adresse.toString() + " | Filiale: ";
     }
+
+    public boolean existFiliale(){
+        if (this.filiale == null) return false;
+        else return true;
+    }
 }
