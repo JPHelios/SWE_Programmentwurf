@@ -1,0 +1,5 @@
+#Filiale-ID;Öffnungszeiten;Mitarbeiter-IDs;Standort-ID
+1;Mo:8-12,Di:13-17;1;1
+2;Mi:18-22,Do:23-3;2;2
+3;Fr:8-12,Sa:13-17;;1
+4;So:18-22;;2

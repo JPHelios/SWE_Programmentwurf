@@ -1,0 +1,3 @@
+#Rabattaktion-ID;Preisnachlass;Beschreibung;Aktionsklassen
+0;0;Keine Rabattaktion;TRANSPORTER,KLEINWAGEN,SPORTWAGEN,HYBRID
+1;10;Neueröffnungsaktion;SPORTWAGEN

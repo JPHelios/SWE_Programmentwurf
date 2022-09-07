@@ -1,0 +1,3 @@
+#Mitarbeiter-ID;Nachname;Vorname;Telefon;Mail;Passwort;Rolle-ID;Filiale-ID;Backup-IDs;Buchung-IDs
+1;Richter;Clemens;696969696969;cr@apmens.de;123456;0;1;1,2;1,2
+2;Peppers;Hojannes;707070707070;ph@ottovoltaikanla.ge;654321;1;2;3;

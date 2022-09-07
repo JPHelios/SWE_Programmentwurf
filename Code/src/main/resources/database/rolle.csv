@@ -1,0 +1,3 @@
+Rolle-ID;Bezeichnung;Berechtigt
+0;Admin;Standort,Fahrzeug,Buchung,Kunde,Mitarbeiter,Rechnung,Settings
+1;Angestellter;Standort,Fahrzeug,Buchung,Kunde,Rechnung,Settings
