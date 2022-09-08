@@ -78,4 +78,8 @@ public class Mitarbeiter implements IPersistable, IDepictable {
     public Attribute[] getAttributeArray() {
         return new Attribute[0];
     }
+    @Override
+    public String toString(){
+        return this.mitarbeiterID + " | " + this.nachname + ", " + this.vorname;
+    }
 }
