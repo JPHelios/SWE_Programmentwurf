@@ -36,8 +36,8 @@ public class Rechnung  implements IPersistable, IDepictable {
         this.buchungID = props[4];
         this.eventID = props[5];
 
-        //this.buchung = (Buchung) Carsharing.em.find(Buchung.class, this.buchungID);
-        //this.event = (Rabattaktion) Carsharing.em.find(Rabattaktion.class, this.eventID);
+        this.buchung = (Buchung) Carsharing.em.find(Buchung.class, this.buchungID);
+        this.event = (Rabattaktion) Carsharing.em.find(Rabattaktion.class, this.eventID);
     }
 
     public String[] toStringArray(){
