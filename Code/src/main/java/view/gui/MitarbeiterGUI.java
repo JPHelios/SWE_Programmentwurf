@@ -4,7 +4,6 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import util.enums.Colors;
-import view.controller.FahrzeugController;
 import view.controller.MitarbeiterController;
 import view.utils.GUIWindowComponent;
 
