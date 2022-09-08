@@ -78,17 +78,25 @@ public class BuchungController extends GUIController {
                 List<Buchung> buchungen = loadData();
 
                 String searchField = gui.searchField.getText();
+                List<Buchung> filterBuchungen = new ArrayList<>();
 
+                for(Buchung b : buchungen){
+                    if(b.getFahrzeug().getHersteller().equals(searchField)){
+                        filterBuchungen.add(b);
+                    }
 
+                    if(b.getKunde().getNachname().equals(searchField)) {
+                        filterBuchungen.add(b);
+                    }
+                }
 
-                if(buchungen.size() != 0 ){
+                if(filterBuchungen.size() != 0 ){
                     gui.buchungList.removeAllListElements();
-                    gui.buchungList.setListElements(buchungen);
+                    gui.buchungList.setListElements(filterBuchungen);
                 } else {
                     gui.buchungList.setListElements(loadData());
                     JOptionPane.showMessageDialog(gui, "Es konnte leider kein übereinstimmender Eintrag gefunden werden");
                 }
-
 
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Create")){
