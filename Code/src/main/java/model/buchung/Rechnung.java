@@ -1,6 +1,8 @@
 package model.buchung;
 
 import app.Carsharing;
+import de.dhbwka.swe.utils.model.Attribute;
+import de.dhbwka.swe.utils.model.IDepictable;
 import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +12,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class Rechnung  implements IPersistable {
+public class Rechnung  implements IPersistable, IDepictable {
     private String rechnungID;
 
     private double betrag;
@@ -46,5 +48,15 @@ public class Rechnung  implements IPersistable {
     @Override
     public Object getPrimaryKey() {
         return this.rechnungID;
+    }
+
+    @Override
+    public String getElementID() {
+        return null;
+    }
+
+    @Override
+    public Attribute[] getAttributeArray() {
+        return new Attribute[0];
     }
 }

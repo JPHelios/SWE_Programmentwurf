@@ -1,8 +1,11 @@
 package view.gui;
 
+import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import util.enums.Colors;
+import view.controller.FahrzeugController;
+import view.controller.MitarbeiterController;
 import view.utils.GUIWindowComponent;
 
 import javax.swing.*;
@@ -11,15 +14,38 @@ import java.awt.*;
 public class MitarbeiterGUI extends GUIWindowComponent {
 
     JPanel gui = new JPanel();
+    MitarbeiterController controller;
+    Font buttonFont = new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+
+    public SimpleListComponent mitarbeiterList;
+    public JTextField searchField;
+
 
     public MitarbeiterGUI(JFrame frame){
         gui.setBackground(Colors.PINK_ROSE.getColor());
         gui.setLayout(new GridLayout(1,3));
 
+        controller = new MitarbeiterController(this);
+
+        createLeftSide();
+        createRightSide();
+    }
+    public void createRightSide(JPanel panel){
+        gui.remove(1);
+        gui.add(panel);
+    }
+
+    public void createRightSide(){
+        JPanel placeholder = new JPanel();
+        placeholder.setBackground(Colors.PINK_ROSE.getColor());
+
+        gui.add(placeholder);
+    }
+
+    private void createLeftSide() {
+
         JPanel leftComponentPanel = new JPanel();
         leftComponentPanel.setLayout(new BorderLayout());
-
-        JLabel rightComponentLabel = new JLabel("Placeholder");
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Colors.PINK_ROSE.getColor());
@@ -27,34 +53,46 @@ public class MitarbeiterGUI extends GUIWindowComponent {
 
         JPanel buttonFilterPanel = new JPanel();
         buttonFilterPanel.setBackground(Colors.PINK_ROSE.getColor());
-        buttonFilterPanel.setLayout(new GridLayout(1,2));
+        buttonFilterPanel.setLayout(new GridLayout(1, 2));
 
         JPanel createPanel = new JPanel();
         createPanel.setLayout(new BorderLayout());
         createPanel.setBackground(Colors.PINK_ROSE.getColor());
 
-        SimpleListComponent standortList = SimpleListComponent.builder("STLC")
-                .font(new Font("Arial", Font.PLAIN, 25))
+        mitarbeiterList = SimpleListComponent.builder("MitarbeiterListComp")
+                .font(new Font(Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_MEDIUM))
                 .selectionMode(ListSelectionModel.SINGLE_SELECTION)
                 .build();
 
-        ButtonElement anlegenButton = ButtonElement.builder("BTN-AST")
+        mitarbeiterList.setListElements(controller.loadData());
+        mitarbeiterList.addObserver(controller);
+
+
+        ButtonElement anlegenButton = ButtonElement.builder("Button-Anlegen")
                 .buttonText("Anlegen")
                 .type(ButtonElement.Type.BUTTON)
+                .font(buttonFont)
                 .build();
 
-        ButtonElement filterButton = ButtonElement.builder("BTN-FST")
+        anlegenButton.addObserver(controller);
+
+        ButtonElement filterButton = ButtonElement.builder("Button-Filter")
                 .buttonText("Filter")
                 .type(ButtonElement.Type.BUTTON)
+                .font(buttonFont)
                 .build();
 
-        ButtonElement createButton = ButtonElement.builder("BTN-CST")
+        filterButton.addObserver(controller);
+
+        ButtonElement createButton = ButtonElement.builder("Button-Create")
                 .buttonText("Create")
                 .type(ButtonElement.Type.BUTTON)
+                .font(buttonFont)
                 .build();
 
-        JTextField searchField = new JTextField();
-        searchField.setText("Search");
+        createButton.addObserver(controller);
+
+        searchField = new JTextField("", 7);
 
         buttonFilterPanel.add(searchField);
         buttonFilterPanel.add(filterButton);
@@ -65,15 +103,12 @@ public class MitarbeiterGUI extends GUIWindowComponent {
         createPanel.add(anlegenButton, BorderLayout.WEST);
 
         leftComponentPanel.add(buttonPanel, BorderLayout.NORTH);
-        leftComponentPanel.add(standortList, BorderLayout.CENTER);
+        leftComponentPanel.add(mitarbeiterList, BorderLayout.CENTER);
         leftComponentPanel.add(createPanel, BorderLayout.SOUTH);
 
-        rightComponentLabel.setHorizontalAlignment(JLabel.CENTER);
-        rightComponentLabel.setVerticalAlignment(JLabel.CENTER);
-
         gui.add(leftComponentPanel);
-        gui.add(rightComponentLabel);
     }
+
 
     public JPanel getGui(){
         return gui;

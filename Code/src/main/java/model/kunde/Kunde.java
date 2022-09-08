@@ -1,6 +1,8 @@
 package model.kunde;
 
 import app.Carsharing;
+import de.dhbwka.swe.utils.model.Attribute;
+import de.dhbwka.swe.utils.model.IDepictable;
 import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +13,7 @@ import java.util.UUID;
 
 @Setter
 @Getter
-public class Kunde implements IPersistable {
+public class Kunde implements IPersistable, IDepictable{
     private String kundeID;
 
     private String nachname;
@@ -55,5 +57,15 @@ public class Kunde implements IPersistable {
     @Override
     public Object getPrimaryKey() {
         return kundeID;
+    }
+
+    @Override
+    public String getElementID() {
+        return null;
+    }
+
+    @Override
+    public Attribute[] getAttributeArray() {
+        return new Attribute[0];
     }
 }

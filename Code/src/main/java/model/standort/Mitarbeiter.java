@@ -1,6 +1,8 @@
 package model.standort;
 
 import app.Carsharing;
+import de.dhbwka.swe.utils.model.Attribute;
+import de.dhbwka.swe.utils.model.IDepictable;
 import de.dhbwka.swe.utils.model.IPersistable;
 import model.utils.Backup;
 import model.buchung.Buchung;
@@ -12,7 +14,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class Mitarbeiter implements IPersistable {
+public class Mitarbeiter implements IPersistable, IDepictable {
     private String mitarbeiterID;
 
     private String nachname;
@@ -65,5 +67,15 @@ public class Mitarbeiter implements IPersistable {
     @Override
     public Object getPrimaryKey() {
         return mitarbeiterID;
+    }
+
+    @Override
+    public String getElementID() {
+        return null;
+    }
+
+    @Override
+    public Attribute[] getAttributeArray() {
+        return new Attribute[0];
     }
 }
