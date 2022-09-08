@@ -23,6 +23,7 @@ import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
 
 import javax.swing.*;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -355,7 +356,6 @@ public class BuchungController extends GUIController {
         if(!currentBuchung.getMahnungIDs()[0].equals("")){
             gui.mahnungButton.setEnabled(false);
         }
-
     }
 
     private void updateEditLabelTexts(){
@@ -403,12 +403,9 @@ public class BuchungController extends GUIController {
             }
         }
 
-
         gui.fahrzeugSelect.setSelectedIndex(fahrzeugIndex);
         gui.kundeSelect.setSelectedIndex(kundeIndex);
         gui.mitarbeiterSelect.setSelectedIndex(mitarbeiterIndex);
-
-
 
     }
 
@@ -416,10 +413,9 @@ public class BuchungController extends GUIController {
         List<Object> data = Carsharing.em.getAllEl(Fahrzeug.class);
         List<Fahrzeug> fahrzeugList = new ArrayList<>();
 
-
-        for(int i = 0; i < data.size(); i++){
-            Fahrzeug f = (Fahrzeug) data.get(i);
-            if(f.isStatus()){
+        for (Object datum : data) {
+            Fahrzeug f = (Fahrzeug) datum;
+            if (f.isStatus()) {
                 fahrzeugList.add(f);
             }
         }
@@ -469,9 +465,10 @@ public class BuchungController extends GUIController {
     private boolean checkAll(){
 
         boolean zeitInput = checkZeitspanne();
+        boolean konflikte = checkCrossReservation();
         boolean klasseInput = checkRabattaktion();
 
-        return zeitInput && klasseInput;
+        return zeitInput && klasseInput && konflikte;
 
     }
 
@@ -519,6 +516,31 @@ public class BuchungController extends GUIController {
         }
 
         return hit;
+    }
+
+    private boolean checkCrossReservation(){
+
+        LocalDate starttermin = Instant.ofEpochMilli(((Date) gui.startTerminPicker.getModel().getValue()).getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        String fahrzeug = ((Fahrzeug) Objects.requireNonNull(gui.fahrzeugSelect.getSelectedItem())).getFahrzeugID();
+
+        List<Buchung> buchungenWithFahrzeug = new ArrayList<>();
+        Buchung[] alleBuchungen = this.loadData().toArray(new Buchung[0]);
+
+        for(Buchung b : alleBuchungen){
+            if(b.getFahrzeugID().equals(fahrzeug)) buchungenWithFahrzeug.add(b);
+        }
+
+        for(Buchung b : buchungenWithFahrzeug){
+
+            LocalDate bEndtermin = Instant.ofEpochMilli(b.getEndtermin().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+
+            if(bEndtermin.isAfter(starttermin) || bEndtermin.isEqual(starttermin)) {
+                JOptionPane.showMessageDialog(gui, "Das Fahrzeug ist für diesen Zeitpunkt bereits gebucht!");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void refreshList(){
