@@ -321,7 +321,6 @@ public class FahrzeugController extends GUIController {
         gui.fahrzeugList.setListElements(this.loadData());
     }
 
-
     public void loadImage(File selectedFile) {
         try {
             BufferedImage image = ImageIO.read(selectedFile);
