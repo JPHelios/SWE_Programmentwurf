@@ -74,8 +74,10 @@ public class RechnungGUI extends GUIWindowComponent {
                 .build();
 
         filterButton.addObserver(controller);
+        filterButton.setEnabled(false);
 
         searchField = new JTextField("", 7);
+        searchField.setEditable(false);
 
         buttonFilterPanel.add(searchField);
         buttonFilterPanel.add(filterButton);

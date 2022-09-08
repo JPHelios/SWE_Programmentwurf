@@ -81,11 +81,11 @@ public class BuchungController extends GUIController {
                 List<Buchung> filterBuchungen = new ArrayList<>();
 
                 for(Buchung b : buchungen){
-                    if(b.getFahrzeug().getHersteller().equals(searchField)){
+                    if(b.getFahrzeug().getHersteller().equalsIgnoreCase(searchField)){
                         filterBuchungen.add(b);
                     }
 
-                    if(b.getKunde().getNachname().equals(searchField)) {
+                    if(b.getKunde().getNachname().equalsIgnoreCase(searchField)) {
                         filterBuchungen.add(b);
                     }
                 }
