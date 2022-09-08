@@ -117,7 +117,7 @@ public class FahrzeugController extends GUIController {
                 String model = gui.modellInput.getText();
                 Fahrzeugklasse klasse = (Fahrzeugklasse) gui.klassenDropDown.getSelectedItem();
                 String kennzeichen = gui.kennzeichenInput.getText().toUpperCase();
-                
+
                 try {
                     int baujahr = Integer.parseInt(gui.baujahrInput.getText());
                     int kilometer = Integer.parseInt(gui.kilometerInput.getText());
