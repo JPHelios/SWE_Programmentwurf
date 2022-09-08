@@ -62,6 +62,6 @@ public class Rechnung  implements IPersistable, IDepictable {
 
     @Override
     public String toString(){
-        return rechnungID + " | " + buchung.getKunde().getNachname() + ", " + buchung.getKunde().getVorname() + " | Betrag: " + betrag + " €";
+        return rechnungID + " | " +  betrag + " €";
     }
 }

@@ -31,8 +31,9 @@ public class EntityFactory {
 
         float preisProTag = b.getFahrzeug().getFahrzeugklasse().getPreis();
         double tage = Math.ceil((b.getEndtermin().getTime() - b.getStarttermin().getTime())/1000/60/60/24);
+        double betrag = preisProTag * tage * ((100d-r.getPreisnachlass())/100);
 
-        rechnung.setBetrag(preisProTag * tage * ((100-r.getPreisnachlass())/100));
+        rechnung.setBetrag(betrag);
         rechnung.setPfad("/");
         rechnung.setFaelligkeitsDatum(new Date(b.getEndtermin().getTime() + 1000 * 60 * 60 * 24 * 30));
         rechnung.setBuchung(b);
