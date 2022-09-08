@@ -15,6 +15,7 @@ import model.standort.Mitarbeiter;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import org.apache.commons.lang3.ArrayUtils;
 import util.BuchungBuilder;
 import util.FahrzeugBuilder;
 import view.gui.BuchungGUI;
@@ -204,6 +205,9 @@ public class BuchungController extends GUIController {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
                 System.out.println("Es wurde Abbrechen geklickt");
 
+                gui.startTerminPicker.getModel().setSelected(false);
+                gui.endTerminPicker.getModel().setSelected(false);
+
                 JPanel panel = gui.createRightSidePanel(-1);
                 gui.createRightSide(panel);
                 gui.setRightSiteVisible(panel);
@@ -280,6 +284,56 @@ public class BuchungController extends GUIController {
                 System.out.println("Es wurde Speichern beim Bearbeiten geklickt");
 
                 checkZeitspanne();
+
+                Fahrzeug fahrzeug = (Fahrzeug) gui.fahrzeugSelect.getSelectedItem();
+                Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
+                Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
+                Kunde kunde = (Kunde) gui.kundeSelect.getSelectedItem();
+                Mitarbeiter mitarbeiter = (Mitarbeiter) gui.mitarbeiterSelect.getSelectedItem();
+
+                String fID = fahrzeug.getFahrzeugID();
+                String kID = kunde.getKundeID();
+                String mID = mitarbeiter.getMitarbeiterID();
+
+                currentBuchung.setFahrzeug(fahrzeug);
+                currentBuchung.setFahrzeugID(fID);
+
+                currentBuchung.setStarttermin(startTermin);
+                currentBuchung.setEndtermin(endTermin);
+
+                Kunde k = currentBuchung.getKunde();
+                k.setBuchungIDs(ArrayUtils.removeElement(k.getBuchungIDs(), currentBuchung.getBuchungID()));
+                Carsharing.em.modify(Kunde.class, k.toStringArray());
+
+                currentBuchung.setKunde(kunde);
+                currentBuchung.setKundeID(kID);
+
+                k = currentBuchung.getKunde();
+                k.setBuchungIDs(ArrayUtils.add(k.getBuchungIDs(), currentBuchung.getBuchungID()));
+                Carsharing.em.modify(Kunde.class, k.toStringArray());
+
+                Mitarbeiter m = currentBuchung.getMitarbeiter();
+                m.setBuchungIDs(ArrayUtils.removeElement(m.getBuchungIDs(), currentBuchung.getBuchungID()));
+                Carsharing.em.modify(Mitarbeiter.class, m.toStringArray());
+
+                currentBuchung.setMitarbeiter(mitarbeiter);
+                currentBuchung.setMitarbeiterID(mID);
+
+                m = currentBuchung.getMitarbeiter();
+                m.setBuchungIDs(ArrayUtils.add(m.getBuchungIDs(), currentBuchung.getBuchungID()));
+                Carsharing.em.modify(Mitarbeiter.class, m.toStringArray());
+
+                Rechnung r = (Rechnung) Carsharing.em.find(Rechnung.class, currentBuchung.getRechnungID());
+                Carsharing.em.removeEl(r);
+
+                r  = Carsharing.ef.createRechnung(currentBuchung, r.getEvent());
+                currentBuchung.setRechnungID(r.getRechnungID());
+                Carsharing.em.persistEl(Rechnung.class, r.toStringArray());
+
+                Carsharing.em.modify(Buchung.class, currentBuchung.toStringArray());
+
+
+
                 /*
                 currentBuchung.setKennzeichen(gui.kennzeichenInput.getText().toUpperCase());
                 //Standort hinzufügen
@@ -334,17 +388,56 @@ public class BuchungController extends GUIController {
 
     private void updateEditLabelTexts(){
 
-        gui.rabattLabel.setText(String.valueOf(((Rechnung) Carsharing.em.find(Rechnung.class, currentBuchung.getRechnungID())).getEvent()));
-        /*
-        gui.kennzeichenInput.setText(currentBuchung.getKennzeichen());
-        //gui.standortDropDown.
-        gui.herstellerInput.setText(currentBuchung.getHersteller());
-        gui.modellInput.setText(currentBuchung.getModell());
-        gui.klassenDropDown.setSelectedIndex(currentBuchung.getFahrzeugklasse().ordinal());
-        gui.preisLabel.setText(String.valueOf(currentBuchung.getFahrzeugklasse().getPreis()));
-        gui.baujahrInput.setText(String.valueOf(currentBuchung.getBaujahr()));
-        gui.kilometerInput.setText(String.valueOf(currentBuchung.getKilometerstand()));
-         */
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(currentBuchung.getStarttermin());
+        int start_year = calendar.get(Calendar.YEAR);
+        int start_month = calendar.get(Calendar.MONTH) + 1;
+        int start_day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        calendar.setTime(currentBuchung.getEndtermin());
+        int end_year = calendar.get(Calendar.YEAR);
+        int end_month = calendar.get(Calendar.MONTH) + 1;
+        int end_day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        gui.startTerminPicker.getModel().setDate(start_year, start_month, start_day);
+        gui.endTerminPicker.getModel().setDate(end_year, end_month, end_day);
+        gui.startTerminPicker.getModel().setSelected(true);
+        gui.endTerminPicker.getModel().setSelected(true);
+
+        int fahrzeugIndex = 0;
+        int kundeIndex = 0;
+        int mitarbeiterIndex = 0;
+
+
+        Fahrzeug[] fzTmp = this.loadFahrzeugModel();
+        for(int i = 0; i < fzTmp.length; i++){
+            if(fzTmp[i].getFahrzeugID().equals(currentBuchung.getFahrzeugID())){
+                fahrzeugIndex = i;
+            }
+        }
+
+        Kunde[] kTmp = this.loadKundeModel();
+        for(int i = 0; i < kTmp.length; i++){
+            if(kTmp[i].getKundeID().equals(currentBuchung.getKundeID())){
+                kundeIndex = i;
+            }
+        }
+
+        Mitarbeiter[] mTmp = this.loadMitarbeiterModel();
+        for(int i = 0; i < mTmp.length; i++){
+            if(mTmp[i].getMitarbeiterID().equals(currentBuchung.getMitarbeiterID())){
+                mitarbeiterIndex = i;
+            }
+        }
+
+
+        gui.fahrzeugSelect.setSelectedIndex(fahrzeugIndex);
+        gui.kundeSelect.setSelectedIndex(kundeIndex);
+        gui.mitarbeiterSelect.setSelectedIndex(mitarbeiterIndex);
+
+
+
     }
 
     public Fahrzeug[] loadFahrzeugModel(){
@@ -437,4 +530,7 @@ public class BuchungController extends GUIController {
     }
 
 
+    public String loadRabattBeschreibung() {
+        return ((Rechnung) Carsharing.em.find(Rechnung.class,currentBuchung.getRechnungID())).getEvent().toString();
+    }
 }

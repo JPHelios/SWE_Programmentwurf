@@ -307,10 +307,10 @@ public class BuchungGUI extends GUIWindowComponent {
             preisInput = new JTextField("Automatically", 10);
             kundeTextLabel = createLabel("Kunde", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             kundeSelect = new JComboBox<>(controller.loadKundeModel());
-            mitarbeiterTextLabel = createLabel("Mitarbeuter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            mitarbeiterTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             mitarbeiterSelect = new JComboBox<>(controller.loadMitarbeiterModel());
             rabattTextLabel = createLabel("Rabattaktion", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            rabattLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            rabattLabel = createLabel(controller.loadRabattBeschreibung(), Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             mahnungButton = ButtonElement.builder("Button-Mahnung")
                     .buttonText("Mahnungen")
                     .type(ButtonElement.Type.BUTTON)

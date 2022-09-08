@@ -39,7 +39,12 @@ public class Kunde implements IPersistable, IDepictable{
         this.email = props[4];
         this.vertragID = props[5];
         this.adresseID = props[6];
-        this.buchungIDs = props[7].split(",");
+        if(7< props.length){
+            this.buchungIDs = props[7].split(",");
+        }else{
+            this.buchungIDs = new String[]{};
+        }
+
 
         /*this.vertrag = (Vertrag) Carsharing.em.find(Vertrag.class, this.vertragID);
         this.adresse = (Adresse) Carsharing.em.find(Adresse.class, this.adresseID);
