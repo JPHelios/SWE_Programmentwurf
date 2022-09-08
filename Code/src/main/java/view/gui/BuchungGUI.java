@@ -3,7 +3,13 @@ package view.gui;
 import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
+import model.kunde.Kunde;
+import model.standort.Mitarbeiter;
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import util.enums.Colors;
 import view.controller.BuchungController;
 import view.controller.FahrzeugController;
@@ -24,24 +30,27 @@ public class BuchungGUI extends GUIWindowComponent {
     public JTextField searchField;
 
     //Labels
-    public JLabel statusLabel = new JLabel();
-    public JLabel buchungLabel = new JLabel();
     public JLabel herstellerLabel = new JLabel();
     public JLabel modellLabel = new JLabel();
+    public JLabel startLabel = new JLabel();
+    public JLabel endLabel = new JLabel();
     public JLabel klasseLabel = new JLabel();
     public JLabel preisLabel = new JLabel();
-    public JLabel baujahrLabel = new JLabel();
-    public JLabel kilometerLabel = new JLabel();
+    public JLabel kundeLabel = new JLabel();
+    public JLabel mitarbeiterLabel = new JLabel();
 
     //TextFields
-    public JTextField kennzeichenInput = new JTextField();
-    public JComboBox<Fahrzeugklasse> standortDropDown = new JComboBox<>();
-    public JTextField herstellerInput = new JTextField();
-    public JTextField modellInput = new JTextField();
-    public JComboBox<Fahrzeugklasse> klassenDropDown = new JComboBox<>();
-    public JTextField preisInput = new JTextField();
-    public JTextField baujahrInput = new JTextField();
-    public JTextField kilometerInput = new JTextField();
+    public JComboBox<Fahrzeug> fahrzeugSelect = new JComboBox<>();
+    UtilDateModel startTerminModel = new UtilDateModel();
+    JDatePanelImpl startTerminPanel = new JDatePanelImpl(startTerminModel);
+    JDatePickerImpl startTerminPicker = new JDatePickerImpl(startTerminPanel);
+    UtilDateModel endTerminModel = new UtilDateModel();
+    JDatePanelImpl endTerminPanel = new JDatePanelImpl(endTerminModel);
+    JDatePickerImpl endTerminPicker = new JDatePickerImpl(endTerminPanel);
+    public JComboBox<Kunde> kundeSelect = new JComboBox<>();
+    public JComboBox<Mitarbeiter> mitarbeiterSelect = new JComboBox<>();
+    JTextField preisInput;
+    JTextField klassenInput;
 
 
 
@@ -159,6 +168,20 @@ public class BuchungGUI extends GUIWindowComponent {
         returnPanel.setLayout(new BorderLayout());
         returnPanel.setVisible(false);
 
+        JLabel bildLabel = new JLabel();
+
+        ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
+        icon = new ImageIcon(icon.getImage().getScaledInstance(
+                (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
+                (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
+                BufferedImage.SCALE_SMOOTH));
+
+        bildLabel.setIcon(icon);
+        bildLabel.setHorizontalAlignment(JLabel.CENTER);
+        bildLabel.setVerticalAlignment(JLabel.CENTER);
+
+        returnPanel.add(bildLabel, BorderLayout.NORTH);
+
 
         JPanel panelPanel = new JPanel();
         panelPanel.setLayout(new GridLayout(5,2, 200,50));
@@ -178,14 +201,14 @@ public class BuchungGUI extends GUIWindowComponent {
         JPanel reifenPanel = createPanel();
         JPanel ausruestungPanel = createPanel();
 
-        JLabel statusTextLabel;
-        JLabel buchungTextLabel;
         JLabel herstellerTextLabel;
         JLabel modellTextLabel;
+        JLabel startTextLabel;
+        JLabel endTextLabel;
         JLabel klasseTextLabel;
         JLabel preisTextLabel;
-        JLabel baujahrTextLabel;
-        JLabel kilometerTextLabel;
+        JLabel kundeTextLabel;
+        JLabel mitarbeiterTextLabel;
         JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
         ButtonElement ausruestungButton = ButtonElement.builder("Button-Ausruestung")
                 .buttonText("Ausrüstung")
@@ -196,87 +219,87 @@ public class BuchungGUI extends GUIWindowComponent {
 
         if(task == 0){
 
-            statusTextLabel = createLabel("Hersteller",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            statusLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            buchungTextLabel = createLabel("Modell", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            buchungLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            herstellerTextLabel = createLabel("Starttermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            herstellerTextLabel = createLabel("Hersteller",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             herstellerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            modellTextLabel = createLabel("Endtermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            modellTextLabel = createLabel("Modell", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             modellLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            startTextLabel = createLabel("Starttermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            startLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            endTextLabel = createLabel("Endtermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            endLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             klasseLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             preisLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            baujahrTextLabel = createLabel("Kunde", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            baujahrLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            kilometerTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            kilometerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            kundeTextLabel = createLabel("Kunde", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            kundeLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            mitarbeiterTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            mitarbeiterLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
 
-            addComponents(statusTextLabel, statusLabel, statusPanel);
-            addComponents(buchungTextLabel, buchungLabel, buchungPanel);
-            addComponents(herstellerTextLabel, herstellerLabel, herstellerPanel);
-            addComponents(modellTextLabel, modellLabel, modellPanel);
+            addComponents(herstellerTextLabel, herstellerLabel, statusPanel);
+            addComponents(modellTextLabel, modellLabel, buchungPanel);
+            addComponents(startTextLabel, startLabel, herstellerPanel);
+            addComponents(endTextLabel, endLabel, modellPanel);
             addComponents(klasseTextLabel, klasseLabel, klassenPanel);
             addComponents(preisTextLabel, preisLabel, preisPanel);
-            addComponents(baujahrTextLabel, baujahrLabel, baujahrPanel);
-            addComponents(kilometerTextLabel, kilometerLabel, kilometerPanel);
+            addComponents(kundeTextLabel, kundeLabel, baujahrPanel);
+            addComponents(mitarbeiterTextLabel, mitarbeiterLabel, kilometerPanel);
 
         } else if (task == 1){
 
-            statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            kennzeichenInput = new JTextField("", 10);
-            buchungTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
-            herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            herstellerInput = new JTextField("", 10);
-            modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            modellInput = new JTextField("", 10);
+            herstellerTextLabel = createLabel("Fahrzeug",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            fahrzeugSelect = new JComboBox<>(controller.loadFahrzeugModel());
+            modellTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            //standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            startTextLabel = createLabel("Starttermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+
+            endTextLabel = createLabel("Endtermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+
             klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            klassenInput = new JTextField("Automatically", 10);
             preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             preisInput = new JTextField("Automatically", 10);
-            baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            baujahrInput = new JTextField("", 10);
-            kilometerTextLabel = createLabel("Kilometer", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            kilometerInput = new JTextField("", 10);
+            kundeTextLabel = createLabel("Kunde", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            kundeSelect = new JComboBox<>(controller.loadKundeModel());
+            mitarbeiterTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            mitarbeiterSelect = new JComboBox<>(controller.loadMitarbeiterModel());
 
-            addComponents(statusTextLabel, kennzeichenInput, statusPanel);
-            addComponents(buchungTextLabel, standortDropDown, buchungPanel);
-            addComponents(herstellerTextLabel, herstellerInput, herstellerPanel);
-            addComponents(modellTextLabel, modellInput, modellPanel);
-            addComponents(klasseTextLabel, klassenDropDown, klassenPanel);
+            addComponents(herstellerTextLabel, fahrzeugSelect, statusPanel);
+            //addComponents(modellTextLabel, standortDropDown, buchungPanel);
+            addComponents(startTextLabel, startTerminPicker, herstellerPanel);
+            addComponents(endTextLabel, endTerminPicker, modellPanel);
+            addComponents(klasseTextLabel, klassenInput, klassenPanel);
             addComponents(preisTextLabel, preisInput, preisPanel);
-            addComponents(baujahrTextLabel, baujahrInput, baujahrPanel);
-            addComponents(kilometerTextLabel, kilometerInput, kilometerPanel);
+            addComponents(kundeTextLabel, kundeSelect, baujahrPanel);
+            addComponents(mitarbeiterTextLabel, mitarbeiterSelect, kilometerPanel);
 
         } else if (task == 2){
 
-            statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            kennzeichenInput = new JTextField("", 10);
-            buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
-            herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            herstellerInput = new JTextField("", 10);
-            modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            modellInput = new JTextField("", 10);
-            klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
-            preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            preisLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            baujahrInput = new JTextField("", 10);
-            kilometerTextLabel = createLabel("Kilometerstand", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            kilometerInput = new JTextField("", 10);
+            herstellerTextLabel = createLabel("Fahrzeug",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            fahrzeugSelect = new JComboBox<>(controller.loadFahrzeugModel());
+            modellTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            //standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            startTextLabel = createLabel("Starttermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
 
-            addComponents(statusTextLabel, kennzeichenInput, statusPanel);
-            addComponents(buchungTextLabel, standortDropDown, buchungPanel);
-            addComponents(herstellerTextLabel, herstellerInput, herstellerPanel);
-            addComponents(modellTextLabel, modellInput, modellPanel);
-            addComponents(klasseTextLabel, klassenDropDown, klassenPanel);
-            addComponents(preisTextLabel, preisLabel, preisPanel);
-            addComponents(baujahrTextLabel, baujahrInput, baujahrPanel);
-            addComponents(kilometerTextLabel, kilometerInput, kilometerPanel);
+            endTextLabel = createLabel("Endtermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+
+            klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            klassenInput = new JTextField("Automatically", 10);
+            preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            preisInput = new JTextField("Automatically", 10);
+            kundeTextLabel = createLabel("Kunde", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            kundeSelect = new JComboBox<>(controller.loadKundeModel());
+            mitarbeiterTextLabel = createLabel("Mitarbeuter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            mitarbeiterSelect = new JComboBox<>(controller.loadMitarbeiterModel());
+
+            addComponents(herstellerTextLabel, fahrzeugSelect, statusPanel);
+            //addComponents(modellTextLabel, standortDropDown, buchungPanel);
+            addComponents(startTextLabel, startTerminPicker, herstellerPanel);
+            addComponents(endTextLabel, endTerminPicker, modellPanel);
+            addComponents(klasseTextLabel, klassenInput, klassenPanel);
+            addComponents(preisTextLabel, preisInput, preisPanel);
+            addComponents(kundeTextLabel, kundeSelect, baujahrPanel);
+            addComponents(mitarbeiterTextLabel, mitarbeiterSelect, kilometerPanel);
 
         }
 

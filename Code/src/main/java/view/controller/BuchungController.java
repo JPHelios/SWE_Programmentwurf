@@ -7,6 +7,9 @@ import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.buchung.Buchung;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
+import model.kunde.Kunde;
+import model.standort.Filiale;
+import model.standort.Mitarbeiter;
 import util.FahrzeugBuilder;
 import view.gui.BuchungGUI;
 import view.gui.FahrzeugGUI;
@@ -93,13 +96,13 @@ public class BuchungController extends GUIController {
 
                 //Eingabeüberprüfung muss noch eingebaut werden!!!
 
-                String kennzeichenInput = gui.kennzeichenInput.getText();
+                Object fahrzeugInput = gui.fahrzeugSelect.getSelectedItem();
                 //Standort standort = (Standort) gui.standortDropDown.getSelectedItem();
-                String hersteller = gui.herstellerInput.getText();
-                String model = gui.modellInput.getText();
-                Fahrzeugklasse klasse = (Fahrzeugklasse) gui.klassenDropDown.getSelectedItem();
-                String kennzeichen = gui.kennzeichenInput.getText().toUpperCase();
-
+                //String hersteller = gui.herstellerInput.getText();
+                //String model = gui.modellInput.getText();
+                //Fahrzeugklasse klasse = (Fahrzeugklasse) gui.klassenDropDown.getSelectedItem();
+                //String kennzeichen = gui.kennzeichenInput.getText().toUpperCase();
+                /*
                 try {
                     int baujahr = Integer.parseInt(gui.baujahrInput.getText());
                     int kilometer = Integer.parseInt(gui.kilometerInput.getText());
@@ -129,6 +132,8 @@ public class BuchungController extends GUIController {
                 } catch(NumberFormatException e){
                     JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
                 }
+
+                 */
             } //Referenzen zu anderen Objekten!
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
                 System.out.println("Es wurde Abbrechen geklickt");
@@ -247,13 +252,13 @@ public class BuchungController extends GUIController {
 
     public void updateDetailLabelTexts(){
 
-        gui.statusLabel.setText(currentBuchung.getFahrzeug().getHersteller());
-        gui.buchungLabel.setText(currentBuchung.getFahrzeug().getModell());
-        gui.herstellerLabel.setText(currentBuchung.getStarttermin().toString());
-        gui.modellLabel.setText(currentBuchung.getEndtermin().toString());
+        gui.herstellerLabel.setText(currentBuchung.getFahrzeug().getHersteller());
+        gui.modellLabel.setText(currentBuchung.getFahrzeug().getModell());
+        gui.startLabel.setText(currentBuchung.getStarttermin().toString());
+        gui.endLabel.setText(currentBuchung.getEndtermin().toString());
         gui.preisLabel.setText(String.valueOf(currentBuchung.getRechnung().getBetrag()));
-        gui.baujahrLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());
-        gui.kilometerLabel.setText(currentBuchung.getMitarbeiter().getNachname() + ", " + currentBuchung.getMitarbeiter().getVorname());
+        gui.kundeLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());
+        gui.mitarbeiterLabel.setText(currentBuchung.getMitarbeiter().getNachname() + ", " + currentBuchung.getMitarbeiter().getVorname());
 
     }
 
@@ -268,6 +273,39 @@ public class BuchungController extends GUIController {
         gui.baujahrInput.setText(String.valueOf(currentBuchung.getBaujahr()));
         gui.kilometerInput.setText(String.valueOf(currentBuchung.getKilometerstand()));
          */
+    }
+
+    public Fahrzeug[] loadFahrzeugModel(){
+        List<Object> data = Carsharing.em.getAllEl(Fahrzeug.class);
+        Fahrzeug[] fahrzeugList = new Fahrzeug[data.size()];
+
+        for(int i = 0; i < data.size(); i++){
+            fahrzeugList[i] = (Fahrzeug) data.get(i);
+        }
+
+        return fahrzeugList;
+    }
+
+    public Kunde[] loadKundeModel(){
+        List<Object> data = Carsharing.em.getAllEl(Kunde.class);
+        Kunde[] kundeList = new Kunde[data.size()];
+
+        for(int i = 0; i < data.size(); i++){
+            kundeList[i] = (Kunde) data.get(i);
+        }
+
+        return kundeList;
+    }
+
+    public Mitarbeiter[] loadMitarbeiterModel(){
+        List<Object> data = Carsharing.em.getAllEl(Mitarbeiter.class);
+        Mitarbeiter[] mitarbeiterList = new Mitarbeiter[data.size()];
+
+        for(int i = 0; i < data.size(); i++){
+            mitarbeiterList[i] = (Mitarbeiter) data.get(i);
+        }
+
+        return mitarbeiterList;
     }
 
     private void refreshList(){

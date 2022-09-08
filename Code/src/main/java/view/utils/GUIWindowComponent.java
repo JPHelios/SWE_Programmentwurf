@@ -5,6 +5,8 @@ import de.dhbwka.swe.utils.event.IUpdateEventListener;
 import de.dhbwka.swe.utils.event.UpdateEvent;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import de.dhbwka.swe.utils.model.IDepictable;
+import net.sourceforge.jdatepicker.JDatePicker;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import util.enums.Colors;
 
 import javax.swing.*;
@@ -67,6 +69,11 @@ public abstract class GUIWindowComponent extends JComponent implements IGUIEvent
     }
 
     protected void addComponents(JLabel label, JComboBox comboBox, JPanel panel){
+        panel.add(label);
+        panel.add(comboBox);
+    }
+
+    protected void addComponents(JLabel label, JDatePickerImpl comboBox, JPanel panel){
         panel.add(label);
         panel.add(comboBox);
     }
