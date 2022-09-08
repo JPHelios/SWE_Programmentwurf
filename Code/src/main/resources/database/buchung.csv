@@ -1,4 +1,2 @@
 #Buchung-ID;Canceled;Starttermin;Endtermin;Fahrzeug-ID;Rechnung-ID;Mahnung-IDs;Kunde-ID;Mitarbeiter-ID
-1;false;18710000000;19011000000;1;1;;1;1
-2;false;4320000000;5421000000;2;2;1,2;1;2
-7e572c84-f5fa-48b9-a88f-3defbcf1227d;false;1665330997407;1665503797453;5680885f-eed3-48f1-bb52-20b67578b4ec;a9ce6650-d69b-48d4-bd60-bd7e03b8c371;;1;2
+baf7562c-8dfc-4dc5-afa1-80c9bb39fc77;false;1662657973613;1662744373615;3bec8626-8356-4aa9-ae95-9f56f7c5d5ca;739eee58-f4be-4933-b0c3-923754ab5fad;;1;1
