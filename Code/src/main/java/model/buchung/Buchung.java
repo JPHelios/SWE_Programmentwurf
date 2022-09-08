@@ -39,6 +39,7 @@ public class Buchung implements IPersistable, IDepictable {
 
     public Buchung(){
         this.buchungID = UUID.randomUUID().toString();
+        this.canceled = false;
     }
 
     public Buchung(String[] props){

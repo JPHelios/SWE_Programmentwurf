@@ -5,6 +5,7 @@ import de.dhbwka.swe.utils.event.GUIEvent;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.buchung.Buchung;
+import model.buchung.Rabattaktion;
 import model.buchung.Rechnung;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
@@ -14,6 +15,7 @@ import model.standort.Mitarbeiter;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import util.BuchungBuilder;
 import util.FahrzeugBuilder;
 import view.gui.BuchungGUI;
 import view.gui.FahrzeugGUI;
@@ -21,10 +23,7 @@ import view.utils.GUIController;
 
 import javax.swing.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class BuchungController extends GUIController {
 
@@ -104,7 +103,62 @@ public class BuchungController extends GUIController {
 
                 //Eingabeüberprüfung muss noch eingebaut werden!!!
 
-                Object fahrzeugInput = gui.fahrzeugSelect.getSelectedItem();
+
+                Fahrzeug fahrzeug = (Fahrzeug) gui.fahrzeugSelect.getSelectedItem();
+                Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
+                Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
+                Kunde kunde = (Kunde) gui.kundeSelect.getSelectedItem();
+                Mitarbeiter mitarbeiter = (Mitarbeiter) gui.mitarbeiterSelect.getSelectedItem();
+
+                String fID = fahrzeug.getFahrzeugID();
+                String kID = kunde.getKundeID();
+                String mID = mitarbeiter.getMitarbeiterID();
+
+                try{
+
+                    BuchungBuilder bb = new BuchungBuilder();
+                    bb.kunde(kID);
+                    bb.starttermin(startTermin);
+                    bb.endtermin(endTermin);
+                    bb.fahrzeug(fID);
+                    bb.mitarbeiter(mID);
+
+                    Buchung b = bb.build();
+
+                    b.setMahnungIDs(new String[]{});
+
+                    Rechnung r  = Carsharing.ef.createRechnung(b, (Rabattaktion) Carsharing.em.find(Rabattaktion.class, "1"));
+                    b.setRechnungID(r.getRechnungID());
+
+                    String[] kundenBuchungIDs = new String[kunde.getBuchungIDs().length + 1];
+                    for(int i = 0; i < kunde.getBuchungIDs().length; i++){
+                        kundenBuchungIDs[i] = kunde.getBuchungIDs()[i];
+                    }
+                    kundenBuchungIDs[kunde.getBuchungIDs().length] = b.getBuchungID();
+                    kunde.setBuchungIDs(kundenBuchungIDs);
+
+                    String[] mitarbeiterBuchungIDs = new String[mitarbeiter.getBuchungIDs().length + 1];
+                    for(int i = 0; i < mitarbeiter.getBuchungIDs().length; i++){
+                        mitarbeiterBuchungIDs[i] = mitarbeiter.getBuchungIDs()[i];
+                    }
+                    mitarbeiterBuchungIDs[mitarbeiter.getBuchungIDs().length] = b.getBuchungID();
+                    mitarbeiter.setBuchungIDs(mitarbeiterBuchungIDs);
+
+
+                    Carsharing.em.modify(Kunde.class, kunde.toStringArray());
+                    Carsharing.em.modify(Mitarbeiter.class, mitarbeiter.toStringArray());
+                    Carsharing.em.persistEl(Rechnung.class, r.toStringArray());
+
+
+                    Carsharing.em.persistEl(Buchung.class, b.toStringArray());
+
+                    refreshList();
+
+                }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
+                }
+
+
                 //Standort standort = (Standort) gui.standortDropDown.getSelectedItem();
                 //String hersteller = gui.herstellerInput.getText();
                 //String model = gui.modellInput.getText();
@@ -263,8 +317,24 @@ public class BuchungController extends GUIController {
     public void updateDetailLabelTexts(){
 
         gui.fahrzeugLabel.setText(currentBuchung.getFahrzeug().getHersteller() + " " + currentBuchung.getFahrzeug().getModell());
-        gui.startLabel.setText(currentBuchung.getStarttermin().toString());
-        gui.endLabel.setText(currentBuchung.getEndtermin().toString());
+
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(currentBuchung.getStarttermin());
+        int start_year = calendar.get(Calendar.YEAR);
+        int start_month = calendar.get(Calendar.MONTH) + 1;
+        int start_day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String startString = start_day + "." + start_month + "." + start_year;
+
+        calendar.setTime(currentBuchung.getEndtermin());
+        int end_year = calendar.get(Calendar.YEAR);
+        int end_month = calendar.get(Calendar.MONTH) + 1;
+        int end_day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String endString = end_day + "." + end_month + "." + end_year;
+
+        gui.startLabel.setText(startString);
+        gui.endLabel.setText(endString);
         gui.klasseLabel.setText(currentBuchung.getFahrzeug().getFahrzeugklasse().getName());
         gui.preisLabel.setText(String.valueOf(((Rechnung) Carsharing.em.find(Rechnung.class,currentBuchung.getRechnungID())).getBetrag()));
         gui.kundeLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());

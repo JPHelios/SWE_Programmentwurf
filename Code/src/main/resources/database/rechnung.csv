@@ -1,3 +1,4 @@
-#Rechnung-ID;Fälligkeitsdatum;Pfad;Buchung-ID;Rabattaktion-ID
+#Rechnung-ID;Betrag;Fälligkeitsdatum;Pfad;Buchung-ID;Rabattaktion-ID
 1;143;13000000;/rechnungen/rechnung1.pdf;1;0
 2;278;23000000;/rechnungen/rechnung2.pdf;2;1
+8936e8ba-c61a-4daf-9094-df3a3909b90d;0.0;1662322602002;/;4c993c70-5a39-4492-9f7f-97aef8028628;1

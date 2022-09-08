@@ -31,7 +31,7 @@ public class Rechnung  implements IPersistable, IDepictable {
     public Rechnung(String[] props){
         this.rechnungID = props[0];
         this.betrag = Double.parseDouble(props[1]);
-        this.faelligkeitsDatum = new Date(Integer.parseInt(props[2]));
+        this.faelligkeitsDatum = new Date(Long.parseLong(props[2]));
         this.pfad = props[3];
         this.buchungID = props[4];
         this.eventID = props[5];
