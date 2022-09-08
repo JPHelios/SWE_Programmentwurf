@@ -302,9 +302,11 @@ public class BuchungGUI extends GUIWindowComponent {
             endTextLabel = createLabel("Endtermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
 
             klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            klassenInput = new JTextField("Automatically", 10);
+            klassenInput = new JTextField("Automatisch übernommen", 15);
+            klassenInput.setEditable(false);
             preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            preisInput = new JTextField("Automatically", 10);
+            preisInput = new JTextField("Automatisch berechnet", 15);
+            preisInput.setEditable(false);
             kundeTextLabel = createLabel("Kunde", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             kundeSelect = new JComboBox<>(controller.loadKundeModel());
             mitarbeiterTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
