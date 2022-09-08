@@ -262,34 +262,14 @@ public class BuchungController extends GUIController {
                 }
 
             } //Funktion done
-            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Ausruestung")){
-                Object[] options = {"Speichern", "Abbrechen"};
+            if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Mahnung")){
 
-                String[] stringArray = {"Dachbox: Klein", "Dachbox: Mittel", "Dachbox: Groß",
-                        "Hundebox, 1 Hund", "Hundebox, 2 Hunde", "Fahrradträger: 2 Räder", "Fahrradträger: 4 Räder"};
-                JCheckBox[] checkBoxArray = new JCheckBox[7];
-                for (int i = 0; i < stringArray.length; i++){
-                    checkBoxArray[i] = new JCheckBox(stringArray[i]);
-                }
+                int anzahlMahnungen = currentBuchung.getMahnung().length;
 
-                int save = JOptionPane.showOptionDialog(
-                        gui,
-                        checkBoxArray,
-                        "Ausrüstung auswählen",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        options,
-                        options[0]);
-
-                if (save == 0){
-                    System.out.println("OK");
-                    for (JCheckBox cb : checkBoxArray){
-                        if (cb.isSelected()){
-                            System.out.println(cb.getText());
-                            ausruestungTmp.add(cb.getText());
-                        }
-                    }
+                if(anzahlMahnungen == 1){
+                    JOptionPane.showMessageDialog(gui, "Es liegt eine Mahnung vor!");
+                } else {
+                    JOptionPane.showMessageDialog(gui, "Es liegen zwei Mahnungen vor!");
                 }
             } //Noch Objekte in Checkboxen einfügen
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save-Edit")){
@@ -339,6 +319,10 @@ public class BuchungController extends GUIController {
         gui.preisLabel.setText(String.valueOf(((Rechnung) Carsharing.em.find(Rechnung.class,currentBuchung.getRechnungID())).getBetrag()));
         gui.kundeLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());
         gui.mitarbeiterLabel.setText(currentBuchung.getMitarbeiter().getNachname() + ", " + currentBuchung.getMitarbeiter().getVorname());
+
+        if(!currentBuchung.getMahnungIDs()[0].equals("")){
+            gui.mahnungButton.setEnabled(false);
+        }
 
     }
 
@@ -398,18 +382,35 @@ public class BuchungController extends GUIController {
         return mitarbeiterList;
     }
 
-    private void checkZeitspanne(){
+    private boolean checkAll(){
+
+        boolean zeitInput = checkZeitspanne();
+
+        if(zeitInput) return true;
+        else return false;
+
+    }
+
+    private boolean checkZeitspanne(){
 
         Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
         Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
+        int resZeitspanne = startTermin.compareTo(endTermin);
 
-        int res = startTermin.compareTo(endTermin);
-
-        if (res > 0) {
-            JOptionPane.showMessageDialog(gui, "Der Endtermin ist vor dem Startdatum. \n Bitte überprüfen Sie die Eingabe");
-
+        if (resZeitspanne > 0) {
+            JOptionPane.showMessageDialog(gui, "Der Endtermin ist vor dem Startdatum. \n Bitte überprüfen Sie die Eingabe!");
+            return false;
         }
 
+        LocalDate today = LocalDate.now();
+        int resVergangenheit = startTermin.compareTo(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+
+        if (resVergangenheit < 0){
+            JOptionPane.showMessageDialog(gui, "Der Starttermin liegt in der Vergangenheit. \n Bitte überprüfen Sie die Eingabe!");
+            return false;
+        }
+
+        return true;
     }
 
     private void refreshList(){
