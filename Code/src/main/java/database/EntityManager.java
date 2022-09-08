@@ -25,11 +25,8 @@ public class EntityManager extends GenericEntityManager {
     public void modify(Class c, String[] new_el){
         String path = getCSVPath(c);
         List<String[]> elements = read(path);
-        System.out.println(elements);
         Object key = new_el[0];
         for(String[] el:elements){
-            System.out.println("elm: " + el[0]);
-            System.out.println("key: " + key);
             if(key.equals(el[0])){
                 elements.set(elements.indexOf(el), new_el);
             }
@@ -53,21 +50,14 @@ public class EntityManager extends GenericEntityManager {
         write(write_elements, c);
     }
 
-    //69;69;69;69;69
-    //70;70;70;70;70
-
     public void removeEl(IPersistable el){
         String path = getCSVPath(el.getClass());
         List<String[]> elements = read(path);
-        System.out.println(elements);
         Object key = el.getPrimaryKey();
         Object[][] write_elements = new Object[elements.size()-1][];
         int new_index = 0;
         for(int i =0; i<elements.size(); i++){
-            System.out.println("elm: " + elements.get(i)[0]);
             if(!key.equals(elements.get(i)[0])){
-                System.out.println("+1");
-                System.out.println(elements.get(i));
                 write_elements[new_index] = elements.get(i);
                 new_index++;
             }
@@ -86,17 +76,11 @@ public class EntityManager extends GenericEntityManager {
     public Object find(Class c, String key){
         String path = getCSVPath(c);
         List<String[]> elements = read(path);
-        System.out.println(elements);
         for(String[] el:elements){
-            System.out.println("elm: " + el[0]);
-            System.out.println("key: " + key);
             if(key.equals(el[0])){
-                System.out.println("Found");
                 try {
                     Constructor<?> cons = c.getConstructor(Array.newInstance(String.class, 0).getClass());
-                    System.out.println(cons);
                     Object i = cons.newInstance(new String[][]{el});
-                    System.out.println(i);
                     return i;
                 } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
@@ -124,9 +108,7 @@ public class EntityManager extends GenericEntityManager {
         for(String[] el:elements){
             try {
                 Constructor<?> cons = c.getConstructor(Array.newInstance(String.class, 0).getClass());
-                System.out.println(cons);
                 Object i = cons.newInstance(new String[][]{el});
-                System.out.println(i);
                 return_elements.add(i);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
@@ -165,8 +147,7 @@ public class EntityManager extends GenericEntityManager {
             return null ;
         }
     }
-    //1, 12, 4, "s1.jpg", 1
-    //2, 100, 25, "s2.jpg", 2
+
     private void write(Object[][] values, Class c){
         writer = new CSVWriter(getCSVPath(c), false);
         try {
@@ -175,5 +156,4 @@ public class EntityManager extends GenericEntityManager {
             e.printStackTrace();
         }
     }
-
 }
