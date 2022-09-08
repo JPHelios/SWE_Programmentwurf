@@ -68,4 +68,9 @@ public class Kunde implements IPersistable, IDepictable{
     public Attribute[] getAttributeArray() {
         return new Attribute[0];
     }
+
+    @Override
+    public String toString(){
+        return this.kundeID + " | " + this.nachname + ", " + this.vorname;
+    }
 }

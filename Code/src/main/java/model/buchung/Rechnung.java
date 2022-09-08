@@ -59,4 +59,9 @@ public class Rechnung  implements IPersistable, IDepictable {
     public Attribute[] getAttributeArray() {
         return new Attribute[0];
     }
+
+    @Override
+    public String toString(){
+        return rechnungID + " | " + buchung.getKunde().getNachname() + ", " + buchung.getKunde().getVorname() + " | Betrag: " + betrag + " €";
+    }
 }
