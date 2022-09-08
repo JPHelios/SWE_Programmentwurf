@@ -329,7 +329,16 @@ public class BuchungController extends GUIController {
         return mitarbeiterList;
     }
 
-    private void checkZeitspanne(){
+    private boolean checkAll(){
+
+        boolean zeitInput = checkZeitspanne();
+
+        if(zeitInput) return true;
+        else return false;
+
+    }
+
+    private boolean checkZeitspanne(){
 
         Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
         Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
@@ -337,7 +346,7 @@ public class BuchungController extends GUIController {
 
         if (resZeitspanne > 0) {
             JOptionPane.showMessageDialog(gui, "Der Endtermin ist vor dem Startdatum. \n Bitte überprüfen Sie die Eingabe!");
-
+            return false;
         }
 
         LocalDate today = LocalDate.now();
@@ -345,7 +354,10 @@ public class BuchungController extends GUIController {
 
         if (resVergangenheit < 0){
             JOptionPane.showMessageDialog(gui, "Der Starttermin liegt in der Vergangenheit. \n Bitte überprüfen Sie die Eingabe!");
+            return false;
         }
+
+        return true;
     }
 
     private void refreshList(){
