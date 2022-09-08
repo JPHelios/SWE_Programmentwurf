@@ -252,8 +252,7 @@ public class BuchungController extends GUIController {
 
     public void updateDetailLabelTexts(){
 
-        gui.herstellerLabel.setText(currentBuchung.getFahrzeug().getHersteller());
-        gui.modellLabel.setText(currentBuchung.getFahrzeug().getModell());
+        gui.fahrzeugLabel.setText(currentBuchung.getFahrzeug().getHersteller() + " " + currentBuchung.getFahrzeug().getModell());
         gui.startLabel.setText(currentBuchung.getStarttermin().toString());
         gui.endLabel.setText(currentBuchung.getEndtermin().toString());
         gui.preisLabel.setText(String.valueOf(currentBuchung.getRechnung().getBetrag()));

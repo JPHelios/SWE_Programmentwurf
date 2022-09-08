@@ -30,8 +30,8 @@ public class BuchungGUI extends GUIWindowComponent {
     public JTextField searchField;
 
     //Labels
-    public JLabel herstellerLabel = new JLabel();
-    public JLabel modellLabel = new JLabel();
+    public JLabel fahrzeugLabel = new JLabel();
+
     public JLabel startLabel = new JLabel();
     public JLabel endLabel = new JLabel();
     public JLabel klasseLabel = new JLabel();
@@ -220,9 +220,7 @@ public class BuchungGUI extends GUIWindowComponent {
         if(task == 0){
 
             herstellerTextLabel = createLabel("Hersteller",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            herstellerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            modellTextLabel = createLabel("Modell", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            modellLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            fahrzeugLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             startTextLabel = createLabel("Starttermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             startLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             endTextLabel = createLabel("Endtermin", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -236,8 +234,7 @@ public class BuchungGUI extends GUIWindowComponent {
             mitarbeiterTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             mitarbeiterLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
 
-            addComponents(herstellerTextLabel, herstellerLabel, statusPanel);
-            addComponents(modellTextLabel, modellLabel, buchungPanel);
+            addComponents(herstellerTextLabel, fahrzeugLabel, statusPanel);
             addComponents(startTextLabel, startLabel, herstellerPanel);
             addComponents(endTextLabel, endLabel, modellPanel);
             addComponents(klasseTextLabel, klasseLabel, klassenPanel);

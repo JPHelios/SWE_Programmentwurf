@@ -71,6 +71,6 @@ public class Kunde implements IPersistable, IDepictable{
 
     @Override
     public String toString(){
-        return this.kundeID + " | " + this.nachname + ", " + this.vorname;
+        return this.nachname + ", " + this.vorname;
     }
 }

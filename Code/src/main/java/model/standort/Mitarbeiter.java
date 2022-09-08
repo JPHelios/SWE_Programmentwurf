@@ -80,6 +80,6 @@ public class Mitarbeiter implements IPersistable, IDepictable {
     }
     @Override
     public String toString(){
-        return this.mitarbeiterID + " | " + this.nachname + ", " + this.vorname;
+        return this.nachname + ", " + this.vorname;
     }
 }
