@@ -49,6 +49,7 @@ public class BuchungGUI extends GUIWindowComponent {
     public JDatePickerImpl endTerminPicker = new JDatePickerImpl(endTerminPanel);
     public JComboBox<Kunde> kundeSelect = new JComboBox<>();
     public JComboBox<Mitarbeiter> mitarbeiterSelect = new JComboBox<>();
+    public ButtonElement mahnungButton;
     JTextField preisInput;
     JTextField klassenInput;
 
@@ -198,8 +199,8 @@ public class BuchungGUI extends GUIWindowComponent {
         JPanel preisPanel = createPanel();
         JPanel baujahrPanel = createPanel();
         JPanel kilometerPanel = createPanel();
-        JPanel reifenPanel = createPanel();
-        JPanel ausruestungPanel = createPanel();
+        JPanel rechnungenPanel = createPanel();
+        JPanel mahnungenPanel = createPanel();
 
         JLabel herstellerTextLabel;
         JLabel modellTextLabel;
@@ -210,12 +211,12 @@ public class BuchungGUI extends GUIWindowComponent {
         JLabel kundeTextLabel;
         JLabel mitarbeiterTextLabel;
         JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
-        ButtonElement ausruestungButton = ButtonElement.builder("Button-Ausruestung")
-                .buttonText("Ausrüstung")
+        mahnungButton = ButtonElement.builder("Button-Mahnung")
+                .buttonText("Mahnungen")
                 .type(ButtonElement.Type.BUTTON)
                 .build();
 
-        ausruestungButton.addObserver(controller);
+        mahnungButton.addObserver(controller);
 
         if(task == 0){
 
@@ -241,6 +242,9 @@ public class BuchungGUI extends GUIWindowComponent {
             addComponents(preisTextLabel, preisLabel, preisPanel);
             addComponents(kundeTextLabel, kundeLabel, baujahrPanel);
             addComponents(mitarbeiterTextLabel, mitarbeiterLabel, kilometerPanel);
+
+            rechnungenPanel.add(reifenDropDown);
+            mahnungenPanel.add(mahnungButton);
 
         } else if (task == 1){
 
@@ -270,6 +274,9 @@ public class BuchungGUI extends GUIWindowComponent {
             addComponents(kundeTextLabel, kundeSelect, baujahrPanel);
             addComponents(mitarbeiterTextLabel, mitarbeiterSelect, kilometerPanel);
 
+            rechnungenPanel.add(new JLabel());
+            mahnungenPanel.add(new JLabel());
+
         } else if (task == 2){
 
             herstellerTextLabel = createLabel("Fahrzeug",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -298,10 +305,10 @@ public class BuchungGUI extends GUIWindowComponent {
             addComponents(kundeTextLabel, kundeSelect, baujahrPanel);
             addComponents(mitarbeiterTextLabel, mitarbeiterSelect, kilometerPanel);
 
-        }
+            rechnungenPanel.add(new JLabel());
+            mahnungenPanel.add(new JLabel());
 
-        reifenPanel.add(reifenDropDown);
-        ausruestungPanel.add(ausruestungButton);
+        }
 
         JPanel layoutPanel1 = createPanel(statusPanel, BorderLayout.EAST);
         JPanel layoutPanel2 = createPanel(buchungPanel, BorderLayout.WEST);
@@ -311,8 +318,8 @@ public class BuchungGUI extends GUIWindowComponent {
         JPanel layoutPanel6 = createPanel(preisPanel, BorderLayout.WEST);
         JPanel layoutPanel7 = createPanel(baujahrPanel, BorderLayout.EAST);
         JPanel layoutPanel8 = createPanel(kilometerPanel, BorderLayout.WEST);
-        JPanel layoutPanel9 = createPanel(reifenPanel, BorderLayout.EAST);
-        JPanel layoutPanel10 = createPanel(ausruestungPanel, BorderLayout.WEST);
+        JPanel layoutPanel9 = createPanel(rechnungenPanel, BorderLayout.EAST);
+        JPanel layoutPanel10 = createPanel(mahnungenPanel, BorderLayout.WEST);
 
         panelPanel.add(layoutPanel1);
         panelPanel.add(layoutPanel2);
