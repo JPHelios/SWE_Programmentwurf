@@ -3,6 +3,7 @@ package view.gui;
 import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
+import model.buchung.Rabattaktion;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
 import model.kunde.Kunde;
@@ -38,6 +39,7 @@ public class BuchungGUI extends GUIWindowComponent {
     public JLabel preisLabel = new JLabel();
     public JLabel kundeLabel = new JLabel();
     public JLabel mitarbeiterLabel = new JLabel();
+    public JLabel rabattLabel = new JLabel();
 
     //TextFields
     public JComboBox<Fahrzeug> fahrzeugSelect = new JComboBox<>();
@@ -49,6 +51,7 @@ public class BuchungGUI extends GUIWindowComponent {
     public JDatePickerImpl endTerminPicker = new JDatePickerImpl(endTerminPanel);
     public JComboBox<Kunde> kundeSelect = new JComboBox<>();
     public JComboBox<Mitarbeiter> mitarbeiterSelect = new JComboBox<>();
+    public JComboBox<Rabattaktion> rabatteDropDown = new JComboBox<>();
     public ButtonElement mahnungButton;
     JTextField preisInput;
     JTextField klassenInput;
@@ -199,7 +202,7 @@ public class BuchungGUI extends GUIWindowComponent {
         JPanel preisPanel = createPanel();
         JPanel baujahrPanel = createPanel();
         JPanel kilometerPanel = createPanel();
-        JPanel rechnungenPanel = createPanel();
+        JPanel rabattPanel = createPanel();
         JPanel mahnungenPanel = createPanel();
 
         JLabel herstellerTextLabel;
@@ -210,13 +213,7 @@ public class BuchungGUI extends GUIWindowComponent {
         JLabel preisTextLabel;
         JLabel kundeTextLabel;
         JLabel mitarbeiterTextLabel;
-        JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
-        mahnungButton = ButtonElement.builder("Button-Mahnung")
-                .buttonText("Mahnungen")
-                .type(ButtonElement.Type.BUTTON)
-                .build();
-
-        mahnungButton.addObserver(controller);
+        JLabel rabattTextLabel;
 
         if(task == 0){
 
@@ -234,6 +231,15 @@ public class BuchungGUI extends GUIWindowComponent {
             kundeLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             mitarbeiterTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             mitarbeiterLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            rabattTextLabel = createLabel("Rabattaktion", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            rabattLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+
+            mahnungButton = ButtonElement.builder("Button-Mahnung")
+                    .buttonText("Mahnungen")
+                    .type(ButtonElement.Type.BUTTON)
+                    .build();
+
+            mahnungButton.addObserver(controller);
 
             addComponents(herstellerTextLabel, fahrzeugLabel, statusPanel);
             addComponents(startTextLabel, startLabel, herstellerPanel);
@@ -243,7 +249,7 @@ public class BuchungGUI extends GUIWindowComponent {
             addComponents(kundeTextLabel, kundeLabel, baujahrPanel);
             addComponents(mitarbeiterTextLabel, mitarbeiterLabel, kilometerPanel);
 
-            rechnungenPanel.add(reifenDropDown);
+            addComponents(rabattTextLabel, rabattLabel, rabattPanel);
             mahnungenPanel.add(mahnungButton);
 
         } else if (task == 1){
@@ -264,6 +270,14 @@ public class BuchungGUI extends GUIWindowComponent {
             kundeSelect = new JComboBox<>(controller.loadKundeModel());
             mitarbeiterTextLabel = createLabel("Mitarbeiter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             mitarbeiterSelect = new JComboBox<>(controller.loadMitarbeiterModel());
+            rabattTextLabel = createLabel("Rabattaktion", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            rabatteDropDown = new JComboBox<>(controller.loadRabattModel());
+            mahnungButton = ButtonElement.builder("Button-Mahnung")
+                    .buttonText("Mahnungen")
+                    .type(ButtonElement.Type.BUTTON)
+                    .build();
+
+            mahnungButton.addObserver(controller);
 
             addComponents(herstellerTextLabel, fahrzeugSelect, statusPanel);
             //addComponents(modellTextLabel, standortDropDown, buchungPanel);
@@ -274,7 +288,7 @@ public class BuchungGUI extends GUIWindowComponent {
             addComponents(kundeTextLabel, kundeSelect, baujahrPanel);
             addComponents(mitarbeiterTextLabel, mitarbeiterSelect, kilometerPanel);
 
-            rechnungenPanel.add(new JLabel());
+            addComponents(rabattTextLabel, rabatteDropDown, rabattPanel);
             mahnungenPanel.add(new JLabel());
 
         } else if (task == 2){
@@ -295,6 +309,14 @@ public class BuchungGUI extends GUIWindowComponent {
             kundeSelect = new JComboBox<>(controller.loadKundeModel());
             mitarbeiterTextLabel = createLabel("Mitarbeuter", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             mitarbeiterSelect = new JComboBox<>(controller.loadMitarbeiterModel());
+            rabattTextLabel = createLabel("Rabattaktion", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            rabattLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            mahnungButton = ButtonElement.builder("Button-Mahnung")
+                    .buttonText("Mahnungen")
+                    .type(ButtonElement.Type.BUTTON)
+                    .build();
+
+            mahnungButton.addObserver(controller);
 
             addComponents(herstellerTextLabel, fahrzeugSelect, statusPanel);
             //addComponents(modellTextLabel, standortDropDown, buchungPanel);
@@ -305,7 +327,7 @@ public class BuchungGUI extends GUIWindowComponent {
             addComponents(kundeTextLabel, kundeSelect, baujahrPanel);
             addComponents(mitarbeiterTextLabel, mitarbeiterSelect, kilometerPanel);
 
-            rechnungenPanel.add(new JLabel());
+            addComponents(rabattTextLabel, rabattLabel, rabattPanel);
             mahnungenPanel.add(new JLabel());
 
         }
@@ -318,7 +340,7 @@ public class BuchungGUI extends GUIWindowComponent {
         JPanel layoutPanel6 = createPanel(preisPanel, BorderLayout.WEST);
         JPanel layoutPanel7 = createPanel(baujahrPanel, BorderLayout.EAST);
         JPanel layoutPanel8 = createPanel(kilometerPanel, BorderLayout.WEST);
-        JPanel layoutPanel9 = createPanel(rechnungenPanel, BorderLayout.EAST);
+        JPanel layoutPanel9 = createPanel(rabattPanel, BorderLayout.EAST);
         JPanel layoutPanel10 = createPanel(mahnungenPanel, BorderLayout.WEST);
 
         panelPanel.add(layoutPanel1);
