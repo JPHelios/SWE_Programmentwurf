@@ -84,19 +84,7 @@ public class SettingsGUI extends GUIWindowComponent {
         });
 
 
-
-        //Clemens' Testarea
-        JButton test = new JButton("Test");
-        test.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Carsharing.em.removeEl(new Standort(new String[]{"70","70","70","70","70"}));
-                Carsharing.em.persistEl(Standort.class, new String[]{"71","71","71","71","71"});
-                Carsharing.em.modify(Standort.class, new String[]{"70","70","70","70","71"});
-            }
-        });
-        gui.add(test);
-        //Clemens Testarea Ende
+        
 
         gui.add(fontTypeDropDown);
         gui.add(frameSizeDropDown);
