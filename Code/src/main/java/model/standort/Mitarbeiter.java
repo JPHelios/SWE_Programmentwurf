@@ -44,8 +44,8 @@ public class Mitarbeiter implements IPersistable, IDepictable {
         this.passwort = props[5];
         this.rolleID = props[6];
         this.filialeID = props[7];
-        this.backupIDs = props[8].split(",");
-        this.buchungIDs = props[9].split(",");
+        if(props.length >= 9) this.backupIDs = props[8].split(",");
+        if(props.length >= 10) this.buchungIDs = props[9].split(",");
 
         /*this.rolle = (Rolle) Carsharing.em.find(Rolle.class, this.rolleID);
         this.filiale = (Filiale) Carsharing.em.find(Filiale.class, this.filialeID);
