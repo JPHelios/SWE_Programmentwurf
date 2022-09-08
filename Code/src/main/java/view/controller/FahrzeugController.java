@@ -327,7 +327,7 @@ public class FahrzeugController extends GUIController {
             BufferedImage image = ImageIO.read(selectedFile);
             if (image != null) {
                 Bild b = Carsharing.ef.createBild();
-                File outputfile = new File(b.getPfad());
+                File outputfile = new File(System.getProperty("user.dir") + b.getPfad());
                 ImageIO.write(image, "png", outputfile);
                 currentFahrzeug.setBildIDs(new String[]{b.getBildID()});
                 currentFahrzeug.setBilder(new Bild[]{b});
