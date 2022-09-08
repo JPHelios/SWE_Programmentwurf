@@ -72,7 +72,15 @@ public class EntityManager extends GenericEntityManager {
                 new_index++;
             }
         }
-        write(write_elements, el.getClass());
+
+        if(elements.size() == 1){
+            Object[][] tmp = new Object[1][];
+            tmp[0] = new String[]{""};
+            write(tmp, el.getClass());
+        } else {
+            write(write_elements, el.getClass());
+        }
+
     }
 
     public Object find(Class c, String key){

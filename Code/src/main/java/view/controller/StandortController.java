@@ -155,6 +155,11 @@ public class StandortController extends GUIController {
                             //Delete-Routine
                             Carsharing.em.removeEl(currentStandort);
                             refreshList();
+
+                            JPanel panel = gui.createRightSidePanel(-1);
+                            gui.createRightSide(panel);
+                            gui.setRightSiteVisible(panel);
+                            gui.clearListSelection(gui.standortList);
                         }
                     }
                 }
