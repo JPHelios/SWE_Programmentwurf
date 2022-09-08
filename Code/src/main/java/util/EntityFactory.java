@@ -30,7 +30,7 @@ public class EntityFactory {
         Rechnung rechnung = new Rechnung();
 
         float preisProTag = b.getFahrzeug().getFahrzeugklasse().getPreis();
-        double tage = Math.ceil((b.getEndtermin().getTime() - b.getStarttermin().getTime())/1000/60/60/24);
+        double tage = Math.ceil((b.getEndtermin().getTime() - b.getStarttermin().getTime())/1000d/60/60/24);
         double betrag = preisProTag * tage * ((100d-r.getPreisnachlass())/100);
 
         rechnung.setBetrag(betrag);
