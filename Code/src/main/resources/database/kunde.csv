@@ -1,5 +1,4 @@
 #Kunde-ID;Nachname;Vorname;Telefon;Mail;Vertrag-ID;Adresse-ID;Buchung-IDs
-1;Peters;Johannes;000011112222;jp@morgaehhn.com;1;5;8f1f4d57-0fc8-4ade-8a5c-ccbf223c2c77,baf7562c-8dfc-4dc5-afa1-80c9bb39fc77,0629ce7c-71c6-4759-8331-e4c07c1d2e29,d614808e-c90e-4981-acd0-083108c9f816,1906dc0a-ad07-4093-96b2-b0af828edf2f
+1;Peters;Johannes;000011112222;jp@morgaehhn.com;1;5;8f1f4d57-0fc8-4ade-8a5c-ccbf223c2c77,baf7562c-8dfc-4dc5-afa1-80c9bb39fc77,0629ce7c-71c6-4759-8331-e4c07c1d2e29,d614808e-c90e-4981-acd0-083108c9f816,1906dc0a-ad07-4093-96b2-b0af828edf2f,163a3218-9312-459b-bcd0-a767b7dd6572,82bc9ea5-17b4-4a51-8ce5-79d5b14fe602,c405a967-0ad2-45e8-812d-b9140fd8f792,5aec4998-c86f-444a-b2c6-7cea093b8db7,056a3ad2-1e12-41fd-a343-926567890701
 2;Remensc;Lichter;333344445555;rl@koen.ig;2;4;4c993c70-5a39-4492-9f7f-97aef8028628,bd1e6a5a-da0f-4d4f-9fdf-2e9327977069
-3;Schlumpf;Papa;015657216;ihategargarmel@gmail.com;2;6
-4;Von der Alm;Heidi;147147566;frischeluft@oesterreich.at;2;7
+3;Schlumpf;Papa;015657216;ihategargarmel@gmail.com;2;6;656a61e6-570b-4aac-a71e-f15dc15326c6
