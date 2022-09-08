@@ -403,9 +403,9 @@ public class BuchungController extends GUIController {
         List<Object> data = Carsharing.em.getAllEl(Fahrzeug.class);
         List<Fahrzeug> fahrzeugList = new ArrayList<>();
 
-        for(int i = 0; i < data.size(); i++){
-            Fahrzeug f = (Fahrzeug) data.get(i);
-            if(f.isStatus()){
+        for (Object datum : data) {
+            Fahrzeug f = (Fahrzeug) datum;
+            if (f.isStatus()) {
                 fahrzeugList.add(f);
             }
         }
