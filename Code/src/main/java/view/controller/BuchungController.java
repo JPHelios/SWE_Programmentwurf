@@ -101,106 +101,68 @@ public class BuchungController extends GUIController {
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern geklickt");
 
-                checkZeitspanne();
+                if(checkAll()){
+                    //Eingabeüberprüfung muss noch eingebaut werden!!!
 
-                //Eingabeüberprüfung muss noch eingebaut werden!!!
+                    Fahrzeug fahrzeug = (Fahrzeug) gui.fahrzeugSelect.getSelectedItem();
+                    Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
+                    Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
+                    Kunde kunde = (Kunde) gui.kundeSelect.getSelectedItem();
+                    Mitarbeiter mitarbeiter = (Mitarbeiter) gui.mitarbeiterSelect.getSelectedItem();
+                    Rabattaktion rabatt = (Rabattaktion) gui.rabatteDropDown.getSelectedItem();
+
+                    String fID = fahrzeug.getFahrzeugID();
+                    String kID = kunde.getKundeID();
+                    String mID = mitarbeiter.getMitarbeiterID();
+
+                    try{
+
+                        BuchungBuilder bb = new BuchungBuilder();
+                        bb.kunde(kID);
+                        bb.starttermin(startTermin);
+                        bb.endtermin(endTermin);
+                        bb.fahrzeug(fID);
+                        bb.mitarbeiter(mID);
+
+                        Buchung b = bb.build();
+
+                        b.setMahnungIDs(new String[]{});
+
+                        Rechnung r  = Carsharing.ef.createRechnung(b, Objects.requireNonNull(rabatt));
+                        b.setRechnungID(r.getRechnungID());
+
+                        String[] kundenBuchungIDs = new String[kunde.getBuchungIDs().length + 1];
+                        for(int i = 0; i < kunde.getBuchungIDs().length; i++){
+                            kundenBuchungIDs[i] = kunde.getBuchungIDs()[i];
+                        }
+                        kundenBuchungIDs[kunde.getBuchungIDs().length] = b.getBuchungID();
+                        kunde.setBuchungIDs(kundenBuchungIDs);
+
+                        String[] mitarbeiterBuchungIDs = new String[mitarbeiter.getBuchungIDs().length + 1];
+                        for(int i = 0; i < mitarbeiter.getBuchungIDs().length; i++){
+                            mitarbeiterBuchungIDs[i] = mitarbeiter.getBuchungIDs()[i];
+                        }
+                        mitarbeiterBuchungIDs[mitarbeiter.getBuchungIDs().length] = b.getBuchungID();
+                        mitarbeiter.setBuchungIDs(mitarbeiterBuchungIDs);
 
 
-                Fahrzeug fahrzeug = (Fahrzeug) gui.fahrzeugSelect.getSelectedItem();
-                Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
-                Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
-                Kunde kunde = (Kunde) gui.kundeSelect.getSelectedItem();
-                Mitarbeiter mitarbeiter = (Mitarbeiter) gui.mitarbeiterSelect.getSelectedItem();
-                Rabattaktion rabatt = (Rabattaktion) gui.rabatteDropDown.getSelectedItem();
+                        Carsharing.em.modify(Kunde.class, kunde.toStringArray());
+                        Carsharing.em.modify(Mitarbeiter.class, mitarbeiter.toStringArray());
+                        Carsharing.em.persistEl(Rechnung.class, r.toStringArray());
+                        Carsharing.em.persistEl(Buchung.class, b.toStringArray());
 
-                String fID = fahrzeug.getFahrzeugID();
-                String kID = kunde.getKundeID();
-                String mID = mitarbeiter.getMitarbeiterID();
+                        refreshList();
 
-                try{
-
-                    BuchungBuilder bb = new BuchungBuilder();
-                    bb.kunde(kID);
-                    bb.starttermin(startTermin);
-                    bb.endtermin(endTermin);
-                    bb.fahrzeug(fID);
-                    bb.mitarbeiter(mID);
-
-                    Buchung b = bb.build();
-
-                    b.setMahnungIDs(new String[]{});
-
-                    Rechnung r  = Carsharing.ef.createRechnung(b, Objects.requireNonNull(rabatt));
-                    b.setRechnungID(r.getRechnungID());
-
-                    String[] kundenBuchungIDs = new String[kunde.getBuchungIDs().length + 1];
-                    for(int i = 0; i < kunde.getBuchungIDs().length; i++){
-                        kundenBuchungIDs[i] = kunde.getBuchungIDs()[i];
+                    }catch(NumberFormatException e){
+                        JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
                     }
-                    kundenBuchungIDs[kunde.getBuchungIDs().length] = b.getBuchungID();
-                    kunde.setBuchungIDs(kundenBuchungIDs);
 
-                    String[] mitarbeiterBuchungIDs = new String[mitarbeiter.getBuchungIDs().length + 1];
-                    for(int i = 0; i < mitarbeiter.getBuchungIDs().length; i++){
-                        mitarbeiterBuchungIDs[i] = mitarbeiter.getBuchungIDs()[i];
-                    }
-                    mitarbeiterBuchungIDs[mitarbeiter.getBuchungIDs().length] = b.getBuchungID();
-                    mitarbeiter.setBuchungIDs(mitarbeiterBuchungIDs);
+                    JPanel panel = gui.createRightSidePanel(-1);
+                    gui.createRightSide(panel);
+                    gui.setRightSiteVisible(panel);
 
-
-                    Carsharing.em.modify(Kunde.class, kunde.toStringArray());
-                    Carsharing.em.modify(Mitarbeiter.class, mitarbeiter.toStringArray());
-                    Carsharing.em.persistEl(Rechnung.class, r.toStringArray());
-                    Carsharing.em.persistEl(Buchung.class, b.toStringArray());
-
-                    refreshList();
-
-                }catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
                 }
 
-                JPanel panel = gui.createRightSidePanel(-1);
-                gui.createRightSide(panel);
-                gui.setRightSiteVisible(panel);
-
-
-                //Standort standort = (Standort) gui.standortDropDown.getSelectedItem();
-                //String hersteller = gui.herstellerInput.getText();
-                //String model = gui.modellInput.getText();
-                //Fahrzeugklasse klasse = (Fahrzeugklasse) gui.klassenDropDown.getSelectedItem();
-                //String kennzeichen = gui.kennzeichenInput.getText().toUpperCase();
-                /*
-                try {
-                    int baujahr = Integer.parseInt(gui.baujahrInput.getText());
-                    int kilometer = Integer.parseInt(gui.kilometerInput.getText());
-
-                    FahrzeugBuilder fahrzeugBuilder = new FahrzeugBuilder();
-
-                    fahrzeugBuilder.hersteller(hersteller);
-                    fahrzeugBuilder.modell(model);
-                    fahrzeugBuilder.baujahr(baujahr);
-                    fahrzeugBuilder.kilometerstand(kilometer);
-                    fahrzeugBuilder.status(true);
-                    fahrzeugBuilder.klasse(((Fahrzeugklasse) Objects.requireNonNull(gui.klassenDropDown.getSelectedItem())).getName());
-
-                    fahrzeugBuilder.standort("69");
-                    fahrzeugBuilder.ausruestung(new String[]{});
-                    fahrzeugBuilder.bilder(new String[]{});
-                    fahrzeugBuilder.kennzeichen(kennzeichen);
-
-                    //persist newly created vehicle
-                    Fahrzeug newFahrzeug = fahrzeugBuilder.build();
-                    Carsharing.em.persistEl(Fahrzeug.class, newFahrzeug.toStringArray());
-
-                    //refresh list
-                    refreshList();
-
-
-                } catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
-                }
-
-                 */
             } //Referenzen zu anderen Objekten!
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Cancel")){
                 System.out.println("Es wurde Abbrechen geklickt");
@@ -497,9 +459,9 @@ public class BuchungController extends GUIController {
     private boolean checkAll(){
 
         boolean zeitInput = checkZeitspanne();
+        boolean klasseInput = checkRabattaktion();
 
-        if(zeitInput) return true;
-        else return false;
+        return zeitInput && klasseInput;
 
     }
 
@@ -523,6 +485,30 @@ public class BuchungController extends GUIController {
         }
 
         return true;
+    }
+
+    private boolean checkRabattaktion(){
+
+        Rabattaktion selectedRabattaktion = (Rabattaktion) gui.rabatteDropDown.getSelectedItem();
+
+        String[] allowedKlassenIDs = Objects.requireNonNull(selectedRabattaktion).getAktionsKlassenIDs();
+        boolean hit = false;
+
+        for(String fk : allowedKlassenIDs){
+
+            Fahrzeugklasse k = Fahrzeugklasse.valueOf(fk);
+
+            if (k.equals(((Fahrzeug) Objects.requireNonNull(gui.fahrzeugSelect.getSelectedItem())).getFahrzeugklasse())) {
+                hit = true;
+                break;
+            }
+        }
+
+        if(!hit){
+            JOptionPane.showMessageDialog(gui, "Die Rabattaktion gilt nicht für diese Fahrzeugklasse!");
+        }
+
+        return hit;
     }
 
     private void refreshList(){
