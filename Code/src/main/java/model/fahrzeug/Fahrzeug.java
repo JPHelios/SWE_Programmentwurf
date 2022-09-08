@@ -13,6 +13,8 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Data
+@Getter
+@Setter
 public class Fahrzeug implements IPersistable, IDepictable {
 
     private String fahrzeugID;

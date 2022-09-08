@@ -278,13 +278,23 @@ public class BuchungController extends GUIController {
 
     public Fahrzeug[] loadFahrzeugModel(){
         List<Object> data = Carsharing.em.getAllEl(Fahrzeug.class);
-        Fahrzeug[] fahrzeugList = new Fahrzeug[data.size()];
+        List<Fahrzeug> fahrzeugList = new ArrayList<>();
+
 
         for(int i = 0; i < data.size(); i++){
-            fahrzeugList[i] = (Fahrzeug) data.get(i);
+            Fahrzeug f = (Fahrzeug) data.get(i);
+            if(f.isStatus()){
+                fahrzeugList.add(f);
+            }
         }
 
-        return fahrzeugList;
+        Fahrzeug[] fahrzeugArr = new Fahrzeug[fahrzeugList.size()];
+
+        for(int i = 0; i < fahrzeugList.size(); i++){
+                fahrzeugArr[i] = fahrzeugList.get(i);
+        }
+
+        return fahrzeugArr;
     }
 
     public Kunde[] loadKundeModel(){
