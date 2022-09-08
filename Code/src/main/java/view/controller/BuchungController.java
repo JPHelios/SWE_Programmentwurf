@@ -110,6 +110,7 @@ public class BuchungController extends GUIController {
                 Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
                 Kunde kunde = (Kunde) gui.kundeSelect.getSelectedItem();
                 Mitarbeiter mitarbeiter = (Mitarbeiter) gui.mitarbeiterSelect.getSelectedItem();
+                Rabattaktion rabatt = (Rabattaktion) gui.rabatteDropDown.getSelectedItem();
 
                 String fID = fahrzeug.getFahrzeugID();
                 String kID = kunde.getKundeID();
@@ -128,7 +129,7 @@ public class BuchungController extends GUIController {
 
                     b.setMahnungIDs(new String[]{});
 
-                    Rechnung r  = Carsharing.ef.createRechnung(b, (Rabattaktion) Carsharing.em.find(Rabattaktion.class, "1"));
+                    Rechnung r  = Carsharing.ef.createRechnung(b, Objects.requireNonNull(rabatt));
                     b.setRechnungID(r.getRechnungID());
 
                     String[] kundenBuchungIDs = new String[kunde.getBuchungIDs().length + 1];
@@ -149,8 +150,6 @@ public class BuchungController extends GUIController {
                     Carsharing.em.modify(Kunde.class, kunde.toStringArray());
                     Carsharing.em.modify(Mitarbeiter.class, mitarbeiter.toStringArray());
                     Carsharing.em.persistEl(Rechnung.class, r.toStringArray());
-
-
                     Carsharing.em.persistEl(Buchung.class, b.toStringArray());
 
                     refreshList();
@@ -158,6 +157,10 @@ public class BuchungController extends GUIController {
                 }catch(NumberFormatException e){
                     JOptionPane.showMessageDialog(gui, "Die Eingabe ist nicht korrekt oder unvollständig ! \n Überprüfen Sie die eingegebenen Daten.");
                 }
+
+                JPanel panel = gui.createRightSidePanel(-1);
+                gui.createRightSide(panel);
+                gui.setRightSiteVisible(panel);
 
 
                 //Standort standort = (Standort) gui.standortDropDown.getSelectedItem();
@@ -321,6 +324,8 @@ public class BuchungController extends GUIController {
         gui.kundeLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());
         gui.mitarbeiterLabel.setText(currentBuchung.getMitarbeiter().getNachname() + ", " + currentBuchung.getMitarbeiter().getVorname());
 
+        gui.rabattLabel.setText(String.valueOf(((Rechnung) Carsharing.em.find(Rechnung.class, currentBuchung.getRechnungID())).getEvent()));
+
         if(!currentBuchung.getMahnungIDs()[0].equals("")){
             gui.mahnungButton.setEnabled(false);
         }
@@ -328,6 +333,8 @@ public class BuchungController extends GUIController {
     }
 
     private void updateEditLabelTexts(){
+
+        gui.rabattLabel.setText(String.valueOf(((Rechnung) Carsharing.em.find(Rechnung.class, currentBuchung.getRechnungID())).getEvent()));
         /*
         gui.kennzeichenInput.setText(currentBuchung.getKennzeichen());
         //gui.standortDropDown.
@@ -381,6 +388,17 @@ public class BuchungController extends GUIController {
         }
 
         return mitarbeiterList;
+    }
+
+    public Rabattaktion[] loadRabattModel(){
+        List<Object> data = Carsharing.em.getAllEl(Rabattaktion.class);
+        Rabattaktion[] rabattList = new Rabattaktion[data.size()];
+
+        for(int i = 0; i < data.size(); i++){
+            rabattList[i] = (Rabattaktion) data.get(i);
+        }
+
+        return rabattList;
     }
 
     private boolean checkAll(){

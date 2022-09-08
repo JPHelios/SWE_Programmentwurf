@@ -42,4 +42,9 @@ public class Rabattaktion implements IPersistable {
     public Object getPrimaryKey() {
         return rabattaktionID;
     }
+
+    @Override
+    public String toString(){
+        return beschreibung + ": " + preisnachlass + "%";
+    }
 }
