@@ -16,7 +16,7 @@ public class Bild implements IPersistable {
 
     public Bild(){
         this.bildID = UUID.randomUUID().toString();
-        this.pfad = System.getProperty("user.dir") + "/src/main/resources/" + this.bildID+".png";
+        this.pfad = "/src/main/resources/" + this.bildID+".png";
         this.titel = "automobil";
     }
 

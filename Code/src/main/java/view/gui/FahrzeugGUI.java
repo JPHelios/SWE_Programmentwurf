@@ -172,7 +172,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         img_chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
 
-        ImageIcon icon = new ImageIcon(controller.getBild());
+        ImageIcon icon = new ImageIcon(controller.getBild(task));
         icon = new ImageIcon(icon.getImage().getScaledInstance(
                 (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
                 (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),

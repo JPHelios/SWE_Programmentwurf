@@ -1,5 +1,4 @@
 #Mitarbeiter-ID;Nachname;Vorname;Telefon;Mail;Passwort;Rolle-ID;Filiale-ID;Backup-IDs;Buchung-IDs
-1;Richter;Clemens;696969696969;cr@apmens.de;123456;0;1;1,2;8f1f4d57-0fc8-4ade-8a5c-ccbf223c2c77,baf7562c-8dfc-4dc5-afa1-80c9bb39fc77
+1;Richter;Clemens;696969696969;cr@apmens.de;123456;0;1;1,2;8f1f4d57-0fc8-4ade-8a5c-ccbf223c2c77,baf7562c-8dfc-4dc5-afa1-80c9bb39fc77,0629ce7c-71c6-4759-8331-e4c07c1d2e29,d614808e-c90e-4981-acd0-083108c9f816,1906dc0a-ad07-4093-96b2-b0af828edf2f
 2;Peppers;Hojannes;707070707070;ph@ottovoltaikanla.ge;654321;1;2;3;4c993c70-5a39-4492-9f7f-97aef8028628,7e572c84-f5fa-48b9-a88f-3defbcf1227d,bd1e6a5a-da0f-4d4f-9fdf-2e9327977069
-3;Der Weiße;Gandalf;717171717171;der@herrderringe.com;123456;1;2;;
-4;Smoke;Pop;187187187187;mrrap@t-online.de;187187;1;4;;
+3;Der Weiße;Gandalf;717171717171;der@herrderringe.com;123456;1;2;
