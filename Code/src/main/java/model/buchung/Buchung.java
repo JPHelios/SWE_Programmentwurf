@@ -26,7 +26,7 @@ public class Buchung implements IPersistable, IDepictable {
 
     private Fahrzeug fahrzeug;
     private String fahrzeugID;
-    private Rechnung rechnung;
+
     private String rechnungID;
     private Mahnung[] mahnung;
     private String[] mahnungIDs;
@@ -51,7 +51,6 @@ public class Buchung implements IPersistable, IDepictable {
         this.mitarbeiterID = props[8];
 
         this.fahrzeug = (Fahrzeug) Carsharing.em.find(Fahrzeug.class, this.fahrzeugID);
-        this.rechnung = (Rechnung) Carsharing.em.find(Rechnung.class, this.rechnungID);
         this.mahnung = new Mahnung[this.mahnungIDs.length];
         for(int i = 0; i < this.mahnungIDs.length; i++){
             this.mahnung[i] = (Mahnung) Carsharing.em.find(Mahnung.class, this.mahnungIDs[i]);

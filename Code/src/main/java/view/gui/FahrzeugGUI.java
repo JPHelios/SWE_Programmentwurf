@@ -3,10 +3,8 @@ package view.gui;
 import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
-import model.fahrzeug.Dachbox;
-import model.fahrzeug.Fahrradtraeger;
 import model.fahrzeug.Fahrzeugklasse;
-import model.fahrzeug.Hundetransportbox;
+import model.standort.Standort;
 import util.enums.Colors;
 import view.controller.FahrzeugController;
 import view.utils.GUIWindowComponent;
@@ -18,7 +16,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.List;
 
 public class FahrzeugGUI extends GUIWindowComponent {
 
@@ -28,7 +25,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     //Labels
     public JLabel statusLabel = new JLabel();
-    public JLabel buchungLabel = new JLabel();
+    public JLabel standortLabel = new JLabel();
     public JLabel herstellerLabel = new JLabel();
     public JLabel modellLabel = new JLabel();
     public JLabel klasseLabel = new JLabel();
@@ -38,7 +35,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
     //TextFields
     public JTextField kennzeichenInput = new JTextField();
-    public JComboBox<Fahrzeugklasse> standortDropDown = new JComboBox<>();
+    public JComboBox<Standort> standortDropDown = new JComboBox<>();
     public JTextField herstellerInput = new JTextField();
     public JTextField modellInput = new JTextField();
     public JComboBox<Fahrzeugklasse> klassenDropDown = new JComboBox<>();
@@ -232,7 +229,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         statusPanel.setBackground(Colors.PINK_ROSE.getColor());
         statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.Y_AXIS));
 
-        JPanel buchungPanel = createPanel();
+        JPanel standortPanel = createPanel();
         JPanel herstellerPanel = createPanel();
         JPanel modellPanel = createPanel();
         JPanel klassenPanel = createPanel();
@@ -243,7 +240,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JPanel ausruestungPanel = createPanel();
 
         JLabel statusTextLabel;
-        JLabel buchungTextLabel;
+        JLabel standortTextLabel;
         JLabel herstellerTextLabel;
         JLabel modellTextLabel;
         JLabel klasseTextLabel;
@@ -262,8 +259,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
             statusTextLabel = createLabel("Status",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             statusLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
-            buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            buchungLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
+            standortTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            standortLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             herstellerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
             modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -278,7 +275,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
             kilometerLabel = createLabel("Placeholder", Carsharing.config.FONT, Font.BOLD, Carsharing.config.FONT_SIZE_MEDIUM);
 
             addComponents(statusTextLabel, statusLabel, statusPanel);
-            addComponents(buchungTextLabel, buchungLabel, buchungPanel);
+            addComponents(standortTextLabel, standortLabel, standortPanel);
             addComponents(herstellerTextLabel, herstellerLabel, herstellerPanel);
             addComponents(modellTextLabel, modellLabel, modellPanel);
             addComponents(klasseTextLabel, klasseLabel, klassenPanel);
@@ -290,8 +287,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
             statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             kennzeichenInput = new JTextField("", 10);
-            buchungTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            standortTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            standortDropDown = new JComboBox<>(controller.loadStandort());
             herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             herstellerInput = new JTextField("", 10);
             modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -306,7 +303,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
             kilometerInput = new JTextField("", 10);
 
             addComponents(statusTextLabel, kennzeichenInput, statusPanel);
-            addComponents(buchungTextLabel, standortDropDown, buchungPanel);
+            addComponents(standortTextLabel, standortDropDown, standortPanel);
             addComponents(herstellerTextLabel, herstellerInput, herstellerPanel);
             addComponents(modellTextLabel, modellInput, modellPanel);
             addComponents(klasseTextLabel, klassenDropDown, klassenPanel);
@@ -318,8 +315,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
             statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             kennzeichenInput = new JTextField("", 10);
-            buchungTextLabel = createLabel("Buchung", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            standortDropDown = new JComboBox<>(Fahrzeugklasse.values());
+            standortTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
+            standortDropDown = new JComboBox<>(controller.loadStandort());
             herstellerTextLabel = createLabel("Hersteller", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             herstellerInput = new JTextField("", 10);
             modellTextLabel = createLabel("Model", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -334,7 +331,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
             kilometerInput = new JTextField("", 10);
 
             addComponents(statusTextLabel, kennzeichenInput, statusPanel);
-            addComponents(buchungTextLabel, standortDropDown, buchungPanel);
+            addComponents(standortTextLabel, standortDropDown, standortPanel);
             addComponents(herstellerTextLabel, herstellerInput, herstellerPanel);
             addComponents(modellTextLabel, modellInput, modellPanel);
             addComponents(klasseTextLabel, klassenDropDown, klassenPanel);
@@ -348,7 +345,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
         ausruestungPanel.add(ausruestungButton);
 
         JPanel layoutPanel1 = createPanel(statusPanel, BorderLayout.EAST);
-        JPanel layoutPanel2 = createPanel(buchungPanel, BorderLayout.WEST);
+        JPanel layoutPanel2 = createPanel(standortPanel, BorderLayout.WEST);
         JPanel layoutPanel3 = createPanel(herstellerPanel, BorderLayout.EAST);
         JPanel layoutPanel4 = createPanel(modellPanel, BorderLayout.WEST);
         JPanel layoutPanel5 = createPanel(klassenPanel, BorderLayout.EAST);
