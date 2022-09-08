@@ -4,7 +4,6 @@ import app.Carsharing;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import util.enums.Colors;
-import view.controller.FahrzeugController;
 import view.controller.MitarbeiterController;
 import view.utils.GUIWindowComponent;
 
@@ -67,15 +66,6 @@ public class MitarbeiterGUI extends GUIWindowComponent {
         mitarbeiterList.setListElements(controller.loadData());
         mitarbeiterList.addObserver(controller);
 
-
-        ButtonElement anlegenButton = ButtonElement.builder("Button-Anlegen")
-                .buttonText("Anlegen")
-                .type(ButtonElement.Type.BUTTON)
-                .font(buttonFont)
-                .build();
-
-        anlegenButton.addObserver(controller);
-
         ButtonElement filterButton = ButtonElement.builder("Button-Filter")
                 .buttonText("Filter")
                 .type(ButtonElement.Type.BUTTON)
@@ -84,23 +74,15 @@ public class MitarbeiterGUI extends GUIWindowComponent {
 
         filterButton.addObserver(controller);
 
-        ButtonElement createButton = ButtonElement.builder("Button-Create")
-                .buttonText("Create")
-                .type(ButtonElement.Type.BUTTON)
-                .font(buttonFont)
-                .build();
-
-        createButton.addObserver(controller);
-
         searchField = new JTextField("", 7);
 
         buttonFilterPanel.add(searchField);
         buttonFilterPanel.add(filterButton);
 
         buttonPanel.add(buttonFilterPanel, BorderLayout.WEST);
-        buttonPanel.add(createButton, BorderLayout.EAST);
+        buttonPanel.add(new JLabel(" "), BorderLayout.EAST);
 
-        createPanel.add(anlegenButton, BorderLayout.WEST);
+        createPanel.add(new JLabel(" "), BorderLayout.WEST);
 
         leftComponentPanel.add(buttonPanel, BorderLayout.NORTH);
         leftComponentPanel.add(mitarbeiterList, BorderLayout.CENTER);

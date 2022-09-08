@@ -216,6 +216,11 @@ public class FahrzeugController extends GUIController {
                             //Delete-Routine
                             Carsharing.em.removeEl(currentFahrzeug);
                             refreshList();
+
+                            JPanel panel = gui.createRightSidePanel(-1);
+                            gui.createRightSide(panel);
+                            gui.setRightSiteVisible(panel);
+                            gui.clearListSelection(gui.fahrzeugList);
                         }
                     }
                 }

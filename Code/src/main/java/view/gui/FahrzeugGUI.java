@@ -249,7 +249,6 @@ public class FahrzeugGUI extends GUIWindowComponent {
         JLabel preisTextLabel;
         JLabel baujahrTextLabel;
         JLabel kilometerTextLabel;
-        JComboBox<String> reifenDropDown = new JComboBox<>(placeholderDropDown);
         ButtonElement ausruestungButton = ButtonElement.builder("Button-Ausruestung")
                 .buttonText("Ausrüstung")
                 .type(ButtonElement.Type.BUTTON)
@@ -347,7 +346,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         }
 
-        reifenPanel.add(reifenDropDown);
+        reifenPanel.add(new JLabel(" "));
         ausruestungPanel.add(ausruestungButton);
 
         JPanel layoutPanel1 = createPanel(statusPanel, BorderLayout.EAST);

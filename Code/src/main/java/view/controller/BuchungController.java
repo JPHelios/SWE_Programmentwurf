@@ -246,6 +246,13 @@ public class BuchungController extends GUIController {
                             Carsharing.em.removeEl((Rechnung) Carsharing.em.find(Rechnung.class, currentBuchung.getRechnungID()));
                             Carsharing.em.removeEl(currentBuchung);
                             refreshList();
+
+                            JPanel panel = gui.createRightSidePanel(-1);
+                            gui.createRightSide(panel);
+                            gui.setRightSiteVisible(panel);
+                            gui.clearListSelection(gui.buchungList);
+
+
                         }
                     }
                 }
@@ -472,11 +479,13 @@ public class BuchungController extends GUIController {
 
     private boolean checkAll(){
 
-        boolean zeitInput = checkZeitspanne();
-        boolean konflikte = checkCrossReservation();
-        boolean klasseInput = checkRabattaktion();
+        if(checkZeitspanne()){
+            if(checkCrossReservation()){
+                return checkRabattaktion();
+            }
+        }
 
-        return zeitInput && klasseInput && konflikte;
+        return false;
 
     }
 
@@ -484,6 +493,12 @@ public class BuchungController extends GUIController {
 
         Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
         Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
+
+        if(startTermin == null || endTermin == null){
+            JOptionPane.showMessageDialog(gui, "Die Terminangabe ist unvollständig!");
+            return false;
+        }
+
         int resZeitspanne = startTermin.compareTo(endTermin);
 
         if (resZeitspanne > 0) {
