@@ -43,10 +43,10 @@ public class BuchungGUI extends GUIWindowComponent {
     public JComboBox<Fahrzeug> fahrzeugSelect = new JComboBox<>();
     UtilDateModel startTerminModel = new UtilDateModel();
     JDatePanelImpl startTerminPanel = new JDatePanelImpl(startTerminModel);
-    JDatePickerImpl startTerminPicker = new JDatePickerImpl(startTerminPanel);
+    public JDatePickerImpl startTerminPicker = new JDatePickerImpl(startTerminPanel);
     UtilDateModel endTerminModel = new UtilDateModel();
     JDatePanelImpl endTerminPanel = new JDatePanelImpl(endTerminModel);
-    JDatePickerImpl endTerminPicker = new JDatePickerImpl(endTerminPanel);
+    public JDatePickerImpl endTerminPicker = new JDatePickerImpl(endTerminPanel);
     public JComboBox<Kunde> kundeSelect = new JComboBox<>();
     public JComboBox<Mitarbeiter> mitarbeiterSelect = new JComboBox<>();
     JTextField preisInput;

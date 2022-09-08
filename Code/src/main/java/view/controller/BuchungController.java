@@ -11,13 +11,18 @@ import model.fahrzeug.Fahrzeugklasse;
 import model.kunde.Kunde;
 import model.standort.Filiale;
 import model.standort.Mitarbeiter;
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import util.FahrzeugBuilder;
 import view.gui.BuchungGUI;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
 
 import javax.swing.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -94,6 +99,8 @@ public class BuchungController extends GUIController {
             } //Funktion done
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save")){
                 System.out.println("Es wurde Speichern geklickt");
+
+                checkZeitspanne();
 
                 //Eingabeüberprüfung muss noch eingebaut werden!!!
 
@@ -233,6 +240,8 @@ public class BuchungController extends GUIController {
             } //Noch Objekte in Checkboxen einfügen
             if (((ButtonElement) guiEvent.getData()).getID().equals("Button-Save-Edit")){
                 System.out.println("Es wurde Speichern beim Bearbeiten geklickt");
+
+                checkZeitspanne();
                 /*
                 currentBuchung.setKennzeichen(gui.kennzeichenInput.getText().toUpperCase());
                 //Standort hinzufügen
@@ -317,6 +326,20 @@ public class BuchungController extends GUIController {
         }
 
         return mitarbeiterList;
+    }
+
+    private void checkZeitspanne(){
+
+        Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
+        Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
+
+        int res = startTermin.compareTo(endTermin);
+
+        if (res > 0) {
+            JOptionPane.showMessageDialog(gui, "Der Endtermin ist vor dem Startdatum. \n Bitte überprüfen Sie die Eingabe");
+
+        }
+
     }
 
     private void refreshList(){
