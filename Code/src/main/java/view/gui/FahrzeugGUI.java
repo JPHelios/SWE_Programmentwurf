@@ -299,7 +299,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
             klasseTextLabel = createLabel("Klasse", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             klassenDropDown = new JComboBox<>(Fahrzeugklasse.values());
             preisTextLabel = createLabel("Preis", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
-            preisInput = new JTextField("Automatically", 10);
+            preisInput = new JTextField("Automatisch übernommen");
+            preisInput.setEditable(false);
             baujahrTextLabel = createLabel("Baujahr", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             baujahrInput = new JTextField("", 10);
             kilometerTextLabel = createLabel("Kilometer", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
