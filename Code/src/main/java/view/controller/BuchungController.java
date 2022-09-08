@@ -5,6 +5,7 @@ import de.dhbwka.swe.utils.event.GUIEvent;
 import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.buchung.Buchung;
+import model.buchung.Rechnung;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
 import model.kunde.Kunde;
@@ -264,7 +265,8 @@ public class BuchungController extends GUIController {
         gui.fahrzeugLabel.setText(currentBuchung.getFahrzeug().getHersteller() + " " + currentBuchung.getFahrzeug().getModell());
         gui.startLabel.setText(currentBuchung.getStarttermin().toString());
         gui.endLabel.setText(currentBuchung.getEndtermin().toString());
-        gui.preisLabel.setText(String.valueOf(currentBuchung.getFahrzeug().getFahrzeugklasse().getPreis()) + "€ pro Tag");
+        gui.klasseLabel.setText(currentBuchung.getFahrzeug().getFahrzeugklasse().getName());
+        gui.preisLabel.setText(String.valueOf(((Rechnung) Carsharing.em.find(Rechnung.class,currentBuchung.getRechnungID())).getBetrag()));
         gui.kundeLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());
         gui.mitarbeiterLabel.setText(currentBuchung.getMitarbeiter().getNachname() + ", " + currentBuchung.getMitarbeiter().getVorname());
 
