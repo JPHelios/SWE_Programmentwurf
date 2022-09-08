@@ -59,6 +59,8 @@ public class Fahrzeug implements IPersistable, IDepictable {
         this.bildIDs = props[11].split(",");
         this.fahrzeugklasseID = (props[12]);
 
+        this.standort = (Standort) Carsharing.em.find(Standort.class, this.standortID);
+
         /*this.kennzeichen = (Kennzeichen) Carsharing.em.find(Kennzeichen.class, this.kennzeichenID);
         this.ausruestung = new Ausruestung[this.ausruestungIDs.length];
         for(int i = 0; i < this.ausruestungIDs.length; i++){

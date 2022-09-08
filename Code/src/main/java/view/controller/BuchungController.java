@@ -256,7 +256,7 @@ public class BuchungController extends GUIController {
         gui.modellLabel.setText(currentBuchung.getFahrzeug().getModell());
         gui.startLabel.setText(currentBuchung.getStarttermin().toString());
         gui.endLabel.setText(currentBuchung.getEndtermin().toString());
-        gui.preisLabel.setText(String.valueOf(currentBuchung.getRechnung().getBetrag()));
+        gui.preisLabel.setText(String.valueOf(currentBuchung.getFahrzeug().getFahrzeugklasse().getPreis()) + "€ pro Tag");
         gui.kundeLabel.setText(currentBuchung.getKunde().getNachname() + ", " + currentBuchung.getKunde().getVorname());
         gui.mitarbeiterLabel.setText(currentBuchung.getMitarbeiter().getNachname() + ", " + currentBuchung.getMitarbeiter().getVorname());
 

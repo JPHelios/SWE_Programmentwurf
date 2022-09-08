@@ -6,6 +6,8 @@ import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
+import model.standort.Filiale;
+import model.standort.Standort;
 import util.FahrzeugBuilder;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
@@ -35,6 +37,17 @@ public class FahrzeugController extends GUIController {
         }
 
         return fahrzeugList;
+    }
+
+    public Standort[] loadStandort(){
+        List<Object> test = Carsharing.em.getAllEl(Standort.class);
+        Standort[] standortList = new Standort[test.size()];
+
+        for(int i = 0; i < test.size(); i++){
+            standortList[i] = (Standort) test.get(i);
+        }
+
+        return standortList;
     }
 
     @Override
@@ -99,12 +112,12 @@ public class FahrzeugController extends GUIController {
                 //Eingabeüberprüfung muss noch eingebaut werden!!!
 
                 String kennzeichenInput = gui.kennzeichenInput.getText();
-                //Standort standort = (Standort) gui.standortDropDown.getSelectedItem();
+                Standort standort = (Standort) gui.standortDropDown.getSelectedItem();
                 String hersteller = gui.herstellerInput.getText();
                 String model = gui.modellInput.getText();
                 Fahrzeugklasse klasse = (Fahrzeugklasse) gui.klassenDropDown.getSelectedItem();
                 String kennzeichen = gui.kennzeichenInput.getText().toUpperCase();
-
+                
                 try {
                     int baujahr = Integer.parseInt(gui.baujahrInput.getText());
                     int kilometer = Integer.parseInt(gui.kilometerInput.getText());
@@ -118,7 +131,7 @@ public class FahrzeugController extends GUIController {
                     fahrzeugBuilder.status(true);
                     fahrzeugBuilder.klasse(((Fahrzeugklasse) Objects.requireNonNull(gui.klassenDropDown.getSelectedItem())).getName());
 
-                    fahrzeugBuilder.standort("69");
+                    fahrzeugBuilder.standort(Objects.requireNonNull(standort).getStandortID());
                     fahrzeugBuilder.ausruestung(new String[]{});
                     fahrzeugBuilder.bilder(new String[]{});
                     fahrzeugBuilder.kennzeichen(kennzeichen);
@@ -238,7 +251,8 @@ public class FahrzeugController extends GUIController {
                 System.out.println("Es wurde Speichern beim Bearbeiten geklickt");
 
                 currentFahrzeug.setKennzeichen(gui.kennzeichenInput.getText().toUpperCase());
-                //Standort hinzufügen
+                currentFahrzeug.setStandort((Standort) gui.standortDropDown.getSelectedItem());
+                currentFahrzeug.setStandortID(((Standort) Objects.requireNonNull(gui.standortDropDown.getSelectedItem())).getStandortID());
                 currentFahrzeug.setHersteller(gui.herstellerInput.getText());
                 currentFahrzeug.setModell(gui.modellInput.getText());
                 currentFahrzeug.setFahrzeugklasse((Fahrzeugklasse) gui.klassenDropDown.getSelectedItem());
@@ -249,6 +263,12 @@ public class FahrzeugController extends GUIController {
 
                 Carsharing.em.modify(Fahrzeug.class, currentFahrzeug.toStringArray());
                 refreshList();
+
+                JPanel panel = gui.createRightSidePanel(0);
+                gui.createRightSide(panel);
+                updateDetailLabelTexts();
+                gui.setRightSiteVisible(panel);
+
             } //Noch einige Askepte ausstehend
         }
     }
@@ -256,6 +276,7 @@ public class FahrzeugController extends GUIController {
     public void updateDetailLabelTexts(){
 
         gui.statusLabel.setText(String.valueOf(currentFahrzeug.isStatus()));
+        gui.standortLabel.setText(String.valueOf(currentFahrzeug.getStandort()));
         gui.herstellerLabel.setText(currentFahrzeug.getHersteller());
         gui.modellLabel.setText(currentFahrzeug.getModell());
         gui.klasseLabel.setText(currentFahrzeug.getFahrzeugklasseID());
@@ -268,7 +289,17 @@ public class FahrzeugController extends GUIController {
     private void updateEditLabelTexts(){
 
         gui.kennzeichenInput.setText(currentFahrzeug.getKennzeichen());
-        //gui.standortDropDown.
+
+        //dirty but working
+        int index = 0;
+        Standort[] listTmp = this.loadStandort();
+        for(int i = 0; i < listTmp.length; i++){
+            if(listTmp[i].getStandortID().equals(currentFahrzeug.getStandortID())){
+                index = i;
+            }
+        }
+        gui.standortDropDown.setSelectedIndex(index);
+
         gui.herstellerInput.setText(currentFahrzeug.getHersteller());
         gui.modellInput.setText(currentFahrzeug.getModell());
         gui.klassenDropDown.setSelectedIndex(currentFahrzeug.getFahrzeugklasse().ordinal());
