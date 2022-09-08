@@ -21,6 +21,7 @@ import view.utils.GUIController;
 
 import javax.swing.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -332,14 +333,19 @@ public class BuchungController extends GUIController {
 
         Date startTermin = (Date) gui.startTerminPicker.getModel().getValue();
         Date endTermin = (Date) gui.endTerminPicker.getModel().getValue();
+        int resZeitspanne = startTermin.compareTo(endTermin);
 
-        int res = startTermin.compareTo(endTermin);
-
-        if (res > 0) {
-            JOptionPane.showMessageDialog(gui, "Der Endtermin ist vor dem Startdatum. \n Bitte überprüfen Sie die Eingabe");
+        if (resZeitspanne > 0) {
+            JOptionPane.showMessageDialog(gui, "Der Endtermin ist vor dem Startdatum. \n Bitte überprüfen Sie die Eingabe!");
 
         }
 
+        LocalDate today = LocalDate.now();
+        int resVergangenheit = startTermin.compareTo(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+
+        if (resVergangenheit < 0){
+            JOptionPane.showMessageDialog(gui, "Der Starttermin liegt in der Vergangenheit. \n Bitte überprüfen Sie die Eingabe!");
+        }
     }
 
     private void refreshList(){
