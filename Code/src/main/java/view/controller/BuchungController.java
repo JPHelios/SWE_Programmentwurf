@@ -559,4 +559,13 @@ public class BuchungController extends GUIController {
     public String loadRabattBeschreibung() {
         return ((Rechnung) Carsharing.em.find(Rechnung.class,currentBuchung.getRechnungID())).getEvent().toString();
     }
+
+    public String getBild() {
+        Fahrzeug currentFahrzeug = currentBuchung.getFahrzeug();
+        if(currentFahrzeug.getBildIDs()[0]!=""){
+            return "src\\main\\resources\\"+currentFahrzeug.getBildIDs()[0]+".png";
+        }else{
+            return "src\\main\\resources\\standardAuto.jpg";
+        }
+    }
 }

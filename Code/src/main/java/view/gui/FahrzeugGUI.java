@@ -5,10 +5,12 @@ import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeugklasse;
 import model.standort.Standort;
+import model.utils.Bild;
 import util.enums.Colors;
 import view.controller.FahrzeugController;
 import view.utils.GUIWindowComponent;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.awt.*;
@@ -16,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class FahrzeugGUI extends GUIWindowComponent {
 
@@ -32,6 +35,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
     public JLabel preisLabel = new JLabel();
     public JLabel baujahrLabel = new JLabel();
     public JLabel kilometerLabel = new JLabel();
+    public JLabel bildLabel = new JLabel();
 
     //TextFields
     public JTextField kennzeichenInput = new JTextField();
@@ -163,13 +167,12 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
 
         img_chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        img_chooser.setMultiSelectionEnabled(true);
+        img_chooser.setMultiSelectionEnabled(false);
         img_chooser.setDialogTitle("Bilder Öffnen");
         img_chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-        JLabel bildLabel = new JLabel();
 
-        ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
+        ImageIcon icon = new ImageIcon(controller.getBild());
         icon = new ImageIcon(icon.getImage().getScaledInstance(
                 (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
                 (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
@@ -178,7 +181,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
         bildLabel.setIcon(icon);
         bildLabel.setHorizontalAlignment(JLabel.CENTER);
         bildLabel.setVerticalAlignment(JLabel.CENTER);
-        bildLabel.addMouseListener(new MouseListener() {
+
+        MouseListener mouseListener = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {}
 
@@ -203,9 +207,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
                 int approval = img_chooser.showOpenDialog(null);
 
                 if(approval == JFileChooser.APPROVE_OPTION){
-                    File selectedFile = img_chooser.getSelectedFile();
-                    System.out.println("we selected: " + selectedFile);
-                    //Carsharing.ef.createBild("", img_chooser.getSelectedFile().getName());
+                    controller.loadImage(img_chooser.getSelectedFile());
                 }
             }
 
@@ -217,7 +219,7 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
             @Override
             public void mouseExited(MouseEvent e) {}
-        });
+        };
 
         returnPanel.add(bildLabel, BorderLayout.NORTH);
 
@@ -285,6 +287,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
 
         } else if (task == 1){
 
+            bildLabel.addMouseListener(mouseListener);
+
             statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             kennzeichenInput = new JTextField("", 10);
             standortTextLabel = createLabel("Standort", Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
@@ -312,6 +316,8 @@ public class FahrzeugGUI extends GUIWindowComponent {
             addComponents(kilometerTextLabel, kilometerInput, kilometerPanel);
 
         } else if (task == 2){
+
+            bildLabel.addMouseListener(mouseListener);
 
             statusTextLabel = createLabel("Kennzeichen",  Carsharing.config.FONT, Font.PLAIN, Carsharing.config.FONT_SIZE_SMALL);
             kennzeichenInput = new JTextField("", 10);

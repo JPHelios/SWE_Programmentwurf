@@ -10,8 +10,8 @@ import java.util.Date;
 
 public class EntityFactory {
 
-    public Bild createBild(String pfad, String titel) {
-        return new Bild(pfad, titel);
+    public Bild createBild() {
+        return new Bild();
     }
 
     public Adresse createAdresse(String[] args){

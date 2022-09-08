@@ -8,11 +8,15 @@ import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
 import model.standort.Filiale;
 import model.standort.Standort;
+import model.utils.Bild;
 import util.FahrzeugBuilder;
 import view.gui.FahrzeugGUI;
 import view.utils.GUIController;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -313,5 +317,34 @@ public class FahrzeugController extends GUIController {
     }
 
 
+    public void loadImage(File selectedFile) {
+        try {
+            BufferedImage image = ImageIO.read(selectedFile);
+            if (image != null) {
+                Bild b = Carsharing.ef.createBild();
+                File outputfile = new File(b.getPfad());
+                ImageIO.write(image, "png", outputfile);
+                currentFahrzeug.setBildIDs(new String[]{b.getBildID()});
+                currentFahrzeug.setBilder(new Bild[]{b});
+                Carsharing.em.persistEl(Bild.class,b.toStringArray());
+                ImageIcon icon = new ImageIcon("src\\main\\resources\\"+currentFahrzeug.getBildIDs()[0]+".png");
+                icon = new ImageIcon(icon.getImage().getScaledInstance(
+                        (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
+                        (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
+                        BufferedImage.SCALE_SMOOTH));
 
+                gui.bildLabel.setIcon(icon);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public String getBild() {
+        if(currentFahrzeug.getBildIDs()[0]!=""){
+            return "src\\main\\resources\\"+currentFahrzeug.getBildIDs()[0]+".png";
+        }else{
+            return "src\\main\\resources\\standardAuto.jpg";
+        }
+    }
 }
