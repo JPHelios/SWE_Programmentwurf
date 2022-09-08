@@ -225,6 +225,16 @@ public class BuchungController extends GUIController {
 
                         if(value3 == 0){
                             //Delete-Routine
+
+                            Kunde k = currentBuchung.getKunde();
+                            k.setBuchungIDs(ArrayUtils.removeElement(k.getBuchungIDs(), currentBuchung.getBuchungID()));
+                            Carsharing.em.modify(Kunde.class, k.toStringArray());
+
+                            Mitarbeiter m = currentBuchung.getMitarbeiter();
+                            m.setBuchungIDs(ArrayUtils.removeElement(m.getBuchungIDs(), currentBuchung.getBuchungID()));
+                            Carsharing.em.modify(Mitarbeiter.class, m.toStringArray());
+
+                            Carsharing.em.removeEl((Rechnung) Carsharing.em.find(Rechnung.class, currentBuchung.getRechnungID()));
                             Carsharing.em.removeEl(currentBuchung);
                             refreshList();
                         }
