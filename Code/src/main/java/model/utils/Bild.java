@@ -1,5 +1,6 @@
 package model.utils;
 
+import app.Carsharing;
 import de.dhbwka.swe.utils.model.IPersistable;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,7 @@ public class Bild implements IPersistable {
 
     public Bild(){
         this.bildID = UUID.randomUUID().toString();
-        this.pfad = "/src/main/resources/" + this.bildID+".png";
+        this.pfad = "\\" +Carsharing.dirPath + this.bildID+".png";
         this.titel = "automobil";
     }
 
