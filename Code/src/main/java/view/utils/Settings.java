@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Settings {
 
-    String filePath = "src\\main\\resources\\database\\settings.csv";
+    String filePath = Carsharing.dirPath + "database\\settings.csv";
 
     public String FONT = FontType.ARIAL.toString();
     public int FONT_SIZE_SMALL = TextSize.TEXT_SIZE_XLARGE.label();
@@ -35,7 +35,7 @@ public class Settings {
 
         ArrayList<String> existingSettings = new ArrayList<>();
 
-        CSVReader reader = new CSVReader("src\\main\\resources\\database\\settings.csv");
+        CSVReader reader = new CSVReader(Carsharing.dirPath + "database\\settings.csv");
 
         try {
             List<String[]> data = reader.readData();

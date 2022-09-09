@@ -14,7 +14,7 @@ public class Carsharing {
     public static Settings config;
     public static EntityManager em;
     public static EntityFactory ef;
-    public static String csvPath;
+    public static String dirPath;
 
     private Mitarbeiter angemeldeterMitarbeiter;
     private NavigationGUI gui;
@@ -53,7 +53,7 @@ public class Carsharing {
             System.out.println("Zum Ausführen wird der Pfad zu den CSV-Dateien benötigt!");
             System.exit(0);
         } else {
-            csvPath = argPath;
+            dirPath = argPath;
             new Carsharing();
         }
 

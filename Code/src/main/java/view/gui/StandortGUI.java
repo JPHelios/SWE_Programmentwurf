@@ -152,7 +152,7 @@ public class StandortGUI extends GUIWindowComponent {
 
         JLabel mapLabel = new JLabel();
 
-        ImageIcon icon = new ImageIcon("src\\main\\resources\\map.PNG");
+        ImageIcon icon = new ImageIcon(Carsharing.dirPath + "map.PNG");
         icon = new ImageIcon(icon.getImage().getScaledInstance(
                 (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
                 (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),

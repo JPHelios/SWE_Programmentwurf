@@ -256,7 +256,7 @@ public class NavigationGUI extends GUIWindowComponent {
 
     private void createHeader(){
 
-        ImageIcon icon = new ImageIcon("src\\main\\resources\\logo.PNG");
+        ImageIcon icon = new ImageIcon(Carsharing.dirPath + "\\logo.PNG");
         icon = new ImageIcon(icon.getImage().getScaledInstance(200, 100, BufferedImage.SCALE_SMOOTH));
 
         JLabel headline_label = new JLabel("Carsharing Dödelhausen", SwingConstants.CENTER);

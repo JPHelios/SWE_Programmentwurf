@@ -6,7 +6,6 @@ import de.dhbwka.swe.utils.gui.ButtonElement;
 import de.dhbwka.swe.utils.gui.SimpleListComponent;
 import model.fahrzeug.Fahrzeug;
 import model.fahrzeug.Fahrzeugklasse;
-import model.standort.Filiale;
 import model.standort.Standort;
 import model.utils.Bild;
 import util.FahrzeugBuilder;
@@ -331,7 +330,7 @@ public class FahrzeugController extends GUIController {
                 currentFahrzeug.setBildIDs(new String[]{b.getBildID()});
                 currentFahrzeug.setBilder(new Bild[]{b});
                 Carsharing.em.persistEl(Bild.class,b.toStringArray());
-                ImageIcon icon = new ImageIcon("src\\main\\resources\\"+currentFahrzeug.getBildIDs()[0]+".png");
+                ImageIcon icon = new ImageIcon(Carsharing.dirPath +currentFahrzeug.getBildIDs()[0]+".png");
                 icon = new ImageIcon(icon.getImage().getScaledInstance(
                         (int) (Carsharing.config.FRAME_SIZE.x() * 0.35),
                         (int) (Carsharing.config.FRAME_SIZE.y() * 0.35),
@@ -346,14 +345,14 @@ public class FahrzeugController extends GUIController {
 
     public String getBild(int task) {
         if(task == 2){
-            return "src\\main\\resources\\upload.png";
+            return Carsharing.dirPath + "upload.png";
         }else if(task == 1){
-            return "src\\main\\resources\\upload.png";
+            return Carsharing.dirPath + "upload.png";
         }else{
-            if(currentFahrzeug.getBildIDs()[0]!=""){
-                return "src\\main\\resources\\"+currentFahrzeug.getBildIDs()[0]+".png";
+            if(!currentFahrzeug.getBildIDs()[0].equals("")){
+                return Carsharing.dirPath + currentFahrzeug.getBildIDs()[0]+".png";
             }else{
-                return "src\\main\\resources\\standardAuto.jpg";
+                return Carsharing.dirPath + "standardAuto.jpg";
             }
         }
     }
